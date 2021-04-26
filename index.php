@@ -32,7 +32,7 @@
   <?php include "view/header.php";?>
 
     <!-- Content Wrapper. Contains page content -->
-    <div class="" style="min-height: 100%;">
+    <div class="" style="min-height: 100%">
       <!-- Content Header (Page header) -->
 
       <!-- Main content -->
