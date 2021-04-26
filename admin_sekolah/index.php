@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <?php 
-include '../SQL/config.php';
+include 'controller/conn.php';
  
 // mengaktifkan session
 session_start();

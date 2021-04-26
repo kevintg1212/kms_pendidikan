@@ -33,7 +33,7 @@
 			<</a> <!-- Content Wrapper. Contains page content -->
 				<div class="" style="min-height: 100%; text-align: center;">
 					<!-- Content Header (Page header) -->
-
+					<form action="controller/conn_login.php" method="post">
 					<!-- Main content -->
 					<section class="content" style="height: 80%; margin: auto; width: 100%;">
 						<div class="container-fluid" style="margin-top:50px;">
@@ -45,20 +45,21 @@
 											<label>Email</label>
 										</div>
 										<div class="col-md-8">
-											<input type="email" style="width: 80%;">
+											<input type="email" style="width: 80%;" name="email">
 										</div>
 										<div class="col-md-4" style="text-align: left; margin-top: 20px;">
 											<label>Password</label>
 										</div>
 										<div class="col-md-8">
-											<input type="password" style="width: 80%; margin-top: 20px;">
+											<input type="password" style="width: 80%; margin-top: 20px;" name="password">
 										</div>
 									</div>
-									<div class="card-footer" style="background-color: white; text-align: center; padding-top: 50px; padding-bottom: 50px;">
+									<div class="card-footer"
+										style="background-color: white; text-align: center; padding-top: 50px; padding-bottom: 50px;">
 										<p>Belum memiliki akun? <a href="register.php">Register</a></p>
-										<a href="admin_sekolah/index.php"
+										<button type="submit"
 											style="color: white; width: 150px; background-color: #1D2948; margin: auto;"
-											class="btn btn-primary btn-sm nav-link">Login</a>
+											class="btn btn-primary btn-sm nav-link">Login</button>
 									</div>
 
 									<!-- /.card-body -->
@@ -68,6 +69,7 @@
 						</div>
 					</section>
 					<!-- /.content -->
+					</form>
 				</div>
 
 

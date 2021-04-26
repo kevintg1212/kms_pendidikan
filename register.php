@@ -33,7 +33,7 @@
 			<</a> <!-- Content Wrapper. Contains page content -->
 				<div class="" style="min-height: 100%; text-align: center;">
 					<!-- Content Header (Page header) -->
-
+					<form action="controller/conn_register.php" method="post">
 					<!-- Main content -->
 					<section class="content" style="height: 80%; margin: auto; width: 100%;">
 						<div class="container-fluid" style="margin-top:50px;">
@@ -46,14 +46,14 @@
 											<label>NIK</label>
 										</div>
 										<div class="col-md-8">
-											<input type="text" style="width: 80%;" name="nik">
+											<input type="text" style="width: 80%;" name="nik" required>
 										</div>
 
 										<div class="col-md-4" style="text-align: left; margin-top: 20px;">
 											<label>Nama Lengkap</label>
 										</div>
 										<div class="col-md-8" style="margin-top: 20px;">
-											<input type="text" style="width: 80%;" name="nama">
+											<input type="text" style="width: 80%;" name="nama" required>
 										</div>
 
 										<div class="col-md-4" style="text-align: left; margin-top: 20px;">
@@ -63,14 +63,14 @@
 											<div class="col-3">
 												<div class="form-check">
 													<input class="form-check-input" type="radio" name="jenis"
-														id="jenis1">
+														id="jenis1" value="Pria" checked>
 													<label class="form-check-label" for="jenis1">Pria</label>
 												</div>
 											</div>
 											<div class="col-3">
 												<div class="form-check">
 													<input class="form-check-input" type="radio" name="jenis"
-														id="jenis2">
+														id="jenis2" value="Wanita">
 													<label class="form-check-label" for="jenis2">Wanita</label>
 												</div>
 											</div>
@@ -80,7 +80,7 @@
 											<label>Email</label>
 										</div>
 										<div class="col-md-8" style="margin-top: 20px;">
-											<input type="email" style="width: 80%;" name="nama">
+											<input type="email" style="width: 80%;" name="email" required>
 										</div>
 
 
@@ -89,16 +89,16 @@
 										</div>
 										<div class="col-md-8">
 											<input type="password" name="password"
-												style="width: 80%; margin-top: 20px;">
+												style="width: 80%; margin-top: 20px;" required>
 										</div>
 
 									</div>
 									<div class="card-footer"
 										style="background-color: white; text-align: center; padding-top: 50px; padding-bottom: 50px;">
 										<p>Sudah memiliki akun? <a href="login.php">Login</a></p>
-										<a href="admin_sekolah/index.php"
+										<button type="submit"
 											style="color: white; width: 150px; background-color: #1D2948; margin: auto;"
-											class="btn btn-primary btn-sm nav-link">Register</a>
+											class="btn btn-primary btn-sm nav-link">Register</button>
 									</div>
 
 									<!-- /.card-body -->
@@ -107,6 +107,7 @@
 							</div>
 						</div>
 					</section>
+					</form>
 					<!-- /.content -->
 				</div>
 
