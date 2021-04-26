@@ -65,11 +65,23 @@ session_start();
 
       <div class="row">
         <div class="col-12">
+              <?php 
+                 $result_ulasan = mysqli_query($db2,"select count(*) FROM ulasan");
+                 $row_ulasan = mysqli_fetch_array($result_ulasan);
+                 $total_ulasan = $row_ulasan[0];
 
+                 $result_ulasan_a = mysqli_query($db2,"select count(*) FROM ulasan where status_ulasan = 'Accepted'");
+                 $row_ulasan_a = mysqli_fetch_array($result_ulasan_a);
+                 $total_ulasan_a = $row_ulasan_a[0];
+
+                 $result_ulasan_p = mysqli_query($db2,"select count(*) FROM ulasan where status_ulasan = 'Pending");
+                 $row_ulasan_p = mysqli_fetch_array($result_ulasan_p);
+                 $total_ulasan_p = $row_ulasan_p[0];
+               ?>
           <div class="card" style="padding: 30px; margin: 30px;">
             <div class="row">
               <div class="col-9">
-                <h5><b>0</b><br><br>
+                <h5><b><?php echo $total_ulasan;?></b><br><br>
                   Ulasan</h5>
               </div>
               <div class="col-3 float-right" style="text-align: right;">
@@ -81,13 +93,13 @@ session_start();
 
         <div class="col-6">
           <div class="card" style="padding: 30px; margin: 30px;">
-            <h5><b>0</b><br><br>
+            <h5><b><?php echo $total_ulasan_a;?></b><br><br>
               Tervalidasi</h5>
           </div>
         </div>
         <div class="col-6">
           <div class="card" style="padding: 30px; margin: 30px;">
-            <h5><b>0</b><br><br>
+            <h5><b><?php echo $total_ulasan_p;?></b><br><br>
               Belum Validasi</h5>
           </div>
 
