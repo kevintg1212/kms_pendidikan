@@ -40,22 +40,22 @@ session_start();
         <h3>Hasil Pencarian</h3>
         <h5>Berikut layanan pendidikan ABK yang kami rekomendasikan untuk anda</h5>
     </div>
-    <div class="" style="background-color:black">
-        <div class="card p-3" style="background-color:red">
+    <div class="">
+        <div class="card p-3 shadow m-5 bg-white rounded">
             <div class="card-body">
                 <div class="row">
-                    <div style="width: 200px; height: 150px; background-color:blue">
+                    <div style="width: 200px; height: 150px; background-color:grey">
                         <i> Gambar </i>
                     </div>
-                    <div class="col bg-info">
-                        <b>Nama sekolah - Jenjang</b>
+                    <div class="col px-3">
+                        <b style="font-size:18px;">Nama sekolah - Jenjang</b>
                         <p>Alamat, Kabupaten </br>
                             Kebutuhan Khusus </br> </br>
                             - - - -</p>
                     </div>
-                    <div class="d-flex align-items-end flex-column-reserve bg-warning">
+                    <div class="d-flex align-items-end flex-column-reserve">
                         <div class="d-flex">
-                            <a href="/kms_pendidikan/cari_sekolah_2.php" style="color: white; width: 150px; height:50px; background-color: #05319D;" class="btn btn-primary btn-sm text-center">Lihat detail</a>
+                        <a href="/kms_pendidikan/cari_sekolah_2.php" style="margin-right: 20px; color: white; width: 100px; background-color: #05319D;" class="btn btn-primary btn-sm ">Lihat detail</a>
                         </div>
                     </div>
                 </div>

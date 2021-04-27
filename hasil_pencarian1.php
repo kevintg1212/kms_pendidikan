@@ -40,61 +40,62 @@ session_start();
         <h3>Hasil Pencarian</h3>
         <h5>Berikut layanan pendidikan ABK yang kami rekomendasikan untuk anda</h5>
     </div>
-    <div class="row">
-        <div class="col-4" style="background-color:black">
-            <div class="card" style="width: 270px; height: 330px; background-color:red">
+    <div class="row d-flex justify-content-center">
+        <div class="col-2">
+            <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 270px; height: 330px;">
                 <div class="card-body">
-                    <div style="width: 200px; height: 150px; background-color:blue">
+                    <div style="width: 200px; height: 150px; background-color:grey">
                         <i> Gambar </i>
                     </div>
                     <div>
-                        <b> Nama sekolah - Jenjang </b>
-                        <p> Alamat, Kabupaten </p>
-                        <p> Kebutuhan khusus </p>
+                        <b style="font-size:18px;"> Nama sekolah - Jenjang </b>
+                        <p> Alamat, Kabupaten </br>
+                            Kebutuhan khusus </p>
                     </div>
-                    <div class="justify-content-end">
-                        <a href="/kms_pendidikan/cari_sekolah_2.php" style="margin-top: 20px; color: white; width: 150px; background-color: #05319D;" class="btn btn-primary btn-sm">Lihat detail</a>
+                    <div class="float-right">
+                        <a href="/kms_pendidikan/cari_sekolah_2.php" style=" color: white; width: 100px; background-color: #05319D;" class="btn btn-primary btn-sm ">Lihat detail</a>
                     </div>
                 </div>
                 <!-- /.card-body -->
             </div>
         </div>
-        <div class="col-4">
-            <div class="card" style="width: 270px; height: 330px; background-color:red">
+        <div class="col-2">
+            <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 270px; height: 330px;">
                 <div class="card-body">
-                    <div style="width: 200px; height: 150px; background-color:blue">
+                    <div style="width: 200px; height: 150px; background-color:grey">
                         <i> Gambar </i>
                     </div>
                     <div>
-                        <b> Nama sekolah - Jenjang </b>
-                        <p> Alamat, Kabupaten </p>
-                        <p> Kebutuhan khusus </p>
+                        <b style="font-size:18px;"> Nama sekolah - Jenjang </b>
+                        <p> Alamat, Kabupaten </br>
+                            Kebutuhan khusus </p>
                     </div>
-                    <div class="justify-content-end">
-                        <a href="/kms_pendidikan/cari_sekolah_2.php" style="margin-top: 20px; color: white; width: 150px; background-color: #05319D;" class="btn btn-primary btn-sm">Lihat detail</a>
+                    <div class="float-right">
+                        <a href="/kms_pendidikan/cari_sekolah_2.php" style=" color: white; width: 100px; background-color: #05319D;" class="btn btn-primary btn-sm ">Lihat detail</a>
                     </div>
                 </div>
                 <!-- /.card-body -->
             </div>
         </div>
-        <div class="col-4">
-            <div class="card" style="width: 270px; height: 330px; background-color:red">
+        <div class="col-2">
+            <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 270px; height: 330px;">
                 <div class="card-body">
-                    <div style="width: 200px; height: 150px; background-color:blue">
+                    <div style="width: 200px; height: 150px; background-color:grey">
                         <i> Gambar </i>
                     </div>
                     <div>
-                        <b> Nama sekolah - Jenjang </b>
-                        <p> Alamat, Kabupaten </p>
-                        <p> Kebutuhan khusus </p>
+                        <b style="font-size:18px;"> Nama sekolah - Jenjang </b>
+                        <p> Alamat, Kabupaten </br>
+                            Kebutuhan khusus </p>
                     </div>
-                    <div class="justify-content-end">
-                        <a href="/kms_pendidikan/cari_sekolah_2.php" style="margin-top: 20px; color: white; width: 150px; background-color: #05319D;" class="btn btn-primary btn-sm">Lihat detail</a>
+                    <div class="float-right">
+                        <a href="/kms_pendidikan/cari_sekolah_2.php" style=" color: white; width: 100px; background-color: #05319D;" class="btn btn-primary btn-sm ">Lihat detail</a>
                     </div>
                 </div>
                 <!-- /.card-body -->
             </div>
         </div>
+        
     </div>
   </div>
 

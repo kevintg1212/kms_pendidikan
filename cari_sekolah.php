@@ -47,123 +47,129 @@ session_start();
     <div class="" style="min-height: 100%;">
       <!-- Content Header (Page header) -->
       <!-- Main content -->
-      <section class="content" style="background-color:blue">
+      <section class="content">
       <form class="form-horizontal" action="controller/conn_cari_sekolah.php" method="post">
         <div class="container-fluid" style="margin-top:100px;">
           <h1><b>Temukan Informasi Layanan Pendidikan ABK</b></h1> <br>
-          <div style="margin-top:150px; margin-left:200px;  ">
-            <h4><b>Lakukan pencarian dengan menggunakan pilihan berikut ini</b></h4><br>
-            <h5>*Wajib di isi.</h5><br>
-            <div class="row" style="margin-top:50px; margin-left:20px;">
-              <div class="col-md-4">
-                <label>Lokasi Sekolah *</label>
-              </div>
-              <div class="col-md-6">
-                <select class="form-control select2" id="lokasiSekolah" name="lokasiSekolah" style="width: 100%;" required>
-                  <option selected="selected" disabled>-- Pilih Lokasi Sekolah --</option>
-                  <?php 
-                   $result_head = mysqli_query($db2,"select * from `wilayah_kabupaten`");
-                    while($d_head = mysqli_fetch_array($result_head)){
-                  ?>
-                  <option><?php echo $d_head['nama']; ?></option>
-                  <?php } ?>
-                </select>
+          <div class="row px-5 py-2">
+            <div class="col-md-12">
+              <div class ="shadow p-3 mb-5 bg-white rounded" style="padding: 25px 100px">
+                <h4><b>Lakukan pencarian dengan menggunakan pilihan berikut ini</b></h4><br>
+                <h5>*Wajib di isi.</h5><br>
+                <div class="row" style="margin-top:50px; margin-left:20px;">
+                  <div class="col-md-4">
+                    <label>Lokasi Sekolah *</label>
+                  </div>
+                  <div class="col-md-6">
+                    <select class="form-control select2" id="lokasiSekolah" name="lokasiSekolah" style="width: 100%;" required>
+                      <option selected="selected" disabled>-- Pilih Lokasi Sekolah --</option>
+                      <?php 
+                      $result_head = mysqli_query($db2,"select * from `wilayah_kabupaten`");
+                        while($d_head = mysqli_fetch_array($result_head)){
+                      ?>
+                      <option><?php echo $d_head['nama']; ?></option>
+                      <?php } ?>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row" style="margin-top:50px; margin-left:20px;">
+                  <div class="col-md-4">
+                    <label>Kebutuhan khusus yang dilayani *</label>
+                  </div>
+                  <div class="col-md-6">
+                    <select class="form-control select2" style="width: 100%;" id="kebutuhanKhusus" name="kebutuhanKhusus" required>
+                      <option selected="selected" disabled>-- Pilih Kebutuhan khusus  --</option>
+                      <?php 
+                      $result_head = mysqli_query($db2,"select * from `kebutuhan_khusus`");
+                        while($d_head = mysqli_fetch_array($result_head)){
+                      ?>
+                      <option><?php echo $d_head['kebutuhan_khusus']; ?></option>
+                      <?php } ?>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row" style="margin-top:50px; margin-left:20px;">
+                  <div class="col-md-4">
+                    <label>Jenjang Pendidikan *</label>
+                  </div>
+                  <div class="col-md-6">
+                    <select class="form-control select2" id="jenjangPendidikan" name="jenjangPendidikan" style="width: 100%;" required>
+                      <option selected="selected" disabled>-- Pilih Jenjang Pendidikan --</option>
+                      <?php 
+                      $result_head = mysqli_query($db2,"select * from `jenjang_pendidikan`");
+                        while($d_head = mysqli_fetch_array($result_head)){
+                      ?>
+                      <option><?php echo $d_head['jenjang_pendidikan']; ?></option>
+                      <?php } ?>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="row" style="margin-top:50px; margin-left:20px;">
+                  <div class="col-md-4">
+                    <label>Biaya Sekolah</label>
+                  </div>
+                  <div class="col-md-2">
+                    <input type="number" id="biayaMinimum" name="biayaMinimum" class="form-control select2" style="width: 100%;" placeholder="Biaya Minimum">
+                  </div>
+                  <div class="col-md-1" style="text-align: center;">
+                    <label> - </label>
+                  </div>
+                  <div class="col-md-2">
+                    <input type="number" id="biayaMaximum" name="biayaMaximum" class="form-control select2" style="width: 100%;" placeholder="Biaya Maximum">
+                  </div>
+                </div>
+
+                <div class="row" style="margin-top:50px; margin-left:20px;">
+                  <div class="col-md-4">
+                    <label>Jumlah murid dalam satu kelas</label>
+                  </div>
+                  <div class="col-md-2">
+                    <input type="number" id="jmlMinimum" name="jmlMinimum" class="form-control select2" style="width: 100%;" placeholder="Jumlah Minimum">
+                  </div>
+                  <div class="col-md-1" style="text-align: center;">
+                    <label> - </label>
+                  </div>
+                  <div class="col-md-2">
+                    <input type="number" id="jmlMaximum" name="jmlMaximum" class="form-control select2" style="width: 100%;" placeholder="Jumlah Maximum">
+                  </div>
+                </div>
+
+                <div class="row" style="margin-top:50px; margin-left:20px;">
+                  <div class="col-md-4">
+                    <label>Pengalaman sekolah dalam menangani ABK</label>
+                  </div>
+                  <div class="col-md-2">
+                    <input type="number" id="tahun_sekolah" name="tahun_sekolah" class="form-control select2" style="width: 100%;" >
+                  </div>
+                  <div class="col-md-1" style="text-align: center;">
+                    <p> Tahun </p>
+                  </div>
+                </div>
+
+                <div class="row" style="margin-top:50px; margin-left:20px;">
+                  <div class="col-md-4">
+                    <label>Pengalaman pengajar dalam menangani ABK</label>
+                  </div>
+                  <div class="col-md-2">
+                    <input type="number" id="tahun_pengajar" name="tahun_pengajar" class="form-control select2" style="width: 100%;" >
+                  </div>
+                  <div class="col-md-1" style="text-align: center;">
+                    <p> Tahun </p>
+                  </div>
+                </div>
+
+                <div class="row justify-content-center" style="text-align: center; padding-top: 50px;">
+                  <a href="/kms_pendidikan/cari_sekolah_2.php" style="margin-top: 20px; color: white; width: 150px; background-color: #05319D;"
+                    class="btn btn-primary btn-sm">Selanjutnya ></a>
+                </div>
+
               </div>
             </div>
-
-            <div class="row" style="margin-top:50px; margin-left:20px;">
-              <div class="col-md-4">
-                <label>Kebutuhan khusus yang dilayani *</label>
-              </div>
-              <div class="col-md-6">
-                <select class="form-control select2" style="width: 100%;" id="kebutuhanKhusus" name="kebutuhanKhusus" required>
-                  <option selected="selected" disabled>-- Pilih Kebutuhan khusus  --</option>
-                  <?php 
-                   $result_head = mysqli_query($db2,"select * from `kebutuhan_khusus`");
-                    while($d_head = mysqli_fetch_array($result_head)){
-                  ?>
-                  <option><?php echo $d_head['kebutuhan_khusus']; ?></option>
-                  <?php } ?>
-                </select>
-              </div>
-            </div>
-
-            <div class="row" style="margin-top:50px; margin-left:20px;">
-              <div class="col-md-4">
-                <label>Jenjang Pendidikan *</label>
-              </div>
-              <div class="col-md-6">
-                <select class="form-control select2" id="jenjangPendidikan" name="jenjangPendidikan" style="width: 100%;" required>
-                  <option selected="selected" disabled>-- Pilih Jenjang Pendidikan --</option>
-                  <?php 
-                   $result_head = mysqli_query($db2,"select * from `jenjang_pendidikan`");
-                    while($d_head = mysqli_fetch_array($result_head)){
-                  ?>
-                  <option><?php echo $d_head['jenjang_pendidikan']; ?></option>
-                  <?php } ?>
-                </select>
-              </div>
-            </div>
-
-            <div class="row" style="margin-top:50px; margin-left:20px;">
-              <div class="col-md-4">
-                <label>Biaya Sekolah</label>
-              </div>
-              <div class="col-md-2">
-                <input type="number" id="biayaMinimum" name="biayaMinimum" class="form-control select2" style="width: 100%;" placeholder="Biaya Minimum">
-              </div>
-              <div class="col-md-1" style="text-align: center;">
-                <label> - </label>
-              </div>
-              <div class="col-md-2">
-                <input type="number" id="biayaMaximum" name="biayaMaximum" class="form-control select2" style="width: 100%;" placeholder="Biaya Maximum">
-              </div>
-            </div>
-
-            <div class="row" style="margin-top:50px; margin-left:20px;">
-              <div class="col-md-4">
-                <label>Jumlah murid dalam satu kelas</label>
-              </div>
-              <div class="col-md-2">
-                <input type="number" id="jmlMinimum" name="jmlMinimum" class="form-control select2" style="width: 100%;" placeholder="Jumlah Minimum">
-              </div>
-              <div class="col-md-1" style="text-align: center;">
-                <label> - </label>
-              </div>
-              <div class="col-md-2">
-                <input type="number" id="jmlMaximum" name="jmlMaximum" class="form-control select2" style="width: 100%;" placeholder="Jumlah Maximum">
-              </div>
-            </div>
-
-            <div class="row" style="margin-top:50px; margin-left:20px;">
-              <div class="col-md-4">
-                <label>Pengalaman sekolah dalam menangani ABK</label>
-              </div>
-              <div class="col-md-2">
-                <input type="number" id="tahun_sekolah" name="tahun_sekolah" class="form-control select2" style="width: 100%;" >
-              </div>
-              <div class="col-md-1" style="text-align: center;">
-                <p> Tahun </p>
-              </div>
-            </div>
-
-            <div class="row" style="margin-top:50px; margin-left:20px;">
-              <div class="col-md-4">
-                <label>Pengalaman pengajar dalam menangani ABK</label>
-              </div>
-              <div class="col-md-2">
-                <input type="number" id="tahun_pengajar" name="tahun_pengajar" class="form-control select2" style="width: 100%;" >
-              </div>
-              <div class="col-md-1" style="text-align: center;">
-                <p> Tahun </p>
-              </div>
-            </div>
-
           </div>
-          <div class="" style="text-align: center; padding-top: 50px;">
-            <a href="/kms_pendidikan/cari_sekolah_2.php" style="margin-top: 20px; color: white; width: 150px; background-color: #05319D;"
-              class="btn btn-primary btn-sm">Selanjutnya ></a>
-          </div>
+          
         </div>
       </form>
       </section>
