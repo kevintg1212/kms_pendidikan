@@ -25,6 +25,7 @@ if($cek > 0){
 	session_start();
 	$_SESSION['email'] = $email;
 	$_SESSION['nik'] = $row;
+	$_SESSION['status'] = "login";
 	$_SESSION['nama_lengkap'] = $nama_lengkap;
 
 	header("location:../admin_sekolah/index.php?");

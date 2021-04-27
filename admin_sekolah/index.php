@@ -7,9 +7,10 @@ include 'controller/conn.php';
 session_start();
  
 // cek apakah user telah login, jika belum login maka di alihkan ke halaman login
-// if($_SESSION['status'] !="login"){
-// 	header("location:../login.php");
-// }
+if($_SESSION['status'] !="login"){
+	header("location:../login.php");
+}
+$nik =$_SESSION['nik'];
 
 ?>
 
@@ -66,15 +67,22 @@ session_start();
       <div class="row">
         <div class="col-12">
               <?php 
-                 $result_ulasan = mysqli_query($db2,"select count(*) FROM ulasan");
+                $npsn ="";
+                $result_npsn = mysqli_query($db2,"select npsn FROM layananpendidikan where nik = '$nik'");
+                while($tmp1 = mysqli_fetch_array($result_npsn)){
+                  $npsn = $tmp1['npsn'];
+                }
+
+
+                 $result_ulasan = mysqli_query($db2,"select count(*) FROM ulasan where npsn = '$npsn'");
                  $row_ulasan = mysqli_fetch_array($result_ulasan);
                  $total_ulasan = $row_ulasan[0];
 
-                 $result_ulasan_a = mysqli_query($db2,"select count(*) FROM ulasan where status_ulasan = 'Accepted'");
+                 $result_ulasan_a = mysqli_query($db2,"select count(*) FROM ulasan where npsn = '$npsn' and status_ulasan = 'Accepted'");
                  $row_ulasan_a = mysqli_fetch_array($result_ulasan_a);
                  $total_ulasan_a = $row_ulasan_a[0];
 
-                 $result_ulasan_p = mysqli_query($db2,"select count(*) FROM ulasan where status_ulasan = 'Pending");
+                 $result_ulasan_p = mysqli_query($db2,"select count(*) FROM ulasan where npsn = '$npsn' and status_ulasan = 'Pending'");
                  $row_ulasan_p = mysqli_fetch_array($result_ulasan_p);
                  $total_ulasan_p = $row_ulasan_p[0];
                ?>

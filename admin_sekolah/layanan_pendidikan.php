@@ -7,9 +7,10 @@ include 'controller/conn.php';
 session_start();
  
 // cek apakah user telah login, jika belum login maka di alihkan ke halaman login
-// if($_SESSION['status'] !="login"){
-// 	header("location:../login.php");
-// }
+if($_SESSION['status'] !="login"){
+	header("location:../login.php");
+}
+$nik =$_SESSION['nik'];
 
 ?>
 
@@ -97,7 +98,7 @@ session_start();
                   <h5>NPSN</h5>
                 </div>
                 <div class="col-md-6">
-                  <input name="npsn" type="text" class="form-control select2" style="width: 100%;" required>
+                  <input name="npsn" type="text" class="form-control select2" style="width: 100%;" data-inputmask='"mask": "99999999"' data-mask required>
                 </div>
               </div>
 
@@ -132,30 +133,17 @@ session_start();
                   <h5>Bentuk Sekolah</h5>
                 </div>
                 <div class="col-md-6 row">
+                <?php 
+                $result = mysqli_query($db2,"SELECT * FROM `detail_kriteriainformasi` where id_kriteriainformasi = 1");
+                while($tmp1 = mysqli_fetch_array($result)){
+                ?>
                   <div class="col-3">
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="bentuk" id="radio1">
-                      <label class="form-check-label" for="radio1">Segregasi</label>
+                      <input class="form-check-input" type="radio" name="bentuk" id="radio<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <label class="form-check-label" for="radio<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
-                  <div class="col-3">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="bentuk" id="radio2">
-                      <label class="form-check-label" for="radio2">Integrasi</label>
-                    </div>
-                  </div>
-                  <div class="col-3">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="bentuk" id="radio3">
-                      <label class="form-check-label" for="radio3">Inklusi</label>
-                    </div>
-                  </div>
-                  <div class="col-3">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="bentuk" id="radio4">
-                      <label class="form-check-label" for="radio4">Lainnya</label>
-                    </div>
-                  </div>
+                <?php } ?>
                 </div>
               </div>
 
@@ -164,18 +152,20 @@ session_start();
                   <h5>Status Sekolah</h5>
                 </div>
                 <div class="col-md-6 row">
+
+                <?php 
+                $result = mysqli_query($db2,"SELECT * FROM `detail_kriteriainformasi` where id_kriteriainformasi = 2");
+                while($tmp1 = mysqli_fetch_array($result)){
+                ?>
                   <div class="col-3">
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="status" id="radio5">
-                      <label class="form-check-label" for="radio5">Swasta</label>
+                      <input class="form-check-input" type="radio" name="status" id="radio<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <label class="form-check-label" for="radio<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
-                  <div class="col-3">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="status" id="radio6">
-                      <label class="form-check-label" for="radio6">Negri</label>
-                    </div>
-                  </div>
+                <?php } ?>
+
+
                 </div>
               </div>
 
@@ -184,30 +174,18 @@ session_start();
                   <h5>Jenjang pendidikan yang diterima</h5>
                 </div>
                 <div class="col-md-6 row">
+                <?php 
+                $result = mysqli_query($db2,"SELECT * FROM `jenjang_pendidikan`");
+                while($tmp1 = mysqli_fetch_array($result)){
+                ?>
                   <div class="col-3">
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="jenjang[]" id="check1">
-                      <label class="form-check-label" for="check1">TK</label>
+                      <input class="form-check-input" type="checkbox" name="jenjang[]" id="check<?php echo $tmp1['jenjang_pendidikan'];?>" value="<?php echo $tmp1['id_jenjangpendidikan'];?>">
+                      <label class="form-check-label" for="check<?php echo $tmp1['jenjang_pendidikan'];?>"><?php echo $tmp1['jenjang_pendidikan'];?></label>
                     </div>
                   </div>
-                  <div class="col-3">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="jenjang[]" id="check2">
-                      <label class="form-check-label" for="check2">SD</label>
-                    </div>
-                  </div>
-                  <div class="col-3">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="jenjang[]" id="check3">
-                      <label class="form-check-label" for="check3">SMP</label>
-                    </div>
-                  </div>
-                  <div class="col-3">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="jenjang[]" id="check4">
-                      <label class="form-check-label" for="check4">SMA</label>
-                    </div>
-                  </div>
+                  <?php } ?>
+
                 </div>
               </div>
 
@@ -216,24 +194,17 @@ session_start();
                   <h5>Akreditasi</h5>
                 </div>
                 <div class="col-md-6 row">
-                  <div class="col-3">
+                <?php 
+                $result = mysqli_query($db2,"SELECT * FROM `detail_kriteriainformasi` where id_kriteriainformasi = 3");
+                while($tmp1 = mysqli_fetch_array($result)){
+                ?>
+                  <div class="col-4">
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="akreditasi" id="radio7">
-                      <label class="form-check-label" for="radio7">A</label>
+                      <input class="form-check-input" type="radio" name="akreditasi" id="radio<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <label class="form-check-label" for="radio<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
-                  <div class="col-3">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="akreditasi" id="radio8">
-                      <label class="form-check-label" for="radio8">B</label>
-                    </div>
-                  </div>
-                  <div class="col-3">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="akreditasi" id="radio9">
-                      <label class="form-check-label" for="radio9">C</label>
-                    </div>
-                  </div>
+                  <?php } ?>
                 </div>
               </div>
 
@@ -269,9 +240,15 @@ session_start();
                   <h5>Provinsi</h5>
                 </div>
                 <div class="col-md-6">
-                <select class="form-control select2" style="width: 100%;" name="provinsi" required>
+                <select class="form-control select2" style="width: 100%;" name="provinsi" id="provinsi"
+                onchange="showDiv()" required>
                     <option selected="selected" disabled>-- Pilih Provinsi --</option>
-                    <option>Bentuk A</option>
+                    <?php 
+                      $result = mysqli_query($db2,"SELECT * FROM `wilayah_provinsi`");
+                      while($tmp1 = mysqli_fetch_array($result)){
+                    ?>
+                    <option id="p-<?php echo $tmp1['id'];?>" value="<?php echo $tmp1['id'];?>"><?php echo $tmp1['nama'];?></option>
+                    <?php } ?>
                   </select>
                 </div>
               </div>
@@ -281,9 +258,14 @@ session_start();
                   <h5>Kabupaten/Kota</h5>
                 </div>
                 <div class="col-md-6">
-                <select class="form-control select2" style="width: 100%;" name="kota" required>
-                    <option selected="selected" disabled>-- Pilih Kabupaten/Kota --</option>
-                    <option>Bentuk A</option>
+                <select class="form-control select2" style="width: 100%;" name="kota" id="kota" required>
+                    <option selected="selected" value="" disabled>-- Pilih Kabupaten/Kota --</option>
+                    <?php 
+                      $result = mysqli_query($db2,"SELECT * FROM `wilayah_kabupaten`");
+                      while($tmp1 = mysqli_fetch_array($result)){
+                    ?>
+                    <option style="display: none;" class="city c-<?php echo $tmp1['provinsi_id'];?>" id="c-<?php echo $tmp1['provinsi_id'];?>" value="<?php echo $tmp1['nama'];?>"><?php echo $tmp1['nama'];?></option>
+                    <?php } ?>
                   </select>
                 </div>
               </div>
@@ -760,15 +742,110 @@ session_start();
   <!-- ./wrapper -->
 
   <!-- jQuery -->
-  <script src="../plugins/jquery/jquery.min.js"></script>
-  <!-- Bootstrap 4 -->
-  <script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- AdminLTE App -->
-  <script src="../dist/js/adminlte.min.js"></script>
-  <!-- AdminLTE for demo purposes -->
-  <script src="../dist/js/demo.js"></script>
+<script src="../plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Select2 -->
+<script src="../plugins/select2/js/select2.full.min.js"></script>
+<!-- Bootstrap4 Duallistbox -->
+<script src="../plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+<!-- InputMask -->
+<script src="../plugins/moment/moment.min.js"></script>
+<script src="../plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+<!-- date-range-picker -->
+<script src="../plugins/daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap color picker -->
+<script src="../plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Bootstrap Switch -->
+<script src="../plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+<!-- AdminLTE App -->
+<script src="../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../dist/js/demo.js"></script>
+
 </body>
 <script>
+    
+    function showDiv(){
+      var hidemask = document.querySelectorAll(".city");
+      document.getElementById("kota").value = "";
+        for (var i = 0; i < hidemask.length; i++) {
+            hidemask[i].style.display = "none";
+        }
+      
+      var x = document.getElementById("provinsi").value;
+      var hidemask = document.querySelectorAll(".c-"+x);
+      document.getElementById("kota").value = "";
+        for (var i = 0; i < hidemask.length; i++) {
+            hidemask[i].style.display = "block";
+        }
+
+        
+       
+    }
+
+  $(function () {
+
+    //Datemask dd/mm/yyyy
+    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+    //Datemask2 mm/dd/yyyy
+    $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+    //Money Euro
+    $('[data-mask]').inputmask()
+
+    //Date range picker
+    $('#reservation').daterangepicker()
+    //Date range picker with time picker
+    $('#reservationtime').daterangepicker({
+      timePicker: true,
+      timePickerIncrement: 30,
+      locale: {
+        format: 'MM/DD/YYYY hh:mm A'
+      }
+    })
+    //Date range as a button
+    $('#daterange-btn').daterangepicker(
+      {
+        ranges   : {
+          'Today'       : [moment(), moment()],
+          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        },
+        startDate: moment().subtract(29, 'days'),
+        endDate  : moment()
+      },
+      function (start, end) {
+        $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+      }
+    )
+
+    //Timepicker
+    $('#timepicker').datetimepicker({
+      format: 'LT'
+    })
+    
+    //Bootstrap Duallistbox
+    $('.duallistbox').bootstrapDualListbox()
+
+    //Colorpicker
+    $('.my-colorpicker1').colorpicker()
+    //color picker with addon
+    $('.my-colorpicker2').colorpicker()
+
+    $('.my-colorpicker2').on('colorpickerChange', function(event) {
+      $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
+    });
+
+    $("input[data-bootstrap-switch]").each(function(){
+      $(this).bootstrapSwitch('state', $(this).prop('checked'));
+    });
+
+  })
   $('#modal-cancel').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) // Button that triggered the modal
     var recipient_e = button.data('e') // Extract info from data-* attributes
