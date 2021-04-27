@@ -41,15 +41,8 @@
         <div class="container-fluid" style="margin-top:100px;">
           <h1><b>SLB ABCD Caringin </b></h1><br>
           <div style="margin-top:100px;">
-
-
-
-
             <!-- Main content -->
-
             <div class="container-fluid">
-
-
               <div class="row">
                 <div class="col-12">
                   <div class="card">
@@ -84,9 +77,8 @@
 
                     <div class="card-tools" style="color: white;">
                       <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
-                          class="fas fa-plus"></i></button>
-                      <button type="button" class="btn btn-tool" data-card-widget="remove"><i
-                          class="fas fa-remove"></i></button>
+                          class="fas fa-plus"></i>
+                      </button>
                     </div>
                   </div>
                   <!-- /.card-header -->
