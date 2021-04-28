@@ -1,4 +1,13 @@
 <!DOCTYPE html>
+<?php 
+include 'controller/conn.php';
+ 
+// mengaktifkan session
+session_start();
+ 
+
+
+?>
 
 <html>
 
