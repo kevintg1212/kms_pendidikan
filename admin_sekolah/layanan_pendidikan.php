@@ -84,9 +84,10 @@ $nik =$_SESSION['nik'];
     <div class="content-wrapper">
       <!-- Content Header (Page header) -->
 
-
+      
       <!-- Main content -->
       <section class="content" style="">
+      <form action="controller/add_layanan_pendidikan.php" method="post">
         <div class="container-fluid">
           <div class="card" style="padding: 30px; margin: 30px;">
             <div class="card-header">
@@ -116,7 +117,7 @@ $nik =$_SESSION['nik'];
                   <h5>Foto Sekolah</h5>
                 </div>
                 <div class="col-md-6">
-                  <input class="form-control" type="file">
+                  <input class="form-control" type="file" name="foto_sekolah">
                 </div>
               </div>
 
@@ -272,10 +273,10 @@ $nik =$_SESSION['nik'];
 
               <div class="row" style="margin-top:50px; margin-left:20px;">
                 <div class="col-md-4">
-                  <h5>Telepon</h5>
+                  <h5>Telephone</h5>
                 </div>
                 <div class="col-md-6">
-                  <input name="telepon" type="text" class="form-control select2" style="width: 100%;" required>
+                  <input name="telephone" type="text" class="form-control select2" style="width: 100%;" required>
                 </div>
               </div>
 
@@ -302,96 +303,17 @@ $nik =$_SESSION['nik'];
                   <h5>Kebutuhan khusus yang dilayani</h5>
                 </div>
                 <div class="col-md-6 row">
+                <?php 
+                      $result = mysqli_query($db2,"SELECT * FROM `kebutuhan_khusus`");
+                      while($temp1 = mysqli_fetch_array($result)){
+                    ?>
                   <div class="col-4" style="padding-bottom: 20px;">
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="kebutuhan[]" id="kebutuhan1">
-                      <label class="form-check-label" for="kebutuhan1">Tunanetra</label>
+                      <input class="form-check-input" type="checkbox" name="kebutuhan[]" id="kebutuhan_<?php echo $temp1['kebutuhan_khusus'];?>"  value="<?php echo $tmp1['id_kebutuhankhusus'];?>">
+                      <label class="form-check-label" for="kebutuhan_<?php echo $temp1['kebutuhan_khusus'];?>"><?php echo $temp1['kebutuhan_khusus']; ?></label>
                     </div>
                   </div>
-                  <div class="col-4" style="padding-bottom: 20px;">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="kebutuhan[]" id="kebutuhan2">
-                      <label class="form-check-label" for="kebutuhan2">Tunagrahita</label>
-                    </div>
-                  </div>
-                  <div class="col-4" style="padding-bottom: 20px;">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="kebutuhan[]" id="kebutuhan3">
-                      <label class="form-check-label" for="kebutuhan3">Autisme</label>
-                    </div>
-                  </div>
-                  <div class="col-4" style="padding-bottom: 20px;">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="kebutuhan[]" id="kebutuhan4">
-                      <label class="form-check-label" for="kebutuhan4">Tunarungu</label>
-                    </div>
-                  </div>
-                  <div class="col-4" style="padding-bottom: 20px;">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="kebutuhan[]" id="kebutuhan5">
-                      <label class="form-check-label" for="kebutuhan5">Tunaganda</label>
-                    </div>
-                  </div>
-                  <div class="col-4" style="padding-bottom: 20px;">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="kebutuhan[]" id="kebutuhan6">
-                      <label class="form-check-label" for="kebutuhan6">Indigo</label>
-                    </div>
-                  </div>
-                  <div class="col-4" style="padding-bottom: 20px;">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="kebutuhan[]" id="kebutuhan7">
-                      <label class="form-check-label" for="kebutuhan7">Tunadaksa</label>
-                    </div>
-                  </div>
-                  <div class="col-4" style="padding-bottom: 20px;">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="kebutuhan[]" id="kebutuhan8">
-                      <label class="form-check-label" for="kebutuhan8">Kesulitan Belajar</label>
-                    </div>
-                  </div>
-                  <div class="col-4" style="padding-bottom: 20px;">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="kebutuhan[]" id="kebutuhan9">
-                      <label class="form-check-label" for="kebutuhan9">Hiperaktif</label>
-                    </div>
-                  </div>
-                  <div class="col-4" style="padding-bottom: 20px;">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="kebutuhan[]" id="kebutuhan10">
-                      <label class="form-check-label" for="kebutuhan10">Tunalaras</label>
-                    </div>
-                  </div>
-                  <div class="col-4" style="padding-bottom: 20px;">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="kebutuhan[]" id="kebutuhan11">
-                      <label class="form-check-label" for="kebutuhan11">Cerdas Istimewa</label>
-                    </div>
-                  </div>
-                  <div class="col-4" style="padding-bottom: 20px;">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="kebutuhan[]" id="kebutuhan12">
-                      <label class="form-check-label" for="kebutuhan12">Down Syndrome</label>
-                    </div>
-                  </div>
-                  <div class="col-4" style="padding-bottom: 20px;">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="kebutuhan[]" id="kebutuhan13">
-                      <label class="form-check-label" for="kebutuhan13">Tunawicara</label>
-                    </div>
-                  </div>
-                  <div class="col-4" style="padding-bottom: 20px;">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="kebutuhan[]" id="kebutuhan14">
-                      <label class="form-check-label" for="kebutuhan14">Bakat Istimewa</label>
-                    </div>
-                  </div>
-                  <div class="col-4" style="padding-bottom: 20px;">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="kebutuhan[]" id="kebutuhan15">
-                      <label class="form-check-label" for="kebutuhan15">Narkoba</label>
-                    </div>
-                  </div>
+                <?php } ?>
                 </div>
               </div>
 
@@ -409,10 +331,17 @@ $nik =$_SESSION['nik'];
                   <h5>Waktu Penyelenggara Sekolah</h5>
                 </div>
                 <div class="col-md-6">
-                <select class="form-control select2" style="width: 100%;" name="waktu" required>
-                    <option selected="selected" disabled>-- Pilih Waktu Penyelenggara Sekolah --</option>
-                    <option>Bentuk A</option>
-                  </select>
+                <?php 
+                $result = mysqli_query($db2,"SELECT * FROM `detail_kriteriainformasi` where id_kriteriainformasi = 4");
+                while($tmp1 = mysqli_fetch_array($result)){
+                ?>
+                  <div class="col-6" style="margin-bottom:20px;">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="waktu_penyelenggara" id="radio<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <label class="form-check-label" for="radio<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
+                    </div>
+                  </div>
+                <?php } ?>
                 </div>
               </div>
 
@@ -421,20 +350,30 @@ $nik =$_SESSION['nik'];
                   <h5>Penerimaan sekolah terhadap ABK</h5>
                 </div>
                 <div class="col-md-8 row">
-                  <div class="col-12">
+                <?php 
+                $result = mysqli_query($db2,"SELECT * FROM `detail_kriteriainformasi` where id_kriteriainformasi = 12");
+                while($tmp1 = mysqli_fetch_array($result)){
+                ?>
+                  <div class="col-12" style="margin-bottom:20px;">
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="penerimaan" id="radio11">
-                      <label class="form-check-label" for="radio11">Menerima namun memperlakukan sama dengan anak normal lainnya</label>
+                      <input class="form-check-input" type="radio" name="penerimaan_sekolah" id="radio<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <label class="form-check-label" for="radio<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
-                  <div class="col-12" style="margin-top: 20px;">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="penerimaan" id="radio12">
-                      <label class="form-check-label" for="radio12">Menerima dan mampu menangani sesuai kebutuhannya</label>
-                    </div>
-                  </div>
+                <?php } ?>
                 </div>
               </div>
+
+              <div class="row" style="margin-top:50px; margin-left:20px;">
+                <div class="col-md-4">
+                  <h5>Pengalaman sekolah menangani ABK</h5>
+                </div>
+                <div class="col-md-6 row">
+                  <input name="penglaman_sekolah" type="number" min=0 class="form-control select2" style="width: 50%; text-align: right;"
+                  required> <h5>&nbsp; tahun</h5>
+                </div>
+              </div>
+
 
 
               <div class="row" style="margin-top:50px; margin-left:20px;">
@@ -442,18 +381,17 @@ $nik =$_SESSION['nik'];
                   <h5>Ketersediaan hubungan dengan sekolah lain</h5>
                 </div>
                 <div class="col-md-6 row">
-                  <div class="col-4">
+                <?php 
+                $result = mysqli_query($db2,"SELECT * FROM `detail_kriteriainformasi` where id_kriteriainformasi = 14");
+                while($tmp1 = mysqli_fetch_array($result)){
+                ?>
+                  <div class="col-6" style="margin-bottom:20px;">
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="hubungan" id="radio13">
-                      <label class="form-check-label" for="radio13">Tersedia</label>
+                      <input class="form-check-input" type="radio" name="ketersediaan_hubungan" id="radio_kh_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <label class="form-check-label" for="radio_kh_<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
-                  <div class="col-4">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="hubungan" id="radio14">
-                      <label class="form-check-label" for="radio14">Tidak Tersedia</label>
-                    </div>
-                  </div>
+                <?php } ?>
                 </div>
               </div>
 
@@ -462,18 +400,17 @@ $nik =$_SESSION['nik'];
                   <h5>Ketersediaan program penempatan ganda</h5>
                 </div>
                 <div class="col-md-6 row">
-                  <div class="col-4">
+                <?php 
+                $result = mysqli_query($db2,"SELECT * FROM `detail_kriteriainformasi` where id_kriteriainformasi = 15");
+                while($tmp1 = mysqli_fetch_array($result)){
+                ?>
+                  <div class="col-6" style="margin-bottom:20px;">
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="program" id="radio15">
-                      <label class="form-check-label" for="radio15">Tersedia</label>
+                      <input class="form-check-input" type="radio" name="ketersediaan_program" id="radio_pg_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <label class="form-check-label" for="radio_pg_<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
-                  <div class="col-4">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="program" id="radio16">
-                      <label class="form-check-label" for="radio16">Tidak Tersedia</label>
-                    </div>
-                  </div>
+                <?php } ?>
                 </div>
               </div>
 
@@ -482,18 +419,17 @@ $nik =$_SESSION['nik'];
                   <h5>Syarat perlu ada tidaknya pendamping</h5>
                 </div>
                 <div class="col-md-6 row">
-                  <div class="col-4">
+                <?php 
+                $result = mysqli_query($db2,"SELECT * FROM `detail_kriteriainformasi` where id_kriteriainformasi = 13");
+                while($tmp1 = mysqli_fetch_array($result)){
+                ?>
+                  <div class="col-6" style="margin-bottom:20px;">
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="pendamping" id="radio17">
-                      <label class="form-check-label" for="radio17">Perlu</label>
+                      <input class="form-check-input" type="radio" name="syarat_p" id="radio_sy_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <label class="form-check-label" for="radio_sy_<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
-                  <div class="col-4">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="pendamping" id="radio18">
-                      <label class="form-check-label" for="radio18">Tidak Perlu</label>
-                    </div>
-                  </div>
+                <?php } ?>
                 </div>
               </div>
 
@@ -508,35 +444,10 @@ $nik =$_SESSION['nik'];
 
               <div class="row" style="margin-top:50px; margin-left:20px;">
                 <div class="col-md-4">
-                  <h4><b>Proses Belajar Mengajar</b></h4>
+                  <h5>Keamanan Sekolah</h5>
                 </div>
                 <div class="col-md-6">
-                </div>
-              </div>
-
-              <div class="row" style="margin-top:50px; margin-left:20px;">
-                <div class="col-md-4">
-                  <h5>Kurikulum Sekolah</h5>
-                </div>
-                <div class="col-md-8 row">
-                  <div class="col-12">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="kurikulum" id="kurikulum1">
-                      <label class="form-check-label" for="kurikulum1">Kurikulum Reguler Penuh (Kurikulum 2013)</label>
-                    </div>
-                  </div>
-                  <div class="col-12" style="margin-top: 20px;">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="kurikulum" id="kurikulum2">
-                      <label class="form-check-label" for="kurikulum2">Kurikulum Reguler dengan Modifikasi</label>
-                    </div>
-                  </div>
-                  <div class="col-12" style="margin-top: 20px;">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="kurikulum" id="kurikulum2">
-                      <label class="form-check-label" for="kurikulum2">Kurikulum Program Pendidikan Individual (PPI)</label>
-                    </div>
-                  </div>
+                  <textarea rows="4" name="keamanan_sekolah" class="form-control select2" style="width: 100%;" required></textarea>
                 </div>
               </div>
 
@@ -553,18 +464,45 @@ $nik =$_SESSION['nik'];
                   <h5>Ketersediaan dukungan spesialis</h5>
                 </div>
                 <div class="col-md-6 row">
-                  <div class="col-4">
+                <?php 
+                $result = mysqli_query($db2,"SELECT * FROM `detail_kriteriainformasi` where id_kriteriainformasi = 16");
+                while($tmp1 = mysqli_fetch_array($result)){
+                ?>
+                  <div class="col-6" style="margin-bottom:20px;">
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="specialist" id="special5">
-                      <label class="form-check-label" for="special5">Tersedia</label>
+                      <input class="form-check-input" type="radio" name="specialist" id="radio_sp_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <label class="form-check-label" for="radio_sp_<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
-                  <div class="col-4">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="specialist" id="special6">
-                      <label class="form-check-label" for="special6">Tidak Tersedia</label>
-                    </div>
+                <?php } ?>
+                </div>
+              </div>
+
+
+              <div class="row" style="margin-top:50px; margin-left:20px;">
+                <div class="col-md-4">
+                  <h4><b>Pengajar</b></h4>
+                </div>
+                <div class="col-md-6">
+                </div>
+              </div>
+                <div class="row" style="margin-top:50px; margin-left:20px;">
+                  <div class="col-md-4">
+                    <h5>Pelatihan pendidikan khusus yang dimiliki pengajar</h5>
                   </div>
+                  <div class="col-md-6">
+                    <textarea rows="4" name="pelatihan" class="form-control select2" style="width: 100%;" required></textarea>
+                  </div>
+                </div>
+
+                
+              <div class="row" style="margin-top:50px; margin-left:20px;">
+                <div class="col-md-4">
+                  <h5>Rata-rata pengalaman pengajar dalam mendidik ABK</h5>
+                </div>
+                <div class="col-md-6 row">
+                  <input name="rata_pengalaman" type="number" min=0 class="form-control select2" style="width: 50%; text-align: right;"
+                  required> <h5>&nbsp; tahun</h5>
                 </div>
               </div>
 
@@ -583,18 +521,17 @@ $nik =$_SESSION['nik'];
                   berkebutuhan khusus</h5>
                 </div>
                 <div class="col-md-6 row">
-                  <div class="col-4">
+                <?php 
+                $result = mysqli_query($db2,"SELECT * FROM `detail_kriteriainformasi` where id_kriteriainformasi = 17");
+                while($tmp1 = mysqli_fetch_array($result)){
+                ?>
+                  <div class="col-6" style="margin-bottom:20px;">
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="staff" id="staff5">
-                      <label class="form-check-label" for="staff5">Tersedia</label>
+                      <input class="form-check-input" type="radio" name="staff_opr" id="radio_sto_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <label class="form-check-label" for="radio_sto_<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
-                  <div class="col-4">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="staff" id="staff6">
-                      <label class="form-check-label" for="staff6">Tidak Tersedia</label>
-                    </div>
-                  </div>
+                <?php } ?>
                 </div>
               </div>
 
@@ -613,20 +550,20 @@ $nik =$_SESSION['nik'];
                       siswa berkebutuhan khusus</h5>
                 </div>
                 <div class="col-md-6 row">
-                  <div class="col-4">
+                <?php 
+                $result = mysqli_query($db2,"SELECT * FROM `detail_kriteriainformasi` where id_kriteriainformasi = 18");
+                while($tmp1 = mysqli_fetch_array($result)){
+                ?>
+                  <div class="col-6" style="margin-bottom:20px;">
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="pembekalan" id="pembekalan5">
-                      <label class="form-check-label" for="pembekalan5">Tersedia</label>
+                      <input class="form-check-input" type="radio" name="siswa_lain" id="radio_sl_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <label class="form-check-label" for="radio_sl_<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
-                  <div class="col-4">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="pembekalan" id="pembekalan6">
-                      <label class="form-check-label" for="pembekalan6">Tidak Tersedia</label>
-                    </div>
-                  </div>
+                <?php } ?>
                 </div>
               </div>
+
 
               <div class="row" style="margin-top:50px; margin-left:20px;">
                 <div class="col-md-4">
@@ -641,73 +578,253 @@ $nik =$_SESSION['nik'];
                   <h5>Kesediaan asosiasi orang tua dan guru</h5>
                 </div>
                 <div class="col-md-6 row">
-                  <div class="col-4">
+                <?php 
+                $result = mysqli_query($db2,"SELECT * FROM `detail_kriteriainformasi` where id_kriteriainformasi = 19");
+                while($tmp1 = mysqli_fetch_array($result)){
+                ?>
+                  <div class="col-6" style="margin-bottom:20px;">
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="asosiasi" id="asosiasi5">
-                      <label class="form-check-label" for="asosiasi5">Tersedia</label>
+                      <input class="form-check-input" type="radio" name="kesediaan_asosiasi" id="radio_kao_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <label class="form-check-label" for="radio_kao_<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
-                  <div class="col-4">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="asosiasi" id="asosiasi6">
-                      <label class="form-check-label" for="asosiasi6">Tidak Tersedia</label>
-                    </div>
-                  </div>
+                <?php } ?>
                 </div>
               </div>
 
+
               <div class="row" style="margin-top:50px; margin-left:20px;">
                 <div class="col-md-4">
-                  <h5>Kesediaan forum pandangan orang tua</h5>
+                  <h5>Ketersediaan forum pandangan orang tua</h5>
                 </div>
                 <div class="col-md-6 row">
-                  <div class="col-4">
+                <?php 
+                $result = mysqli_query($db2,"SELECT * FROM `detail_kriteriainformasi` where id_kriteriainformasi = 20");
+                while($tmp1 = mysqli_fetch_array($result)){
+                ?>
+                  <div class="col-6" style="margin-bottom:20px;">
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="forum" id="forum5">
-                      <label class="form-check-label" for="forum5">Tersedia</label>
+                      <input class="form-check-input" type="radio" name="kesediaan_forum" id="radio_fr_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <label class="form-check-label" for="radio_fr_<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
-                  <div class="col-4">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="forum" id="forum6">
-                      <label class="form-check-label" for="forum6">Tidak Tersedia</label>
-                    </div>
-                  </div>
+                <?php } ?>
                 </div>
               </div>
 
               <div class="row" style="margin-top:50px; margin-left:20px;">
-                <div class="col-md-4">
-                  <h5>Cara orang tua berkomunikasi dengan pengajar
-                      dalam mengetahui perkembangan anak</h5>
-                </div>
-                <div class="col-md-6 row">
-                  <div class="col-4">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="komunikasi" id="komunikasi5">
-                      <label class="form-check-label" for="komunikasi5">Lisan</label>
-                    </div>
+                  <div class="col-md-4">
+                    <h5>Cara orang tua berkomunikasi dengan pengajar dalam mengetahui perkembangan anak</h5>
                   </div>
-                  <div class="col-4">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="komunikasi" id="komunikasi6">
-                      <label class="form-check-label" for="komunikasi6">Tulisan</label>
-                    </div>
-                  </div>
-                  <div class="col-4">
-                    <div class="form-check">
-                      <input class="form-check-input" type="radio" name="komunikasi" id="komunikasi7">
-                      <label class="form-check-label" for="komunikasi7">Lisan dan Tulisan</label>
-                    </div>
+                  <div class="col-md-6">
+                    <textarea rows="4" name="berkomunikasi_pengajar" class="form-control select2" style="width: 100%;" required></textarea>
                   </div>
                 </div>
-              </div>
+
 
               <div class="row" style="margin-top:50px; margin-left:20px;">
                 <div class="col-md-4">
-                  <h4><b>Kriteria Informasi Penilaian</b></h4>
+                  <h4><b>Proses Belajar Mengajar</b></h4>
                 </div>
                 <div class="col-md-6">
+                </div>
+              </div>
+
+              <div class="row" style="margin-top:50px; margin-left:20px;">
+                <div class="col-md-4">
+                  <h5>Kurikulum Sekolah</h5>
+                </div>
+                <div class="col-md-8 row">
+                <?php 
+                $result = mysqli_query($db2,"SELECT * FROM `detail_kriteriainformasi` where id_kriteriainformasi = 5");
+                while($tmp1 = mysqli_fetch_array($result)){
+                ?>
+                  <div class="col-12" style="margin-bottom:20px;">
+                    <div class="form-check">
+                      <input class="form-check-input" type="radio" name="kurikulum" id="radio_kr_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <label class="form-check-label" for="radio_kr_<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
+                    </div>
+                  </div>
+                <?php } ?>
+                </div>
+              </div>
+
+              <div class="row" style="margin-top:50px; margin-left:20px;">
+                <div class="col-md-4">
+                  <h5>Metode Penyampaian Materi Pembelajaran yang diterapkan</h5>
+                </div>
+                <div class="col-md-6 row">
+                <?php 
+                      $result = mysqli_query($db2,"SELECT * FROM `sub_kriteriainformasi` where id_kriteriainformasi=6");
+                      while($temp1 = mysqli_fetch_array($result)){
+                    ?>
+                  <div class="col-12" style="padding-bottom: 20px;">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="sub_kriteria<?php echo $temp1['id_sub_kriteriainformasi'];?>" id="metode_d_<?php echo $temp1['sub_kriteriainformasi'];?>"  value="1">
+                      <label style="padding-bottom: 10px;" class="form-check-label" for="metode_d_<?php echo $temp1['sub_kriteriainformasi'];?>"><?php echo $temp1['sub_kriteriainformasi']; ?></label>
+                      <label class="form-check-label" for="metode_d_<?php echo $temp1['sub_kriteriainformasi'];?>"><?php echo $temp1['keterangan'];?></label>
+                    </div>
+                  </div>
+                <?php } ?>
+                </div>
+              </div>
+              
+              <div class="row" style="margin-top:50px; margin-left:20px;">
+                <div class="col-md-4">
+                  <h5>Metode Monitoring dan Evaluasi Perkembangan Anak yang diterapkan</h5>
+                </div>
+                <div class="col-md-6 row">
+                <?php 
+                      $result = mysqli_query($db2,"SELECT * FROM `sub_kriteriainformasi` where id_kriteriainformasi=7");
+                      while($temp1 = mysqli_fetch_array($result)){
+                    ?>
+                  <div class="col-12" style="padding-bottom: 20px;">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="metode_m<?php echo $temp1['id_sub_kriteriainformasi'];?>" id="metode_m_<?php echo $temp1['sub_kriteriainformasi'];?>"  value="1">
+                      <label style="padding-bottom: 10px;" class="form-check-label" for="metode_m_<?php echo $temp1['sub_kriteriainformasi'];?>"><?php echo $temp1['sub_kriteriainformasi']; ?></label>
+                      <label class="form-check-label" for="metode_m_<?php echo $temp1['sub_kriteriainformasi'];?>"><?php echo $temp1['keterangan'];?></label>
+                    </div>
+                  </div>
+                <?php } ?>
+                </div>
+              </div>
+              
+              <div class="row" style="margin-top:50px; margin-left:20px;">
+                <div class="col-md-4">
+                  <h5>Jumlah murid dalam satu kelas</h5>
+                </div>
+                <div class="col-md-6 row">
+                  <input name="jumlah_murid" type="number" min=0 class="form-control select2" style="width: 50%; text-align: right;"
+                  required> <h5>&nbsp; murid</h5>
+                </div>
+              </div>
+
+              <div class="row" style="margin-top:50px; margin-left:20px;">
+                <div class="col-md-4">
+                  <h5>Pengaturan situasi di kelas</h5>
+                </div>
+                <div class="col-md-6">
+                  <textarea rows="4" name="pengaturan_kelas" class="form-control select2" style="width: 100%;" required></textarea>
+                </div>
+              </div>
+
+              <div class="row" style="margin-top:50px; margin-left:20px;">
+                <div class="col-md-6">
+                  <h4><b>Gedung dan perlengkapannya</b></h4>
+                </div>
+                <div class="col-md-6">
+                </div>
+              </div>     
+
+
+              <div class="row" style="margin-top:50px; margin-left:20px;">
+                <div class="col-md-4">
+                  <h5>Sarpras Umum</h5>
+                </div>
+                <div class="col-md-6 row">
+                <?php 
+                      $result = mysqli_query($db2,"SELECT * FROM `sub_kriteriainformasi` where id_kriteriainformasi=9");
+                      while($temp1 = mysqli_fetch_array($result)){
+                    ?>
+                  <div class="col-12" style="padding-bottom: 20px;">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="sarpas_umum<?php echo $temp1['id_sub_kriteriainformasi'];?>" id="sarpas_umum_<?php echo $temp1['sub_kriteriainformasi'];?>"  value="1">
+                      <label class="form-check-label" for="sarpas_umum_<?php echo $temp1['sub_kriteriainformasi'];?>"><?php echo $temp1['sub_kriteriainformasi']; ?></label>
+                    </div>
+                  </div>
+                <?php } ?>
+                </div>
+              </div>
+
+              <div class="row" style="margin-top:50px; margin-left:20px;">
+                <div class="col-md-4">
+                  <h5>Sarpras Khusus</h5>
+                </div>
+                <div class="col-md-6 row">
+                <?php 
+                      $result = mysqli_query($db2,"SELECT * FROM `sub_kriteriainformasi` where id_kriteriainformasi=10");
+                      while($temp1 = mysqli_fetch_array($result)){
+                    ?>
+                  <div class="col-12" style="padding-bottom: 20px;">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="sarpas_khusus<?php echo $temp1['id_sub_kriteriainformasi'];?>" id="sarpas_khusus_<?php echo $temp1['sub_kriteriainformasi'];?>"  value="1">
+                      <label class="form-check-label" for="sarpas_khusus_<?php echo $temp1['sub_kriteriainformasi'];?>"><?php echo $temp1['sub_kriteriainformasi']; ?></label>
+                    </div>
+                  </div>
+                <?php } ?>
+                </div>
+              </div>
+
+
+              <div class="row" style="margin-top:50px; margin-left:20px;">
+                <div class="col-md-4">
+                  <h5>Teknologi</h5>
+                </div>
+                <div class="col-md-6 row">
+                <?php 
+                      $result = mysqli_query($db2,"SELECT * FROM `sub_kriteriainformasi` where id_kriteriainformasi=11");
+                      while($temp1 = mysqli_fetch_array($result)){
+                    ?>
+                  <div class="col-12" style="padding-bottom: 20px;">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="teknologi<?php echo $temp1['id_sub_kriteriainformasi'];?>" id="teknologi_<?php echo $temp1['sub_kriteriainformasi'];?>"  value="1">
+                      <label class="form-check-label" for="teknologi_<?php echo $temp1['sub_kriteriainformasi'];?>"><?php echo $temp1['sub_kriteriainformasi']; ?></label>
+                    </div>
+                  </div>
+                <?php } ?>
+                </div>
+              </div>
+
+              <div class="row" style="margin-top:50px; margin-left:20px;">
+                <div class="col-md-4">
+                  <h4><b>Kebijakan Sekolah</b></h4>
+                </div>
+                <div class="col-md-6">
+                </div>
+              </div>
+
+              <div class="row" style="margin-top:50px; margin-left:20px;">
+                <div class="col-md-4">
+                  <h5>Kebijakan yang diterapkan sekolah</h5>
+                </div>
+                <div class="col-md-6">
+                  <textarea rows="4" name="kebijakan_sekolah" class="form-control select2" style="width: 100%;" required></textarea>
+                </div>
+              </div>
+
+
+              <div class="row" style="margin-top:50px; margin-left:20px;">
+                <div class="col-md-4">
+                  <h4><b>Kegiatan Sekolah</b></h4>
+                </div>
+                <div class="col-md-6">
+                </div>
+              </div>
+
+              <div class="row" style="margin-top:50px; margin-left:20px;">
+                <div class="col-md-4">
+                  <h5>Kegiatan sekolah yang dapat diikuti ABK</h5>
+                </div>
+                <div class="col-md-6 row">
+                <?php 
+                      $result = mysqli_query($db2,"SELECT * FROM `sub_kriteriainformasi` where id_kriteriainformasi=8");
+                      while($temp1 = mysqli_fetch_array($result)){
+                    ?>
+                  <div class="col-12" style="padding-bottom: 20px;">
+                    <div class="form-check">
+                      <input class="form-check-input" type="checkbox" name="kegiatan<?php echo $temp1['id_sub_kriteriainformasi'];?>" id="kegiatan_<?php echo $temp1['sub_kriteriainformasi'];?>"  value="1">
+                      <label class="form-check-label" for="kegiatan_<?php echo $temp1['sub_kriteriainformasi'];?>"><?php echo $temp1['sub_kriteriainformasi']; ?></label>
+                    </div>
+                  </div>
+                <?php } ?>
+                </div>
+              </div>
+
+
+
+              <div class="row" style="margin-top:50px; margin-left:20px;">
+                <div class="col-md-12">
+                  <h4><b>Surat Ijin Operasional/Pendirian Sekolah</b></h4>
                 </div>
               </div>
 
@@ -716,21 +833,23 @@ $nik =$_SESSION['nik'];
                   <h5>Surat Ijin Operasional/Pendirian Sekolah</h5>
                 </div>
                 <div class="col-md-6">
-                  <input class="form-control" type="file">
+                  <input class="form-control" type="file" name="surat">
                 </div>
               </div>
 
 
             </div>
             <div class="" style="text-align: right; padding-top: 50px;">
-              <button data-toggle="modal" data-target="#modal-cancel"
+              <button type="submit"
                 style="margin-top: 20px; color: white; width: 150px; background-color: #1D2948;"
                 class="btn btn-primary btn-sm">Simpan</button>
             </div>
           </div>
         </div>
+        </form>
       </section>
       <!-- /.content -->
+      
     </div>
   </div>
   <!-- Control Sidebar -->
@@ -795,67 +914,12 @@ $nik =$_SESSION['nik'];
     //Money Euro
     $('[data-mask]').inputmask()
 
-    //Date range picker
-    $('#reservation').daterangepicker()
-    //Date range picker with time picker
-    $('#reservationtime').daterangepicker({
-      timePicker: true,
-      timePickerIncrement: 30,
-      locale: {
-        format: 'MM/DD/YYYY hh:mm A'
-      }
-    })
-    //Date range as a button
-    $('#daterange-btn').daterangepicker(
-      {
-        ranges   : {
-          'Today'       : [moment(), moment()],
-          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
-          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
-          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
-          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
-          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
-        },
-        startDate: moment().subtract(29, 'days'),
-        endDate  : moment()
-      },
-      function (start, end) {
-        $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
-      }
-    )
 
-    //Timepicker
-    $('#timepicker').datetimepicker({
-      format: 'LT'
-    })
-    
-    //Bootstrap Duallistbox
-    $('.duallistbox').bootstrapDualListbox()
 
-    //Colorpicker
-    $('.my-colorpicker1').colorpicker()
-    //color picker with addon
-    $('.my-colorpicker2').colorpicker()
 
-    $('.my-colorpicker2').on('colorpickerChange', function(event) {
-      $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
-    });
-
-    $("input[data-bootstrap-switch]").each(function(){
-      $(this).bootstrapSwitch('state', $(this).prop('checked'));
-    });
 
   })
-  $('#modal-cancel').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget) // Button that triggered the modal
-    var recipient_e = button.data('e') // Extract info from data-* attributes
-    var recipient_v = button.data('v')
-    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-    var modal = $(this)
-    modal.find('.event').val(recipient_e)
-    modal.find('.volunteer').val(recipient_v)
-  })
+
 </script>
 
 </html>
