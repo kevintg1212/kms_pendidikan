@@ -26,8 +26,28 @@
 <body class="sidebar-collapse"
   style="padding-left: 50px; padding-right: 50px; padding-top: 10px; margin-bottom: 200px;">
 
-
-
+  <div class="modal fade" id="modal-default">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title"><b> Terima kasih atas ulasan yang anda berikan </b></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Ulasan anda akan divalidasi terlebih dahulu sebelum ditampilkan. <br> 
+          Hasil dari validasi akan dikonfirmasi melalui email yang telah anda cantumkan.</p>
+        </div>
+        <div class="modal-footer justify-content-end">
+          <button type="button" class="btn btn-primary">OK</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
 
   <div class="wrapper">
     <?php include "view/header.php";?>
@@ -52,6 +72,7 @@
                 <div class="row">
                   <div class="col-12 p-5">
                     <div class="card-body">
+                    <form>
                       <div class="row">
                          <div class="col-6">
                            <label>Latar Belakang</label>
@@ -70,7 +91,7 @@
                            <label>Nama Lengkap</label>
                          </div> 
                          <div class="col-6">
-                           <input type="text" id="namaLengkap" name="namaLengkap" class="form-control select2" style="width: 100%;" >
+                           <input type="text" id="namaLengkap" name="namaLengkap" class="form-control select2" style="width: 100%;" placeholder="Masukkan nama lengkap">
                          </div> 
                       </div>
                       <div class="row mt-3">
@@ -78,7 +99,7 @@
                            <label>Email</label>
                          </div> 
                          <div class="col-6">
-                           <input type="text" id="email" name="email" class="form-control select2" style="width: 100%;" >
+                           <input type="email" id="email" name="email" class="form-control select2" style="width: 100%;" placeholder="Masukkan email" required>
                          </div> 
                       </div>
                       <div class="row mt-3">
@@ -102,7 +123,7 @@
                            <label>Ulasan</label>
                          </div> 
                          <div class="col-6">
-                           <textarea id="ulasan" name="ulasan" class="form-control" rows="3" placeholder="Enter ..."></textarea>
+                           <textarea id="ulasan" name="ulasan" class="form-control" rows="3" placeholder="Tulis ulasanmu disini.."></textarea>
                          </div> 
                       </div>
                       <div class="row mt-3">
@@ -114,47 +135,20 @@
                          </div> 
                       </div>
                       <div class="row mt-3">
-                         <div class="col">
-                          <a href="/kms_pendidikan/cari_sekolah_2.php" style="margin-top: 20px; color: white; width: 150px; background-color: #05319D;"
-                          class="btn btn-primary btn-sm float-right">Selanjutnya ></a>
+                        <div class="col">
+                          <button type="button" class="btn btn-primary btn-sm float-right" style="margin-top: 20px; color: white; width: 150px; background-color: #05319D;" data-toggle="modal" data-target="#modal-default">
+                            Selanjutnya
+                          </button>
                          </div> 
                       </div>
                     </div>
+                    </form>
                   </div>
-  
                 </div>
               </div>
               <!-- /.card -->
             </div>
             <!-- /.container-fluid -->
-
-
-            <div class="card">
-              <div class="row" style="padding: 20px;">
-                <div class="col-6">
-                  <h3><b>Nama Lengkap - Latar Belakang</b></h3>
-                </div>
-                <div class="col-6">
-                  <div class="float-right">
-                    <h5>23 Juli 2020, 13:00 WIB</h5>
-                  </div>
-                </div>
-
-                <div class="col-12">
-                  <div class="card-body">
-                  <h5><b>Kriteria Informasi</b></h5>
-                  <h5>Fasilitas khusus yang disediakan lengkap untuk mendukung proses pembelajaran anak, tetapi sayangnya beberapa di antaranya tidak terawat</h5>
-                  </div>
-                </div>
-
-                <div class="col-2">
-                  <div class="card-header">
-                    <img src="img/4096093.png" class="" style="width: 100%;">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- /.card -->
         </div>
       </section>
       <!-- /.content -->
