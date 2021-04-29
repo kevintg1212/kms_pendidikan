@@ -38,7 +38,7 @@ session_start();
 </head>
 
 <body class="hold-transition sidebar-mini" style="max-width: 100%; overflow-x: hidden;">
-<div class="modal fade" id="modal-cancel">
+  <div class="modal fade" id="modal-cancel">
     <div class="modal-dialog" style="max-width: 750px !important;">
       <div class="modal-content">
         <div class="modal-header">
@@ -48,7 +48,7 @@ session_start();
           </button>
         </div>
         <div class="modal-body">
-          <p>Apakah anda yakin akan menolak ulasan ini? / Apakah anda akan menerima ulasan ini? </p>
+          <p>Apakah anda yakin akan menolak topik ulasan ini? / Apakah anda akan menerima topik ulasan ini? </p>
         </div>
         <form action="SQL/vDeleteEvent.php" method="post">
           <div class="modal-footer">
@@ -63,6 +63,39 @@ session_start();
     <!-- /.modal-dialog -->
   </div>
   <!-- /.modal -->
+
+  <div class="modal fade" id="modal-edit-topik-ulasan">
+    <div class="modal-dialog" style="max-width: 750px !important;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLabel">Topik Ulasan</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="controller/conn_edit_kerusakan.php" method="post">
+          <div class="modal-body">
+            <div class="form-group row">
+                <label for="nik" class="col-sm col-form-label">Topik Ulasan</label>
+                <div class="col-sm">
+                    <input type="text" class="form-control" id="nama_topik" name="nama_topik" value="">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Simpan</button>
+          </div>
+
+          <!-- id-pendidikan -->
+          <input class="id_topikulasan1" type="hidden" id="id_topikulasan1" name="id_topikulasan1">
+        </form>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+
 
 
   <!-- Site wrapper -->
@@ -83,11 +116,7 @@ session_start();
 
       <!-- Default box -->
       <div style="padding: 30px;">
-        <h3><b>Ulasan</b></h3><br>
-        <p>Terima Ulasan : akan ditampilkan pada website "Knowledge Management System Layanan Pendidikan untuk ABK" <br>
-          Tolak Ulasan : terhapus dan tidak ditampilkan pada website "Knowledge Management System Layanan Pendidikan
-          untuk ABK"
-        </p>
+        <h5><b>Data Topik Ulasan pada Knowledge Management System Layanan Pendidikan untuk Anak Berkebutuhan Khusus</b></h5>
       </div>
 
       <div class="row">
@@ -96,48 +125,58 @@ session_start();
             <div class="card-header">
               <div class="row">
                 <div class="col-8">
-                  <h5><b>Nerissa Rosalia - Orang Tua</b></h5>
-                  <p>23 Juli 2020, 13:00 WIB</p>
-                </div>
-                <div class="col-4 row">
-                  <button href="login.php" data-toggle="modal" data-target="#modal-cancel" style="color: black; background-color: #FFF; border-color: black; height: 40px; width:100px;" class="btn btn-primary btn-sm nav-link"><b>Tolak</b></button>
-                  <a href="login.php" style="color: white; background-color: #1D2948; height: 40px; width:100px; margin-left: 20px;" class="btn btn-primary btn-sm nav-link"><b>Terima</b></a>
+                  <h5>Topik Ulasan</h5>
                 </div>
               </div>
             </div>
+
             <div class="card-body">
-              <h5><b>Sarana dan prasarana yang disediakan oleh sekolah sesuai dengan kebutuhan khusus anak</b></h5>
-              <p>Fasilitas khusus yang disediakan lengkap untuk mendukung proses pembelajaran anak, tetapi sayangnya beberapa di 
-                antaranya tidak terawat.</p>
-              <img src="../img/4096093.png" style="width: 200px; margin-top: 20px;">
+              <h5 class="my-3">Data Topik Ulasan pada Knowledge Management System</h5>
+              <table id="example2" class="table table-bordered table-hover">
+                <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Topik Ulasan</th>
+                  <th>Aksi</th>
+                </tr>
+                </thead>
+                <tbody>
+                <?php
+                $no = 0;
+                $sql = mysqli_query($db2,"SELECT * FROM topik");
+                while($result = mysqli_fetch_array($sql)){
+                $no = $no + 1;
+                ?>
+                <tr>
+                  <td><?php echo $result['id_topik'] ?></td>
+                  <td><?php echo $result['nama_topik'] ?></td>
+                  <td>
+                    <div class="row">
+                      <button class="btn btn-warning btn-sm" style="margin-right:10px; margin-left:10px;" name="id_ev" 
+                      data-e="<?php echo $dataJurnal['id_topik']; ?>"
+                      data-toggle="modal" data-target="#modal-edit-topik-ulasan">
+                        <i class="fas fa-pencil-alt">
+                        </i>
+                        Edit
+                      </button>
+                      <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-cancel">
+                        <i class="fas fa-trash">
+                        </i>
+                        Hapus
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+                <?php }; ?>
+                </tbody>
+              </table>
             </div>
+
+            
           </div>
-
-          <div class="card" style="padding: 30px; margin: 30px;">
-            <div class="card-header">
-              <div class="row">
-                <div class="col-8">
-                  <h5><b>Nerissa Rosalia - Orang Tua</b></h5>
-                  <p>23 Juli 2020, 13:00 WIB</p>
-                </div>
-                <div class="col-4 row">
-                  <button href="login.php" data-toggle="modal" data-target="#modal-cancel" style="color: black; background-color: #FFF; border-color: black; height: 40px; width:100px;" class="btn btn-primary btn-sm nav-link"><b>Tolak</b></button>
-                  <a href="login.php" style="color: white; background-color: #1D2948; height: 40px; width:100px; margin-left: 20px;" class="btn btn-primary btn-sm nav-link"><b>Terima</b></a>
-                </div>
-              </div>
-            </div>
-            <div class="card-body">
-              <h5><b>Sarana dan prasarana yang disediakan oleh sekolah sesuai dengan kebutuhan khusus anak</b></h5>
-              <p>Fasilitas khusus yang disediakan lengkap untuk mendukung proses pembelajaran anak, tetapi sayangnya beberapa di 
-                antaranya tidak terawat.</p>
-              <img src="../img/4096093.png" style="width: 200px; margin-top: 20px;">
-            </div>
-
-          </div>
-
-
         </div>
       </div>
+
     </div>
     <!-- /.card -->
 
@@ -177,6 +216,16 @@ session_start();
     modal.find('.event').val(recipient_e)
     modal.find('.volunteer').val(recipient_v)
   })
+
+  $('#modal-edit-topik-ulasan').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget); // Button that triggered the modal
+      var recipient_e = button.data('e'); // Extract info from data-* attributes
+      // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+      // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+      var modal = $(this);
+      modal.find('.id_topikulasan1').val(recipient_e);
+  })
+
 </script>
 
 </html>
