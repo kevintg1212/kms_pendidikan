@@ -28,7 +28,7 @@
           </div>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="SQL/vlogout.php" class="nav-link">Logout</a>
+          <a href="controller/conn_logout.php" class="nav-link">Logout</a>
         </li>
       </ul>
     </nav>

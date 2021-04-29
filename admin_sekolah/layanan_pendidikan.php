@@ -87,7 +87,8 @@ $nik =$_SESSION['nik'];
       
       <!-- Main content -->
       <section class="content" style="">
-      <form action="controller/add_layanan_pendidikan.php" method="post">
+      <form action="controller/add_layanan_pendidikan.php" method="post" enctype="multipart/form-data">
+      <input name="nik" type="hidden" value="<?php echo $nik;?>" >
         <div class="container-fluid">
           <div class="card" style="padding: 30px; margin: 30px;">
             <div class="card-header">
@@ -99,7 +100,7 @@ $nik =$_SESSION['nik'];
                   <h5>NPSN</h5>
                 </div>
                 <div class="col-md-6">
-                  <input name="npsn" type="text" class="form-control select2" style="width: 100%;" data-inputmask='"mask": "99999999"' data-mask required>
+                  <input name="npsn" type="text" class="form-control select2" style="width: 100%;" data-inputmask='"mask": "99999999"' data-mask >
                 </div>
               </div>
 
@@ -108,7 +109,7 @@ $nik =$_SESSION['nik'];
                   <h5>Nama Sekolah</h5>
                 </div>
                 <div class="col-md-6">
-                  <input name="nama_sekolah" type="text" class="form-control select2" style="width: 100%;" required>
+                  <input name="nama_sekolah" type="text" class="form-control select2" style="width: 100%;" >
                 </div>
               </div>
 
@@ -214,7 +215,7 @@ $nik =$_SESSION['nik'];
                   <h5>Visi Sekolah</h5>
                 </div>
                 <div class="col-md-6">
-                  <textarea rows="4" name="visi_sekolah" class="form-control select2" style="width: 100%;" required></textarea>
+                  <textarea rows="4" name="visi_sekolah" class="form-control select2" style="width: 100%;" ></textarea>
                 </div>
               </div>
 
@@ -223,7 +224,7 @@ $nik =$_SESSION['nik'];
                   <h5>Nilai-nilai yang diterapkan sekolah</h5>
                 </div>
                 <div class="col-md-6">
-                  <textarea rows="4" name="nilai_nilai" class="form-control select2" style="width: 100%;" required></textarea>
+                  <textarea rows="4" name="nilai_nilai" class="form-control select2" style="width: 100%;" ></textarea>
                 </div>
               </div>
 
@@ -232,7 +233,7 @@ $nik =$_SESSION['nik'];
                   <h5>Alamat Sekolah</h5>
                 </div>
                 <div class="col-md-6">
-                  <input name="alamat_sekolah" type="text" class="form-control select2" style="width: 100%;" required>
+                  <input name="alamat_sekolah" type="text" class="form-control select2" style="width: 100%;" >
                 </div>
               </div>
 
@@ -242,7 +243,7 @@ $nik =$_SESSION['nik'];
                 </div>
                 <div class="col-md-6">
                 <select class="form-control select2" style="width: 100%;" name="provinsi" id="provinsi"
-                onchange="showDiv()" required>
+                onchange="showDiv()" >
                     <option selected="selected" disabled>-- Pilih Provinsi --</option>
                     <?php 
                       $result = mysqli_query($db2,"SELECT * FROM `wilayah_provinsi`");
@@ -259,7 +260,7 @@ $nik =$_SESSION['nik'];
                   <h5>Kabupaten/Kota</h5>
                 </div>
                 <div class="col-md-6">
-                <select class="form-control select2" style="width: 100%;" name="kota" id="kota" required>
+                <select class="form-control select2" style="width: 100%;" name="kota" id="kota" >
                     <option selected="selected" value="" disabled>-- Pilih Kabupaten/Kota --</option>
                     <?php 
                       $result = mysqli_query($db2,"SELECT * FROM `wilayah_kabupaten`");
@@ -276,7 +277,7 @@ $nik =$_SESSION['nik'];
                   <h5>Telephone</h5>
                 </div>
                 <div class="col-md-6">
-                  <input name="telephone" type="text" class="form-control select2" style="width: 100%;" required>
+                  <input name="telephone" type="text" class="form-control select2" style="width: 100%;" >
                 </div>
               </div>
 
@@ -285,7 +286,7 @@ $nik =$_SESSION['nik'];
                   <h5>Email</h5>
                 </div>
                 <div class="col-md-6">
-                  <input name="email" type="email" class="form-control select2" style="width: 100%;" required>
+                  <input name="email" type="email" class="form-control select2" style="width: 100%;" >
                 </div>
               </div>
 
@@ -294,7 +295,7 @@ $nik =$_SESSION['nik'];
                   <h5>Website</h5>
                 </div>
                 <div class="col-md-6">
-                  <input name="website" type="text" class="form-control select2" style="width: 100%;" required>
+                  <input name="website" type="text" class="form-control select2" style="width: 100%;" >
                 </div>
               </div>
 
@@ -309,7 +310,7 @@ $nik =$_SESSION['nik'];
                     ?>
                   <div class="col-4" style="padding-bottom: 20px;">
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="kebutuhan[]" id="kebutuhan_<?php echo $temp1['kebutuhan_khusus'];?>"  value="<?php echo $tmp1['id_kebutuhankhusus'];?>">
+                      <input class="form-check-input" type="checkbox" name="kebutuhan[]" id="kebutuhan_<?php echo $temp1['kebutuhan_khusus']; ?>"  value="<?php echo $temp1['id_kebutuhankhusus']; ?>">
                       <label class="form-check-label" for="kebutuhan_<?php echo $temp1['kebutuhan_khusus'];?>"><?php echo $temp1['kebutuhan_khusus']; ?></label>
                     </div>
                   </div>
@@ -322,7 +323,7 @@ $nik =$_SESSION['nik'];
                   <h5>Biaya Sekolah</h5>
                 </div>
                 <div class="col-md-6 row">
-                  <input name="biaya" type="number" min=0 class="form-control select2" style="width: 80%;" required> <h5>&nbsp; /bulan</h5>
+                  <input name="biaya" type="number" min=0 class="form-control select2" style="width: 80%;" > <h5>&nbsp; /bulan</h5>
                 </div>
               </div>
 
@@ -370,7 +371,7 @@ $nik =$_SESSION['nik'];
                 </div>
                 <div class="col-md-6 row">
                   <input name="penglaman_sekolah" type="number" min=0 class="form-control select2" style="width: 50%; text-align: right;"
-                  required> <h5>&nbsp; tahun</h5>
+                  > <h5>&nbsp; tahun</h5>
                 </div>
               </div>
 
@@ -438,7 +439,7 @@ $nik =$_SESSION['nik'];
                   <h5>Teknis Pendaftaran</h5>
                 </div>
                 <div class="col-md-6">
-                  <textarea rows="4" name="teknis_pendaftaran" class="form-control select2" style="width: 100%;" required></textarea>
+                  <textarea rows="4" name="teknis_pendaftaran" class="form-control select2" style="width: 100%;" ></textarea>
                 </div>
               </div>
 
@@ -447,7 +448,7 @@ $nik =$_SESSION['nik'];
                   <h5>Keamanan Sekolah</h5>
                 </div>
                 <div class="col-md-6">
-                  <textarea rows="4" name="keamanan_sekolah" class="form-control select2" style="width: 100%;" required></textarea>
+                  <textarea rows="4" name="keamanan_sekolah" class="form-control select2" style="width: 100%;" ></textarea>
                 </div>
               </div>
 
@@ -491,7 +492,7 @@ $nik =$_SESSION['nik'];
                     <h5>Pelatihan pendidikan khusus yang dimiliki pengajar</h5>
                   </div>
                   <div class="col-md-6">
-                    <textarea rows="4" name="pelatihan" class="form-control select2" style="width: 100%;" required></textarea>
+                    <textarea rows="4" name="pelatihan" class="form-control select2" style="width: 100%;" ></textarea>
                   </div>
                 </div>
 
@@ -502,7 +503,7 @@ $nik =$_SESSION['nik'];
                 </div>
                 <div class="col-md-6 row">
                   <input name="rata_pengalaman" type="number" min=0 class="form-control select2" style="width: 50%; text-align: right;"
-                  required> <h5>&nbsp; tahun</h5>
+                  > <h5>&nbsp; tahun</h5>
                 </div>
               </div>
 
@@ -617,7 +618,7 @@ $nik =$_SESSION['nik'];
                     <h5>Cara orang tua berkomunikasi dengan pengajar dalam mengetahui perkembangan anak</h5>
                   </div>
                   <div class="col-md-6">
-                    <textarea rows="4" name="berkomunikasi_pengajar" class="form-control select2" style="width: 100%;" required></textarea>
+                    <textarea rows="4" name="berkomunikasi_pengajar" class="form-control select2" style="width: 100%;" ></textarea>
                   </div>
                 </div>
 
@@ -655,12 +656,14 @@ $nik =$_SESSION['nik'];
                 </div>
                 <div class="col-md-6 row">
                 <?php 
-                      $result = mysqli_query($db2,"SELECT * FROM `sub_kriteriainformasi` where id_kriteriainformasi=6");
+                      $result = mysqli_query($db2,"SELECT * FROM `sub_kriteriainformasi` inner join detail_kriteriainformasi
+                      on sub_kriteriainformasi.id_sub_kriteriainformasi = detail_kriteriainformasi.id_sub_kriteriainformasi                      
+                      where sub_kriteriainformasi.id_kriteriainformasi=6 AND nilai=1");
                       while($temp1 = mysqli_fetch_array($result)){
                     ?>
                   <div class="col-12" style="padding-bottom: 20px;">
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="sub_kriteria<?php echo $temp1['id_sub_kriteriainformasi'];?>" id="metode_d_<?php echo $temp1['sub_kriteriainformasi'];?>"  value="1">
+                      <input class="form-check-input" type="checkbox" name="sub_kriteria[]" id="metode_d_<?php echo $temp1['sub_kriteriainformasi'];?>"  value="<?php echo $temp1['id_detail_kriteriainformasi'];?>">
                       <label style="padding-bottom: 10px;" class="form-check-label" for="metode_d_<?php echo $temp1['sub_kriteriainformasi'];?>"><?php echo $temp1['sub_kriteriainformasi']; ?></label>
                       <label class="form-check-label" for="metode_d_<?php echo $temp1['sub_kriteriainformasi'];?>"><?php echo $temp1['keterangan'];?></label>
                     </div>
@@ -675,12 +678,14 @@ $nik =$_SESSION['nik'];
                 </div>
                 <div class="col-md-6 row">
                 <?php 
-                      $result = mysqli_query($db2,"SELECT * FROM `sub_kriteriainformasi` where id_kriteriainformasi=7");
+                      $result = mysqli_query($db2,"SELECT * FROM `sub_kriteriainformasi` inner join detail_kriteriainformasi
+                      on sub_kriteriainformasi.id_sub_kriteriainformasi = detail_kriteriainformasi.id_sub_kriteriainformasi                      
+                      where sub_kriteriainformasi.id_kriteriainformasi=7 AND nilai=1");
                       while($temp1 = mysqli_fetch_array($result)){
                     ?>
                   <div class="col-12" style="padding-bottom: 20px;">
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="metode_m<?php echo $temp1['id_sub_kriteriainformasi'];?>" id="metode_m_<?php echo $temp1['sub_kriteriainformasi'];?>"  value="1">
+                      <input class="form-check-input" type="checkbox" name="metode_m[]" id="metode_m_<?php echo $temp1['sub_kriteriainformasi'];?>"  value="<?php echo $temp1['id_detail_kriteriainformasi'];?>">
                       <label style="padding-bottom: 10px;" class="form-check-label" for="metode_m_<?php echo $temp1['sub_kriteriainformasi'];?>"><?php echo $temp1['sub_kriteriainformasi']; ?></label>
                       <label class="form-check-label" for="metode_m_<?php echo $temp1['sub_kriteriainformasi'];?>"><?php echo $temp1['keterangan'];?></label>
                     </div>
@@ -695,7 +700,7 @@ $nik =$_SESSION['nik'];
                 </div>
                 <div class="col-md-6 row">
                   <input name="jumlah_murid" type="number" min=0 class="form-control select2" style="width: 50%; text-align: right;"
-                  required> <h5>&nbsp; murid</h5>
+                  > <h5>&nbsp; murid</h5>
                 </div>
               </div>
 
@@ -704,7 +709,7 @@ $nik =$_SESSION['nik'];
                   <h5>Pengaturan situasi di kelas</h5>
                 </div>
                 <div class="col-md-6">
-                  <textarea rows="4" name="pengaturan_kelas" class="form-control select2" style="width: 100%;" required></textarea>
+                  <textarea rows="4" name="pengaturan_kelas" class="form-control select2" style="width: 100%;" ></textarea>
                 </div>
               </div>
 
@@ -723,12 +728,14 @@ $nik =$_SESSION['nik'];
                 </div>
                 <div class="col-md-6 row">
                 <?php 
-                      $result = mysqli_query($db2,"SELECT * FROM `sub_kriteriainformasi` where id_kriteriainformasi=9");
+                      $result = mysqli_query($db2,"SELECT * FROM `sub_kriteriainformasi` inner join detail_kriteriainformasi
+                      on sub_kriteriainformasi.id_sub_kriteriainformasi = detail_kriteriainformasi.id_sub_kriteriainformasi                      
+                      where sub_kriteriainformasi.id_kriteriainformasi=9 AND nilai=1");
                       while($temp1 = mysqli_fetch_array($result)){
                     ?>
                   <div class="col-12" style="padding-bottom: 20px;">
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="sarpas_umum<?php echo $temp1['id_sub_kriteriainformasi'];?>" id="sarpas_umum_<?php echo $temp1['sub_kriteriainformasi'];?>"  value="1">
+                      <input class="form-check-input" type="checkbox" name="sarpas_umum[]" id="sarpas_umum_<?php echo $temp1['sub_kriteriainformasi'];?>"  value="<?php echo $temp1['id_detail_kriteriainformasi'];?>">
                       <label class="form-check-label" for="sarpas_umum_<?php echo $temp1['sub_kriteriainformasi'];?>"><?php echo $temp1['sub_kriteriainformasi']; ?></label>
                     </div>
                   </div>
@@ -742,12 +749,14 @@ $nik =$_SESSION['nik'];
                 </div>
                 <div class="col-md-6 row">
                 <?php 
-                      $result = mysqli_query($db2,"SELECT * FROM `sub_kriteriainformasi` where id_kriteriainformasi=10");
+                      $result = mysqli_query($db2,"SELECT * FROM `sub_kriteriainformasi` inner join detail_kriteriainformasi
+                      on sub_kriteriainformasi.id_sub_kriteriainformasi = detail_kriteriainformasi.id_sub_kriteriainformasi                      
+                      where sub_kriteriainformasi.id_kriteriainformasi=10 AND nilai=1");
                       while($temp1 = mysqli_fetch_array($result)){
                     ?>
                   <div class="col-12" style="padding-bottom: 20px;">
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="sarpas_khusus<?php echo $temp1['id_sub_kriteriainformasi'];?>" id="sarpas_khusus_<?php echo $temp1['sub_kriteriainformasi'];?>"  value="1">
+                      <input class="form-check-input" type="checkbox" name="sarpas_khusus[]" id="sarpas_khusus_<?php echo $temp1['sub_kriteriainformasi'];?>"  value="<?php echo $temp1['id_detail_kriteriainformasi'];?>">
                       <label class="form-check-label" for="sarpas_khusus_<?php echo $temp1['sub_kriteriainformasi'];?>"><?php echo $temp1['sub_kriteriainformasi']; ?></label>
                     </div>
                   </div>
@@ -762,12 +771,14 @@ $nik =$_SESSION['nik'];
                 </div>
                 <div class="col-md-6 row">
                 <?php 
-                      $result = mysqli_query($db2,"SELECT * FROM `sub_kriteriainformasi` where id_kriteriainformasi=11");
+                      $result = mysqli_query($db2,"SELECT * FROM `sub_kriteriainformasi` inner join detail_kriteriainformasi
+                      on sub_kriteriainformasi.id_sub_kriteriainformasi = detail_kriteriainformasi.id_sub_kriteriainformasi                      
+                      where sub_kriteriainformasi.id_kriteriainformasi=11 AND nilai=1");
                       while($temp1 = mysqli_fetch_array($result)){
                     ?>
                   <div class="col-12" style="padding-bottom: 20px;">
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="teknologi<?php echo $temp1['id_sub_kriteriainformasi'];?>" id="teknologi_<?php echo $temp1['sub_kriteriainformasi'];?>"  value="1">
+                      <input class="form-check-input" type="checkbox" name="teknologi[]" id="teknologi_<?php echo $temp1['sub_kriteriainformasi'];?>"  value="<?php echo $temp1['id_detail_kriteriainformasi'];?>">
                       <label class="form-check-label" for="teknologi_<?php echo $temp1['sub_kriteriainformasi'];?>"><?php echo $temp1['sub_kriteriainformasi']; ?></label>
                     </div>
                   </div>
@@ -788,7 +799,7 @@ $nik =$_SESSION['nik'];
                   <h5>Kebijakan yang diterapkan sekolah</h5>
                 </div>
                 <div class="col-md-6">
-                  <textarea rows="4" name="kebijakan_sekolah" class="form-control select2" style="width: 100%;" required></textarea>
+                  <textarea rows="4" name="kebijakan_sekolah" class="form-control select2" style="width: 100%;" ></textarea>
                 </div>
               </div>
 
@@ -807,12 +818,14 @@ $nik =$_SESSION['nik'];
                 </div>
                 <div class="col-md-6 row">
                 <?php 
-                      $result = mysqli_query($db2,"SELECT * FROM `sub_kriteriainformasi` where id_kriteriainformasi=8");
+                      $result = mysqli_query($db2,"SELECT * FROM `sub_kriteriainformasi` inner join detail_kriteriainformasi
+                      on sub_kriteriainformasi.id_sub_kriteriainformasi = detail_kriteriainformasi.id_sub_kriteriainformasi                      
+                      where sub_kriteriainformasi.id_kriteriainformasi=8 AND nilai=1");
                       while($temp1 = mysqli_fetch_array($result)){
                     ?>
                   <div class="col-12" style="padding-bottom: 20px;">
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="kegiatan<?php echo $temp1['id_sub_kriteriainformasi'];?>" id="kegiatan_<?php echo $temp1['sub_kriteriainformasi'];?>"  value="1">
+                      <input class="form-check-input" type="checkbox" name="kegiatan[]" id="kegiatan_<?php echo $temp1['sub_kriteriainformasi'];?>"  value="<?php echo $temp1['id_detail_kriteriainformasi'];?>">
                       <label class="form-check-label" for="kegiatan_<?php echo $temp1['sub_kriteriainformasi'];?>"><?php echo $temp1['sub_kriteriainformasi']; ?></label>
                     </div>
                   </div>
