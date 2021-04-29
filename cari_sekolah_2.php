@@ -60,10 +60,10 @@ session_start();
 								<select class="form-control select2" id="bentukSekolah" name="bentukSekolah" style="width: 100%;" required>
 									<option selected="selected" disabled>-- Pilih Bentuk Sekolah --</option>
 									<?php 
-									$result_head = mysqli_query($db2,"select * from `jenjang_pendidikan`");
+									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '1'");
 										while($d_head = mysqli_fetch_array($result_head)){
 									?>
-									<option><?php echo $d_head['jenjang_pendidikan']; ?></option>
+									<option><?php echo $d_head['parameter']; ?></option>
 									<?php } ?>
 									</select>
 								</div>
@@ -74,10 +74,10 @@ session_start();
 								<select class="form-control select2" id="statusSekolah" name="statusSekolah" style="width: 100%;" required>
 									<option selected="selected" disabled>-- Pilih Status Sekolah --</option>
 									<?php 
-									$result_head = mysqli_query($db2,"select * from `jenjang_pendidikan`");
+									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '2'");
 										while($d_head = mysqli_fetch_array($result_head)){
 									?>
-									<option><?php echo $d_head['jenjang_pendidikan']; ?></option>
+									<option><?php echo $d_head['parameter']; ?></option>
 									<?php } ?>
 								</select>
 							</div>
@@ -88,10 +88,10 @@ session_start();
 								<select class="form-control select2" id="akreditasiSekolah" name="akreditasiSekolah" style="width: 100%;" required>
 									<option selected="selected" disabled>-- Pilih Akreditasi Sekolah --</option>
 									<?php 
-									$result_head = mysqli_query($db2,"select * from `jenjang_pendidikan`");
+									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '3'");
 										while($d_head = mysqli_fetch_array($result_head)){
 									?>
-									<option><?php echo $d_head['jenjang_pendidikan']; ?></option>
+									<option><?php echo $d_head['parameter']; ?></option>
 									<?php } ?>
 								</select>
 							</div>
@@ -102,10 +102,10 @@ session_start();
 								<select class="form-control select2" id="wktPenyelenggaraSekolah" name="wktPenyelenggaraSekolah" style="width: 100%;" required>
 									<option selected="selected" disabled>-- Pilih Waktu Penyelenggara Sekolah --</option>
 									<?php 
-									$result_head = mysqli_query($db2,"select * from `jenjang_pendidikan`");
+									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '4'");
 										while($d_head = mysqli_fetch_array($result_head)){
 									?>
-									<option><?php echo $d_head['jenjang_pendidikan']; ?></option>
+									<option><?php echo $d_head['parameter']; ?></option>
 									<?php } ?>
 								</select>
 							</div>
@@ -116,10 +116,10 @@ session_start();
 								<select class="form-control select2" id="kurikulumSekolah" name="kurikulumSekolah" style="width: 100%;" required>
 									<option selected="selected" disabled>-- Pilih Kurikulum Sekolah --</option>
 									<?php 
-									$result_head = mysqli_query($db2,"select * from `jenjang_pendidikan`");
+									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '5'");
 										while($d_head = mysqli_fetch_array($result_head)){
 									?>
-									<option><?php echo $d_head['jenjang_pendidikan']; ?></option>
+									<option><?php echo $d_head['parameter']; ?></option>
 									<?php } ?>
 								</select>
 							</div>
@@ -332,10 +332,10 @@ session_start();
 								<select class="form-control select2" id="penerimaanSekolah" name="penerimaanSekolah" style="width: 100%;" required>
 									<option selected="selected" disabled>-- Pilih Penerimaan Sekolah --</option>
 									<?php 
-									$result_head = mysqli_query($db2,"select * from `jenjang_pendidikan`");
+									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '12'");
 										while($d_head = mysqli_fetch_array($result_head)){
 									?>
-									<option><?php echo $d_head['jenjang_pendidikan']; ?></option>
+									<option><?php echo $d_head['parameter']; ?></option>
 									<?php } ?>
 								</select>
 							</div>
@@ -346,10 +346,10 @@ session_start();
 								<select class="form-control select2" id="pendamping" name="pendamping" style="width: 100%;" required>
 									<option selected="selected" disabled>-- Pilih Opsi --</option>
 									<?php 
-									$result_head = mysqli_query($db2,"select * from `jenjang_pendidikan`");
+									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '13'");
 										while($d_head = mysqli_fetch_array($result_head)){
 									?>
-									<option><?php echo $d_head['jenjang_pendidikan']; ?></option>
+									<option><?php echo $d_head['parameter']; ?></option>
 									<?php } ?>
 								</select>
 							</div>
@@ -360,10 +360,10 @@ session_start();
 								<select class="form-control select2" id="hubSekolah" name="hubSekolah" style="width: 100%;" required>
 									<option selected="selected" disabled>-- Pilih Opsi --</option>
 									<?php 
-									$result_head = mysqli_query($db2,"select * from `jenjang_pendidikan`");
+									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '14'");
 										while($d_head = mysqli_fetch_array($result_head)){
 									?>
-									<option><?php echo $d_head['jenjang_pendidikan']; ?></option>
+									<option><?php echo $d_head['parameter']; ?></option>
 									<?php } ?>
 								</select>
 							</div>
@@ -374,10 +374,10 @@ session_start();
 								<select class="form-control select2" id="programPenempatan" name="programPenempatan" style="width: 100%;" required>
 									<option selected="selected" disabled>-- Pilih Opsi --</option>
 									<?php 
-									$result_head = mysqli_query($db2,"select * from `jenjang_pendidikan`");
+									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '15'");
 										while($d_head = mysqli_fetch_array($result_head)){
 									?>
-									<option><?php echo $d_head['jenjang_pendidikan']; ?></option>
+									<option><?php echo $d_head['parameter']; ?></option>
 									<?php } ?>
 								</select>
 							</div>
@@ -388,10 +388,24 @@ session_start();
 								<select class="form-control select2" id="dukunganSpesialis" name="dukunganSpesialis" style="width: 100%;" required>
 									<option selected="selected" disabled>-- Pilih Opsi --</option>
 									<?php 
-									$result_head = mysqli_query($db2,"select * from `jenjang_pendidikan`");
+									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '16'");
 										while($d_head = mysqli_fetch_array($result_head)){
 									?>
-									<option><?php echo $d_head['jenjang_pendidikan']; ?></option>
+									<option><?php echo $d_head['parameter']; ?></option>
+									<?php } ?>
+								</select>
+							</div>
+						</div>
+						<div class="d-flex p-2 justify-content-center">
+							<div class="p-2 flex-fill " style="width:100%">Ketersediaan pembekalan kepada staff mengenai pengetahuan praktis menangani anak berkebutuhan khusus</div>
+							<div class="p-2 flex-fill " style="width:100%">
+								<select class="form-control select2" id="pembekalanStaff" name="pembekalanStaff" style="width: 100%;" required>
+									<option selected="selected" disabled>-- Pilih Opsi --</option>
+									<?php 
+									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '17'");
+										while($d_head = mysqli_fetch_array($result_head)){
+									?>
+									<option><?php echo $d_head['parameter']; ?></option>
 									<?php } ?>
 								</select>
 							</div>
@@ -402,10 +416,10 @@ session_start();
 								<select class="form-control select2" id="pembekalan" name="pembekalan" style="width: 100%;" required>
 									<option selected="selected" disabled>-- Pilih Opsi --</option>
 									<?php 
-									$result_head = mysqli_query($db2,"select * from `jenjang_pendidikan`");
+									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '18'");
 										while($d_head = mysqli_fetch_array($result_head)){
 									?>
-									<option><?php echo $d_head['jenjang_pendidikan']; ?></option>
+									<option><?php echo $d_head['parameter']; ?></option>
 									<?php } ?>
 								</select>
 							</div>
@@ -416,10 +430,10 @@ session_start();
 								<select class="form-control select2" id="asosiasiOrangtua" name="asosiasiOrangtua" style="width: 100%;" required>
 									<option selected="selected" disabled>-- Pilih Opsi --</option>
 									<?php 
-									$result_head = mysqli_query($db2,"select * from `jenjang_pendidikan`");
+									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '19'");
 										while($d_head = mysqli_fetch_array($result_head)){
 									?>
-									<option><?php echo $d_head['jenjang_pendidikan']; ?></option>
+									<option><?php echo $d_head['parameter']; ?></option>
 									<?php } ?>
 								</select>
 							</div>
@@ -430,10 +444,10 @@ session_start();
 								<select class="form-control select2" id="ketersediaanForum" name="ketersediaanForum" style="width: 100%;" required>
 									<option selected="selected" disabled>-- Pilih Kurikulum Sekolah --</option>
 									<?php 
-									$result_head = mysqli_query($db2,"select * from `jenjang_pendidikan`");
+									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '20'");
 										while($d_head = mysqli_fetch_array($result_head)){
 									?>
-									<option><?php echo $d_head['jenjang_pendidikan']; ?></option>
+									<option><?php echo $d_head['parameter']; ?></option>
 									<?php } ?>
 								</select>
 							</div>

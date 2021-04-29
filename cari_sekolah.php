@@ -43,6 +43,22 @@ session_start();
   <div class="wrapper">
     <?php include "view/header.php";?>
 
+		<div class="modal fade" id="modal-default">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-body">
+						<p>Maaf, layanan pendidikan ABK yang anda cari tidak ditemukan</p>
+					</div>
+					<div class="modal-footer justify-content-end" style="height: 50px;">
+						<a href="/kms_pendidikan/cari_sekolah.php" class="btn btn-sm btn-primary">OK</a>
+					</div>
+				</div>
+				<!-- /.modal-content -->
+			</div>
+			<!-- /.modal-dialog -->
+		</div>
+		<!-- /.modal -->
+
     <!-- Content Wrapper. Contains page content -->
     <div class="" style="min-height: 100%;">
       <!-- Content Header (Page header) -->
@@ -162,8 +178,9 @@ session_start();
                 </div>
 
                 <div class="row justify-content-center" style="text-align: center; padding-top: 50px;">
-                  <a href="/kms_pendidikan/cari_sekolah_2.php" style="margin-top: 20px; color: white; width: 150px; background-color: #05319D;"
-                    class="btn btn-primary btn-sm">Selanjutnya ></a>
+									<button type="button" class="btn btn-primary btn-sm" href="/kms_pendidikan/cari_sekolah_2.php" style="margin-top: 20px; color: white; width: 150px; background-color: #05319D;" data-toggle="modal" data-target="#modal-default">
+										Selanjutnya
+									</button>
                 </div>
 
               </div>

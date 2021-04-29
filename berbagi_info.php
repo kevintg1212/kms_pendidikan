@@ -1,5 +1,16 @@
 <!DOCTYPE html>
+<?php 
+include 'controller/conn.php';
+ 
+// mengaktifkan session
+session_start();
+ 
+// cek apakah user telah login, jika belum login maka di alihkan ke halaman login
+// if($_SESSION['status'] !="login"){
+// 	header("location:../login.php");
+// }
 
+?>
 <html>
 
 <head>
@@ -59,95 +70,106 @@
       <!-- Main content -->
       <section class="content" style="">
         <div class="container-fluid" style="margin-top:100px;">
-          <div class="col-12"> 
-              <h3><b> Berbagi Informasi </b></h3>
-              <h5>Berikut ulasan kepada layanan pendidikan dengan mengisi form berikut ini</h5>
+          <div class="row">
+            <div class="col"> 
+                <h3><b> Berbagi Informasi </b></h3>
+                <h5>Berikut ulasan kepada layanan pendidikan dengan mengisi form berikut ini</h5>
+            </div>
+            <div class="col-2 justify-content-end"> 
+              <select class="form-control select2" id="ketersediaanForum" name="ketersediaanForum" style="width: 100%;" required>
+                <option selected="selected" disabled>-- Cari layanan pendidikan --</option>
+                <?php 
+                $result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '20'");
+                  while($d_head = mysqli_fetch_array($result_head)){
+                ?>
+                <option><?php echo $d_head['parameter']; ?></option>
+                <?php } ?>
+              </select>
+            </div>
           </div>
 
-
-
             <!-- Main content -->
-            <div class="container-fluid">
-              <div class="card">
-                <div class="row">
-                  <div class="col-12 p-5">
-                    <div class="card-body">
-                    <form>
-                      <div class="row">
-                         <div class="col-6">
-                           <label>Latar Belakang</label>
-                         </div> 
-                         <div class="col-6">
-                          <select class="form-control select2" id="latarBelakang" name="latarBelakang" style="width: 100%;" required>
-                            <option selected="selected" disabled>-- Pilih Latar Belakang --</option>
-                            <option>Orang Tua</option>
-                            <option>Pengajar</option>
-                            <option>Tenaga Kesehatan</option>
-                          </select>
-                         </div> 
-                      </div>
-                      <div class="row mt-3">
-                         <div class="col-6">
-                           <label>Nama Lengkap</label>
-                         </div> 
-                         <div class="col-6">
-                           <input type="text" id="namaLengkap" name="namaLengkap" class="form-control select2" style="width: 100%;" placeholder="Masukkan nama lengkap">
-                         </div> 
-                      </div>
-                      <div class="row mt-3">
-                         <div class="col-6">
-                           <label>Email</label>
-                         </div> 
-                         <div class="col-6">
-                           <input type="email" id="email" name="email" class="form-control select2" style="width: 100%;" placeholder="Masukkan email" required>
-                         </div> 
-                      </div>
-                      <div class="row mt-3">
-                         <div class="col-6">
-                           <label>Topik Ulasan</label>
-                         </div> 
-                         <div class="col-6">
-                          <select class="form-control select2" id="topikUlasan" name="topikUlasan" style="width: 100%;" required>
-                            <option selected="selected" disabled>-- Pilih Topik Ulasan --</option>
-                            <?php 
-                            $result_head = mysqli_query($db2,"select * from `Topik`");
-                              while($d_head = mysqli_fetch_array($result_head)){
-                            ?>
-                            <option>_________</option>
-                            <?php } ?>
-                          </select>
-                         </div> 
-                      </div>
-                      <div class="row mt-3">
-                         <div class="col-6">
-                           <label>Ulasan</label>
-                         </div> 
-                         <div class="col-6">
-                           <textarea id="ulasan" name="ulasan" class="form-control" rows="3" placeholder="Tulis ulasanmu disini.."></textarea>
-                         </div> 
-                      </div>
-                      <div class="row mt-3">
-                         <div class="col-6">
-                           <label>Lampirkan Foto Pendukung Ulasan Mu</label>
-                         </div> 
-                         <div class="col-6">
-                           <input type="text" id="biayaMinimum" name="biayaMinimum" class="form-control select2" style="width: 100%;" >
-                         </div> 
-                      </div>
-                      <div class="row mt-3">
-                        <div class="col">
-                          <button type="button" class="btn btn-primary btn-sm float-right" style="margin-top: 20px; color: white; width: 150px; background-color: #05319D;" data-toggle="modal" data-target="#modal-default">
-                            Selanjutnya
-                          </button>
-                         </div> 
-                      </div>
+          <div class="container-fluid">
+            <div class="card">
+              <div class="row">
+                <div class="col-12 p-5">
+                  <div class="card-body">
+                  <form>
+                    <div class="row">
+                        <div class="col-6">
+                          <label>Latar Belakang</label>
+                        </div> 
+                        <div class="col-6">
+                        <select class="form-control select2" id="latarBelakang" name="latarBelakang" style="width: 100%;" required>
+                          <option selected="selected" disabled>-- Pilih Latar Belakang --</option>
+                          <option>Orang Tua</option>
+                          <option>Pengajar</option>
+                          <option>Tenaga Kesehatan</option>
+                        </select>
+                        </div> 
                     </div>
-                    </form>
+                    <div class="row mt-3">
+                        <div class="col-6">
+                          <label>Nama Lengkap</label>
+                        </div> 
+                        <div class="col-6">
+                          <input type="text" id="namaLengkap" name="namaLengkap" class="form-control select2" style="width: 100%;" placeholder="Masukkan nama lengkap">
+                        </div> 
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-6">
+                          <label>Email</label>
+                        </div> 
+                        <div class="col-6">
+                          <input type="email" id="email" name="email" class="form-control select2" style="width: 100%;" placeholder="Masukkan email" required>
+                        </div> 
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-6">
+                          <label>Topik Ulasan</label>
+                        </div> 
+                        <div class="col-6">
+                        <select class="form-control select2" id="topikUlasan" name="topikUlasan" style="width: 100%;" required>
+                          <option selected="selected" disabled>-- Pilih Topik Ulasan --</option>
+                          <?php 
+                          $result_head = mysqli_query($db2,"SELECT * FROM `topik`");
+                            while($d_head = mysqli_fetch_array($result_head)){
+                          ?>
+                          <option><?php echo $d_head['nama_topik']; ?></option>
+                          <?php } ?>
+                        </select>
+                        </div> 
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-6">
+                          <label>Ulasan</label>
+                        </div> 
+                        <div class="col-6">
+                          <textarea id="ulasan" name="ulasan" class="form-control" rows="3" placeholder="Tulis ulasanmu disini.."></textarea>
+                        </div> 
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-6">
+                          <label>Lampirkan Foto Pendukung Ulasan Mu</label>
+                        </div> 
+                        <div class="col-6">
+                        <input  class="form-control" type="file" id="lampiran" name="lampiran">
+                        </div> 
+                    </div>
+                    <div class="row mt-3">
+                      <div class="col">
+                        <button type="button" class="btn btn-primary btn-sm float-right" style="margin-top: 20px; color: white; width: 150px; background-color: #05319D;" data-toggle="modal" data-target="#modal-default">
+                          Selanjutnya
+                        </button>
+                        </div> 
+                    </div>
                   </div>
+                  </form>
                 </div>
               </div>
-              <!-- /.card -->
             </div>
+            <!-- /.card -->
+          </div>
             <!-- /.container-fluid -->
         </div>
       </section>
