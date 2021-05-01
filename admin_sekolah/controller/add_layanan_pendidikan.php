@@ -348,7 +348,7 @@ session_start();
     $stmt2->execute();
     $stmt2->close();
 
-    // header("location:../layanan_pendidikan.php");
+    header("location:../layanan_pendidikan_pending.php");
 
 
 ?>
