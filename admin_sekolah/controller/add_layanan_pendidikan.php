@@ -42,9 +42,20 @@ session_start();
 
     $bentuk = $_POST['bentuk'];
     echo $bentuk."<br>";
+    $stmt1 = $db2->prepare("INSERT INTO `detail_layananpendidikan` (npsn, id_detail_kriteriainformasi) VALUES(?, ?)");
+    $stmt1->bind_param("ss", $npsn, $bentuk);
+
+    $stmt1->execute();
+    $stmt1->close();
+
 
     $status = $_POST['status'];
     echo $status."<br>";
+    $stmt1 = $db2->prepare("INSERT INTO `detail_layananpendidikan` (npsn, id_detail_kriteriainformasi) VALUES(?, ?)");
+    $stmt1->bind_param("ss", $npsn, $status);
+
+    $stmt1->execute();
+    $stmt1->close();
 
     $jenjang = $_POST['jenjang'];
     echo "JENJANG <hr>";
@@ -60,6 +71,12 @@ session_start();
 
     $akreditasi = $_POST['akreditasi'];
     echo $akreditasi."<br>";
+    $stmt1 = $db2->prepare("INSERT INTO `detail_layananpendidikan` (npsn, id_detail_kriteriainformasi) VALUES(?, ?)");
+    $stmt1->bind_param("ss", $npsn, $akreditasi);
+
+    $stmt1->execute();
+    $stmt1->close();
+    
 
     $visi_sekolah = $_POST['visi_sekolah'];
     echo $visi_sekolah."<br>";
@@ -105,21 +122,47 @@ session_start();
 
     $waktu_penyelenggara = $_POST['waktu_penyelenggara'];
     echo $waktu_penyelenggara."<br>";
+    $stmt1 = $db2->prepare("INSERT INTO `detail_layananpendidikan` (npsn, id_detail_kriteriainformasi) VALUES(?, ?)");
+    $stmt1->bind_param("ss", $npsn, $waktu_penyelenggara);
+
+    $stmt1->execute();
+    $stmt1->close();
 
     $penerimaan_sekolah = $_POST['penerimaan_sekolah'];
     echo $penerimaan_sekolah."<br>";
+    $stmt1 = $db2->prepare("INSERT INTO `detail_layananpendidikan` (npsn, id_detail_kriteriainformasi) VALUES(?, ?)");
+    $stmt1->bind_param("ss", $npsn, $penerimaan_sekolah);
+
+    $stmt1->execute();
+    $stmt1->close();
 
     $penglaman_sekolah = $_POST['penglaman_sekolah'];
     echo $penglaman_sekolah."<br>";
 
     $ketersediaan_hubungan = $_POST['ketersediaan_hubungan'];
     echo $ketersediaan_hubungan."<br>";
+    $stmt1 = $db2->prepare("INSERT INTO `detail_layananpendidikan` (npsn, id_detail_kriteriainformasi) VALUES(?, ?)");
+    $stmt1->bind_param("ss", $npsn, $ketersediaan_hubungan);
+
+    $stmt1->execute();
+    $stmt1->close();
+
 
     $ketersediaan_program = $_POST['ketersediaan_program'];
     echo $ketersediaan_program."<br>";
+    $stmt1 = $db2->prepare("INSERT INTO `detail_layananpendidikan` (npsn, id_detail_kriteriainformasi) VALUES(?, ?)");
+    $stmt1->bind_param("ss", $npsn, $ketersediaan_program);
+
+    $stmt1->execute();
+    $stmt1->close();
 
     $syarat_p = $_POST['syarat_p'];
     echo $syarat_p."<br>";
+    $stmt1 = $db2->prepare("INSERT INTO `detail_layananpendidikan` (npsn, id_detail_kriteriainformasi) VALUES(?, ?)");
+    $stmt1->bind_param("ss", $npsn, $syarat_p);
+
+    $stmt1->execute();
+    $stmt1->close();
 
     $teknis_pendaftaran = $_POST['teknis_pendaftaran'];
     echo $teknis_pendaftaran."<br>";
@@ -130,6 +173,12 @@ session_start();
 
     $specialist = $_POST['specialist'];
     echo $specialist."<br>";
+    $stmt1 = $db2->prepare("INSERT INTO `detail_layananpendidikan` (npsn, id_detail_kriteriainformasi) VALUES(?, ?)");
+    $stmt1->bind_param("ss", $npsn, $specialist);
+
+    $stmt1->execute();
+    $stmt1->close();
+
 
     $pelatihan = $_POST['pelatihan'];
     echo $pelatihan."<br>";
@@ -139,15 +188,37 @@ session_start();
 
     $staff_opr = $_POST['staff_opr'];
     echo $staff_opr."<br>";
+    $stmt1 = $db2->prepare("INSERT INTO `detail_layananpendidikan` (npsn, id_detail_kriteriainformasi) VALUES(?, ?)");
+    $stmt1->bind_param("ss", $npsn, $staff_opr);
+
+    $stmt1->execute();
+    $stmt1->close();
+    
 
     $siswa_lain = $_POST['siswa_lain'];
     echo $siswa_lain."<br>";
+    $stmt1 = $db2->prepare("INSERT INTO `detail_layananpendidikan` (npsn, id_detail_kriteriainformasi) VALUES(?, ?)");
+    $stmt1->bind_param("ss", $npsn, $siswa_lain);
+
+    $stmt1->execute();
+    $stmt1->close();
 
     $kesediaan_asosiasi = $_POST['kesediaan_asosiasi'];
     echo $kesediaan_asosiasi."<br>";
+    $stmt1 = $db2->prepare("INSERT INTO `detail_layananpendidikan` (npsn, id_detail_kriteriainformasi) VALUES(?, ?)");
+    $stmt1->bind_param("ss", $npsn, $kesediaan_asosiasi);
+
+    $stmt1->execute();
+    $stmt1->close();
+
 
     $kesediaan_forum = $_POST['kesediaan_forum'];
     echo $kesediaan_forum."<br>";
+    $stmt1 = $db2->prepare("INSERT INTO `detail_layananpendidikan` (npsn, id_detail_kriteriainformasi) VALUES(?, ?)");
+    $stmt1->bind_param("ss", $npsn, $kesediaan_forum);
+
+    $stmt1->execute();
+    $stmt1->close();
 
     $berkomunikasi_pengajar = $_POST['berkomunikasi_pengajar'];
     echo $berkomunikasi_pengajar."<br>";

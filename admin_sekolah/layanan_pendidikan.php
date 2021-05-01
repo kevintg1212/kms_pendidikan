@@ -15,7 +15,9 @@ $result = mysqli_query($db2,"SELECT status_data FROM layananpendidikan where nik
 while($tmp1 = mysqli_fetch_array($result)){
   $status_p = $tmp1['status_data'];
 }
-
+if (!isset($status_p)) {
+  $status_p="";
+}
 if ($status_p=='Pending') {
   header("location:layanan_pendidikan_pending.php");
 }
@@ -149,7 +151,7 @@ if ($status_p=='Warning' || $status_p=='Accepted') {
                 ?>
                   <div class="col-3">
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="bentuk" id="radio<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <input class="form-check-input" type="radio" name="bentuk" id="radio<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['id_detail_kriteriainformasi'];?>">
                       <label class="form-check-label" for="radio<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
@@ -169,7 +171,7 @@ if ($status_p=='Warning' || $status_p=='Accepted') {
                 ?>
                   <div class="col-3">
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="status" id="radio<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <input class="form-check-input" type="radio" name="status" id="radio<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['id_detail_kriteriainformasi'];?>">
                       <label class="form-check-label" for="radio<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
@@ -210,7 +212,7 @@ if ($status_p=='Warning' || $status_p=='Accepted') {
                 ?>
                   <div class="col-4">
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="akreditasi" id="radio<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <input class="form-check-input" type="radio" name="akreditasi" id="radio<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['id_detail_kriteriainformasi'];?>">
                       <label class="form-check-label" for="radio<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
@@ -346,7 +348,7 @@ if ($status_p=='Warning' || $status_p=='Accepted') {
                 ?>
                   <div class="col-6" style="margin-bottom:20px;">
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="waktu_penyelenggara" id="radio<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <input class="form-check-input" type="radio" name="waktu_penyelenggara" id="radio<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['id_detail_kriteriainformasi'];?>">
                       <label class="form-check-label" for="radio<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
@@ -365,7 +367,7 @@ if ($status_p=='Warning' || $status_p=='Accepted') {
                 ?>
                   <div class="col-12" style="margin-bottom:20px;">
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="penerimaan_sekolah" id="radio<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <input class="form-check-input" type="radio" name="penerimaan_sekolah" id="radio<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['id_detail_kriteriainformasi'];?>">
                       <label class="form-check-label" for="radio<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
@@ -396,7 +398,7 @@ if ($status_p=='Warning' || $status_p=='Accepted') {
                 ?>
                   <div class="col-6" style="margin-bottom:20px;">
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="ketersediaan_hubungan" id="radio_kh_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <input class="form-check-input" type="radio" name="ketersediaan_hubungan" id="radio_kh_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['id_detail_kriteriainformasi'];?>">
                       <label class="form-check-label" for="radio_kh_<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
@@ -415,7 +417,7 @@ if ($status_p=='Warning' || $status_p=='Accepted') {
                 ?>
                   <div class="col-6" style="margin-bottom:20px;">
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="ketersediaan_program" id="radio_pg_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <input class="form-check-input" type="radio" name="ketersediaan_program" id="radio_pg_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['id_detail_kriteriainformasi'];?>">
                       <label class="form-check-label" for="radio_pg_<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
@@ -434,7 +436,7 @@ if ($status_p=='Warning' || $status_p=='Accepted') {
                 ?>
                   <div class="col-6" style="margin-bottom:20px;">
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="syarat_p" id="radio_sy_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <input class="form-check-input" type="radio" name="syarat_p" id="radio_sy_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['id_detail_kriteriainformasi'];?>">
                       <label class="form-check-label" for="radio_sy_<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
@@ -479,7 +481,7 @@ if ($status_p=='Warning' || $status_p=='Accepted') {
                 ?>
                   <div class="col-6" style="margin-bottom:20px;">
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="specialist" id="radio_sp_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <input class="form-check-input" type="radio" name="specialist" id="radio_sp_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['id_detail_kriteriainformasi'];?>">
                       <label class="form-check-label" for="radio_sp_<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
@@ -535,7 +537,7 @@ if ($status_p=='Warning' || $status_p=='Accepted') {
                 ?>
                   <div class="col-6" style="margin-bottom:20px;">
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="staff_opr" id="radio_sto_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <input class="form-check-input" type="radio" name="staff_opr" id="radio_sto_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['id_detail_kriteriainformasi'];?>">
                       <label class="form-check-label" for="radio_sto_<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
@@ -564,7 +566,7 @@ if ($status_p=='Warning' || $status_p=='Accepted') {
                 ?>
                   <div class="col-6" style="margin-bottom:20px;">
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="siswa_lain" id="radio_sl_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <input class="form-check-input" type="radio" name="siswa_lain" id="radio_sl_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['id_detail_kriteriainformasi'];?>">
                       <label class="form-check-label" for="radio_sl_<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
@@ -592,7 +594,7 @@ if ($status_p=='Warning' || $status_p=='Accepted') {
                 ?>
                   <div class="col-6" style="margin-bottom:20px;">
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="kesediaan_asosiasi" id="radio_kao_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <input class="form-check-input" type="radio" name="kesediaan_asosiasi" id="radio_kao_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['id_detail_kriteriainformasi'];?>">
                       <label class="form-check-label" for="radio_kao_<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
@@ -612,7 +614,7 @@ if ($status_p=='Warning' || $status_p=='Accepted') {
                 ?>
                   <div class="col-6" style="margin-bottom:20px;">
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="kesediaan_forum" id="radio_fr_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <input class="form-check-input" type="radio" name="kesediaan_forum" id="radio_fr_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['id_detail_kriteriainformasi'];?>">
                       <label class="form-check-label" for="radio_fr_<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
@@ -649,7 +651,7 @@ if ($status_p=='Warning' || $status_p=='Accepted') {
                 ?>
                   <div class="col-12" style="margin-bottom:20px;">
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="kurikulum" id="radio_kr_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <input class="form-check-input" type="radio" name="kurikulum" id="radio_kr_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['id_detail_kriteriainformasi'];?>">
                       <label class="form-check-label" for="radio_kr_<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>

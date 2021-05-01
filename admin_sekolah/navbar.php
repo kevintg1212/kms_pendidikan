@@ -5,11 +5,17 @@ if($_SESSION['status'] !="login"){
 	header("location:../login.php");
 }
 $nik =$_SESSION['nik'];
-$result = mysqli_query($db2,"SELECT status_data FROM layananpendidikan where nik ='$nik'");
+$npsn ='';
+$result = mysqli_query($db2,"SELECT status_data, npsn FROM layananpendidikan where nik ='$nik'");
 while($tmp1 = mysqli_fetch_array($result)){
   $status_p = $tmp1['status_data'];
+  $npsn = $tmp1['npsn'];
 }
 
+$result = mysqli_query($db2,"SELECT count(*) as jumlah_ulasan FROM ulasan where npsn ='$npsn'");
+while($tmp1 = mysqli_fetch_array($result)){
+  $jumlah_ulasan = $tmp1['jumlah_ulasan'];
+}
 
 
 ?>
@@ -25,10 +31,10 @@ while($tmp1 = mysqli_fetch_array($result)){
         <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#">
             <i class="far fa-bell"></i>
-            <span class="badge badge-warning navbar-badge">5</span>
+            <span class="badge badge-warning navbar-badge"><?php echo $jumlah_ulasan+1;?></span>
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <span class="dropdown-item dropdown-header">5 Notifications</span>
+            <span class="dropdown-item dropdown-header"><?php echo $jumlah_ulasan+1;?> Notifications</span>
 
             <div class="dropdown-divider"></div>
             <a href="layanan_pendidikan.php" class="dropdown-item">
@@ -47,8 +53,8 @@ while($tmp1 = mysqli_fetch_array($result)){
             </a>
 
             <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-comments mr-2"></i> 4 ulasan baru.
+            <a href="ulasan.php" class="dropdown-item">
+              <i class="fas fa-comments mr-2"></i> <?php echo $jumlah_ulasan;?> ulasan baru.
             </a>
 
           </div>

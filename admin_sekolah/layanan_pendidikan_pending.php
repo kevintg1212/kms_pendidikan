@@ -170,10 +170,17 @@ while($tmp1 = mysqli_fetch_array($result)){
                 <?php 
                 $result = mysqli_query($db2,"SELECT * FROM `detail_kriteriainformasi` where id_kriteriainformasi = 1");
                 while($tmp1 = mysqli_fetch_array($result)){
+                  $id_dk = $tmp1['id_detail_kriteriainformasi'];
+                  $id_dk2 = '';
+                  $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where id_detail_kriteriainformasi = $id_dk");
+                  while($tmp2 = mysqli_fetch_array($result2)){
+                    $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
+                    
+                  }
                 ?>
                   <div class="col-3">
                     <div class="form-check">
-                      <input disabled class="form-check-input disabled" type="radio" name="bentuk" id="radio<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <input disabled <?php if($tmp1['id_detail_kriteriainformasi']==$id_dk2){echo 'Checked';} ?> class="form-check-input disabled" type="radio" name="bentuk" id="radio<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['id_detail_kriteriainformasi'];?>">
                       <label class="form-check-label" for="radio<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
@@ -190,10 +197,17 @@ while($tmp1 = mysqli_fetch_array($result)){
                 <?php 
                 $result = mysqli_query($db2,"SELECT * FROM `detail_kriteriainformasi` where id_kriteriainformasi = 2");
                 while($tmp1 = mysqli_fetch_array($result)){
+                  $id_dk = $tmp1['id_detail_kriteriainformasi'];
+                  $id_dk2 = '';
+                  $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where id_detail_kriteriainformasi = $id_dk");
+                  while($tmp2 = mysqli_fetch_array($result2)){
+                    $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
+                    
+                  }
                 ?>
                   <div class="col-3">
                     <div class="form-check">
-                      <input disabled class="form-check-input disabled" type="radio" name="status" id="radio<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <input disabled <?php if($tmp1['id_detail_kriteriainformasi']==$id_dk2){echo 'Checked';} ?> class="form-check-input disabled" type="radio" name="status" id="radio<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['id_detail_kriteriainformasi'];?>">
                       <label class="form-check-label" for="radio<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
@@ -211,10 +225,17 @@ while($tmp1 = mysqli_fetch_array($result)){
                 <?php 
                 $result = mysqli_query($db2,"SELECT * FROM `jenjang_pendidikan`");
                 while($tmp1 = mysqli_fetch_array($result)){
+                  $id_dk = $tmp1['id_jenjangpendidikan'];
+                  $id_dk2 = '';
+                  $result2 = mysqli_query($db2,"SELECT * FROM `jenjang_layananpendidikan` where id_jenjangpendidikan = $id_dk");
+                  while($tmp2 = mysqli_fetch_array($result2)){
+                    $id_dk2 = $tmp2['id_jenjangpendidikan'];
+                    
+                  }
                 ?>
                   <div class="col-3">
                     <div class="form-check">
-                      <input disabled class="form-check-input disabled" type="checkbox" name="jenjang[]" id="check<?php echo $tmp1['jenjang_pendidikan'];?>" value="<?php echo $tmp1['id_jenjangpendidikan'];?>">
+                      <input disabled <?php if($tmp1['id_jenjangpendidikan']==$id_dk2){echo 'Checked';} ?> class="form-check-input disabled" type="checkbox" name="jenjang[]" id="check<?php echo $tmp1['jenjang_pendidikan'];?>" value="<?php echo $tmp1['id_jenjangpendidikan'];?>">
                       <label class="form-check-label" for="check<?php echo $tmp1['jenjang_pendidikan'];?>"><?php echo $tmp1['jenjang_pendidikan'];?></label>
                     </div>
                   </div>
@@ -231,10 +252,17 @@ while($tmp1 = mysqli_fetch_array($result)){
                 <?php 
                 $result = mysqli_query($db2,"SELECT * FROM `detail_kriteriainformasi` where id_kriteriainformasi = 3");
                 while($tmp1 = mysqli_fetch_array($result)){
+                  $id_dk = $tmp1['id_detail_kriteriainformasi'];
+                  $id_dk2 = '';
+                  $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where id_detail_kriteriainformasi = $id_dk");
+                  while($tmp2 = mysqli_fetch_array($result2)){
+                    $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
+                    
+                  }
                 ?>
                   <div class="col-4">
                     <div class="form-check">
-                      <input disabled class="form-check-input disabled" type="radio" name="akreditasi" id="radio<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <input disabled <?php if($tmp1['id_detail_kriteriainformasi']==$id_dk2){echo 'Checked';} ?> class="form-check-input disabled" type="radio" name="akreditasi" id="radio<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['id_detail_kriteriainformasi'];?>">
                       <label class="form-check-label" for="radio<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
@@ -340,10 +368,17 @@ while($tmp1 = mysqli_fetch_array($result)){
                 <?php 
                       $result = mysqli_query($db2,"SELECT * FROM `kebutuhan_khusus`");
                       while($temp1 = mysqli_fetch_array($result)){
+                        $id_dk = $temp1['id_kebutuhankhusus'];
+                        $id_dk2 = '';
+                        $result2 = mysqli_query($db2,"SELECT * FROM `kebutuhankhusus_layananpendidikan` where id_kebutuhankhusus = $id_dk");
+                        while($tmp2 = mysqli_fetch_array($result2)){
+                          $id_dk2 = $tmp2['id_kebutuhankhusus'];
+                          
+                        }
                     ?>
                   <div class="col-4" style="padding-bottom: 20px;">
                     <div class="form-check">
-                      <input disabled class="form-check-input disabled" type="checkbox" name="kebutuhan[]" id="kebutuhan_<?php echo $temp1['kebutuhan_khusus']; ?>"  value="<?php echo $temp1['id_kebutuhankhusus']; ?>">
+                      <input disabled <?php if($temp1['id_kebutuhankhusus']==$id_dk2){echo 'Checked';} ?> class="form-check-input disabled" type="checkbox" name="kebutuhan[]" id="kebutuhan_<?php echo $temp1['kebutuhan_khusus']; ?>"  value="<?php echo $temp1['id_kebutuhankhusus']; ?>">
                       <label class="form-check-label" for="kebutuhan_<?php echo $temp1['kebutuhan_khusus'];?>"><?php echo $temp1['kebutuhan_khusus']; ?></label>
                     </div>
                   </div>
@@ -368,10 +403,17 @@ while($tmp1 = mysqli_fetch_array($result)){
                 <?php 
                 $result = mysqli_query($db2,"SELECT * FROM `detail_kriteriainformasi` where id_kriteriainformasi = 4");
                 while($tmp1 = mysqli_fetch_array($result)){
+                    $id_dk = $tmp1['id_detail_kriteriainformasi'];
+                    $id_dk2 = '';
+                    $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where id_detail_kriteriainformasi = $id_dk");
+                    while($tmp2 = mysqli_fetch_array($result2)){
+                      $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
+                      
+                    }
                 ?>
                   <div class="col-6" style="margin-bottom:20px;">
                     <div class="form-check">
-                      <input disabled class="form-check-input disabled" type="radio" name="waktu_penyelenggara" id="radio<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <input disabled <?php if($tmp1['id_detail_kriteriainformasi']==$id_dk2){echo 'Checked';} ?> class="form-check-input disabled" type="radio" name="waktu_penyelenggara" id="radio<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['id_detail_kriteriainformasi'];?>">
                       <label class="form-check-label" for="radio<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
@@ -387,10 +429,17 @@ while($tmp1 = mysqli_fetch_array($result)){
                 <?php 
                 $result = mysqli_query($db2,"SELECT * FROM `detail_kriteriainformasi` where id_kriteriainformasi = 12");
                 while($tmp1 = mysqli_fetch_array($result)){
+                  $id_dk = $tmp1['id_detail_kriteriainformasi'];
+                  $id_dk2 = '';
+                  $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where id_detail_kriteriainformasi = $id_dk");
+                  while($tmp2 = mysqli_fetch_array($result2)){
+                    $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
+                    
+                  }
                 ?>
                   <div class="col-12" style="margin-bottom:20px;">
                     <div class="form-check">
-                      <input disabled class="form-check-input disabled" type="radio" name="penerimaan_sekolah" id="radio<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <input disabled <?php if($tmp1['id_detail_kriteriainformasi']==$id_dk2){echo 'Checked';} ?> class="form-check-input disabled" type="radio" name="penerimaan_sekolah" id="radio<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['id_detail_kriteriainformasi'];?>">
                       <label class="form-check-label" for="radio<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
@@ -418,10 +467,17 @@ while($tmp1 = mysqli_fetch_array($result)){
                 <?php 
                 $result = mysqli_query($db2,"SELECT * FROM `detail_kriteriainformasi` where id_kriteriainformasi = 14");
                 while($tmp1 = mysqli_fetch_array($result)){
+                  $id_dk = $tmp1['id_detail_kriteriainformasi'];
+                  $id_dk2 = '';
+                  $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where id_detail_kriteriainformasi = $id_dk");
+                  while($tmp2 = mysqli_fetch_array($result2)){
+                    $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
+                    
+                  }
                 ?>
                   <div class="col-6" style="margin-bottom:20px;">
                     <div class="form-check">
-                      <input disabled class="form-check-input disabled" type="radio" name="ketersediaan_hubungan" id="radio_kh_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <input disabled <?php if($tmp1['id_detail_kriteriainformasi']==$id_dk2){echo 'Checked';} ?> class="form-check-input disabled" type="radio" name="ketersediaan_hubungan" id="radio_kh_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['id_detail_kriteriainformasi'];?>">
                       <label class="form-check-label" for="radio_kh_<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
@@ -437,10 +493,17 @@ while($tmp1 = mysqli_fetch_array($result)){
                 <?php 
                 $result = mysqli_query($db2,"SELECT * FROM `detail_kriteriainformasi` where id_kriteriainformasi = 15");
                 while($tmp1 = mysqli_fetch_array($result)){
+                  $id_dk = $tmp1['id_detail_kriteriainformasi'];
+                  $id_dk2 = '';
+                  $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where id_detail_kriteriainformasi = $id_dk");
+                  while($tmp2 = mysqli_fetch_array($result2)){
+                    $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
+                    
+                  }
                 ?>
                   <div class="col-6" style="margin-bottom:20px;">
                     <div class="form-check">
-                      <input disabled class="form-check-input disabled" type="radio" name="ketersediaan_program" id="radio_pg_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <input disabled <?php if($tmp1['id_detail_kriteriainformasi']==$id_dk2){echo 'Checked';} ?> class="form-check-input disabled" type="radio" name="ketersediaan_program" id="radio_pg_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['id_detail_kriteriainformasi'];?>">
                       <label class="form-check-label" for="radio_pg_<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
@@ -456,10 +519,17 @@ while($tmp1 = mysqli_fetch_array($result)){
                 <?php 
                 $result = mysqli_query($db2,"SELECT * FROM `detail_kriteriainformasi` where id_kriteriainformasi = 13");
                 while($tmp1 = mysqli_fetch_array($result)){
+                  $id_dk = $tmp1['id_detail_kriteriainformasi'];
+                  $id_dk2 = '';
+                  $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where id_detail_kriteriainformasi = $id_dk");
+                  while($tmp2 = mysqli_fetch_array($result2)){
+                    $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
+                    
+                  }
                 ?>
                   <div class="col-6" style="margin-bottom:20px;">
                     <div class="form-check">
-                      <input disabled class="form-check-input disabled" type="radio" name="syarat_p" id="radio_sy_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <input disabled <?php if($tmp1['id_detail_kriteriainformasi']==$id_dk2){echo 'Checked';} ?> class="form-check-input disabled" type="radio" name="syarat_p" id="radio_sy_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['id_detail_kriteriainformasi'];?>">
                       <label class="form-check-label" for="radio_sy_<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
@@ -504,7 +574,7 @@ while($tmp1 = mysqli_fetch_array($result)){
                 ?>
                   <div class="col-6" style="margin-bottom:20px;">
                     <div class="form-check">
-                      <input disabled class="form-check-input disabled" type="radio" name="specialist" id="radio_sp_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <input disabled class="form-check-input disabled" type="radio" name="specialist" id="radio_sp_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['id_detail_kriteriainformasi'];?>">
                       <label class="form-check-label" for="radio_sp_<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
@@ -560,7 +630,7 @@ while($tmp1 = mysqli_fetch_array($result)){
                 ?>
                   <div class="col-6" style="margin-bottom:20px;">
                     <div class="form-check">
-                      <input disabled class="form-check-input disabled" type="radio" name="staff_opr" id="radio_sto_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <input disabled class="form-check-input disabled" type="radio" name="staff_opr" id="radio_sto_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['id_detail_kriteriainformasi'];?>">
                       <label class="form-check-label" for="radio_sto_<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
@@ -589,7 +659,7 @@ while($tmp1 = mysqli_fetch_array($result)){
                 ?>
                   <div class="col-6" style="margin-bottom:20px;">
                     <div class="form-check">
-                      <input disabled class="form-check-input disabled" type="radio" name="siswa_lain" id="radio_sl_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <input disabled class="form-check-input disabled" type="radio" name="siswa_lain" id="radio_sl_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['id_detail_kriteriainformasi'];?>">
                       <label class="form-check-label" for="radio_sl_<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
@@ -617,7 +687,7 @@ while($tmp1 = mysqli_fetch_array($result)){
                 ?>
                   <div class="col-6" style="margin-bottom:20px;">
                     <div class="form-check">
-                      <input disabled class="form-check-input disabled" type="radio" name="kesediaan_asosiasi" id="radio_kao_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <input disabled class="form-check-input disabled" type="radio" name="kesediaan_asosiasi" id="radio_kao_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['id_detail_kriteriainformasi'];?>">
                       <label class="form-check-label" for="radio_kao_<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
@@ -637,7 +707,7 @@ while($tmp1 = mysqli_fetch_array($result)){
                 ?>
                   <div class="col-6" style="margin-bottom:20px;">
                     <div class="form-check">
-                      <input disabled class="form-check-input disabled" type="radio" name="kesediaan_forum" id="radio_fr_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <input disabled class="form-check-input disabled" type="radio" name="kesediaan_forum" id="radio_fr_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['id_detail_kriteriainformasi'];?>">
                       <label class="form-check-label" for="radio_fr_<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
@@ -674,7 +744,7 @@ while($tmp1 = mysqli_fetch_array($result)){
                 ?>
                   <div class="col-12" style="margin-bottom:20px;">
                     <div class="form-check">
-                      <input disabled class="form-check-input disabled" type="radio" name="kurikulum" id="radio_kr_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['nilai'];?>">
+                      <input disabled class="form-check-input disabled" type="radio" name="kurikulum" id="radio_kr_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['id_detail_kriteriainformasi'];?>">
                       <label class="form-check-label" for="radio_kr_<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
