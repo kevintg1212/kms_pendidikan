@@ -97,7 +97,7 @@ session_start();
 
             <div class="card-body">
               <div class="row">
-                <div class="col-3">
+                <div class="col-3 my-2">
                   NPSN
                 </div>
                 <div class="col-9">
@@ -105,7 +105,7 @@ session_start();
                 </div>
               </div>
               <div class="row">
-                <div class="col-3">
+                <div class="col-3 my-2">
                   Nama Sekolah
                 </div>
                 <div class="col-9">
@@ -113,8 +113,405 @@ session_start();
                 </div>
               </div>
               <div class="row">
-                <div class="col-3">
+                <div class="col-3 my-2">
                   Foto Sekolah
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+
+              <div class="row my-3">
+                <div class="col">
+                   <b>Detail Sekolah</b> 
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-3 my-2">
+                  Bentuk Sekolah
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3 my-2">
+                  Jenjang pendidikan yang diterima
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3 my-2">
+                  Akreditasi
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3 my-2">
+                  Visi Sekolah
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3 my-2">
+                  Nilai-nilai yang diterapkan sekolah
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3 my-2">
+                  Alamat Sekolah
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3 my-2">
+                  Provinsi
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3 my-2">
+                  Kabupaten/Kota
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3 my-2">
+                  Telepon
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3 my-2">
+                  Email
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3 my-2">
+                  Website
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3 my-2">
+                  Kebutuhan khusus yang dilayani
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3 my-2">
+                  Biaya Sekolah
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3 my-2">
+                  Waktu Penyelenggara Sekolah
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3 my-2">
+                  Penerimaan sekolah terhadap ABK
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3 my-2">
+                  Pengalaman sekolah menangani ABK
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3 my-2">
+                  Ketersediaan hubungan dengan sekolah lain
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3 my-2">
+                  Ketersediaan program penempatan ganda
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3 my-2">
+                  Syarat perlu ada tidaknya pendamping
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3 my-2">
+                  Teknis Pendaftaran
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3 my-2">
+                  Keamanan Sekolah
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+
+              <div class="row my-3">
+                <div class="col">
+                   <b>Dukungan Spesialis</b> 
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-3 my-2">
+                  Ketersediaan dukungan spesialis
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+
+              <div class="row my-3">
+                <div class="col">
+                   <b>Pengajar</b> 
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-3 my-2">
+                  Pelatihan pendidikan khusus yang dimiliki pengajar
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3 my-2">
+                  Rata-rata pengalaman pengajar dalam mendidik ABK
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+
+              <div class="row my-3">
+                <div class="col">
+                   <b>Staff Operasional</b> 
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-3 my-2">
+                  Ketersediaan pembekalan kepada staff operasional mengenai pengetahuan praktis menangani anak berkebutuhan khusus
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+
+
+              <div class="row my-3">
+                <div class="col">
+                   <b>Siswa</b> 
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-3 my-2">
+                  Ketersediaan pembekalan kepada siswa lainnya dalam mendidik mereka untuk dapat menerima siswa berkebutuhan khusus
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+
+              <div class="row my-3">
+                <div class="col">
+                   <b>Keterlibatan Orang Tua</b> 
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-3 my-2">
+                  Ketersediaan asosiasi orang tua dan guru
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3 my-2">
+                  Ketersediaan forum pandangan orang tua
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3 my-2">
+                  Cara orang tua berkomunikasi dengan pengajar dalam memngetahui perkembangan anak
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+
+              <div class="row my-3">
+                <div class="col">
+                  <b>Proses Belajar Mengajar</b>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3 my-2">
+                  Kurikulum Sekolah
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3 my-2">
+                  Metode Penyampaian Materi Pembelajaran yang diterapkan
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3 my-2">
+                  Metode Monitoring dan Evaluasi Perkembangan Anak yang diterapkan
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3 my-2">
+                  Jumlah murid dalam satu kelas
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3 my-2">
+                  Pengaturan situasi di kelas
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+
+              <div class="row my-3">
+                <div class="col">
+                   <b>Gedung dan perlengkapannya</b> 
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3 my-2">
+                  Sarpras Umum
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3 my-2">
+                  Sarpras Khusus
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3 my-2">
+                  Teknologi
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+
+              <div class="row my-3">
+                <div class="col">
+                   <b>Kebijakan Sekolah</b> 
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-3 my-2">
+                  Kebijakan yang diterapkan sekolah
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+
+              <div class="row my-3">
+                <div class="col">
+                   <b>Kegiatan Sekolah</b> 
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-3 my-2">
+                  Kegiatan sekolah yang dapat diikuti ABK
+                </div>
+                <div class="col-9">
+
+                </div>
+              </div>
+
+              <div class="row my-3">
+                <div class="col">
+                   <b>Surat Ijin Operasional/Pendirian Sekolah</b> 
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-3 my-2">
+                  Surat Ijin Operasional/Pendirian Sekolah
                 </div>
                 <div class="col-9">
 
@@ -123,194 +520,20 @@ session_start();
 
               <div class="row">
                 <div class="col">
-                  <p> <b>Detail Sekolah</b> </p>
+                  <button class="btn btn-danger btn-sm" style="margin-right:10px; margin-left:10px;" name="id_ev" 
+                  data-e="<?php echo $dataJurnal['id_jenjangpendidikan']; ?>"
+                  data-toggle="modal" data-target="#modal-edit-jenjang-pendidikan">
+                    Batal
+                  </button>
+                  <button class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-cancel">
+                    Validasi
+                  </button>
                 </div>
               </div>
 
-              <div class="row">
-                <div class="col-3">
-                  Bentuk Sekolah
-                </div>
-                <div class="col-9">
 
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-3">
-                  Bentuk Sekolah
-                </div>
-                <div class="col-9">
 
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-3">
-                  Bentuk Sekolah
-                </div>
-                <div class="col-9">
 
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-3">
-                  Bentuk Sekolah
-                </div>
-                <div class="col-9">
-
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-3">
-                  Bentuk Sekolah
-                </div>
-                <div class="col-9">
-
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-3">
-                  Bentuk Sekolah
-                </div>
-                <div class="col-9">
-
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-3">
-                  Bentuk Sekolah
-                </div>
-                <div class="col-9">
-
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-3">
-                  Bentuk Sekolah
-                </div>
-                <div class="col-9">
-
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-3">
-                  Bentuk Sekolah
-                </div>
-                <div class="col-9">
-
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-3">
-                  Bentuk Sekolah
-                </div>
-                <div class="col-9">
-
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-3">
-                  Bentuk Sekolah
-                </div>
-                <div class="col-9">
-
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-3">
-                  Bentuk Sekolah
-                </div>
-                <div class="col-9">
-
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-3">
-                  Bentuk Sekolah
-                </div>
-                <div class="col-9">
-
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-3">
-                  Bentuk Sekolah
-                </div>
-                <div class="col-9">
-
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-3">
-                  Bentuk Sekolah
-                </div>
-                <div class="col-9">
-
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-3">
-                  Bentuk Sekolah
-                </div>
-                <div class="col-9">
-
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-3">
-                  Bentuk Sekolah
-                </div>
-                <div class="col-9">
-
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-3">
-                  Bentuk Sekolah
-                </div>
-                <div class="col-9">
-
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-3">
-                  Bentuk Sekolah
-                </div>
-                <div class="col-9">
-
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-3">
-                  Bentuk Sekolah
-                </div>
-                <div class="col-9">
-
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-3">
-                  Bentuk Sekolah
-                </div>
-                <div class="col-9">
-
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-3">
-                  Bentuk Sekolah
-                </div>
-                <div class="col-9">
-
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-3">
-                  Bentuk Sekolah
-                </div>
-                <div class="col-9">
-
-                </div>
-              </div>
             </div>
 
             
