@@ -220,6 +220,14 @@ session_start();
     $stmt1->execute();
     $stmt1->close();
 
+    $kurikulum = $_POST['kurikulum'];
+    echo $kurikulum."<br>";
+    $stmt1 = $db2->prepare("INSERT INTO `detail_layananpendidikan` (npsn, id_detail_kriteriainformasi) VALUES(?, ?)");
+    $stmt1->bind_param("ss", $npsn, $kurikulum);
+
+    $stmt1->execute();
+    $stmt1->close();
+
     $berkomunikasi_pengajar = $_POST['berkomunikasi_pengajar'];
     echo $berkomunikasi_pengajar."<br>";
 
