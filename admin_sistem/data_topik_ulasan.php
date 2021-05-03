@@ -188,7 +188,7 @@ session_start();
                 $no = $no + 1;
                 ?>
                 <tr>
-                  <td><?php echo $result['id_topik'] ?></td>
+                  <td><?php echo $no ?></td>
                   <td><?php echo $result['nama_topik'] ?></td>
                   <td>
                     <div class="row">

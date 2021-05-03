@@ -229,64 +229,6 @@ session_start();
       </div>
 
 
-      <div class="row">
-        <div class="col-12">
-          <div class="card" style="padding: 30px; margin: 30px;">
-            <div class="card-header">
-              <div class="row">
-                <div class="col-8">
-                  <h5>Kebutuhan Khusus</h5>
-                </div>
-              </div>
-            </div>
-
-
-            <div class="card-body">
-              <h5>Data Kebutuhan Khusus pada Knowledge Management System</h5>
-              <table id="example2" class="table table-bordered table-hover">
-                <thead>
-                <tr>
-                  <th>No</th>
-                  <th>Kebutuhan Khusus</th>
-                  <th>Aksi</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php
-                $no = 0;
-                $sql = mysqli_query($db2,"SELECT * FROM kebutuhan_khusus");
-                while($result = mysqli_fetch_array($sql)){
-                $no = $no + 1;
-                ?>
-                <tr>
-                  <td><?php echo $result['id_kebutuhankhusus'] ?></td>
-                  <td><?php echo $result['kebutuhan_khusus'] ?></td>
-                  <td>
-                    <div class="row">
-                      <button class="btn btn-warning btn-sm" style="margin-right:10px; margin-left:10px;" name="id_ev" 
-                      data-e="<?php echo $dataJurnal['id_jenjangpendidikan']; ?>"
-                      data-toggle="modal" data-target="#modal-edit-kebutuhan-khusus">
-                        <i class="fas fa-pencil-alt">
-                        </i>
-                        Edit
-                      </button>
-                      <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-cancel">
-                          <i class="fas fa-trash">
-                          </i>
-                          Hapus
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-                <?php }; ?>
-                </tbody>
-              </table>
-            </div>
-
-            
-          </div>
-        </div>
-      </div>
     </div>
     <!-- /.card -->
 
