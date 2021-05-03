@@ -79,10 +79,10 @@ session_start();
               <select class="form-control select2" id="ketersediaanForum" name="ketersediaanForum" style="width: 100%;" required>
                 <option selected="selected" disabled>-- Cari layanan pendidikan --</option>
                 <?php 
-                $result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '20'");
+                $result_head = mysqli_query($db2,"SELECT * FROM `layananpendidikan` where status_data='Accepted'");
                   while($d_head = mysqli_fetch_array($result_head)){
                 ?>
-                <option><?php echo $d_head['parameter']; ?></option>
+                <option><?php echo $d_head['nama_sekolah']; ?></option>
                 <?php } ?>
               </select>
             </div>
@@ -196,6 +196,22 @@ session_start();
   <!-- AdminLTE for demo purposes -->
   <script src="dist/js/demo.js"></script>
   <script>
+  function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    
+    reader.onload = function(e) {
+      $('#blah').attr('src', e.target.result);
+    }
+    
+    reader.readAsDataURL(input.files[0]); // convert to base64 string
+  }
+}
+
+$("#imgInp").change(function() {
+  readURL(this);
+});
+
     $(document).ready(function () {
       $(':checkbox[id="allCheck"]').click(function () {
         if ($(this).is(':checked')) {

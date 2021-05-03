@@ -14,7 +14,7 @@ $first_part = $components[2];
           <a href="index.php" class="nav-link <?php if ($first_part=="index.php" || $first_part=="") {echo "active"; } else  {echo "noactive";}?>">Beranda</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-          <a href="cari_sekolah.php" class="nav-link <?php if ($first_part!="index.php" && $first_part!="berbagi_informasi.php" && $first_part!="") {echo "active"; } else  {echo "noactive";}?>">Cari Sekolah</a>
+          <a href="cari_sekolah.php" class="nav-link <?php if ($first_part=="cari_sekolah.php" || $first_part=="cari_sekolah2.php") {echo "active"; } else  {echo "noactive";}?>">Cari Sekolah</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
           <a href="berbagi_info.php" class="nav-link <?php if ($first_part=="berbagi_info.php") {echo "active"; } else  {echo "noactive";}?>">Berbagi Info</a>

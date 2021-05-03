@@ -263,7 +263,6 @@ session_start();
                     <div class="row">
                       <button class="btn btn-warning btn-sm" style="margin-right:10px; margin-left:10px;" name="id_ev" 
                       data-e="<?php echo $result['id_jenjangpendidikan']; ?>"
-                      data-v="<?php echo $result['id_kebutuhankhusus']; ?>"
                       data-toggle="modal" data-target="#modal-edit-jenjang-pendidikan">
                         <i class="fas fa-pencil-alt">
                         </i>

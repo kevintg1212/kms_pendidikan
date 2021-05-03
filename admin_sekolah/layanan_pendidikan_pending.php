@@ -804,10 +804,17 @@ while($tmp1 = mysqli_fetch_array($result)){
                       on sub_kriteriainformasi.id_sub_kriteriainformasi = detail_kriteriainformasi.id_sub_kriteriainformasi                      
                       where sub_kriteriainformasi.id_kriteriainformasi=6 AND nilai=1");
                       while($temp1 = mysqli_fetch_array($result)){
+                        $id_dk = $temp1['id_detail_kriteriainformasi'];
+                        $id_dk2 = '';
+                        $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where id_detail_kriteriainformasi = $id_dk");
+                        while($tmp2 = mysqli_fetch_array($result2)){
+                          $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
+                          
+                        }
                     ?>
                   <div class="col-12" style="padding-bottom: 20px;">
                     <div class="form-check">
-                      <input disabled class="form-check-input disabled" type="checkbox" name="sub_kriteria[]" id="metode_d_<?php echo $temp1['sub_kriteriainformasi'];?>"  value="<?php echo $temp1['id_detail_kriteriainformasi'];?>">
+                      <input disabled <?php if($temp1['id_detail_kriteriainformasi']==$id_dk2){echo 'Checked';} ?> class="form-check-input disabled" type="checkbox" name="sub_kriteria[]" id="metode_d_<?php echo $temp1['sub_kriteriainformasi'];?>"  value="<?php echo $temp1['id_detail_kriteriainformasi'];?>">
                       <label style="padding-bottom: 10px;" class="form-check-label" for="metode_d_<?php echo $temp1['sub_kriteriainformasi'];?>"><?php echo $temp1['sub_kriteriainformasi']; ?></label>
                       <label class="form-check-label" for="metode_d_<?php echo $temp1['sub_kriteriainformasi'];?>"><?php echo $temp1['keterangan'];?></label>
                     </div>
@@ -826,10 +833,17 @@ while($tmp1 = mysqli_fetch_array($result)){
                       on sub_kriteriainformasi.id_sub_kriteriainformasi = detail_kriteriainformasi.id_sub_kriteriainformasi                      
                       where sub_kriteriainformasi.id_kriteriainformasi=7 AND nilai=1");
                       while($temp1 = mysqli_fetch_array($result)){
+                        $id_dk = $temp1['id_detail_kriteriainformasi'];
+                        $id_dk2 = '';
+                        $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where id_detail_kriteriainformasi = $id_dk");
+                        while($tmp2 = mysqli_fetch_array($result2)){
+                          $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
+                          
+                        }
                     ?>
                   <div class="col-12" style="padding-bottom: 20px;">
                     <div class="form-check">
-                      <input disabled class="form-check-input disabled" type="checkbox" name="metode_m[]" id="metode_m_<?php echo $temp1['sub_kriteriainformasi'];?>"  value="<?php echo $temp1['id_detail_kriteriainformasi'];?>">
+                      <input disabled <?php if($temp1['id_detail_kriteriainformasi']==$id_dk2){echo 'Checked';} ?> class="form-check-input disabled" type="checkbox" name="metode_m[]" id="metode_m_<?php echo $temp1['sub_kriteriainformasi'];?>"  value="<?php echo $temp1['id_detail_kriteriainformasi'];?>">
                       <label style="padding-bottom: 10px;" class="form-check-label" for="metode_m_<?php echo $temp1['sub_kriteriainformasi'];?>"><?php echo $temp1['sub_kriteriainformasi']; ?></label>
                       <label class="form-check-label" for="metode_m_<?php echo $temp1['sub_kriteriainformasi'];?>"><?php echo $temp1['keterangan'];?></label>
                     </div>
@@ -876,10 +890,17 @@ while($tmp1 = mysqli_fetch_array($result)){
                       on sub_kriteriainformasi.id_sub_kriteriainformasi = detail_kriteriainformasi.id_sub_kriteriainformasi                      
                       where sub_kriteriainformasi.id_kriteriainformasi=9 AND nilai=1");
                       while($temp1 = mysqli_fetch_array($result)){
+                        $id_dk = $temp1['id_detail_kriteriainformasi'];
+                        $id_dk2 = '';
+                        $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where id_detail_kriteriainformasi = $id_dk");
+                        while($tmp2 = mysqli_fetch_array($result2)){
+                          $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
+                          
+                        }
                     ?>
                   <div class="col-12" style="padding-bottom: 20px;">
                     <div class="form-check">
-                      <input disabled class="form-check-input disabled" type="checkbox" name="sarpas_umum[]" id="sarpas_umum_<?php echo $temp1['sub_kriteriainformasi'];?>"  value="<?php echo $temp1['id_detail_kriteriainformasi'];?>">
+                      <input disabled <?php if($temp1['id_detail_kriteriainformasi']==$id_dk2){echo 'Checked';} ?> class="form-check-input disabled" type="checkbox" name="sarpas_umum[]" id="sarpas_umum_<?php echo $temp1['sub_kriteriainformasi'];?>"  value="<?php echo $temp1['id_detail_kriteriainformasi'];?>">
                       <label class="form-check-label" for="sarpas_umum_<?php echo $temp1['sub_kriteriainformasi'];?>"><?php echo $temp1['sub_kriteriainformasi']; ?></label>
                     </div>
                   </div>
@@ -897,10 +918,17 @@ while($tmp1 = mysqli_fetch_array($result)){
                       on sub_kriteriainformasi.id_sub_kriteriainformasi = detail_kriteriainformasi.id_sub_kriteriainformasi                      
                       where sub_kriteriainformasi.id_kriteriainformasi=10 AND nilai=1");
                       while($temp1 = mysqli_fetch_array($result)){
+                        $id_dk = $temp1['id_detail_kriteriainformasi'];
+                        $id_dk2 = '';
+                        $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where id_detail_kriteriainformasi = $id_dk");
+                        while($tmp2 = mysqli_fetch_array($result2)){
+                          $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
+                          
+                        }
                     ?>
                   <div class="col-12" style="padding-bottom: 20px;">
                     <div class="form-check">
-                      <input disabled class="form-check-input disabled" type="checkbox" name="sarpas_khusus[]" id="sarpas_khusus_<?php echo $temp1['sub_kriteriainformasi'];?>"  value="<?php echo $temp1['id_detail_kriteriainformasi'];?>">
+                      <input disabled <?php if($temp1['id_detail_kriteriainformasi']==$id_dk2){echo 'Checked';} ?> class="form-check-input disabled" type="checkbox" name="sarpas_khusus[]" id="sarpas_khusus_<?php echo $temp1['sub_kriteriainformasi'];?>"  value="<?php echo $temp1['id_detail_kriteriainformasi'];?>">
                       <label class="form-check-label" for="sarpas_khusus_<?php echo $temp1['sub_kriteriainformasi'];?>"><?php echo $temp1['sub_kriteriainformasi']; ?></label>
                     </div>
                   </div>
@@ -919,10 +947,17 @@ while($tmp1 = mysqli_fetch_array($result)){
                       on sub_kriteriainformasi.id_sub_kriteriainformasi = detail_kriteriainformasi.id_sub_kriteriainformasi                      
                       where sub_kriteriainformasi.id_kriteriainformasi=11 AND nilai=1");
                       while($temp1 = mysqli_fetch_array($result)){
+                        $id_dk = $temp1['id_detail_kriteriainformasi'];
+                        $id_dk2 = '';
+                        $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where id_detail_kriteriainformasi = $id_dk");
+                        while($tmp2 = mysqli_fetch_array($result2)){
+                          $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
+                          
+                        }
                     ?>
                   <div class="col-12" style="padding-bottom: 20px;">
                     <div class="form-check">
-                      <input disabled class="form-check-input disabled" type="checkbox" name="teknologi[]" id="teknologi_<?php echo $temp1['sub_kriteriainformasi'];?>"  value="<?php echo $temp1['id_detail_kriteriainformasi'];?>">
+                      <input disabled <?php if($temp1['id_detail_kriteriainformasi']==$id_dk2){echo 'Checked';} ?> class="form-check-input disabled" type="checkbox" name="teknologi[]" id="teknologi_<?php echo $temp1['sub_kriteriainformasi'];?>"  value="<?php echo $temp1['id_detail_kriteriainformasi'];?>">
                       <label class="form-check-label" for="teknologi_<?php echo $temp1['sub_kriteriainformasi'];?>"><?php echo $temp1['sub_kriteriainformasi']; ?></label>
                     </div>
                   </div>
@@ -966,10 +1001,17 @@ while($tmp1 = mysqli_fetch_array($result)){
                       on sub_kriteriainformasi.id_sub_kriteriainformasi = detail_kriteriainformasi.id_sub_kriteriainformasi                      
                       where sub_kriteriainformasi.id_kriteriainformasi=8 AND nilai=1");
                       while($temp1 = mysqli_fetch_array($result)){
+                        $id_dk = $temp1['id_detail_kriteriainformasi'];
+                        $id_dk2 = '';
+                        $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where id_detail_kriteriainformasi = $id_dk");
+                        while($tmp2 = mysqli_fetch_array($result2)){
+                          $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
+                          
+                        }
                     ?>
                   <div class="col-12" style="padding-bottom: 20px;">
                     <div class="form-check">
-                      <input disabled class="form-check-input disabled" type="checkbox" name="kegiatan[]" id="kegiatan_<?php echo $temp1['sub_kriteriainformasi'];?>"  value="<?php echo $temp1['id_detail_kriteriainformasi'];?>">
+                      <input disabled <?php if($temp1['id_detail_kriteriainformasi']==$id_dk2){echo 'Checked';} ?> class="form-check-input disabled" type="checkbox" name="kegiatan[]" id="kegiatan_<?php echo $temp1['sub_kriteriainformasi'];?>"  value="<?php echo $temp1['id_detail_kriteriainformasi'];?>">
                       <label class="form-check-label" for="kegiatan_<?php echo $temp1['sub_kriteriainformasi'];?>"><?php echo $temp1['sub_kriteriainformasi']; ?></label>
                     </div>
                   </div>

@@ -3,6 +3,33 @@ include 'conn.php';
 session_start();
     
 
+$npsn_lama = $_POST['npsn_lama'];
+echo $npsn_lama."<br>";
+
+$stmtx = $db2->prepare("DELETE FROM `detail_layananpendidikan` where npsn = ?");
+$stmtx->bind_param("s", $npsn_lama);
+
+$stmtx->execute();
+$stmtx->close();
+
+$stmtx = $db2->prepare("DELETE FROM `jenjang_layananpendidikan` where npsn = ?");
+$stmtx->bind_param("s", $npsn_lama);
+
+$stmtx->execute();
+$stmtx->close();
+
+$stmtx = $db2->prepare("DELETE FROM `kebutuhankhusus_layananpendidikan` where npsn = ?");
+$stmtx->bind_param("s", $npsn_lama);
+
+$stmtx->execute();
+$stmtx->close();
+
+$stmtx = $db2->prepare("DELETE FROM `layananpendidikan` where npsn = ?");
+$stmtx->bind_param("s", $npsn_lama);
+
+$stmtx->execute();
+$stmtx->close();
+
     $npsn = $_POST['npsn'];
     echo $npsn."<br>";
     

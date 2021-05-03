@@ -183,7 +183,7 @@ session_start();
                   <th>Kriteria Informasi</th>
                   <th>Sub Kriteria Informasi</th>
                   <th>Detail</th>
-                  <th>Aksi</th>
+                  <th style="width: 20%; text-align: center;">Aksi</th>
                 </tr>
                 </thead>
                 <tbody>

@@ -128,7 +128,7 @@ if ($status_p=='Warning' || $status_p=='Accepted') {
                   <h5>Foto Sekolah</h5>
                 </div>
                 <div class="col-md-6">
-                  <input class="form-control" type="file" name="foto_sekolah">
+                  <input class="form-control" type="file" required name="foto_sekolah">
                 </div>
               </div>
 
@@ -855,7 +855,7 @@ if ($status_p=='Warning' || $status_p=='Accepted') {
                   <h5>Surat Ijin Operasional/Pendirian Sekolah</h5>
                 </div>
                 <div class="col-md-6">
-                  <input class="form-control" type="file" name="surat">
+                  <input class="form-control" type="file" required name="surat">
                 </div>
               </div>
 
