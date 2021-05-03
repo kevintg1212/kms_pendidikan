@@ -36,7 +36,7 @@ session_start();
 
 <body class="sidebar-collapse"
   style="padding-left: 50px; padding-right: 50px; padding-top: 10px; margin-bottom: 200px;">
-
+  <form action="controller/add_ulasan.php" method="post" enctype="multipart/form-data">
   <div class="modal fade" id="modal-default">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -51,7 +51,7 @@ session_start();
           Hasil dari validasi akan dikonfirmasi melalui email yang telah anda cantumkan.</p>
         </div>
         <div class="modal-footer justify-content-end">
-          <button type="button" class="btn btn-primary">OK</button>
+          <button type="submit" class="btn btn-primary">OK</button>
         </div>
       </div>
       <!-- /.modal-content -->
@@ -76,13 +76,13 @@ session_start();
                 <h5>Berikut ulasan kepada layanan pendidikan dengan mengisi form berikut ini</h5>
             </div>
             <div class="col-3 justify-content-end"> 
-              <select class="form-control select2" id="ketersediaanForum" name="ketersediaanForum" style="width: 100%;" required>
+              <select class="form-control select2" id="sekolah" name="sekolah" style="width: 100%;" required>
                 <option selected="selected" disabled>-- Cari layanan pendidikan --</option>
                 <?php 
                 $result_head = mysqli_query($db2,"SELECT * FROM `layananpendidikan` where status_data='Accepted'");
                   while($d_head = mysqli_fetch_array($result_head)){
                 ?>
-                <option><?php echo $d_head['nama_sekolah']; ?></option>
+                <option value="<?php echo $d_head['npsn']; ?>"><?php echo $d_head['nama_sekolah']; ?></option>
                 <?php } ?>
               </select>
             </div>
@@ -94,7 +94,7 @@ session_start();
               <div class="row">
                 <div class="col-12 p-5">
                   <div class="card-body">
-                  <form>
+                  
                     <div class="row">
                         <div class="col-6">
                           <label>Latar Belakang</label>
@@ -102,9 +102,9 @@ session_start();
                         <div class="col-6">
                         <select class="form-control select2" id="latarBelakang" name="latarBelakang" style="width: 100%;" required>
                           <option selected="selected" disabled>-- Pilih Latar Belakang --</option>
-                          <option>Orang Tua</option>
-                          <option>Pengajar</option>
-                          <option>Tenaga Kesehatan</option>
+                          <optio value="Orang Tua">Orang Tua</option>
+                          <option value="Pengajar">Pengajar</option>
+                          <option value="Tenaga Kesehatan">Tenaga Kesehatan</option>
                         </select>
                         </div> 
                     </div>
@@ -135,7 +135,7 @@ session_start();
                           $result_head = mysqli_query($db2,"SELECT * FROM `topik`");
                             while($d_head = mysqli_fetch_array($result_head)){
                           ?>
-                          <option><?php echo $d_head['nama_topik']; ?></option>
+                          <option value="<?php echo $d_head['id_topik']; ?>"><?php echo $d_head['nama_topik']; ?></option>
                           <?php } ?>
                         </select>
                         </div> 
@@ -165,7 +165,7 @@ session_start();
                         </div> 
                     </div>
                   </div>
-                  </form>
+                  
                 </div>
               </div>
             </div>
@@ -186,7 +186,7 @@ session_start();
   </div>
   <!-- ./wrapper -->
 
-
+</form>
   <!-- jQuery -->
   <script src="plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
