@@ -110,18 +110,29 @@ session_start();
                 </thead>
                 <tbody>
                 <tr>
-                  <td>0001</td>
-                  <td>SLB Kasih Bunda</td>
-                  <td>Jln. Sukarno</td>
-                  <td>Bandung</td>
-                  <td>Jawa Barat</td>
-                  <td>-</td>
+                <?php
+                $sql = mysqli_query($db2,"SELECT l.*, w.nama as kabupaten, p.nama as provinsi FROM layananpendidikan l 
+                join wilayah_kabupaten w on l.id_kabupaten = w.id 
+                join wilayah_provinsi p on l.id_provinsi = p.id");
+                while($result = mysqli_fetch_array($sql)){
+                ?>
+                  <td><?php echo $result['npsn']; ?></td>
+                  <td><?php echo $result['nama_sekolah']; ?></td>
+                  <td><?php echo $result['alamat']; ?></td>
+                  <td><?php echo $result['kabupaten']; ?></td>
+                  <td><?php echo $result['provinsi']; ?></td>
+                  <td> 
+                    <button class="btn btn-<?php echo ($result['status_data']=="Pending") ? 'warning' : 'danger'; ?> btn-sm text-white font-weight-bold">
+                      <?php echo $result['status_data']; ?>
+                    </button>                  
+                  </td>
                   <td>
-                    <button class="btn btn-info btn-sm">
+                    <a href="lihat_detail.php?npsn=<?php echo $result['npsn']; ?>" class="btn btn-info btn-sm">
                       Lihat Detail
-                    </button>
+                    </a>
                   </td>
                 </tr>
+                <?php }; ?>
                 </tbody>
               </table>
             </div>

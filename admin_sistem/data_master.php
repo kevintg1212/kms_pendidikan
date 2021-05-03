@@ -38,6 +38,8 @@ session_start();
 </head>
 
 <body class="hold-transition sidebar-mini" style="max-width: 100%; overflow-x: hidden;">
+
+
   <div class="modal fade" id="modal-cancel">
     <div class="modal-dialog" style="max-width: 750px !important;">
       <div class="modal-content">
@@ -48,13 +50,16 @@ session_start();
           </button>
         </div>
         <div class="modal-body">
-          <p>Apakah anda yakin akan menolak ulasan ini? / Apakah anda akan menerima ulasan ini? </p>
+          <p>Apakah anda yakin akan menghapus <b>jenjang pendidikan/kebutuhan khusus  </b> ini? </p>
         </div>
-        <form action="SQL/vDeleteEvent.php" method="post">
+        <form action="controller/delete_data_master.php" method="post">
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
             <button type="submit" class="btn btn-primary">Ya</button>
-            <input class="event" type="hidden" name="id_ev">
+
+            <!-- hidden input -->
+            <input class="id_jenjangpendidikan2" type="hidden" name="id_jenjangpendidikan2">
+            <input class="id_kebutuhankhusus2" type="hidden" name="id_kebutuhankhusus2">
           </div>
         </form>
       </div>
@@ -73,13 +78,13 @@ session_start();
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="controller/conn_edit_kerusakan.php" method="post">
+        <form action="controller/edit_data_master.php" method="post">
           <div class="modal-body">
             <div class="form-group row">
-                <label for="nik" class="col-sm col-form-label">Jenjang Pendidikan</label>
+                <label for="jenjang_pendidikan" class="col-sm col-form-label">Jenjang Pendidikan</label>
                 <div class="col-sm">
                     <input type="text" class="form-control" id="jenjang_pendidikan" name="jenjang_pendidikan"
-                        placeholder="ID Bahan Baku" value="">
+                        placeholder="Jenjang Pendidikan" value="">
               </div>
             </div>
           </div>
@@ -89,6 +94,7 @@ session_start();
 
           <!-- id-pendidikan -->
           <input class="id_jenjangpendidikan1" type="hidden" id="id_jenjangpendidikan1" name="id_jenjangpendidikan1">
+          <input class="id_kebutuhankhusus1" type="hidden" id="id_kebutuhankhusus1" name="id_kebutuhankhusus1" value=0>
         </form>
       </div>
       <!-- /.modal-content -->
@@ -107,13 +113,13 @@ session_start();
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="controller/conn_edit_kerusakan.php" method="post">
+        <form action="controller/edit_data_master.php" method="post">
           <div class="modal-body">
             <div class="form-group row">
                 <label for="nik" class="col-sm col-form-label">Kebutuhan Khusus</label>
                 <div class="col-sm">
                     <input type="text" class="form-control" id="kebutuhan_khusus" name="kebutuhan_khusus"
-                    value="">
+                    value="" placeholder="Kebutuhan Khusus">
               </div>
             </div>
           </div>
@@ -123,6 +129,70 @@ session_start();
 
           <!-- id-pendidikan -->
           <input class="id_kebutuhankhusus1" type="hidden" id="id_kebutuhankhusus1" name="id_kebutuhankhusus1">
+          <input class="id_jenjangpendidikan1" type="hidden" id="id_jenjangpendidikan1" name="id_jenjangpendidikan1" value=0 >
+        </form>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+
+
+
+  <div class="modal fade" id="modal-add-kebutuhan-khusus">
+    <div class="modal-dialog" style="max-width: 750px !important;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLabel">Tambah Kebutuhan Khusus</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="controller/add_data_master.php" method="post">
+          <div class="modal-body">
+            <div class="form-group row">
+                <label for="nik" class="col-sm col-form-label">Kebutuhan Khusus</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="kebutuhan_khusus" name="kebutuhan_khusus"
+                    value="" placeholder="Kebutuhan Khusus">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Simpan</button>
+          </div>
+        </form>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+
+
+  <div class="modal fade" id="modal-add-jenjang-pendidikan">
+    <div class="modal-dialog" style="max-width: 750px !important;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLabel">Tambah Jenjang Pendidikan</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="controller/add_data_master.php" method="post">
+          <div class="modal-body">
+            <div class="form-group row">
+                <label for="nik" class="col-sm col-form-label">Jenjang pendidikan</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="jenjang_pendidikan" name="jenjang_pendidikan"
+                    value="" placeholder="Jenjang pendidikan">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Simpan</button>
+          </div>
         </form>
       </div>
       <!-- /.modal-content -->
@@ -166,6 +236,11 @@ session_start();
 
             <div class="card-body">
               <h5>Data Jenjang Pendidikan pada Knowledge Management System</h5>
+              <button class="btn btn-success btn-sm float-right my-2"  data-toggle="modal" data-target="#modal-add-jenjang-pendidikan">
+                <i class="fas fa-plus">
+                </i>
+                Tambah
+              </button>
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
@@ -182,18 +257,19 @@ session_start();
                 $no = $no + 1;
                 ?>
                 <tr>
-                  <td><?php echo $result['id_jenjangpendidikan'] ?></td>
+                  <td><?php echo $no ?></td>
                   <td><?php echo $result['jenjang_pendidikan'] ?></td>
                   <td>
                     <div class="row">
                       <button class="btn btn-warning btn-sm" style="margin-right:10px; margin-left:10px;" name="id_ev" 
-                      data-e="<?php echo $dataJurnal['id_jenjangpendidikan']; ?>"
+                      data-e="<?php echo $result['id_jenjangpendidikan']; ?>"
+                      data-v="<?php echo $result['id_kebutuhankhusus']; ?>"
                       data-toggle="modal" data-target="#modal-edit-jenjang-pendidikan">
                         <i class="fas fa-pencil-alt">
                         </i>
                         Edit
                       </button>
-                      <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-cancel">
+                      <button class="btn btn-danger btn-sm" data-e="<?php echo $result['id_jenjangpendidikan']; ?>"  data-toggle="modal" data-target="#modal-cancel">
                         <i class="fas fa-trash">
                         </i>
                         Hapus
@@ -226,6 +302,11 @@ session_start();
 
             <div class="card-body">
               <h5>Data Kebutuhan Khusus pada Knowledge Management System</h5>
+              <button class="btn btn-success btn-sm float-right my-2"  data-toggle="modal" data-target="#modal-add-kebutuhan-khusus">
+                <i class="fas fa-plus">
+                </i>
+                Tambah
+              </button>
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
@@ -242,21 +323,21 @@ session_start();
                 $no = $no + 1;
                 ?>
                 <tr>
-                  <td><?php echo $result['id_kebutuhankhusus'] ?></td>
+                  <td><?php echo $no ?></td>
                   <td><?php echo $result['kebutuhan_khusus'] ?></td>
                   <td>
                     <div class="row">
                       <button class="btn btn-warning btn-sm" style="margin-right:10px; margin-left:10px;" name="id_ev" 
-                      data-e="<?php echo $dataJurnal['id_jenjangpendidikan']; ?>"
+                      data-e="<?php echo $result['id_kebutuhankhusus']; ?>"
                       data-toggle="modal" data-target="#modal-edit-kebutuhan-khusus">
                         <i class="fas fa-pencil-alt">
                         </i>
                         Edit
                       </button>
-                      <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-cancel">
-                          <i class="fas fa-trash">
-                          </i>
-                          Hapus
+                      <button class="btn btn-danger btn-sm" data-v="<?php echo $result['id_kebutuhankhusus']; ?>" data-toggle="modal" data-target="#modal-cancel">
+                        <i class="fas fa-trash">
+                        </i>
+                        Hapus
                       </button>
                     </div>
                   </td>
@@ -302,12 +383,13 @@ session_start();
   $('#modal-cancel').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) // Button that triggered the modal
     var recipient_e = button.data('e') // Extract info from data-* attributes
-    var recipient_v = button.data('v')
+    var recipient_v = button.data('v') // Extract info from data-* attributes
     // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
     // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
     var modal = $(this)
-    modal.find('.event').val(recipient_e)
-    modal.find('.volunteer').val(recipient_v)
+    modal.find('.id_jenjangpendidikan2').val(recipient_e);
+    modal.find('.id_kebutuhankhusus2').val(recipient_v);
+    
   })
 
   $('#modal-edit-jenjang-pendidikan').on('show.bs.modal', function (event) {

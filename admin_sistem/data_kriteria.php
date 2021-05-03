@@ -3,9 +3,19 @@
 <?php 
 include 'controller/conn.php';
  
-// mengaktifkan session
 session_start();
- 
+
+// $id_kriteriainformasi = $_GET['id_kriteriainformasi'];
+// $sql = mysqli_query($db2,"
+// SELECT * from (SELECT k.id_detail_kriteriainformasi, k.id_kriteriainformasi, s.sub_kriteriainformasi, k.parameter, s.keterangan, k.nilai FROM detail_kriteriainformasi k 
+// left join sub_kriteriainformasi s on k.id_kriteriainformasi = s.id_kriteriainformasi) k join kriteria_informasi i on k.id_kriteriainformasi = i.id_kriteriainformasi
+// where k.id_kriteriainformasi = $id_kriteriainformasi
+// ");
+
+// while($d_head = mysqli_fetch_array($sql)){
+//   $kriteria_informasi= $d_head['kriteria_informasi'];
+// }
+
 // cek apakah user telah login, jika belum login maka di alihkan ke halaman login
 // if($_SESSION['status'] !="login"){
 // 	header("location:../login.php");
@@ -179,24 +189,27 @@ session_start();
                 <tbody>
                 <?php
                 $no = 0;
-                $sql = mysqli_query($db2,"SELECT * FROM kriteria_informasi k join sub_kriteriainformasi s on k.id_kriteriainformasi = s.id_kriteriainformasi");
+                $sql = mysqli_query($db2,"
+                SELECT * from (SELECT k.id_detail_kriteriainformasi, k.id_kriteriainformasi, s.sub_kriteriainformasi, k.parameter FROM detail_kriteriainformasi k 
+                left join sub_kriteriainformasi s on k.id_kriteriainformasi = s.id_kriteriainformasi) k join kriteria_informasi i on k.id_kriteriainformasi = i.id_kriteriainformasi
+                group by id_detail_kriteriainformasi
+                ");
                 while($result = mysqli_fetch_array($sql)){
                 $no = $no + 1;
                 ?>
                 <tr>
                   <td><?php echo $no ?></td>
-                  <td><?php echo $result['kriteria_informasi'] ?></td>
-                  <td><?php echo $result['sub_kriteriainformasi'] ?></td>
-                  <td><?php echo "detail?"; ?></td>
+                  <td><?php echo $result['kriteria_informasi']; ?></td>
+                  <td><?php echo $result['sub_kriteriainformasi']; ?></td>
+                  <td><?php echo $result['parameter']; ?></td>
                   <td>
                     <div class="row">
-                      <button class="btn btn-warning btn-sm" style="margin-right:10px; margin-left:10px;" name="id_ev" 
-                      data-e="<?php echo $dataJurnal['id_jenjangpendidikan']; ?>"
-                      data-toggle="modal" data-target="#modal-edit-jenjang-pendidikan">
+                      <a href="data_kriteria_edit.php?id_kriteriainformasi=<?php echo $result['id_kriteriainformasi']; ?>" class="btn btn-warning btn-sm" style="margin-right:10px; margin-left:10px;" name="id_ev" 
+                      data-e="<?php echo $dataJurnal['id_jenjangpendidikan']; ?>">
                         <i class="fas fa-pencil-alt">
                         </i>
                         Edit
-                      </button>
+                      </a>
                       <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-cancel">
                         <i class="fas fa-trash">
                         </i>

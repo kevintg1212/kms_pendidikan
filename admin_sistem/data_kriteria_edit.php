@@ -6,6 +6,16 @@ include 'controller/conn.php';
 // mengaktifkan session
 session_start();
  
+$id_kriteriainformasi = $_GET['id_kriteriainformasi'];
+$sql = mysqli_query($db2,"
+SELECT * from (SELECT k.id_detail_kriteriainformasi, k.id_kriteriainformasi, s.sub_kriteriainformasi, k.parameter, s.keterangan, k.nilai FROM detail_kriteriainformasi k 
+left join sub_kriteriainformasi s on k.id_kriteriainformasi = s.id_kriteriainformasi) k join kriteria_informasi i on k.id_kriteriainformasi = i.id_kriteriainformasi
+where k.id_kriteriainformasi = $id_kriteriainformasi
+");
+
+while($d_head = mysqli_fetch_array($sql)){
+  $kriteria_informasi= $d_head['kriteria_informasi'];
+}
 // cek apakah user telah login, jika belum login maka di alihkan ke halaman login
 // if($_SESSION['status'] !="login"){
 // 	header("location:../login.php");
@@ -172,13 +182,16 @@ session_start();
                   <p> Nama Kriteria Informasi </p>
                 </div>
                 <div class="col">
-                  <select class="form-control select2" style="width: 100%;" name="kota" id="kota" >
-                    <option selected="selected" value="" disabled>-- Pilih Kabupaten/Kota --</option>
+                  <select class="form-control" style="width: 100%;" name="id_kriteriainformasi" id="id_kriteriainformasi" disabled>
+                    <option value="" disabled selected>Kriteria Informasi</option>
                     <?php 
-                      $result = mysqli_query($db2,"SELECT * FROM `wilayah_kabupaten`");
-                      while($tmp1 = mysqli_fetch_array($result)){
+                    $no = 1;
+                    $result_head = mysqli_query($db2,"select * from `kriteria_informasi`");
+                    while($d_head = mysqli_fetch_array($result_head)){
                     ?>
-                    <option style="display: none;" class="city c-<?php echo $tmp1['provinsi_id'];?>" id="c-<?php echo $tmp1['provinsi_id'];?>" value="<?php echo $tmp1['nama'];?>"><?php echo $tmp1['nama'];?></option>
+                    <option value="<?php echo $d_head['id_kriteriainformasi']; ?>/<?php echo $d_head['kriteria_informasi']; ?>/<?php echo $d_head['keterangan']; ?>"
+                    <?php if ($d_head['id_kriteriainformasi']== $id_kriteriainformasi) {echo "selected";}?>>
+                        <?php echo $d_head['kriteria_informasi']; ?></option>
                     <?php } ?>
                   </select>
                 </div>
@@ -193,13 +206,9 @@ session_start();
                     <tbody>
 								  	    <?php
                         $sqlJurnal= mysqli_query($db2,"
-                        select p.id_pembelian, p.tanggal_pembelian, p.tanggal_pengiriman, s.id_supplier, s.nama_toko, d.id_bahan_baku, b.nama_bahan_baku, d.jumlah_pembelian, b.uom, u. nik, u.nama
-                        from `pembelian` AS p 
-                        inner join detail_pembelian as d on p.id_pembelian = d.id_pembelian 
-                        inner join bahan_baku as b on d.id_bahan_baku = b.id_bahan_baku
-                        inner join user as u on p.nik = u.nik 
-                        inner join supplier as s on p.id_supplier = s.id_supplier 
-                        where p.id_pembelian = '$id_pembelian'
+                        SELECT * from (SELECT k.id_detail_kriteriainformasi, k.id_kriteriainformasi, s.sub_kriteriainformasi, k.parameter, s.keterangan, k.nilai FROM detail_kriteriainformasi k 
+                        left join sub_kriteriainformasi s on k.id_kriteriainformasi = s.id_kriteriainformasi) k join kriteria_informasi i on k.id_kriteriainformasi = i.id_kriteriainformasi
+                        where k.id_kriteriainformasi = $id_kriteriainformasi
                         ");
                         $x=0;
                         while($dataJurnal = mysqli_fetch_array($sqlJurnal)){
@@ -209,7 +218,7 @@ session_start();
                             <input value="<?php echo $dataJurnal['sub_kriteriainformasi']; ?>" type="text" name="deskripsi[<?php echo $x;?>]" id="deskripsi[<?php echo $x;?>] "class="form-control" placeholder="Sub Kriteria Informasi">
                           </td>
                           <td>
-                            <input type="text" class="form-control" id="uom[<?php echo $x;?>]" name="uom[<?php echo $x;?>]" value="<?php echo $dataJurnal['uom']; ?>" placeholder ="Keterangan" >
+                            <input type="text" class="form-control" id="keterangan[<?php echo $x;?>]" name="keterangan[<?php echo $x;?>]" value="<?php echo $dataJurnal['keterangan']; ?>" placeholder ="Keterangan" >
                           </td>
                           <td style="text-align: center;">
                             <a class="btn btn-danger btn-sm delete_another" onClick=" $(this).closest('tr').remove();">
@@ -227,7 +236,7 @@ session_start();
                             <input value="<?php echo $dataJurnal['sub_kriteriainformasi']; ?>" type="text" name="deskripsi[<?php echo $i;?>]" id="deskripsi[<?php echo $i;?>] "class="form-control" placeholder="Sub Kriteria Informasi">
                           </td>
                           <td>
-                            <input type="text" class="form-control" id="uom[<?php echo $i;?>]" name="uom[<?php echo $i;?>]" value="<?php echo $dataJurnal['uom']; ?>" placeholder ="Keterangan" >
+                            <input type="text" class="form-control" id="keterangan[<?php echo $i;?>]" name="keterangan[<?php echo $i;?>]" value="<?php echo $dataJurnal['keterangan']; ?>" placeholder ="Keterangan" >
                           </td>
                           <td style="text-align: center;">
                             <a class="btn btn-danger btn-sm delete_another" onClick=" $(this).closest('tr').remove();">
@@ -259,23 +268,20 @@ session_start();
                     <tbody>
                         <?php
                         $sqlJurnal= mysqli_query($db2,"
-                        select p.id_pembelian, p.tanggal_pembelian, p.tanggal_pengiriman, s.id_supplier, s.nama_toko, d.id_bahan_baku, b.nama_bahan_baku, d.jumlah_pembelian, b.uom, u. nik, u.nama
-                        from `pembelian` AS p 
-                        inner join detail_pembelian as d on p.id_pembelian = d.id_pembelian 
-                        inner join bahan_baku as b on d.id_bahan_baku = b.id_bahan_baku
-                        inner join user as u on p.nik = u.nik 
-                        inner join supplier as s on p.id_supplier = s.id_supplier 
-                        where p.id_pembelian = '$id_pembelian'
+                        SELECT * from (SELECT k.id_detail_kriteriainformasi, k.id_kriteriainformasi, s.sub_kriteriainformasi, k.parameter, s.keterangan, k.nilai FROM detail_kriteriainformasi k 
+                        left join sub_kriteriainformasi s on k.id_kriteriainformasi = s.id_kriteriainformasi) k join kriteria_informasi i on k.id_kriteriainformasi = i.id_kriteriainformasi
+                        where k.id_kriteriainformasi = '$id_kriteriainformasi'
                         ");
                         $x=0;
                         while($dataJurnal = mysqli_fetch_array($sqlJurnal)){
                         ?>
                         <tr class=''>
                           <td>
-                            <input value="<?php echo $dataJurnal['sub_kriteriainformasi']; ?>" type="text" name="deskripsi[<?php echo $x;?>]" id="deskripsi[<?php echo $x;?>] "class="form-control" placeholder="Sub Kriteria Informasi">
+                            <input value="<?php echo $dataJurnal['parameter']; ?>" type="text" name="deskripsi[<?php echo $x;?>]" id="deskripsi[<?php echo $x;?>] "class="form-control" placeholder="Parameter <?php echo $x+1;?>">
                           </td>
+                          <td class="text-center">Nilai</td>
                           <td>
-                            <input type="text" class="form-control" id="uom[<?php echo $x;?>]" name="uom[<?php echo $x;?>]" value="<?php echo $dataJurnal['uom']; ?>" placeholder ="Keterangan" >
+                            <input type="text" class="form-control" id="nilai[<?php echo $x;?>]" name="nilai[<?php echo $x;?>]" value="<?php echo $dataJurnal['nilai']; ?>" placeholder ="Keterangan" >
                           </td>
                           <td style="text-align: center;">
                             <a class="btn btn-danger btn-sm delete_another" onClick=" $(this).closest('tr').remove();">
@@ -290,10 +296,11 @@ session_start();
                           ?>
                         <tr class="hidden">
                           <td>
-                            <input value="<?php echo $dataJurnal['sub_kriteriainformasi']; ?>" type="text" name="deskripsi[<?php echo $i;?>]" id="deskripsi[<?php echo $i;?>] "class="form-control" placeholder="Sub Kriteria Informasi">
+                            <input value="<?php echo $dataJurnal['parameter']; ?>" type="text" name="deskripsi[<?php echo $i;?>]" id="deskripsi[<?php echo $i;?>] "class="form-control" placeholder="Parameter <?php echo $i+1;?>">
                           </td>
+                          <td class="text-center">Nilai</td>
                           <td>
-                            <input type="text" class="form-control" id="uom[<?php echo $i;?>]" name="uom[<?php echo $i;?>]" value="<?php echo $dataJurnal['uom']; ?>" placeholder ="Keterangan" >
+                            <input type="text" class="form-control" id="nilai[<?php echo $i;?>]" name="nilai[<?php echo $i;?>]" value="<?php echo $dataJurnal['nilai']; ?>" placeholder ="Keterangan" >
                           </td>
                           <td style="text-align: center;">
                             <a class="btn btn-danger btn-sm delete_another" onClick=" $(this).closest('tr').remove();">

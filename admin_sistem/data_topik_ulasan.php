@@ -38,6 +38,8 @@ session_start();
 </head>
 
 <body class="hold-transition sidebar-mini" style="max-width: 100%; overflow-x: hidden;">
+
+
   <div class="modal fade" id="modal-cancel">
     <div class="modal-dialog" style="max-width: 750px !important;">
       <div class="modal-content">
@@ -48,13 +50,15 @@ session_start();
           </button>
         </div>
         <div class="modal-body">
-          <p>Apakah anda yakin akan menolak topik ulasan ini? / Apakah anda akan menerima topik ulasan ini? </p>
+          <p>Apakah anda yakin akan menghapus topik ulasan ini? </p>
         </div>
-        <form action="SQL/vDeleteEvent.php" method="post">
+        <form action="controller/delete_data_topik.php" method="post">
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
             <button type="submit" class="btn btn-primary">Ya</button>
-            <input class="event" type="hidden" name="id_ev">
+
+            <!-- hidden input -->
+            <input class="id_topik2" type="hidden" name="id_topik2">
           </div>
         </form>
       </div>
@@ -73,11 +77,11 @@ session_start();
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="controller/conn_edit_kerusakan.php" method="post">
+        <form action="controller/edit_topik_ulasan.php" method="post">
           <div class="modal-body">
             <div class="form-group row">
                 <label for="nik" class="col-sm col-form-label">Topik Ulasan</label>
-                <div class="col-sm">
+                <div class="col-9">
                     <input type="text" class="form-control" id="nama_topik" name="nama_topik" value="">
               </div>
             </div>
@@ -87,7 +91,38 @@ session_start();
           </div>
 
           <!-- id-pendidikan -->
-          <input class="id_topikulasan1" type="hidden" id="id_topikulasan1" name="id_topikulasan1">
+          <input class="id_topik1" type="hidden" id="id_topik1" name="id_topik1">
+        </form>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+
+
+  <div class="modal fade" id="modal-add-topik-ulasan">
+    <div class="modal-dialog" style="max-width: 750px !important;">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="exampleModalLabel">Tambah topik ulasan</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="controller/add_data_topik_ulasan.php" method="post">
+          <div class="modal-body">
+            <div class="form-group row">
+                <label for="nik" class="col-sm col-form-label">Topik ulasan</label>
+                <div class="col-sm-9">
+                    <input type="text" class="form-control" id="nama_topik" name="nama_topik"
+                    value="" placeholder="Topik ulasan">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Simpan</button>
+          </div>
         </form>
       </div>
       <!-- /.modal-content -->
@@ -132,6 +167,11 @@ session_start();
 
             <div class="card-body">
               <h5 class="my-3">Data Topik Ulasan pada Knowledge Management System</h5>
+              <button class="btn btn-success btn-sm float-right my-2"  data-toggle="modal" data-target="#modal-add-topik-ulasan">
+                <i class="fas fa-plus">
+                </i>
+                Tambah
+              </button>
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
@@ -153,13 +193,13 @@ session_start();
                   <td>
                     <div class="row">
                       <button class="btn btn-warning btn-sm" style="margin-right:10px; margin-left:10px;" name="id_ev" 
-                      data-e="<?php echo $dataJurnal['id_topik']; ?>"
+                      data-e="<?php echo $result['id_topik']; ?>"
                       data-toggle="modal" data-target="#modal-edit-topik-ulasan">
                         <i class="fas fa-pencil-alt">
                         </i>
                         Edit
                       </button>
-                      <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-cancel">
+                      <button class="btn btn-danger btn-sm"  data-e="<?php echo $result['id_topik']; ?>" data-toggle="modal" data-target="#modal-cancel">
                         <i class="fas fa-trash">
                         </i>
                         Hapus
@@ -209,12 +249,11 @@ session_start();
   $('#modal-cancel').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) // Button that triggered the modal
     var recipient_e = button.data('e') // Extract info from data-* attributes
-    var recipient_v = button.data('v')
     // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
     // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
     var modal = $(this)
-    modal.find('.event').val(recipient_e)
-    modal.find('.volunteer').val(recipient_v)
+    modal.find('.id_topik2').val(recipient_e);
+
   })
 
   $('#modal-edit-topik-ulasan').on('show.bs.modal', function (event) {
@@ -223,7 +262,7 @@ session_start();
       // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
       // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
       var modal = $(this);
-      modal.find('.id_topikulasan1').val(recipient_e);
+      modal.find('.id_topik1').val(recipient_e);
   })
 
 </script>
