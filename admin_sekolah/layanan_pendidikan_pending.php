@@ -571,10 +571,17 @@ while($tmp1 = mysqli_fetch_array($result)){
                 <?php 
                 $result = mysqli_query($db2,"SELECT * FROM `detail_kriteriainformasi` where id_kriteriainformasi = 16");
                 while($tmp1 = mysqli_fetch_array($result)){
+                  $id_dk = $tmp1['id_detail_kriteriainformasi'];
+                  $id_dk2 = '';
+                  $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where id_detail_kriteriainformasi = $id_dk");
+                  while($tmp2 = mysqli_fetch_array($result2)){
+                    $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
+                    
+                  }
                 ?>
                   <div class="col-6" style="margin-bottom:20px;">
                     <div class="form-check">
-                      <input disabled class="form-check-input disabled" type="radio" name="specialist" id="radio_sp_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['id_detail_kriteriainformasi'];?>">
+                      <input disabled <?php if($tmp1['id_detail_kriteriainformasi']==$id_dk2){echo 'Checked';} ?> class="form-check-input disabled" type="radio" name="specialist" id="radio_sp_<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['id_detail_kriteriainformasi'];?>">
                       <label class="form-check-label" for="radio_sp_<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
                     </div>
                   </div>
@@ -627,6 +634,13 @@ while($tmp1 = mysqli_fetch_array($result)){
                 <?php 
                 $result = mysqli_query($db2,"SELECT * FROM `detail_kriteriainformasi` where id_kriteriainformasi = 17");
                 while($tmp1 = mysqli_fetch_array($result)){
+                  $id_dk = $tmp1['id_detail_kriteriainformasi'];
+                  $id_dk2 = '';
+                  $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where id_detail_kriteriainformasi = $id_dk");
+                  while($tmp2 = mysqli_fetch_array($result2)){
+                    $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
+                    
+                  }
                 ?>
                   <div class="col-6" style="margin-bottom:20px;">
                     <div class="form-check">
