@@ -75,7 +75,7 @@ session_start();
                 <h3><b> Berbagi Informasi </b></h3>
                 <h5>Berikut ulasan kepada layanan pendidikan dengan mengisi form berikut ini</h5>
             </div>
-            <div class="col-2 justify-content-end"> 
+            <div class="col-3 justify-content-end"> 
               <select class="form-control select2" id="ketersediaanForum" name="ketersediaanForum" style="width: 100%;" required>
                 <option selected="selected" disabled>-- Cari layanan pendidikan --</option>
                 <?php 
@@ -154,6 +154,7 @@ session_start();
                         </div> 
                         <div class="col-6">
                         <input  class="form-control" type="file" id="lampiran" name="lampiran">
+                        <label for="lampiran"><img id="blah" style="width: 200px; border: 1px solid black; margin-top: 30px; paddingL 10px;" src="img/upload.PNG" alt="your image" /></label>
                         </div> 
                     </div>
                     <div class="row mt-3">
@@ -208,7 +209,7 @@ session_start();
   }
 }
 
-$("#imgInp").change(function() {
+$("#lampiran").change(function() {
   readURL(this);
 });
 
