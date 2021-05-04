@@ -71,6 +71,8 @@ while($d_head = mysqli_fetch_array($sql)){
 </head>
 
 <body class="hold-transition sidebar-mini" style="max-width: 100%; overflow-x: hidden;">
+
+
   <div class="modal fade" id="modal-validasi">
     <div class="modal-dialog" style="max-width: 750px !important;">
       <div class="modal-content">
@@ -103,6 +105,52 @@ while($d_head = mysqli_fetch_array($sql)){
                     <input class="form-check-input" type="radio" name="status"
                       id="status3" value="Rejected">
                     <label class="form-check-label" for="status3">Rejected</label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+            <button type="submit" class="btn btn-primary"> Simpan </button>
+            <input class="event" type="hidden" name="id_ev">
+            <input type="hidden" name="npsn" id="npsn" value=<?php echo $npsn; ?>>
+          </div>
+        </form>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+  <!-- /.modal -->
+
+  <div class="modal fade" id="modal-email">
+    <div class="modal-dialog" style="max-width: 750px !important;">
+      <div class="modal-content">
+        <div class="modal-body">
+        <form action="controller/update_status_layananpendidikan.php" method="post">
+          <div class="container p-5">
+            <div class="row">
+              <div class="col-md p-2" >
+                <div class="form-group row">
+                  <label for="email" class="col-sm col-form-label font-weight-normal">Email</label>
+                  <div class="col-sm-9">
+                      <input type="text" class="form-control" id="email" name="email"
+                      value="" placeholder="Email">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="subjek" class="col-sm col-form-label font-weight-normal">Subjek</label>
+                  <div class="col-sm-9">
+                      <input type="text" class="form-control" id="subjek" name="subjek"
+                      value="" placeholder="subjek">
+                  </div>
+                </div>
+                <div class="form-group row">
+                  <label for="pesan" class="col-sm col-form-label font-weight-normal">Pesan</label>
+                  <div class="col-sm-9">
+                    <textarea id="pesan" name="pesan" class="form-control" rows="3" placeholder="Tulis pesanmu disini.."></textarea>
                   </div>
                 </div>
               </div>
