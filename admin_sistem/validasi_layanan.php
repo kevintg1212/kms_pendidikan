@@ -50,7 +50,7 @@ session_start();
         <div class="modal-body">
           <p>Apakah anda yakin akan menolak topik ulasan ini? / Apakah anda akan menerima topik ulasan ini? </p>
         </div>
-        <form action="SQL/vDeleteEvent.php" method="post">
+        <form action="" method="post">
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
             <button type="submit" class="btn btn-primary">Ya</button>
@@ -113,7 +113,8 @@ session_start();
                 <?php
                 $sql = mysqli_query($db2,"SELECT l.*, w.nama as kabupaten, p.nama as provinsi FROM layananpendidikan l 
                 join wilayah_kabupaten w on l.id_kabupaten = w.id 
-                join wilayah_provinsi p on l.id_provinsi = p.id");
+                join wilayah_provinsi p on l.id_provinsi = p.id
+                WHERE l.status_data = 'Pending' OR 'Warning' ");
                 while($result = mysqli_fetch_array($sql)){
                 ?>
                   <td><?php echo $result['npsn']; ?></td>

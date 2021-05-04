@@ -17,6 +17,12 @@ echo $email."<br>";
 $ulasan = $_POST['ulasan'];
 echo $ulasan."<br>";
 
+$tanggal = date("Y/m/d");
+echo $tanggal."<br>";
+
+$statusUlasan = "Pending";
+echo $statusUlasan."<br>";
+
 
 $target_dir = "../img/pendukung_ulasan/";
 $target_file = $target_dir . basename($_FILES["lampiran"]["name"]);
@@ -39,10 +45,20 @@ $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 	  // if everything is ok, try to upload file
 	  } else {
 		if (move_uploaded_file($_FILES["lampiran"]["tmp_name"], $target_file)) {
-		  echo "The file ". htmlspecialchars( basename( $_FILES["foto_sekolah"]["name"])). " has been uploaded.";
+		  echo "The file ". htmlspecialchars( basename( $_FILES["lampiran"]["name"])). " has been uploaded.";
 		} else {
 		  echo "Sorry, there was an error uploading your file.";
 		}
 	  }
-echo $name_image1."<br>";
+	echo $name_image1."<br>";
+
+	$stmt1 = $db2->prepare("INSERT INTO `ulasan`(`npsn`, `nama_pengirim`, `latar_belakang`, `email`, `ulasan`, `lampiran_ulasan`, `tanggal_mengirim`, `status_ulasan`) VALUES (? ,? ,? ,? ,? ,? ,? ,? )");
+	$stmt1->bind_param("ssssssss", $sekolah, $namaLengkap, $latarBelakang, $email, $ulasan, $name_image1, $tanggal, $statusUlasan);
+
+	$stmt1->execute();
+	$stmt1->close();
+
+	header("location:../berbagi_info.php")
+
+
 ?>

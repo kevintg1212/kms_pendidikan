@@ -44,8 +44,8 @@
             <!-- Main content -->
             <div class="container-fluid">
               <div class="row">
-                <div class="col-4 p-2">
-                      <img src="img/4096093.png" class="" style="width: 100%;">
+                <div class="col-4 p-2 ">
+                      <img src="img/4096093.png" class="shadow-sm rounded" style="width: 100%;">
                 </div>
 
                 <div class="card card-default col-sm-12 mt-5">

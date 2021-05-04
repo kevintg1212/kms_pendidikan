@@ -36,7 +36,7 @@ session_start();
 
 <body class="sidebar-collapse"
   style="padding-left: 50px; padding-right: 50px; padding-top: 10px; margin-bottom: 200px;">
-  <form action="controller/add_ulasan.php" method="post" enctype="multipart/form-data">
+  <form action="controller/conn_add_ulasan.php" method="post" enctype="multipart/form-data">
   <div class="modal fade" id="modal-default">
     <div class="modal-dialog">
       <div class="modal-content">
