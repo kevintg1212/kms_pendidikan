@@ -102,7 +102,7 @@ session_start();
                         <div class="col-6">
                         <select class="form-control select2" id="latarBelakang" name="latarBelakang" style="width: 100%;" required>
                           <option selected="selected" disabled>-- Pilih Latar Belakang --</option>
-                          <optio value="Orang Tua">Orang Tua</option>
+                          <option value="Orang Tua">Orang Tua</option>
                           <option value="Pengajar">Pengajar</option>
                           <option value="Tenaga Kesehatan">Tenaga Kesehatan</option>
                         </select>
