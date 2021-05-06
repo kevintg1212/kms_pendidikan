@@ -9,6 +9,7 @@ $nik =$_SESSION['nik'];
 $result = mysqli_query($db2,"SELECT * FROM layananpendidikan where nik ='$nik'");
 while($tmp1 = mysqli_fetch_array($result)){
   $npsn = $tmp1['npsn']; 
+  $nama_sekolah = $tmp1['nama_sekolah']; 
 }
 
 ?>
@@ -38,8 +39,8 @@ while($tmp1 = mysqli_fetch_array($result)){
 </head>
 
 <body class="hold-transition sidebar-mini" style="max-width: 100%; overflow-x: hidden;">
-  
-  
+
+
   <div class="modal fade" id="modal-cancel">
     <div class="modal-dialog" style="max-width: 750px !important;">
       <div class="modal-content">
@@ -111,80 +112,61 @@ while($tmp1 = mysqli_fetch_array($result)){
       <section class="content"></section>
 
       <!-- Default box -->
-      <div style="padding: 30px;">
-        <h3><b>Ulasan</b></h3><br>
-        <p>Terima Ulasan : akan ditampilkan pada website "Knowledge Management System Layanan Pendidikan untuk ABK" <br>
-          Tolak Ulasan : terhapus dan tidak ditampilkan pada website "Knowledge Management System Layanan Pendidikan
-          untuk ABK"
-        </p>
-      </div>
-
-
-      <?php 
-         $result = mysqli_query($db2,"SELECT * FROM `ulasan`
-         where npsn = $npsn and status_ulasan='Pending'");
-         while($tmp1 = mysqli_fetch_array($result)){
-           $id_ulasan = $tmp1['id_ulasan'];
-      ?>
       <div class="row">
         <div class="col-12">
           <div class="card" style="padding: 30px; margin: 30px;">
             <div class="card-header">
               <div class="row">
                 <div class="col-8">
-                  <h5><b><?php echo $tmp1['nama_pengirim'];?> - <?php echo $tmp1['latar_belakang'];?></b></h5>
-                  <p><?php echo date_format(date_create($tmp1['tanggal_mengirim']),"d F Y, H:i");?> WIB</p>
+                  <h5><b>Pengajuan Penghapusan</b></h5>
                 </div>
                 <div class="col-4 row">
-                  <button data-toggle="modal" data-target="#modal-cancel"
-                    data-e="<?php echo $id_ulasan; ?>"
-                    style="color: black; background-color: #FFF; border-color: black; height: 40px; width:100px;"
-                    class="btn btn-primary btn-sm nav-link"><b>Tolak</b></button>
-                  <button data-toggle="modal" data-target="#modal-terima"
-                    data-e="<?php echo $id_ulasan; ?>"
-                    style="color: white; background-color: #1D2948; height: 40px; width:100px; margin-left: 20px;"
-                    class="btn btn-primary btn-sm nav-link"><b>Terima</b></button>
+
                 </div>
               </div>
             </div>
             <div class="card-body">
-              <h5><b>
-              <?php 
-                  $result2 = mysqli_query($db2,"SELECT * FROM `ulasan`
-                  inner join topik_ulasan
-                  on ulasan.id_ulasan = topik_ulasan.id_ulasan
-                  inner join topik
-                  on topik_ulasan.id_topik = topik.id_topik
-                  where npsn = $npsn and status_ulasan='Pending'");
-                  $number = mysqli_num_rows($result2);
-                  $i=0;
-                  while($tmp2 = mysqli_fetch_array($result2)){
-                    $i++;
-                    if ($i<$number) {
-                      echo $tmp2['nama_topik'].", ";
-                    }else{
-                      echo $tmp2['nama_topik'].".";
-                    }
-                    
-                  }
-                ?></b></h5>
-              <p><?php echo $tmp1['ulasan'];?></p>
-              <img src="../img/pendukung_ulasan/<?php echo $tmp1['lampiran_ulasan'];?>" style="width: 200px; margin-top: 20px;">
+              <div class="row" style="margin-top:50px; margin-left:20px;">
+                <div class="col-md-4">
+                  <h5>NPSN</h5>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" disabled value="<?php echo $npsn;?>" name="nilai_nilai"
+                    class="form-control select2" style="width: 100%;">
+                </div>
+              </div>
+              <div class="row" style="margin-top:50px; margin-left:20px;">
+                <div class="col-md-4">
+                  <h5>Nama Sekolah</h5>
+                </div>
+                <div class="col-md-6">
+                  <input type="text" disabled value="<?php echo $nama_sekolah;?>" name="nilai_nilai"
+                    class="form-control select2" style="width: 100%;">
+                </div>
+              </div>
+              <div class="row" style="margin-top:50px; margin-left:20px;">
+                <div class="col-md-12">
+                  <h5>Alasan Penghapusan</h5>
+                </div>
+                <div class="col-md-12">
+                  <textarea rows="4" name="nilai_nilai" class="form-control select2" style="width: 100%;"></textarea>
+                </div>
+              </div>
+              <button disabled data-toggle="modal" data-target="#modal-terima" data-e=""
+                style="color: white; background-color: #1D2948; height: 40px; float: right; margin-top: 30px;"
+                class="btn btn-primary btn-sm nav-link"><b>Ajukan Penghapusan</b></button>
             </div>
           </div>
-
-          <?php } ?>
-
-
         </div>
       </div>
     </div>
-    <!-- /.card -->
+  </div>
+  <!-- /.card -->
 
 
 
-    </section>
-    <!-- /.content -->
+  </section>
+  <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
 

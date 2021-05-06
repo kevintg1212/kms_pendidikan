@@ -23,8 +23,6 @@ echo $tanggal."<br>";
 $statusUlasan = "Pending";
 echo $statusUlasan."<br>";
 
-$topikUlasan = $_POST['topikUlasan'];
-echo $topikUlasan."<br>";
 
 
 $target_dir = "../img/pendukung_ulasan/";
@@ -68,11 +66,16 @@ $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 	}
 	echo "test = ".$id_ulasan;
 
-	$stmt2 = $db2->prepare("INSERT INTO `topik_ulasan`(`id_ulasan`, `id_topik`) VALUES (? ,?)");
-	$stmt2->bind_param("ss", $id_ulasan, $topikUlasan);
+	$topikUlasan = $_POST['topikUlasan'];
+	foreach ($topikUlasan as $item) {
+		$stmt2 = $db2->prepare("INSERT INTO `topik_ulasan`(`id_ulasan`, `id_topik`) VALUES (? ,?)");
+		$stmt2->bind_param("ss", $id_ulasan, $item);
+	
+		$stmt2->execute();
+		$stmt2->close();
+	}
+	
 
-	$stmt2->execute();
-	$stmt2->close();
 
 	header("location:../berbagi_info.php")
 

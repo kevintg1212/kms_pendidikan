@@ -41,13 +41,13 @@ $first_part = $components[3];
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="layanan_pendidikan.php" class="nav-link <?php if ($first_part=="layanan_pendidikan.php" || $first_part=="layanan_pendidikan_edit.php") {echo "active"; } else  {echo "noactive";}?>">
+                            <a href="layanan_pendidikan.php" class="nav-link <?php if ($first_part=="layanan_pendidikan.php" || $first_part=="layanan_pendidikan_edit.php" || $first_part=="layanan_pendidikan_pending.php") {echo "active"; } else  {echo "noactive";}?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Data Layanan Pendidikan</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="penghapuan.php" class="nav-link <?php if ($first_part=="penghapusan.php") {echo "active"; } else  {echo "noactive";}?>">
+                            <a href="penghapusan.php" class="nav-link <?php if ($first_part=="penghapusan.php") {echo "active"; } else  {echo "noactive";}?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Pengajuan Penghapusan</p>
                             </a>
