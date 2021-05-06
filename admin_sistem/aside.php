@@ -59,7 +59,7 @@ $first_part = $components[3];
                     <a href="validasi_layanan.php" class="nav-link <?php if ($first_part=="validasi_layanan.php") {echo "active"; } else  {echo "noactive";}?>">
                         <i class="nav-icon fas fa-th"></i>
                         <p>
-                            Validasi Layanan Pendidikan ABK
+                            Validasi Layanan
                         </p>
                     </a>
                 </li>
