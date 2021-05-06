@@ -23,6 +23,9 @@ echo $tanggal."<br>";
 $statusUlasan = "Pending";
 echo $statusUlasan."<br>";
 
+$topikUlasan = $_POST['topikUlasan'];
+echo $topikUlasan."<br>";
+
 
 $target_dir = "../img/pendukung_ulasan/";
 $target_file = $target_dir . basename($_FILES["lampiran"]["name"]);
@@ -57,6 +60,19 @@ $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
 	$stmt1->execute();
 	$stmt1->close();
+
+	$query_vol = mysqli_query($db2,"SELECT * from ulasan ORDER BY id_ulasan DESC LIMIT 1");
+
+	while($tmp1 = mysqli_fetch_array($query_vol)){
+		$id_ulasan = $tmp1['id_ulasan'];
+	}
+	echo "test = ".$id_ulasan;
+
+	$stmt2 = $db2->prepare("INSERT INTO `topik_ulasan`(`id_ulasan`, `id_topik`) VALUES (? ,?)");
+	$stmt2->bind_param("ss", $id_ulasan, $topikUlasan);
+
+	$stmt2->execute();
+	$stmt2->close();
 
 	header("location:../berbagi_info.php")
 

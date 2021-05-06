@@ -7,7 +7,7 @@ include 'controller/conn.php';
 session_start();
  
 // cek apakah user telah login, jika belum login maka di alihkan ke halaman login
-if($_SESSION['status'] !="login"){
+if($_SESSION['status'] !="admin"){
 	header("location:../login.php");
 }
 

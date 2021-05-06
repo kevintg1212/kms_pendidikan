@@ -77,7 +77,7 @@ session_start();
             </div>
             <div class="col-3 justify-content-end"> 
               <select class="form-control select2" id="sekolah" name="sekolah" style="width: 100%;" required>
-                <option selected="selected" disabled>-- Cari layanan pendidikan --</option>
+                <option selected="selected" value="" disabled>-- Cari layanan pendidikan --</option>
                 <?php 
                 $result_head = mysqli_query($db2,"SELECT * FROM `layananpendidikan` where status_data='Accepted'");
                   while($d_head = mysqli_fetch_array($result_head)){
