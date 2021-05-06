@@ -5,11 +5,11 @@ include 'controller/conn.php';
  
 // mengaktifkan session
 session_start();
- 
-// cek apakah user telah login, jika belum login maka di alihkan ke halaman login
-// if($_SESSION['status'] !="login"){
-// 	header("location:../login.php");
-// }
+$nik =$_SESSION['nik'];
+$result = mysqli_query($db2,"SELECT * FROM layananpendidikan where nik ='$nik'");
+while($tmp1 = mysqli_fetch_array($result)){
+  $npsn = $tmp1['npsn']; 
+}
 
 ?>
 
@@ -38,7 +38,7 @@ session_start();
 </head>
 
 <body class="hold-transition sidebar-mini" style="max-width: 100%; overflow-x: hidden;">
-<div class="modal fade" id="modal-cancel">
+  <div class="modal fade" id="modal-cancel">
     <div class="modal-dialog" style="max-width: 750px !important;">
       <div class="modal-content">
         <div class="modal-header">
@@ -90,50 +90,58 @@ session_start();
         </p>
       </div>
 
+
+      <?php 
+         $result = mysqli_query($db2,"SELECT * FROM `ulasan`
+         where npsn = $npsn and status_ulasan='Pending'");
+         while($tmp1 = mysqli_fetch_array($result)){
+      ?>
       <div class="row">
         <div class="col-12">
           <div class="card" style="padding: 30px; margin: 30px;">
             <div class="card-header">
               <div class="row">
                 <div class="col-8">
-                  <h5><b>Nerissa Rosalia - Orang Tua</b></h5>
-                  <p>23 Juli 2020, 13:00 WIB</p>
+                  <h5><b><?php echo $tmp1['nama_pengirim'];?> - <?php echo $tmp1['latar_belakang'];?></b></h5>
+                  <p><?php echo date_format(date_create($tmp1['tanggal_mengirim']),"d F Y, H:i");?> WIB</p>
                 </div>
                 <div class="col-4 row">
-                  <button href="login.php" data-toggle="modal" data-target="#modal-cancel" style="color: black; background-color: #FFF; border-color: black; height: 40px; width:100px;" class="btn btn-primary btn-sm nav-link"><b>Tolak</b></button>
-                  <a href="login.php" style="color: white; background-color: #1D2948; height: 40px; width:100px; margin-left: 20px;" class="btn btn-primary btn-sm nav-link"><b>Terima</b></a>
+                  <a href="controller/conn_tolak_ulasan.php" data-toggle="modal" data-target="#modal-cancel"
+                    style="color: black; background-color: #FFF; border-color: black; height: 40px; width:100px;"
+                    class="btn btn-primary btn-sm nav-link"><b>Tolak</b></a>
+                  <a href="controller/conn_terima_ulasan.php"
+                    style="color: white; background-color: #1D2948; height: 40px; width:100px; margin-left: 20px;"
+                    class="btn btn-primary btn-sm nav-link"><b>Terima</b></a>
                 </div>
               </div>
             </div>
             <div class="card-body">
-              <h5><b>Sarana dan prasarana yang disediakan oleh sekolah sesuai dengan kebutuhan khusus anak</b></h5>
-              <p>Fasilitas khusus yang disediakan lengkap untuk mendukung proses pembelajaran anak, tetapi sayangnya beberapa di 
-                antaranya tidak terawat.</p>
-              <img src="../img/4096093.png" style="width: 200px; margin-top: 20px;">
+              <h5><b>
+              <?php 
+                  $result2 = mysqli_query($db2,"SELECT * FROM `ulasan`
+                  inner join topik_ulasan
+                  on ulasan.id_ulasan = topik_ulasan.id_ulasan
+                  inner join topik
+                  on topik_ulasan.id_topik = topik.id_topik
+                  where npsn = $npsn and status_ulasan='Pending'");
+                  $number = mysqli_num_rows($result2);
+                  $i=0;
+                  while($tmp2 = mysqli_fetch_array($result2)){
+                    $i++;
+                    if ($i<$number) {
+                      echo $tmp2['nama_topik'].", ";
+                    }else{
+                      echo $tmp2['nama_topik'].".";
+                    }
+                    
+                  }
+                ?></b></h5>
+              <p><?php echo $tmp1['ulasan'];?></p>
+              <img src="../img/pendukung_ulasan/<?php echo $tmp1['lampiran_ulasan'];?>" style="width: 200px; margin-top: 20px;">
             </div>
           </div>
 
-          <div class="card" style="padding: 30px; margin: 30px;">
-            <div class="card-header">
-              <div class="row">
-                <div class="col-8">
-                  <h5><b>Nerissa Rosalia - Orang Tua</b></h5>
-                  <p>23 Juli 2020, 13:00 WIB</p>
-                </div>
-                <div class="col-4 row">
-                  <button href="login.php" data-toggle="modal" data-target="#modal-cancel" style="color: black; background-color: #FFF; border-color: black; height: 40px; width:100px;" class="btn btn-primary btn-sm nav-link"><b>Tolak</b></button>
-                  <a href="login.php" style="color: white; background-color: #1D2948; height: 40px; width:100px; margin-left: 20px;" class="btn btn-primary btn-sm nav-link"><b>Terima</b></a>
-                </div>
-              </div>
-            </div>
-            <div class="card-body">
-              <h5><b>Sarana dan prasarana yang disediakan oleh sekolah sesuai dengan kebutuhan khusus anak</b></h5>
-              <p>Fasilitas khusus yang disediakan lengkap untuk mendukung proses pembelajaran anak, tetapi sayangnya beberapa di 
-                antaranya tidak terawat.</p>
-              <img src="../img/4096093.png" style="width: 200px; margin-top: 20px;">
-            </div>
-
-          </div>
+          <?php } ?>
 
 
         </div>
@@ -141,7 +149,7 @@ session_start();
     </div>
     <!-- /.card -->
 
-    
+
 
     </section>
     <!-- /.content -->

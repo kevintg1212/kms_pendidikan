@@ -1,7 +1,7 @@
 <?php 
 include 'conn.php';
 session_start();
- 
+date_default_timezone_set("Asia/Bangkok");
 $sekolah = $_POST['sekolah'];
 echo $sekolah."<br>";
 

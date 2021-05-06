@@ -32,7 +32,7 @@ $first_part = $components[3];
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link <?php if ($first_part=="layanan_pendidikan.php" || $first_part=="order_product_acc.php" || $first_part=="order_product_detail_acc.php" || $first_part=="mitrans.php" || $first_part=="hari_libur.php") {echo "active"; } else  {echo "noactive";}?>">
+                    <a href="#" class="nav-link <?php if ($first_part=="layanan_pendidikan.php" || $first_part=="layanan_pendidikan_edit.php" || $first_part=="penghapusan.php") {echo "active"; } else  {echo "noactive";}?>">
                         <i class="nav-icon fas fa-table"></i>
                         <p>
                             Layanan Pendidikan
@@ -41,7 +41,7 @@ $first_part = $components[3];
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="layanan_pendidikan.php" class="nav-link <?php if ($first_part=="layanan_pendidikan.php") {echo "active"; } else  {echo "noactive";}?>">
+                            <a href="layanan_pendidikan.php" class="nav-link <?php if ($first_part=="layanan_pendidikan.php" || $first_part=="layanan_pendidikan_edit.php") {echo "active"; } else  {echo "noactive";}?>">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Data Layanan Pendidikan</p>
                             </a>
