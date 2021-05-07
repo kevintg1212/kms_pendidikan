@@ -17,7 +17,7 @@ echo $email."<br>";
 $ulasan = $_POST['ulasan'];
 echo $ulasan."<br>";
 
-$tanggal = date("Y/m/d");
+$tanggal = date("Y/m/d H:i:s");
 echo $tanggal."<br>";
 
 $statusUlasan = "Pending";
