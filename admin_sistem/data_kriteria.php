@@ -188,7 +188,7 @@ session_start();
                 </thead>
                 <tbody>
                 <?php
-                $no = 0;
+                $no = 1;
                 // $sql = mysqli_query($db2,"
                 // SELECT * from (SELECT k.id_detail_kriteriainformasi, k.id_kriteriainformasi, s.sub_kriteriainformasi, k.parameter FROM detail_kriteriainformasi k 
                 // left join sub_kriteriainformasi s on k.id_kriteriainformasi = s.id_kriteriainformasi) k join kriteria_informasi i on k.id_kriteriainformasi = i.id_kriteriainformasi
@@ -201,20 +201,23 @@ session_start();
                 group by id_sub_kriteriainformasi, parameter
                 ");
                 $temp = '';
+                $temp2 = '';
                 $tempSub = '';
                 while($result = mysqli_fetch_array($sql)){
-                $no = $no + 1;
+                
                 ?>
                 <tr>
-                  <td><?php echo $no ?></td>
+                  
                   <?php if($result['kriteria_informasi'] != $temp) {
-                    echo "<td>" .$result['kriteria_informasi']. " </td>";
+                    echo "<td>". $no."</td>
+                    <td>" .$result['kriteria_informasi']. " </td>";
                     $temp = $result['kriteria_informasi'];
+                    $no = $no + 1;
                   } else {
-                    echo "<td> </td>";
+                    echo "<td> </td>
+                    <td> </td>";
                   }; ?>
-                  <!-- <td><?php echo $result['kriteria_informasi']; ?></td>
-                  <td><?php echo $result['sub_kriteriainformasi']; ?></td> -->
+
                   <?php if($result['sub_kriteriainformasi'] != $tempSub) {
                     echo "<td>" .$result['sub_kriteriainformasi']. " </td>";
                     $tempSub = $result['sub_kriteriainformasi'];
@@ -222,15 +225,17 @@ session_start();
                     echo "<td> </td>";
                   } ?>
                   <td><?php echo $result['parameter']; ?></td>
-                  <td>
-                    <div class="row">
+                  <td style="width: 20%; text-align: center;">
+                  <?php if($result['kriteria_informasi'] != $temp2) {  ?>
+
                       <a href="data_kriteria_edit.php?id_kriteriainformasi=<?php echo $result['id_kriteriainformasi']; ?>" class="btn btn-warning btn-sm" style="margin-right:10px; margin-left:10px;" name="id_ev" 
                       data-e="<?php echo $dataJurnal['id_jenjangpendidikan']; ?>">
                         <i class="fas fa-pencil-alt">
                         </i>
                         Edit
                       </a>
-                    </div>
+
+                    <?php $temp2 = $result['kriteria_informasi'];}else{} ?>
                   </td>
                 </tr>
                 <?php }; ?>
