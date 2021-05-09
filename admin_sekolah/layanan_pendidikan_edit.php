@@ -172,7 +172,7 @@ while($tmp1 = mysqli_fetch_array($result)){
                 while($tmp1 = mysqli_fetch_array($result)){
                   $id_dk = $tmp1['id_detail_kriteriainformasi'];
                   $id_dk2 = '';
-                  $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where id_detail_kriteriainformasi = $id_dk");
+                  $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where npsn=$npsn and id_detail_kriteriainformasi = $id_dk");
                   while($tmp2 = mysqli_fetch_array($result2)){
                     $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
                     
@@ -199,7 +199,7 @@ while($tmp1 = mysqli_fetch_array($result)){
                 while($tmp1 = mysqli_fetch_array($result)){
                   $id_dk = $tmp1['id_detail_kriteriainformasi'];
                   $id_dk2 = '';
-                  $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where id_detail_kriteriainformasi = $id_dk");
+                  $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where npsn=$npsn and id_detail_kriteriainformasi = $id_dk");
                   while($tmp2 = mysqli_fetch_array($result2)){
                     $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
                     
@@ -254,7 +254,7 @@ while($tmp1 = mysqli_fetch_array($result)){
                 while($tmp1 = mysqli_fetch_array($result)){
                   $id_dk = $tmp1['id_detail_kriteriainformasi'];
                   $id_dk2 = '';
-                  $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where id_detail_kriteriainformasi = $id_dk");
+                  $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where npsn=$npsn and id_detail_kriteriainformasi = $id_dk");
                   while($tmp2 = mysqli_fetch_array($result2)){
                     $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
                     
@@ -405,7 +405,7 @@ while($tmp1 = mysqli_fetch_array($result)){
                 while($tmp1 = mysqli_fetch_array($result)){
                     $id_dk = $tmp1['id_detail_kriteriainformasi'];
                     $id_dk2 = '';
-                    $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where id_detail_kriteriainformasi = $id_dk");
+                    $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where npsn=$npsn and id_detail_kriteriainformasi = $id_dk");
                     while($tmp2 = mysqli_fetch_array($result2)){
                       $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
                       
@@ -431,7 +431,7 @@ while($tmp1 = mysqli_fetch_array($result)){
                 while($tmp1 = mysqli_fetch_array($result)){
                   $id_dk = $tmp1['id_detail_kriteriainformasi'];
                   $id_dk2 = '';
-                  $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where id_detail_kriteriainformasi = $id_dk");
+                  $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where npsn=$npsn and id_detail_kriteriainformasi = $id_dk");
                   while($tmp2 = mysqli_fetch_array($result2)){
                     $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
                     
@@ -469,7 +469,7 @@ while($tmp1 = mysqli_fetch_array($result)){
                 while($tmp1 = mysqli_fetch_array($result)){
                   $id_dk = $tmp1['id_detail_kriteriainformasi'];
                   $id_dk2 = '';
-                  $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where id_detail_kriteriainformasi = $id_dk");
+                  $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where npsn=$npsn and id_detail_kriteriainformasi = $id_dk");
                   while($tmp2 = mysqli_fetch_array($result2)){
                     $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
                     
@@ -495,7 +495,7 @@ while($tmp1 = mysqli_fetch_array($result)){
                 while($tmp1 = mysqli_fetch_array($result)){
                   $id_dk = $tmp1['id_detail_kriteriainformasi'];
                   $id_dk2 = '';
-                  $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where id_detail_kriteriainformasi = $id_dk");
+                  $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where npsn=$npsn and id_detail_kriteriainformasi = $id_dk");
                   while($tmp2 = mysqli_fetch_array($result2)){
                     $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
                     
@@ -521,7 +521,7 @@ while($tmp1 = mysqli_fetch_array($result)){
                 while($tmp1 = mysqli_fetch_array($result)){
                   $id_dk = $tmp1['id_detail_kriteriainformasi'];
                   $id_dk2 = '';
-                  $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where id_detail_kriteriainformasi = $id_dk");
+                  $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where npsn=$npsn and id_detail_kriteriainformasi = $id_dk");
                   while($tmp2 = mysqli_fetch_array($result2)){
                     $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
                     
@@ -573,7 +573,7 @@ while($tmp1 = mysqli_fetch_array($result)){
                 while($tmp1 = mysqli_fetch_array($result)){
                   $id_dk = $tmp1['id_detail_kriteriainformasi'];
                   $id_dk2 = '';
-                  $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where id_detail_kriteriainformasi = $id_dk");
+                  $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where npsn=$npsn and id_detail_kriteriainformasi = $id_dk");
                   while($tmp2 = mysqli_fetch_array($result2)){
                     $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
                     
@@ -636,7 +636,7 @@ while($tmp1 = mysqli_fetch_array($result)){
                 while($tmp1 = mysqli_fetch_array($result)){
                   $id_dk = $tmp1['id_detail_kriteriainformasi'];
                   $id_dk2 = '';
-                  $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where id_detail_kriteriainformasi = $id_dk");
+                  $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where npsn=$npsn and id_detail_kriteriainformasi = $id_dk");
                   while($tmp2 = mysqli_fetch_array($result2)){
                     $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
                     
@@ -672,7 +672,7 @@ while($tmp1 = mysqli_fetch_array($result)){
                 while($tmp1 = mysqli_fetch_array($result)){
                   $id_dk = $tmp1['id_detail_kriteriainformasi'];
                   $id_dk2 = '';
-                  $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where id_detail_kriteriainformasi = $id_dk");
+                  $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where npsn=$npsn and id_detail_kriteriainformasi = $id_dk");
                   while($tmp2 = mysqli_fetch_array($result2)){
                     $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
                     
@@ -707,7 +707,7 @@ while($tmp1 = mysqli_fetch_array($result)){
                 while($tmp1 = mysqli_fetch_array($result)){
                   $id_dk = $tmp1['id_detail_kriteriainformasi'];
                   $id_dk2 = '';
-                  $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where id_detail_kriteriainformasi = $id_dk");
+                  $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where npsn=$npsn and id_detail_kriteriainformasi = $id_dk");
                   while($tmp2 = mysqli_fetch_array($result2)){
                     $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
                     
@@ -734,7 +734,7 @@ while($tmp1 = mysqli_fetch_array($result)){
                 while($tmp1 = mysqli_fetch_array($result)){
                   $id_dk = $tmp1['id_detail_kriteriainformasi'];
                   $id_dk2 = '';
-                  $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where id_detail_kriteriainformasi = $id_dk");
+                  $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where npsn=$npsn and id_detail_kriteriainformasi = $id_dk");
                   while($tmp2 = mysqli_fetch_array($result2)){
                     $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
                     
@@ -778,7 +778,7 @@ while($tmp1 = mysqli_fetch_array($result)){
                 while($tmp1 = mysqli_fetch_array($result)){
                   $id_dk = $tmp1['id_detail_kriteriainformasi'];
                   $id_dk2 = '';
-                  $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where id_detail_kriteriainformasi = $id_dk");
+                  $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where npsn=$npsn and id_detail_kriteriainformasi = $id_dk");
                   while($tmp2 = mysqli_fetch_array($result2)){
                     $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
                     
@@ -806,7 +806,7 @@ while($tmp1 = mysqli_fetch_array($result)){
                       while($temp1 = mysqli_fetch_array($result)){
                         $id_dk = $temp1['id_detail_kriteriainformasi'];
                         $id_dk2 = '';
-                        $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where id_detail_kriteriainformasi = $id_dk");
+                        $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where npsn=$npsn and id_detail_kriteriainformasi = $id_dk");
                         while($tmp2 = mysqli_fetch_array($result2)){
                           $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
                           
@@ -835,7 +835,7 @@ while($tmp1 = mysqli_fetch_array($result)){
                       while($temp1 = mysqli_fetch_array($result)){
                         $id_dk = $temp1['id_detail_kriteriainformasi'];
                         $id_dk2 = '';
-                        $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where id_detail_kriteriainformasi = $id_dk");
+                        $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where npsn=$npsn and id_detail_kriteriainformasi = $id_dk");
                         while($tmp2 = mysqli_fetch_array($result2)){
                           $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
                           
@@ -892,7 +892,7 @@ while($tmp1 = mysqli_fetch_array($result)){
                       while($temp1 = mysqli_fetch_array($result)){
                         $id_dk = $temp1['id_detail_kriteriainformasi'];
                         $id_dk2 = '';
-                        $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where id_detail_kriteriainformasi = $id_dk");
+                        $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where npsn=$npsn and id_detail_kriteriainformasi = $id_dk");
                         while($tmp2 = mysqli_fetch_array($result2)){
                           $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
                           
@@ -920,7 +920,7 @@ while($tmp1 = mysqli_fetch_array($result)){
                       while($temp1 = mysqli_fetch_array($result)){
                         $id_dk = $temp1['id_detail_kriteriainformasi'];
                         $id_dk2 = '';
-                        $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where id_detail_kriteriainformasi = $id_dk");
+                        $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where npsn=$npsn and id_detail_kriteriainformasi = $id_dk");
                         while($tmp2 = mysqli_fetch_array($result2)){
                           $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
                           
@@ -949,7 +949,7 @@ while($tmp1 = mysqli_fetch_array($result)){
                       while($temp1 = mysqli_fetch_array($result)){
                         $id_dk = $temp1['id_detail_kriteriainformasi'];
                         $id_dk2 = '';
-                        $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where id_detail_kriteriainformasi = $id_dk");
+                        $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where npsn=$npsn and id_detail_kriteriainformasi = $id_dk");
                         while($tmp2 = mysqli_fetch_array($result2)){
                           $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
                           
@@ -1003,7 +1003,7 @@ while($tmp1 = mysqli_fetch_array($result)){
                       while($temp1 = mysqli_fetch_array($result)){
                         $id_dk = $temp1['id_detail_kriteriainformasi'];
                         $id_dk2 = '';
-                        $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where id_detail_kriteriainformasi = $id_dk");
+                        $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where npsn=$npsn and id_detail_kriteriainformasi = $id_dk");
                         while($tmp2 = mysqli_fetch_array($result2)){
                           $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
                           
