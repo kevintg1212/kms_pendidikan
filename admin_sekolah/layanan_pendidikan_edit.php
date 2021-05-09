@@ -227,7 +227,7 @@ while($tmp1 = mysqli_fetch_array($result)){
                 while($tmp1 = mysqli_fetch_array($result)){
                   $id_dk = $tmp1['id_jenjangpendidikan'];
                   $id_dk2 = '';
-                  $result2 = mysqli_query($db2,"SELECT * FROM `jenjang_layananpendidikan` where id_jenjangpendidikan = $id_dk");
+                  $result2 = mysqli_query($db2,"SELECT * FROM `jenjang_layananpendidikan` where npsn=$npsn and id_jenjangpendidikan = $id_dk");
                   while($tmp2 = mysqli_fetch_array($result2)){
                     $id_dk2 = $tmp2['id_jenjangpendidikan'];
                     
@@ -370,7 +370,7 @@ while($tmp1 = mysqli_fetch_array($result)){
                       while($temp1 = mysqli_fetch_array($result)){
                         $id_dk = $temp1['id_kebutuhankhusus'];
                         $id_dk2 = '';
-                        $result2 = mysqli_query($db2,"SELECT * FROM `kebutuhankhusus_layananpendidikan` where id_kebutuhankhusus = $id_dk");
+                        $result2 = mysqli_query($db2,"SELECT * FROM `kebutuhankhusus_layananpendidikan` where npsn=$npsn and id_kebutuhankhusus = $id_dk");
                         while($tmp2 = mysqli_fetch_array($result2)){
                           $id_dk2 = $tmp2['id_kebutuhankhusus'];
                           
