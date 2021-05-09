@@ -4,11 +4,14 @@ include 'controller/conn.php';
  
 // mengaktifkan session
 session_start();
- 
-$arr_layanan = $_SESSION['arr_layanan'];
-foreach($arr_layanan as $result) {
-    //echo $result.'<br>';
+
+if (isset($_SESSION['arr_layanan'])) {
+	$arr_layanan = $_SESSION['arr_layanan'];
+	foreach($arr_layanan as $result) {
+		//echo $result.'<br>';
+	}
 }
+
 ?>
 
 <html>
@@ -43,6 +46,7 @@ foreach($arr_layanan as $result) {
   <div class="wrapper">
     <?php include "view/header.php";?>
 
+	<form class="form-horizontal" action="controller/conn_cari_sekolah_2.php" method="post">
     <!-- Content Wrapper. Contains page content -->
     <div class="" style="min-height: 100%;">
       <!-- Content Header (Page header) -->
@@ -65,7 +69,7 @@ foreach($arr_layanan as $result) {
 									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '1'");
 										while($d_head = mysqli_fetch_array($result_head)){
 									?>
-									<option><?php echo $d_head['parameter']; ?></option>
+									<option value="<?php echo $d_head['id_detail_kriteriainformasi']; ?>"><?php echo $d_head['parameter']; ?></option>
 									<?php } ?>
 									</select>
 								</div>
@@ -79,7 +83,7 @@ foreach($arr_layanan as $result) {
 									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '2'");
 										while($d_head = mysqli_fetch_array($result_head)){
 									?>
-									<option><?php echo $d_head['parameter']; ?></option>
+									<option value="<?php echo $d_head['id_detail_kriteriainformasi']; ?>"><?php echo $d_head['parameter']; ?></option>
 									<?php } ?>
 								</select>
 							</div>
@@ -93,7 +97,7 @@ foreach($arr_layanan as $result) {
 									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '3'");
 										while($d_head = mysqli_fetch_array($result_head)){
 									?>
-									<option><?php echo $d_head['parameter']; ?></option>
+									<option value="<?php echo $d_head['id_detail_kriteriainformasi']; ?>"><?php echo $d_head['parameter']; ?></option>
 									<?php } ?>
 								</select>
 							</div>
@@ -107,7 +111,7 @@ foreach($arr_layanan as $result) {
 									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '4'");
 										while($d_head = mysqli_fetch_array($result_head)){
 									?>
-									<option><?php echo $d_head['parameter']; ?></option>
+									<option value="<?php echo $d_head['id_detail_kriteriainformasi']; ?>"><?php echo $d_head['parameter']; ?></option>
 									<?php } ?>
 								</select>
 							</div>
@@ -121,90 +125,46 @@ foreach($arr_layanan as $result) {
 									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '5'");
 										while($d_head = mysqli_fetch_array($result_head)){
 									?>
-									<option><?php echo $d_head['parameter']; ?></option>
+									<option value="<?php echo $d_head['id_detail_kriteriainformasi']; ?>"><?php echo $d_head['parameter']; ?></option>
 									<?php } ?>
 								</select>
 							</div>
 						</div>
+
 						<div class="d-flex p-2 justify-content-center">
 							<div class="p-2 flex-fill " style="width:100%">Metode penyampaian materi pembelajaran</div>
-							<div class="d-flex p-2" style="width:100%">
-								<div class="d-flex flex-column " style="width:100%">
+								<div class="d-flex p-2" style="width:100%">
+									<div class="d-flex flex-column " style="width:100%">
+										<?php 
+											$result = mysqli_query($db2,"SELECT * FROM `sub_kriteriainformasi` inner join detail_kriteriainformasi
+											on sub_kriteriainformasi.id_sub_kriteriainformasi = detail_kriteriainformasi.id_sub_kriteriainformasi                      
+											where sub_kriteriainformasi.id_kriteriainformasi=6 AND nilai=1");
+											while($temp1 = mysqli_fetch_array($result)){
+										?>
 									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="communication" value="option1">
-										<label for="communication" class="custom-control-label">Communication</label>
+										<input class="form-check-input" type="checkbox" name="metode_penyampaian[]" id="metode_d_<?php echo $temp1['sub_kriteriainformasi'];?>"  value="<?php echo $temp1['id_detail_kriteriainformasi'];?>">
+                      					<label style="padding-bottom: 10px;" class="form-check-label" for="metode_d_<?php echo $temp1['sub_kriteriainformasi'];?>"><?php echo $temp1['sub_kriteriainformasi']; ?></label>                      				
 									</div>
-									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="taskAnalysis" value="option1">
-										<label for="taskAnalysis" class="custom-control-label">Task Analysis</label>
-									</div>
-									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="directInstruction" value="option1">
-										<label for="directInstruction" class="custom-control-label">Direct Instruction</label>
-									</div>
-									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="verbalPrompts" value="option1">
-										<label for="verbalPrompts" class="custom-control-label">Verbal Prompts</label>
-									</div>
-									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-										<label for="customCheckbox1" class="custom-control-label">Modelling</label>
-									</div>
-								</div>
-								<div class="d-flex flex-column " style="width:100%">
-									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-										<label for="customCheckbox1" class="custom-control-label">Gestural Prompts</label>
-									</div>
-									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-										<label for="customCheckbox1" class="custom-control-label">Physical Prompts</label>
-									</div>
-									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-										<label for="customCheckbox1" class="custom-control-label">Peer Tutorial</label>
-									</div>
-									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-										<label for="customCheckbox1" class="custom-control-label">Coorperative Learning</label>
-									</div>
+									<?php } ?>
 								</div>
 							</div>
 						</div>
+
 						<div class="d-flex p-2 justify-content-center">
 							<div class="p-2 flex-fill " style="width:100%">Metode monitoring dan evaluasi perkembangan anak</div>
 							<div class="d-flex p-2" style="width:100%">
 								<div class="d-flex flex-column " style="width:100%">
+										<?php 
+											$result = mysqli_query($db2,"SELECT * FROM `sub_kriteriainformasi` inner join detail_kriteriainformasi
+											on sub_kriteriainformasi.id_sub_kriteriainformasi = detail_kriteriainformasi.id_sub_kriteriainformasi                      
+											where sub_kriteriainformasi.id_kriteriainformasi=7 AND nilai=1");
+											while($temp1 = mysqli_fetch_array($result)){
+										?>
 									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-										<label for="customCheckbox1" class="custom-control-label">Penilaian Kerja</label>
+										<input class="form-check-input" type="checkbox" name="monitoring[]" id="metode_m_<?php echo $temp1['sub_kriteriainformasi'];?>"  value="<?php echo $temp1['id_detail_kriteriainformasi'];?>">
+                      					<label style="padding-bottom: 10px;" class="form-check-label" for="metode_m_<?php echo $temp1['sub_kriteriainformasi'];?>"><?php echo $temp1['sub_kriteriainformasi']; ?></label>                      				
 									</div>
-									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-										<label for="customCheckbox1" class="custom-control-label">Penilaian Sikap</label>
-									</div>
-									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-										<label for="customCheckbox1" class="custom-control-label">Penilaian Tertulis</label>
-									</div>
-									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-										<label for="customCheckbox1" class="custom-control-label">Penilaian Proyek</label>
-									</div>
-									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-										<label for="customCheckbox1" class="custom-control-label">Penilaian Produk</label>
-									</div>
-								</div>
-								<div class="d-flex flex-column " style="width:100%">
-									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-										<label for="customCheckbox1" class="custom-control-label">Penilaian Portofolio</label>
-									</div>
-									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-										<label for="customCheckbox1" class="custom-control-label">Penilaian Diri</label>
-									</div>
+									<?php } ?>
 								</div>
 							</div>
 						</div>
@@ -212,67 +172,36 @@ foreach($arr_layanan as $result) {
 							<div class="p-2 flex-fill " style="width:100%">Kegiatan sekolah yang dapat diikuti AKB</div>
 							<div class="d-flex p-2" style="width:100%">
 								<div class="d-flex flex-column " style="width:100%">
+									<?php 
+											$result = mysqli_query($db2,"SELECT * FROM `sub_kriteriainformasi` inner join detail_kriteriainformasi
+											on sub_kriteriainformasi.id_sub_kriteriainformasi = detail_kriteriainformasi.id_sub_kriteriainformasi                      
+											where sub_kriteriainformasi.id_kriteriainformasi=8 AND nilai=1");
+											while($temp1 = mysqli_fetch_array($result)){
+									?>
 									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-										<label for="customCheckbox1" class="custom-control-label">Ekstrakulikuler</label>
+										<input class="form-check-input" type="checkbox" name="kegiatan_sekolah[]" id="metode_s_<?php echo $temp1['sub_kriteriainformasi'];?>"  value="<?php echo $temp1['id_detail_kriteriainformasi'];?>">
+                      					<label style="padding-bottom: 10px;" class="form-check-label" for="metode_s_<?php echo $temp1['sub_kriteriainformasi'];?>"><?php echo $temp1['sub_kriteriainformasi']; ?></label>                      				
 									</div>
-									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-										<label for="customCheckbox1" class="custom-control-label">Studywisata</label>
-									</div>
-									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-										<label for="customCheckbox1" class="custom-control-label">Tamasya</label>
-									</div>
+									<?php } ?>									
 								</div>
 							</div>
 						</div>
 						<div class="d-flex p-2 justify-content-center">
-							<div class="p-2 flex-fill " style="width:100%">Sarana & prasana umum yang disediakan sekolah</div>
+							<div class="p-2 flex-fill " style="width:100%">Sarana & prasarana umum yang disediakan sekolah</div>
 							<div class="d-flex p-2" style="width:100%">
 								<div class="d-flex flex-column " style="width:100%">
+								<?php 
+											$result = mysqli_query($db2,"SELECT * FROM `sub_kriteriainformasi` inner join detail_kriteriainformasi
+											on sub_kriteriainformasi.id_sub_kriteriainformasi = detail_kriteriainformasi.id_sub_kriteriainformasi                      
+											where sub_kriteriainformasi.id_kriteriainformasi=9 AND nilai=1");
+											while($temp1 = mysqli_fetch_array($result)){
+									?>
 									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-										<label for="customCheckbox1" class="custom-control-label">Ruang Kelas</label>
+										<input class="form-check-input" type="checkbox" name="sarana_prasarana[]" id="metode_sp_<?php echo $temp1['sub_kriteriainformasi'];?>"  value="<?php echo $temp1['id_detail_kriteriainformasi'];?>">
+                      					<label style="padding-bottom: 10px;" class="form-check-label" for="metode_sp_<?php echo $temp1['sub_kriteriainformasi'];?>"><?php echo $temp1['sub_kriteriainformasi']; ?></label>                      				
 									</div>
-									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-										<label for="customCheckbox1" class="custom-control-label">Ruang Praktikum</label>
-									</div>
-									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-										<label for="customCheckbox1" class="custom-control-label">Ruang Perpustakaan</label>
-									</div>
-									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-										<label for="customCheckbox1" class="custom-control-label">Ruang Serbaguna</label>
-									</div>
-									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-										<label for="customCheckbox1" class="custom-control-label">Ruang BP/BK</label>
-									</div>
-								</div>
-								<div class="d-flex flex-column " style="width:100%">
-									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-										<label for="customCheckbox1" class="custom-control-label">Ruang UKS</label>
-									</div>
-									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-										<label for="customCheckbox1" class="custom-control-label">Lapangan Olahraga</label>
-									</div>
-									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-										<label for="customCheckbox1" class="custom-control-label">Ruang Ibadah</label>
-									</div>
-									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-										<label for="customCheckbox1" class="custom-control-label">Toilet</label>
-									</div>
-									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-										<label for="customCheckbox1" class="custom-control-label">Kantin</label>
-									</div>
+									<?php } ?>
+									
 								</div>
 							</div>
 						</div>
@@ -280,32 +209,17 @@ foreach($arr_layanan as $result) {
 							<div class="p-2 flex-fill " style="width:100%">Sarana & prasarana khusus yang disediakan sekolah</div>
 							<div class="d-flex p-2" style="width:100%">
 								<div class="d-flex flex-column " style="width:100%">
+								<?php 
+											$result = mysqli_query($db2,"SELECT * FROM `sub_kriteriainformasi` inner join detail_kriteriainformasi
+											on sub_kriteriainformasi.id_sub_kriteriainformasi = detail_kriteriainformasi.id_sub_kriteriainformasi                      
+											where sub_kriteriainformasi.id_kriteriainformasi=10 AND nilai=1");
+											while($temp1 = mysqli_fetch_array($result)){
+									?>
 									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-										<label for="customCheckbox1" class="custom-control-label">Alat Asesmen</label>
+										<input class="form-check-input" type="checkbox" name="sarana_khusus[]" id="metode_spk_<?php echo $temp1['sub_kriteriainformasi'];?>"  value="<?php echo $temp1['id_detail_kriteriainformasi'];?>">
+                      					<label style="padding-bottom: 10px;" class="form-check-label" for="metode_spk_<?php echo $temp1['sub_kriteriainformasi'];?>"><?php echo $temp1['sub_kriteriainformasi']; ?></label>                      				
 									</div>
-									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-										<label for="customCheckbox1" class="custom-control-label">Alat Bantu Belajar</label>
-									</div>
-									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-										<label for="customCheckbox1" class="custom-control-label">Alat Terapi</label>
-									</div>
-									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-										<label for="customCheckbox1" class="custom-control-label">Ruang Kegiatan Asesmen</label>
-									</div>
-									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-										<label for="customCheckbox1" class="custom-control-label">Ruang Remedial Teaching</label>
-									</div>
-								</div>
-								<div class="d-flex flex-column " style="width:100%">
-									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-										<label for="customCheckbox1" class="custom-control-label">Ruang Keterampilan</label>
-									</div>
+									<?php } ?>									
 								</div>
 							</div>
 						</div>
@@ -313,18 +227,17 @@ foreach($arr_layanan as $result) {
 							<div class="p-2 flex-fill " style="width:100%">Teknologi yang disediakan sekolah</div>
 							<div class="d-flex p-2" style="width:100%">
 								<div class="d-flex flex-column " style="width:100%">
+								<?php 
+											$result = mysqli_query($db2,"SELECT * FROM `sub_kriteriainformasi` inner join detail_kriteriainformasi
+											on sub_kriteriainformasi.id_sub_kriteriainformasi = detail_kriteriainformasi.id_sub_kriteriainformasi                      
+											where sub_kriteriainformasi.id_kriteriainformasi=11 AND nilai=1");
+											while($temp1 = mysqli_fetch_array($result)){
+									?>
 									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-										<label for="customCheckbox1" class="custom-control-label">Komputer untuk pemberlajaran siswa</label>
+										<input class="form-check-input" type="checkbox" name="teknologi[]" id="metode_tn_<?php echo $temp1['sub_kriteriainformasi'];?>"  value="<?php echo $temp1['id_detail_kriteriainformasi'];?>">
+                      					<label style="padding-bottom: 10px;" class="form-check-label" for="metode_tn_<?php echo $temp1['sub_kriteriainformasi'];?>"><?php echo $temp1['sub_kriteriainformasi']; ?></label>                      				
 									</div>
-									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-										<label for="customCheckbox1" class="custom-control-label">Projector</label>
-									</div>
-									<div class="custom-control custom-checkbox"> 
-										<input class="custom-control-input" type="checkbox" id="customCheckbox1" value="option1">
-										<label for="customCheckbox1" class="custom-control-label">Internet</label>
-									</div>
+									<?php } ?>
 								</div>
 							</div>
 						</div>
@@ -337,7 +250,7 @@ foreach($arr_layanan as $result) {
 									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '12'");
 										while($d_head = mysqli_fetch_array($result_head)){
 									?>
-									<option><?php echo $d_head['parameter']; ?></option>
+									<option value="<?php echo $d_head['id_detail_kriteriainformasi']; ?>"><?php echo $d_head['parameter']; ?></option>
 									<?php } ?>
 								</select>
 							</div>
@@ -351,7 +264,7 @@ foreach($arr_layanan as $result) {
 									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '13'");
 										while($d_head = mysqli_fetch_array($result_head)){
 									?>
-									<option><?php echo $d_head['parameter']; ?></option>
+									<option value="<?php echo $d_head['id_detail_kriteriainformasi']; ?>"><?php echo $d_head['parameter']; ?></option>
 									<?php } ?>
 								</select>
 							</div>
@@ -365,7 +278,7 @@ foreach($arr_layanan as $result) {
 									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '14'");
 										while($d_head = mysqli_fetch_array($result_head)){
 									?>
-									<option><?php echo $d_head['parameter']; ?></option>
+									<option value="<?php echo $d_head['id_detail_kriteriainformasi']; ?>"><?php echo $d_head['parameter']; ?></option>
 									<?php } ?>
 								</select>
 							</div>
@@ -379,7 +292,7 @@ foreach($arr_layanan as $result) {
 									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '15'");
 										while($d_head = mysqli_fetch_array($result_head)){
 									?>
-									<option><?php echo $d_head['parameter']; ?></option>
+									<option value="<?php echo $d_head['id_detail_kriteriainformasi']; ?>"><?php echo $d_head['parameter']; ?></option>
 									<?php } ?>
 								</select>
 							</div>
@@ -393,7 +306,7 @@ foreach($arr_layanan as $result) {
 									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '16'");
 										while($d_head = mysqli_fetch_array($result_head)){
 									?>
-									<option><?php echo $d_head['parameter']; ?></option>
+									<option value="<?php echo $d_head['id_detail_kriteriainformasi']; ?>"><?php echo $d_head['parameter']; ?></option>
 									<?php } ?>
 								</select>
 							</div>
@@ -407,7 +320,7 @@ foreach($arr_layanan as $result) {
 									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '17'");
 										while($d_head = mysqli_fetch_array($result_head)){
 									?>
-									<option><?php echo $d_head['parameter']; ?></option>
+									<option value="<?php echo $d_head['id_detail_kriteriainformasi']; ?>"><?php echo $d_head['parameter']; ?></option>
 									<?php } ?>
 								</select>
 							</div>
@@ -421,7 +334,7 @@ foreach($arr_layanan as $result) {
 									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '18'");
 										while($d_head = mysqli_fetch_array($result_head)){
 									?>
-									<option><?php echo $d_head['parameter']; ?></option>
+									<option value="<?php echo $d_head['id_detail_kriteriainformasi']; ?>"><?php echo $d_head['parameter']; ?></option>
 									<?php } ?>
 								</select>
 							</div>
@@ -435,7 +348,7 @@ foreach($arr_layanan as $result) {
 									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '19'");
 										while($d_head = mysqli_fetch_array($result_head)){
 									?>
-									<option><?php echo $d_head['parameter']; ?></option>
+									<option value="<?php echo $d_head['id_detail_kriteriainformasi']; ?>"><?php echo $d_head['parameter']; ?></option>
 									<?php } ?>
 								</select>
 							</div>
@@ -449,13 +362,13 @@ foreach($arr_layanan as $result) {
 									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '20'");
 										while($d_head = mysqli_fetch_array($result_head)){
 									?>
-									<option><?php echo $d_head['parameter']; ?></option>
+									<option value="<?php echo $d_head['id_detail_kriteriainformasi']; ?>"><?php echo $d_head['parameter']; ?></option>
 									<?php } ?>
 								</select>
 							</div>
 						</div>
 						<div class="d-flex p-2 justify-content-center">
-							<a href="/kms_pendidikan/cari_sekolah_2.php" style="margin-top: 20px; color: white; width: 150px; background-color: #05319D;" class="btn btn-primary btn-sm">Selanjutnya ></a>
+							<button type="submit" style="margin-top: 20px; color: white; width: 150px; background-color: #05319D;" class="btn btn-primary btn-sm">Selanjutnya ></button>
 						</div>
 					</div>	
 				</div>
@@ -463,7 +376,7 @@ foreach($arr_layanan as $result) {
       </section>
       <!-- /.content -->
     </div>
-
+	</form>
 
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">

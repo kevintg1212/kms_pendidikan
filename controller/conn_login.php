@@ -3,7 +3,7 @@ include 'conn.php';
  
 $email = $_POST['email'];
 $password = $_POST['password'];
- 
+$_SESSION['nik']="";
 $login = mysqli_query($db2,"select * from admin_layananpendidikan where email='$email' and password='$password'");
 $cek = mysqli_num_rows($login);
 
