@@ -15,23 +15,29 @@ session_start();
 
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>KMS Layanan Pendidikan</title>
-  <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" href="dist/img/favicon.png">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
-  <!-- Ionicons -->
-  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="dist/css/adminlte.min.css">
-  <!-- SweetAlert2 -->
-  <link rel="stylesheet" href="../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
-  <!-- Toastr -->
-  <link rel="stylesheet" href="../plugins/toastr/toastr.min.css">
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+<!-- Ionicons -->
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+<!-- daterange picker -->
+<link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+<!-- iCheck for checkboxes and radio inputs -->
+<link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+<!-- Bootstrap Color Picker -->
+<link rel="stylesheet" href="plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
+<!-- Tempusdominus Bbootstrap 4 -->
+<link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+<!-- Select2 -->
+<link rel="stylesheet" href="plugins/select2/css/select2.min.css">
+<link rel="stylesheet" href="plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+<!-- Bootstrap4 Duallistbox -->
+<link rel="stylesheet" href="plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="dist/css/adminlte.min.css">
+<!-- Google Font: Source Sans Pro -->
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
 </head>
 
 <body class="sidebar-collapse"
@@ -80,10 +86,10 @@ session_start();
                     <select class="form-control select2" id="lokasiSekolah" name="lokasiSekolah" style="width: 100%;" required>
                       <option selected="selected" disabled>-- Pilih Lokasi Sekolah --</option>
                       <?php 
-                      $result_head = mysqli_query($db2,"select * from `wilayah_kabupaten`");
+                      $result_head = mysqli_query($db2,"select * from `wilayah_kabupaten` ORDER by nama");
                         while($d_head = mysqli_fetch_array($result_head)){
                       ?>
-                      <option><?php echo $d_head['nama']; ?></option>
+                      <option value="<?php echo $d_head['id']; ?>"><?php echo $d_head['nama']; ?></option>
                       <?php } ?>
                     </select>
                   </div>
@@ -100,7 +106,7 @@ session_start();
                       $result_head = mysqli_query($db2,"select * from `kebutuhan_khusus`");
                         while($d_head = mysqli_fetch_array($result_head)){
                       ?>
-                      <option><?php echo $d_head['kebutuhan_khusus']; ?></option>
+                      <option value="<?php echo $d_head['id_kebutuhankhusus']; ?>"><?php echo $d_head['kebutuhan_khusus']; ?></option>
                       <?php } ?>
                     </select>
                   </div>
@@ -117,7 +123,7 @@ session_start();
                       $result_head = mysqli_query($db2,"select * from `jenjang_pendidikan`");
                         while($d_head = mysqli_fetch_array($result_head)){
                       ?>
-                      <option><?php echo $d_head['jenjang_pendidikan']; ?></option>
+                      <option value="<?php echo $d_head['id_jenjangpendidikan']; ?>"><?php echo $d_head['jenjang_pendidikan']; ?></option>
                       <?php } ?>
                     </select>
                   </div>
@@ -128,13 +134,13 @@ session_start();
                     <label>Biaya Sekolah</label>
                   </div>
                   <div class="col-md-2">
-                    <input type="number" id="biayaMinimum" name="biayaMinimum" class="form-control select2" style="width: 100%;" placeholder="Biaya Minimum">
+                    <input type="number" id="biayaMinimum" name="biayaMinimum" class="form-control" style="width: 100%;" placeholder="Biaya Minimum">
                   </div>
                   <div class="col-md-1" style="text-align: center;">
                     <label> - </label>
                   </div>
                   <div class="col-md-2">
-                    <input type="number" id="biayaMaximum" name="biayaMaximum" class="form-control select2" style="width: 100%;" placeholder="Biaya Maximum">
+                    <input type="number" id="biayaMaximum" name="biayaMaximum" class="form-control" style="width: 100%;" placeholder="Biaya Maximum">
                   </div>
                 </div>
 
@@ -143,13 +149,13 @@ session_start();
                     <label>Jumlah murid dalam satu kelas</label>
                   </div>
                   <div class="col-md-2">
-                    <input type="number" id="jmlMinimum" name="jmlMinimum" class="form-control select2" style="width: 100%;" placeholder="Jumlah Minimum">
+                    <input type="number" id="jmlMinimum" name="jmlMinimum" class="form-control" style="width: 100%;" placeholder="Jumlah Minimum">
                   </div>
                   <div class="col-md-1" style="text-align: center;">
                     <label> - </label>
                   </div>
                   <div class="col-md-2">
-                    <input type="number" id="jmlMaximum" name="jmlMaximum" class="form-control select2" style="width: 100%;" placeholder="Jumlah Maximum">
+                    <input type="number" id="jmlMaximum" name="jmlMaximum" class="form-control" style="width: 100%;" placeholder="Jumlah Maximum">
                   </div>
                 </div>
 
@@ -158,7 +164,7 @@ session_start();
                     <label>Pengalaman sekolah dalam menangani ABK</label>
                   </div>
                   <div class="col-md-2">
-                    <input type="number" id="tahun_sekolah" name="tahun_sekolah" class="form-control select2" style="width: 100%;" >
+                    <input type="number" id="tahun_sekolah" name="tahun_sekolah" class="form-control" style="width: 100%;" >
                   </div>
                   <div class="col-md-1" style="text-align: center;">
                     <p> Tahun </p>
@@ -170,7 +176,7 @@ session_start();
                     <label>Pengalaman pengajar dalam menangani ABK</label>
                   </div>
                   <div class="col-md-2">
-                    <input type="number" id="tahun_pengajar" name="tahun_pengajar" class="form-control select2" style="width: 100%;" >
+                    <input type="number" id="tahun_pengajar" name="tahun_pengajar" class="form-control" style="width: 100%;" >
                   </div>
                   <div class="col-md-1" style="text-align: center;">
                     <p> Tahun </p>
@@ -178,7 +184,7 @@ session_start();
                 </div>
 
                 <div class="row justify-content-center" style="text-align: center; padding-top: 50px;">
-									<button type="button" class="btn btn-primary btn-sm" href="/kms_pendidikan/cari_sekolah_2.php" style="margin-top: 20px; color: white; width: 150px; background-color: #05319D;" data-toggle="modal" data-target="#modal-default">
+									<button type="submit" class="btn btn-primary btn-sm" style="margin-top: 20px; color: white; width: 150px; background-color: #05319D;">
 										Selanjutnya
 									</button>
                 </div>
@@ -203,21 +209,98 @@ session_start();
   <!-- ./wrapper -->
 
 
-  <!-- jQuery -->
-  <script src="plugins/jquery/jquery.min.js"></script>
-  <!-- Bootstrap 4 -->
-  <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- AdminLTE App -->
-  <script src="dist/js/adminlte.min.js"></script>
-  <script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
-  <!-- AdminLTE for demo purposes -->
-  <script src="dist/js/demo.js"></script>
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Select2 -->
+<script src="plugins/select2/js/select2.full.min.js"></script>
+<!-- Bootstrap4 Duallistbox -->
+<script src="plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+<!-- InputMask -->
+<script src="plugins/moment/moment.min.js"></script>
+<script src="plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+<!-- date-range-picker -->
+<script src="plugins/daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap color picker -->
+<script src="plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Bootstrap Switch -->
+<script src="plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
   <script>
+  $(function () {
+    //Initialize Select2 Elements
+    $('.select2').select2()
 
+    //Initialize Select2 Elements
+    $('.select2bs4').select2({
+      theme: 'bootstrap4'
+    })
 
+    //Datemask dd/mm/yyyy
+    $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+    //Datemask2 mm/dd/yyyy
+    $('#datemask2').inputmask('mm/dd/yyyy', { 'placeholder': 'mm/dd/yyyy' })
+    //Money Euro
+    $('[data-mask]').inputmask()
 
-  </script>
+    //Date range picker
+    $('#reservation').daterangepicker()
+    //Date range picker with time picker
+    $('#reservationtime').daterangepicker({
+      timePicker: true,
+      timePickerIncrement: 30,
+      locale: {
+        format: 'MM/DD/YYYY hh:mm A'
+      }
+    })
+    //Date range as a button
+    $('#daterange-btn').daterangepicker(
+      {
+        ranges   : {
+          'Today'       : [moment(), moment()],
+          'Yesterday'   : [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+          'Last 7 Days' : [moment().subtract(6, 'days'), moment()],
+          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+          'This Month'  : [moment().startOf('month'), moment().endOf('month')],
+          'Last Month'  : [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        },
+        startDate: moment().subtract(29, 'days'),
+        endDate  : moment()
+      },
+      function (start, end) {
+        $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'))
+      }
+    )
 
+    //Timepicker
+    $('#timepicker').datetimepicker({
+      format: 'LT'
+    })
+    
+    //Bootstrap Duallistbox
+    $('.duallistbox').bootstrapDualListbox()
+
+    //Colorpicker
+    $('.my-colorpicker1').colorpicker()
+    //color picker with addon
+    $('.my-colorpicker2').colorpicker()
+
+    $('.my-colorpicker2').on('colorpickerChange', function(event) {
+      $('.my-colorpicker2 .fa-square').css('color', event.color.toString());
+    });
+
+    $("input[data-bootstrap-switch]").each(function(){
+      $(this).bootstrapSwitch('state', $(this).prop('checked'));
+    });
+
+  })
+</script>
 </body>
 
 </html>
