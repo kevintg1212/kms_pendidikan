@@ -233,6 +233,17 @@ session_start();
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
   <script>
+
+        <?php 
+            if(isset($_SESSION['cari']) && $_SESSION['cari']!= "") {
+        ?>
+            $('#modal-default').modal({
+                    show: true
+            });
+        <?php }
+        $_SESSION['cari']="";
+        ?>
+
   $(function () {
     //Initialize Select2 Elements
     $('.select2').select2()

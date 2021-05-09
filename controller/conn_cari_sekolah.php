@@ -52,17 +52,25 @@ echo $kebutuhanKhusus."<br>";
 $jenjangPendidikan = $_POST['jenjangPendidikan'];
 echo $jenjangPendidikan."<br>";
 
-
+$arr_layanan[]="";
 
 $result_head = mysqli_query($db2,"SELECT * from `layananpendidikan` where id_kabupaten=$lokasiSekolah $sql_biaya
 $sql_jmlh $sql_thn_sklh $sql_thn_peng ");
 while($d_head = mysqli_fetch_array($result_head)){
 	echo $d_head['nama_sekolah']."<br>";
+	array_push($arr_layanan,$d_head['npsn']);
 }
+$_SESSION['arr_layanan']=$arr_layanan;
 $rowcount=mysqli_num_rows($result_head);
 echo $rowcount;
 
-//header("location:../cari_sekolah.php")
+if ($rowcount>=1) {
+	header("location:../cari_sekolah_2.php");
+}else{
+	$_SESSION['cari']="xx";
+	header("location:../cari_sekolah.php");
+}
+
 
 
 ?>

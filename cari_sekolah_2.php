@@ -5,8 +5,10 @@ include 'controller/conn.php';
 // mengaktifkan session
 session_start();
  
-
-
+$arr_layanan = $_SESSION['arr_layanan'];
+foreach($arr_layanan as $result) {
+    //echo $result.'<br>';
+}
 ?>
 
 <html>
