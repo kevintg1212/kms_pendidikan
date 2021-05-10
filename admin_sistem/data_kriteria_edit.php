@@ -154,6 +154,8 @@ while($d_head = mysqli_fetch_array($sql)){
     <!-- /.navbar -->
 
     <?php include "aside.php" ?>
+    <form class="form-horizontal" action="controller/edit_data_kriteria.php" method="post">
+    <input type="hidden" class="form-control" name="idAwal" value="<?php echo $id_kriteriainformasi;?>">
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
@@ -216,7 +218,7 @@ while($d_head = mysqli_fetch_array($sql)){
                         ?>
                         <tr class=''>
                           <td>
-                            <input value="<?php echo $dataJurnal['sub_kriteriainformasi']; ?>" type="text" name="deskripsi[<?php echo $x;?>]" id="deskripsi[<?php echo $x;?>] "class="form-control" placeholder="Sub Kriteria Informasi">
+                            <input value="<?php echo $dataJurnal['sub_kriteriainformasi']; ?>" type="text" name="subKriteria[<?php echo $x;?>]" id="subKriteria[<?php echo $x;?>] "class="form-control" placeholder="Sub Kriteria Informasi">
                           </td>
                           <td>
                             <input type="text" class="form-control" id="keterangan[<?php echo $x;?>]" name="keterangan[<?php echo $x;?>]" value="<?php echo $dataJurnal['keterangan']; ?>" placeholder ="Keterangan" >
@@ -234,7 +236,7 @@ while($d_head = mysqli_fetch_array($sql)){
                           ?>
                         <tr class="hidden">
                           <td>
-                            <input value="<?php echo $dataJurnal['sub_kriteriainformasi']; ?>" type="text" name="deskripsi[<?php echo $i;?>]" id="deskripsi[<?php echo $i;?>] "class="form-control" placeholder="Sub Kriteria Informasi">
+                            <input value="<?php echo $dataJurnal['sub_kriteriainformasi']; ?>" type="text" name="subKriteria[<?php echo $i;?>]" id="subKriteria[<?php echo $i;?>] "class="form-control" placeholder="Sub Kriteria Informasi">
                           </td>
                           <td>
                             <input type="text" class="form-control" id="keterangan[<?php echo $i;?>]" name="keterangan[<?php echo $i;?>]" value="<?php echo $dataJurnal['keterangan']; ?>" placeholder ="Keterangan" >
@@ -280,7 +282,7 @@ while($d_head = mysqli_fetch_array($sql)){
                         ?>
                         <tr class=''>
                           <td>
-                            <input value="<?php echo $dataJurnal['parameter']; ?>" type="text" name="deskripsi[<?php echo $x;?>]" id="deskripsi[<?php echo $x;?>] "class="form-control" placeholder="Parameter <?php echo $x+1;?>">
+                            <input value="<?php echo $dataJurnal['parameter']; ?>" type="text" name="parameter[<?php echo $x;?>]" id="parameter[<?php echo $x;?>] "class="form-control" placeholder="Parameter <?php echo $x+1;?>">
                           </td>
                           <td class="text-center">Nilai</td>
                           <td>
@@ -299,7 +301,7 @@ while($d_head = mysqli_fetch_array($sql)){
                           ?>
                         <tr class="hidden">
                           <td>
-                            <input value="<?php echo $dataJurnal['parameter']; ?>" type="text" name="deskripsi[<?php echo $i;?>]" id="deskripsi[<?php echo $i;?>] "class="form-control" placeholder="Parameter <?php echo $i+1;?>">
+                            <input value="<?php echo $dataJurnal['parameter']; ?>" type="text" name="parameter[<?php echo $i;?>]" id="parameter[<?php echo $i;?>] "class="form-control" placeholder="Parameter <?php echo $i+1;?>">
                           </td>
                           <td class="text-center">Nilai</td>
                           <td>
@@ -322,14 +324,11 @@ while($d_head = mysqli_fetch_array($sql)){
                   </div>
                 </div>
               </div>
-
-            </div>
-
-            
+              <button type="submit" class="btn btn-sm float-right" id="btnAddCol" style="color: white; background-color: #05319D;"> Simpan</b>
+            </div>  
           </div>
         </div>
       </div>
-
     </div>
     <!-- /.card -->
 
@@ -339,6 +338,7 @@ while($d_head = mysqli_fetch_array($sql)){
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+  </form>
 
 
   <!-- Control Sidebar -->

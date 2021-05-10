@@ -21,6 +21,7 @@ if($email=='admin@gmail.com' && $password=='12345'){
 	session_start();
 	$_SESSION['username'] = $username;
 	$_SESSION['xx'] = 0;
+	$_SESSION['nik'] = $row;
 	$_SESSION['status'] = "admin";
 	header("location:../admin_sistem/index.php");
 }else{

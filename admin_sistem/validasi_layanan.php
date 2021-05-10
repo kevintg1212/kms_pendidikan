@@ -114,7 +114,7 @@ session_start();
                 $sql = mysqli_query($db2,"SELECT l.*, w.nama as kabupaten, p.nama as provinsi FROM layananpendidikan l 
                 join wilayah_kabupaten w on l.id_kabupaten = w.id 
                 join wilayah_provinsi p on l.id_provinsi = p.id
-                WHERE l.status_data = 'Pending' OR 'Warning' ");
+                WHERE l.status_data = 'Warning' OR l.status_data = 'Pending'");
                 while($result = mysqli_fetch_array($sql)){
                 ?>
                   <td><?php echo $result['npsn']; ?></td>

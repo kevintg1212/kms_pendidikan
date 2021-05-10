@@ -224,7 +224,7 @@ while($d_head = mysqli_fetch_array($sql)){
                   Foto Sekolah
                 </div>
                 <div class="col-8 my-2">
-                  <img src="../img/4096093.png" class="shadow-sm" style="width: 50%;">
+                  <img src="../img/<?php echo $foto_sekolah; ?>" class="shadow-sm" style="width: 50%;">
                 </div>
               </div>
 
@@ -1007,13 +1007,8 @@ while($d_head = mysqli_fetch_array($sql)){
                   </button>
                 </div>
               </div>
-
-
-
-
             </div>
 
-            
           </div>
         </div>
       </div>
@@ -1057,6 +1052,17 @@ while($d_head = mysqli_fetch_array($sql)){
   //   modal.find('.event').val(recipient_e)
   //   modal.find('.volunteer').val(recipient_v)
   // })
+
+  <?php 
+    if(isset($_SESSION['option']) && $_SESSION['option']!= "") {
+  ?>
+    $('#modal-email').modal({
+      show: true
+    });
+  <?php }
+  $_SESSION['option']="";
+  ?>
+
 
   $('#modal-edit-topik-ulasan').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget); // Button that triggered the modal

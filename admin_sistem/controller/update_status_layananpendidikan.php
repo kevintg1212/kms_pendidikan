@@ -13,7 +13,13 @@ session_start();
     $stmt1->execute();
     $stmt1->close();
     
+    if($status == 'Warning') {
+        $_SESSION['option']="warning";
+        header("location:../lihat_detail.php?npsn=$npsn");
 
-    header("location:../validasi_layanan.php");
+    } else {
+        header("location:../validasi_layanan.php");
+    }
+
 
 ?>
