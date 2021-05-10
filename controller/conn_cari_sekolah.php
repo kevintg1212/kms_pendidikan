@@ -52,7 +52,7 @@ echo $kebutuhanKhusus."<br>";
 $jenjangPendidikan = $_POST['jenjangPendidikan'];
 echo $jenjangPendidikan."<br>";
 
-$arr_layanan[]="";
+$arr_layanan=[];
 
 $result_head = mysqli_query($db2,"SELECT * from `layananpendidikan` where id_kabupaten=$lokasiSekolah $sql_biaya
 $sql_jmlh $sql_thn_sklh $sql_thn_peng ");
