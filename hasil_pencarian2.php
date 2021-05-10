@@ -5,11 +5,7 @@ include 'controller/conn.php';
 // mengaktifkan session
 session_start();
  
-// cek apakah user telah login, jika belum login maka di alihkan ke halaman login
-// if($_SESSION['status'] !="login"){
-// 	header("location:../login.php");
-// }
-
+$total_knv = $_SESSION['total_akhir'];
 ?>
 <html>
 <head>
@@ -41,14 +37,38 @@ session_start();
         <h5>Berikut layanan pendidikan ABK yang kami rekomendasikan untuk anda</h5>
     </div>
     <div class="">
+    <?php 
+    foreach($total_knv as $key => $value){
+    $result_head = mysqli_query($db2,"select * from `layananpendidikan` where npsn = $key");
+    while($d_head = mysqli_fetch_array($result_head)){
+        $nama_sekolah = $d_head['nama_sekolah'];
+        $foto_sekolah = $d_head['foto_sekolah'];
+    }
+    ?>
         <div class="card p-3 shadow m-5 bg-white rounded">
             <div class="card-body">
                 <div class="row">
-                    <div style="width: 200px; height: 150px; background-color:grey">
-                        <i> Gambar </i>
-                    </div>
-                    <div class="col px-3">
-                        <b style="font-size:18px;">Nama sekolah - Jenjang</b>
+                <img id="blah" style="width: 200px;"
+                    src="admin_sekolah/image/foto_sekolah/<?php echo $foto_sekolah;?>" alt="your image" />
+                    <div class="col px-5">
+                        <b style="font-size:18px;"><?php echo $nama_sekolah;?> - <?php 
+                            $result_head = mysqli_query($db2,"select * from `jenjang_layananpendidikan` inner join jenjang_pendidikan
+                            on  jenjang_layananpendidikan.id_jenjangpendidikan = jenjang_pendidikan.id_jenjangpendidikan
+                            where npsn = $key");
+                            $numResults = mysqli_num_rows($result_head);
+                            $temp_no=0;
+                            while($d_head = mysqli_fetch_array($result_head)){
+                                $temp_no++;
+                                if ($numResults==$temp_no) {
+                                    
+                                    echo $d_head['jenjang_pendidikan'];
+                                }else{
+                                    echo $d_head['jenjang_pendidikan'].", ";
+                                }
+                                
+                                
+                            }
+                        ?></b>
                         <p>Alamat, Kabupaten </br>
                             Kebutuhan Khusus </br> </br>
                             - - - -</p>
@@ -62,6 +82,8 @@ session_start();
             </div>
             <!-- /.card-body -->
         </div>
+        <?php } ?>
+        
     </div>
   </div>
 

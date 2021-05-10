@@ -178,11 +178,22 @@ $array_id_k =[];
 		}
 	}
 
-    //header("location:../layanan_pendidikan_pending.php");
+    
 
 $npsn_nilai=[];
 $ortu_nilai=[];
 $npsn_selisih=[];
+$npsn_knv=[];
+$max_nilai=[];
+echo '<hr>';
+for ($i=1; $i <= $total_k; $i++) {
+$temp_kriteria2 =	$array_id_dkk[$i];
+$result_head = mysqli_query($db2,"SELECT max(nilai) as max_nilai FROM `detail_kriteriainformasi` where id_kriteriainformasi= $temp_kriteria2");
+while($d_head = mysqli_fetch_array($result_head)){
+	$max_nilai[$i] = $d_head['max_nilai'];
+	echo $max_nilai[$i].'<br>';
+}
+}
 ?>
 <html>
 
@@ -287,11 +298,42 @@ $npsn_selisih=[];
 		?>
 		<tr>
 			<td>KNV <?php echo $result; ?></td>
-			<?php for ($i=1; $i <= $total_k; $i++) { ?>
-			<td><?php echo $npsn_selisih[$result][$i]; ?></td>
+			<?php for ($i=1; $i <= $total_k; $i++) { 
+				$selisih_temp = sqrt($npsn_selisih[$result][$i]*$npsn_selisih[$result][$i]);
+				$KNV = $max_nilai[$i]-$selisih_temp;
+				if ($npsn_selisih[$result][$i]>0) {
+					$KNV = $KNV + 0.5;
+				}
+				$npsn_knv[$result][$i]=$KNV;
+				?>
+			<td><?php echo $KNV; ?></td>
 			<?php } ?>
 		</tr>
 		<?php } ?>
 	</tbody>
 </table>
 </html>
+<?php 
+$total_knv=[];
+foreach($arr_layanan as $result) {
+	$total_knv[$result]=0;
+	for ($i=1; $i <= $total_k; $i++) { 	
+		$total_knv[$result]=$total_knv[$result]+$npsn_knv[$result][$i];
+	}
+}
+foreach($arr_layanan as $result) {
+	echo ($total_knv[$result]/$total_k).'<br>';
+}
+echo '<hr>';
+foreach($arr_layanan as $result) {
+	echo ($total_knv[$result]/$total_k*100/100).'<br>';
+}
+echo '<hr>';
+arsort($total_knv);
+foreach($total_knv as $key => $value) {
+	echo $key.' - '.$value.'<br>';
+}
+$_SESSION['total_akhir']=$total_knv;
+echo "<script>window.location = '../hasil_pencarian2.php'</script>";
+
+?>
