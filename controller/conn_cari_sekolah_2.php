@@ -334,6 +334,8 @@ foreach($total_knv as $key => $value) {
 	echo $key.' - '.$value.'<br>';
 }
 $_SESSION['total_akhir']=$total_knv;
+$_SESSION['id_search']=$array_id_dkk;
+$_SESSION['id_search_sub']=$array_id_dkk_sub;
 echo "<script>window.location = '../hasil_pencarian2.php'</script>";
 
 ?>

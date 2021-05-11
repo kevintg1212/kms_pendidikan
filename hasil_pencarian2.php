@@ -6,6 +6,8 @@ include 'controller/conn.php';
 session_start();
  
 $total_knv = $_SESSION['total_akhir'];
+$array_id_k = $_SESSION['id_search'];
+$array_id_dkk_sub = $_SESSION['id_search_sub'];
 ?>
 <html>
 <head>
@@ -39,16 +41,21 @@ $total_knv = $_SESSION['total_akhir'];
     <div class="">
     <?php 
     foreach($total_knv as $key => $value){
-    $result_head = mysqli_query($db2,"select * from `layananpendidikan` where npsn = $key");
+    $result_head = mysqli_query($db2,"select * from `layananpendidikan`
+    inner join wilayah_kabupaten
+    on layananpendidikan.id_kabupaten = wilayah_kabupaten.id
+    where npsn = $key");
     while($d_head = mysqli_fetch_array($result_head)){
         $nama_sekolah = $d_head['nama_sekolah'];
         $foto_sekolah = $d_head['foto_sekolah'];
+        $alamat = $d_head['alamat'];
+        $kabupaten = $d_head['nama'];
     }
     ?>
         <div class="card p-3 shadow m-5 bg-white rounded">
             <div class="card-body">
                 <div class="row">
-                <img id="blah" style="width: 200px;"
+                <img id="blah" style="width: 200px; height: 100%;"
                     src="admin_sekolah/image/foto_sekolah/<?php echo $foto_sekolah;?>" alt="your image" />
                     <div class="col px-5">
                         <b style="font-size:18px;"><?php echo $nama_sekolah;?> - <?php 
@@ -65,17 +72,52 @@ $total_knv = $_SESSION['total_akhir'];
                                 }else{
                                     echo $d_head['jenjang_pendidikan'].", ";
                                 }
-                                
-                                
                             }
                         ?></b>
-                        <p>Alamat, Kabupaten </br>
-                            Kebutuhan Khusus </br> </br>
-                            - - - -</p>
+                        <p><?php echo $alamat; ?>, <?php echo $kabupaten; ?> </br>
+                            Kebutuhan Khusus :
+                                    <?php 
+                                        $result_head = mysqli_query($db2,"select * from `kebutuhankhusus_layananpendidikan` inner join kebutuhan_khusus
+                                        on  kebutuhankhusus_layananpendidikan.id_kebutuhankhusus = kebutuhan_khusus.id_kebutuhankhusus
+                                        where npsn = $key");
+                                        $numResults = mysqli_num_rows($result_head);
+                                        $temp_no=0;
+                                        while($d_head = mysqli_fetch_array($result_head)){
+                                            $temp_no++;
+                                            if ($numResults==$temp_no) {
+                                                echo $d_head['kebutuhan_khusus'];
+                                            }else{
+                                                echo $d_head['kebutuhan_khusus'].", ";
+                                            }
+                                        }
+                                        ?>
+                        </p>
+
+                        <p>
+                            <ul style="display:inline;">
+                                    <?php 
+                                    foreach($array_id_k as $key2 => $value2){
+                                        $temp_sub = $array_id_dkk_sub[$key2];
+                                        if ($temp_sub!="") {
+                                            $sql_sub = "and detail_kriteriainformasi.id_sub_kriteriainformasi=$temp_sub";
+                                        }else{
+                                            $sql_sub = "";
+                                        }
+                                        
+                                        $result_head = mysqli_query($db2,"select * from `detail_layananpendidikan` inner join detail_kriteriainformasi
+                                        on  detail_layananpendidikan.id_detail_kriteriainformasi = detail_kriteriainformasi.id_detail_kriteriainformasi
+                                        inner join kriteria_informasi on kriteria_informasi.id_kriteriainformasi = detail_kriteriainformasi.id_kriteriainformasi
+                                        where npsn = $key and detail_kriteriainformasi.id_kriteriainformasi=$value2
+                                        $sql_sub");
+                                        while($d_head = mysqli_fetch_array($result_head)){ ?>
+                                    <li style="display:inline; margin-left: 5px;">&#x25CF; <?php echo $d_head['kriteria_informasi']; ?> : <?php echo $d_head['parameter']; ?></li>
+                                    <?php } }?>
+                            </ul> 
+                        </p>
                     </div>
                     <div class="d-flex align-items-end flex-column-reserve">
                         <div class="d-flex">
-                        <a href="/kms_pendidikan/cari_sekolah_2.php" style="margin-right: 20px; color: white; width: 100px; background-color: #05319D;" class="btn btn-primary btn-sm ">Lihat detail</a>
+                        <a href="detail_sekolah.php" style="margin-right: 20px; color: white; width: 100px; background-color: #05319D;" class="btn btn-primary btn-sm ">Lihat detail</a>
                         </div>
                     </div>
                 </div>

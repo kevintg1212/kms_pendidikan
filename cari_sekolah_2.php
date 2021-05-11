@@ -8,7 +8,7 @@ session_start();
 if (isset($_SESSION['arr_layanan'])) {
 	$arr_layanan = $_SESSION['arr_layanan'];
 	foreach($arr_layanan as $result) {
-		echo $result.'<br>';
+		//echo $result.'<br>';
 	}
 }
 
