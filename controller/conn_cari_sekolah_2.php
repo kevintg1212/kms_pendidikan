@@ -177,7 +177,9 @@ $array_id_k =[];
 			$array_id_dkk_sub[$i]=$d_head['id_sub_kriteriainformasi'];
 		}
 	}
-
+if ($total_k==0) {
+	echo "<script>window.location = '../hasil_pencarian1.php'</script>";
+}
     
 
 $npsn_nilai=[];
