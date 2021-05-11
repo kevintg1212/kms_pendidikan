@@ -84,7 +84,7 @@ session_start();
                   </div>
                   <div class="col-md-6">
                     <select class="form-control select2" id="lokasiSekolah" name="lokasiSekolah" style="width: 100%;" required>
-                      <option selected="selected" disabled>-- Pilih Lokasi Sekolah --</option>
+                      <option value="" selected="selected" disabled>-- Pilih Lokasi Sekolah --</option>
                       <?php 
                       $result_head = mysqli_query($db2,"select * from `wilayah_kabupaten` ORDER by nama");
                         while($d_head = mysqli_fetch_array($result_head)){
@@ -101,7 +101,7 @@ session_start();
                   </div>
                   <div class="col-md-6">
                     <select class="form-control select2" style="width: 100%;" id="kebutuhanKhusus" name="kebutuhanKhusus" required>
-                      <option selected="selected" disabled>-- Pilih Kebutuhan khusus  --</option>
+                      <option value="" selected="selected" disabled>-- Pilih Kebutuhan khusus  --</option>
                       <?php 
                       $result_head = mysqli_query($db2,"select * from `kebutuhan_khusus`");
                         while($d_head = mysqli_fetch_array($result_head)){
@@ -118,7 +118,7 @@ session_start();
                   </div>
                   <div class="col-md-6">
                     <select class="form-control select2" id="jenjangPendidikan" name="jenjangPendidikan" style="width: 100%;" required>
-                      <option selected="selected" disabled>-- Pilih Jenjang Pendidikan --</option>
+                      <option value="" selected="selected" disabled>-- Pilih Jenjang Pendidikan --</option>
                       <?php 
                       $result_head = mysqli_query($db2,"select * from `jenjang_pendidikan`");
                         while($d_head = mysqli_fetch_array($result_head)){
