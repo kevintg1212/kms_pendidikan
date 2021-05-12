@@ -43,7 +43,7 @@ while($tmp1 = mysqli_fetch_array($result)){
                 if ($status_p =='Pending') {
                   echo "Data Layanan Pendidikan ABK<br>sedang di periksa !";
                 }else if ($status_p =='Warning') {
-                  echo "Data Layanan Pendidikan ABK<br>harus anda ubah !";
+                  echo "Data Layanan Pendidikan ABK<br>perlu diperbaiki (cek email)!";
                 }else if ($status_p =='Accepted') {
                   echo "Data Layanan Pendidikan ABK<br>sudah di terima !";
                 }else if ($status_p =='Rejected') {

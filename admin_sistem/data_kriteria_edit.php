@@ -324,7 +324,7 @@ while($d_head = mysqli_fetch_array($sql)){
                   </div>
                 </div>
               </div>
-              <button type="submit" class="btn btn-sm float-right" id="btnAddCol" style="color: white; background-color: #05319D;"> Simpan</b>
+              <button type="submit" class="btn btn-sm float-right" id="btnAddCol" style="color: white; background-color: #05319D; margin-top: 20px;"> Simpan</b>
             </div>  
           </div>
         </div>

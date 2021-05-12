@@ -176,7 +176,7 @@ while($tmp1 = mysqli_fetch_array($result)){
                   while($tmp2 = mysqli_fetch_array($result2)){
                     $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
                     
-                  }
+                  }echo "sss ".$npsn;
                 ?>
                   <div class="col-3">
                     <div class="form-check">
