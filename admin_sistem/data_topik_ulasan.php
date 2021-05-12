@@ -194,6 +194,7 @@ session_start();
                     <div class="row">
                       <button class="btn btn-warning btn-sm" style="margin-right:10px; margin-left:10px;" name="id_ev" 
                       data-e="<?php echo $result['id_topik']; ?>"
+                      data-v="<?php echo $result['nama_topik']; ?>"
                       data-toggle="modal" data-target="#modal-edit-topik-ulasan">
                         <i class="fas fa-pencil-alt">
                         </i>
@@ -258,11 +259,15 @@ session_start();
 
   $('#modal-edit-topik-ulasan').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget); // Button that triggered the modal
-      var recipient_e = button.data('e'); // Extract info from data-* attributes
+      var recipient_e = button.data('e');
+      var recipient_v = button.data('v'); // Extract info from data-* attributes
       // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
       // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
       var modal = $(this);
       modal.find('.id_topik1').val(recipient_e);
+      modal.find('.nama_topik').val(recipient_v);
+      document.getElementById("nama_topik").value = recipient_v;
+      
   })
 
 </script>
