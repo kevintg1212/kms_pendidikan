@@ -129,7 +129,7 @@ while($d_head = mysqli_fetch_array($sql)){
     <div class="modal-dialog" style="max-width: 750px !important;">
       <div class="modal-content">
         <div class="modal-body">
-        <form action="controller/update_status_layananpendidikan.php" method="post">
+        <form action="" method="post">
           <div class="container p-5">
             <div class="row">
               <div class="col-md p-2" >
@@ -137,7 +137,7 @@ while($d_head = mysqli_fetch_array($sql)){
                   <label for="email" class="col-sm col-form-label font-weight-normal">Email</label>
                   <div class="col-sm-9">
                       <input type="text" class="form-control" id="email" name="email"
-                      value="" placeholder="Email">
+                      value="<?php echo $email; ?>" placeholder="Email">
                   </div>
                 </div>
                 <div class="form-group row">

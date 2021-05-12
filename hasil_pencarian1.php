@@ -41,12 +41,10 @@ session_start();
         <h5>Berikut layanan pendidikan ABK yang kami rekomendasikan untuk anda</h5>
     </div>
     <div class="row d-flex justify-content-center">
-        <div class="col-2">
-            <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 270px; height: 330px;">
+        <div class="col-md-3 m-2">
+            <div class="card shadow p-3 mb-5 bg-white rounded">
+                <img src="img/4096093.png" alt="School Image" class="card-img-top shadow-sm">
                 <div class="card-body">
-                    <div style="width: 200px; height: 150px; background-color:grey">
-                        <i> Gambar </i>
-                    </div>
                     <div>
                         <b style="font-size:18px;"> Nama sekolah - Jenjang </b>
                         <p> Alamat, Kabupaten </br>
@@ -59,12 +57,10 @@ session_start();
                 <!-- /.card-body -->
             </div>
         </div>
-        <div class="col-2">
-            <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 270px; height: 330px;">
+        <div class="col-md-3 m-2">
+            <div class="card shadow p-3 mb-5 bg-white rounded">
+                <img src="img/4096093.png" alt="School Image" class="card-img-top shadow-sm">
                 <div class="card-body">
-                    <div style="width: 200px; height: 150px; background-color:grey">
-                        <i> Gambar </i>
-                    </div>
                     <div>
                         <b style="font-size:18px;"> Nama sekolah - Jenjang </b>
                         <p> Alamat, Kabupaten </br>
@@ -77,12 +73,10 @@ session_start();
                 <!-- /.card-body -->
             </div>
         </div>
-        <div class="col-2">
-            <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 270px; height: 330px;">
+        <div class="col-md-3 m-2">
+            <div class="card shadow p-3 mb-5 bg-white rounded">
+                <img src="img/4096093.png" alt="School Image" class="card-img-top shadow-sm">
                 <div class="card-body">
-                    <div style="width: 200px; height: 150px; background-color:grey">
-                        <i> Gambar </i>
-                    </div>
                     <div>
                         <b style="font-size:18px;"> Nama sekolah - Jenjang </b>
                         <p> Alamat, Kabupaten </br>
