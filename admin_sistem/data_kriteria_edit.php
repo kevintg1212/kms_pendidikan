@@ -255,7 +255,7 @@ while($d_head = mysqli_fetch_array($sql)){
               </div>
 
               <div class="row justify-content-end">
-                <div class="col-1">
+                <div class="col-2" style="float: right; text-align: right;">
                   <a class="btn btn-sm btn-info add_another" id="btnAddCol" onClick="$('#subKriteria').find('tr.hidden:first').removeClass('hidden');"> add more +</a>
                 </div>
               </div>
@@ -319,7 +319,7 @@ while($d_head = mysqli_fetch_array($sql)){
                   </table>
                 </div>
                 <div class="row">
-                  <div class="col-1">
+                  <div class="col-2">
                     <a class="btn btn-sm btn-info add_another" id="btnAddCol" onClick="$('#detailKriteria').find('tr.hidden:first').removeClass('hidden');"> add more +</a>
                   </div>
                 </div>
