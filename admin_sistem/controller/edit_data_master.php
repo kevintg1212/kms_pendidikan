@@ -3,7 +3,7 @@ include 'conn.php';
 session_start();
 
     $id_jenjangpendidikan = $_POST['id_jenjangpendidikan1'];
-    $jenjang_pendidikan = $_POST['jenjang_pendidikan'];
+    $jenjang_pendidikan = $_POST['jenjang_pendidikan2'];
 
     $id_kebutuhankhusus = $_POST['id_kebutuhankhusus1'];
     $kebutuhan_khusus = $_POST['kebutuhan_khusus'];

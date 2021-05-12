@@ -81,9 +81,9 @@ session_start();
         <form action="controller/edit_data_master.php" method="post">
           <div class="modal-body">
             <div class="form-group row">
-                <label for="jenjang_pendidikan" class="col-sm col-form-label">Jenjang Pendidikan</label>
+                <label for="jenjang_pendidikan2" class="col-sm col-form-label">Jenjang Pendidikan</label>
                 <div class="col-sm">
-                    <input type="text" class="form-control" id="jenjang_pendidikan" name="jenjang_pendidikan"
+                    <input type="text" class="form-control" id="jenjang_pendidikan2" name="jenjang_pendidikan2"
                         placeholder="Jenjang Pendidikan" value="">
               </div>
             </div>
@@ -263,6 +263,7 @@ session_start();
                     <div class="row">
                       <button class="btn btn-warning btn-sm" style="margin-right:10px; margin-left:10px;" name="id_ev" 
                       data-e="<?php echo $result['id_jenjangpendidikan']; ?>"
+                      data-v="<?php echo $result['jenjang_pendidikan']; ?>"
                       data-toggle="modal" data-target="#modal-edit-jenjang-pendidikan">
                         <i class="fas fa-pencil-alt">
                         </i>
@@ -328,6 +329,7 @@ session_start();
                     <div class="row">
                       <button class="btn btn-warning btn-sm" style="margin-right:10px; margin-left:10px;" name="id_ev" 
                       data-e="<?php echo $result['id_kebutuhankhusus']; ?>"
+                      data-v="<?php echo $result['kebutuhan_khusus']; ?>"
                       data-toggle="modal" data-target="#modal-edit-kebutuhan-khusus">
                         <i class="fas fa-pencil-alt">
                         </i>
@@ -393,21 +395,29 @@ session_start();
 
   $('#modal-edit-jenjang-pendidikan').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget); // Button that triggered the modal
-      var recipient_e = button.data('e'); // Extract info from data-* attributes
+      var recipient_e = button.data('e');
+      var recipient_v = button.data('v'); // Extract info from data-* attributes
       // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
       // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
       var modal = $(this);
       modal.find('.id_jenjangpendidikan1').val(recipient_e);
+      modal.find('.jenjang_pendidikan2').val(recipient_v);
+      document.getElementById("jenjang_pendidikan2").value = recipient_v;
+      
   })
 
 
   $('#modal-edit-kebutuhan-khusus').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget); // Button that triggered the modal
-      var recipient_e = button.data('e'); // Extract info from data-* attributes
+      var recipient_e = button.data('e');
+      var recipient_v = button.data('v'); // Extract info from data-* attributes
       // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
       // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
       var modal = $(this);
       modal.find('.id_kebutuhankhusus1').val(recipient_e);
+      modal.find('.kebutuhan_khusus').val(recipient_v);
+      document.getElementById("kebutuhan_khusus").value = recipient_v;
+      
   })
 </script>
 
