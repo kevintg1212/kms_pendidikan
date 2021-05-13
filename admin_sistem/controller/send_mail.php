@@ -25,9 +25,9 @@
         $mail->isHTML(true); // Aktifkan jika isi emailnya berupa html
         // Load file content.php
         ob_start();
-        include "content.php";
-        $content = ob_get_contents(); // Ambil isi file content.php dan masukan ke variabel $content
-        ob_end_clean();
+        // include "content.php";
+        // $content = ob_get_contents(); // Ambil isi file content.php dan masukan ke variabel $content
+        // ob_end_clean();
         $mail->Subject = $subjek;
         $mail->Body = $content;
         //$mail->AddEmbeddedImage('image/logo.png', 'logo_mynotescode', 'logo.png'); // Aktifkan jika ingin menampilkan gambar dalam email
