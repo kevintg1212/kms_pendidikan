@@ -6,10 +6,44 @@ include 'controller/conn.php';
 session_start();
  
 if (isset($_GET['id_sekolah'])) {
-	$id_sekolah = $_GET['id_sekolah'];
+	$npsn = $_GET['id_sekolah'];
 
-		echo $id_sekolah.'<br>';
+		//echo $id_sekolah.'<br>';
 	
+}
+
+
+$sql = mysqli_query($db2,"
+SELECT l.*, w.nama as kabupaten, p.nama as provinsi FROM layananpendidikan l 
+join wilayah_kabupaten w on l.id_kabupaten = w.id 
+join wilayah_provinsi p on l.id_provinsi = p.id
+where npsn =$npsn 
+");
+
+while($d_head = mysqli_fetch_array($sql)){
+  $nik= $d_head['nik'];
+  $provinsi= $d_head['provinsi'];
+  $kabupaten= $d_head['kabupaten'];
+  $nama_sekolah= $d_head['nama_sekolah'];
+  $foto_sekolah= $d_head['foto_sekolah'];
+  $visi_sekolah= $d_head['visi_sekolah'];
+  $nilai_sekolah= $d_head['nilai_sekolah'];
+  $alamat= $d_head['alamat'];
+  $telepon= $d_head['telepon'];
+  $email= $d_head['email'];
+  $website= $d_head['website'];
+  $biaya_sekolah= $d_head['biaya_sekolah'];
+  $pengalaman_sekolah= $d_head['pengalaman_sekolah'];
+  $pelatihan_pendidikankhusus_pengajar= $d_head['pelatihan_pendidikankhusus_pengajar'];
+  $pengalaman_pengajar= $d_head['pengalaman_pengajar'];
+  $cara_komunikasi_pengajar= $d_head['cara_komunikasi_pengajar'];
+  $jumlah_murid= $d_head['jumlah_murid'];
+  $pengaturan_kelas= $d_head['pengaturan_kelas'];
+  $kebijakan_sekolah= $d_head['kebijakan_sekolah'];
+  $keamanan_sekolah= $d_head['keamanan_sekolah'];
+  $teknis_pendaftaran= $d_head['teknis_pendaftaran'];
+  $surat_ijin_operasional= $d_head['surat_ijin_operasional'];
+  $status_data= $d_head['status_data'];
 }
 
 ?>
@@ -52,13 +86,13 @@ if (isset($_GET['id_sekolah'])) {
       <!-- Main content -->
       <section class="content" style="">
         <div class="container-fluid" style="margin-top:100px;">
-          <h1><b>SLB ABCD Caringin </b></h1><br>
+          <h1><b><?php echo $nama_sekolah ;?></b></h1><br>
           <div style="margin-top:10px;">
             <!-- Main content -->
             <div class="container-fluid">
               <div class="row">
                 <div class="col-4 p-2 ">
-                      <img src="img/4096093.png" class="shadow-sm rounded" style="width: 100%;">
+                      <img src="admin_sekolah/image/foto_sekolah/<?php echo $foto_sekolah; ?>" class="shadow-sm rounded" style="width: 100%;">
                 </div>
 
                 <div class="card card-default col-sm-12 mt-5">
@@ -77,7 +111,17 @@ if (isset($_GET['id_sekolah'])) {
                       </div>
                       <!-- /.col -->
                       <div class="col-md-6">
-                        <p>Get value</p>
+                        <p><?php 
+                            $result = mysqli_query($db2,"SELECT * FROM `detail_kriteriainformasi` where id_kriteriainformasi = 1");
+                            while($tmp1 = mysqli_fetch_array($result)){
+                              $id_dk = $tmp1['id_detail_kriteriainformasi'];
+                              $id_dk2 = '';
+                              $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where npsn=$npsn and id_detail_kriteriainformasi = $id_dk");
+                              while($tmp2 = mysqli_fetch_array($result2)){
+                                $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
+                                
+                              }if($tmp1['id_detail_kriteriainformasi']==$id_dk2){echo $tmp1['parameter'];}} ?>
+                        </p>
                       </div>
                       <!-- /.col -->
                     </div>
@@ -88,18 +132,50 @@ if (isset($_GET['id_sekolah'])) {
                       </div>
                       <!-- /.col -->
                       <div class="col-md-6">
-                        <p>Get value</p>
+                        <p><?php 
+                            $result = mysqli_query($db2,"SELECT * FROM `detail_kriteriainformasi` where id_kriteriainformasi = 2");
+                            while($tmp1 = mysqli_fetch_array($result)){
+                              $id_dk = $tmp1['id_detail_kriteriainformasi'];
+                              $id_dk2 = '';
+                              $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where npsn=$npsn and id_detail_kriteriainformasi = $id_dk");
+                              while($tmp2 = mysqli_fetch_array($result2)){
+                                $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
+                                
+                              }if($tmp1['id_detail_kriteriainformasi']==$id_dk2){echo $tmp1['parameter'];}} ?>
+                          </p>
                       </div>
                       <!-- /.col -->
                     </div>
                     <!-- /.row -->
                     <div class="row">
                       <div class="col-md-6">
-                        <p>Jenjang pendidikan yang diterimma</p>
+                        <p>Jenjang pendidikan yang diterima</p>
                       </div>
                       <!-- /.col -->
                       <div class="col-md-6">
-                        <p>Get value</p>
+                        <p><?php 
+                              $result = mysqli_query($db2,"SELECT * FROM `jenjang_pendidikan`");
+                              $temp_no=0;
+                              
+                              while($tmp1 = mysqli_fetch_array($result)){
+                                
+                                $id_dk = $tmp1['id_jenjangpendidikan'];
+                                $id_dk2 = '';
+                                $result2 = mysqli_query($db2,"SELECT * FROM `jenjang_layananpendidikan` where npsn=$npsn and id_jenjangpendidikan = $id_dk");
+                                $numResults = mysqli_num_rows($result2);
+                                while($tmp2 = mysqli_fetch_array($result2)){
+                                  $id_dk2 = $tmp2['id_jenjangpendidikan'];
+                                  $temp_no++;
+                                }if($tmp1['id_jenjangpendidikan']==$id_dk2){
+                                  if ($numResults==$temp_no) {
+                                    echo $tmp1['jenjang_pendidikan'];
+                                }else{
+                                  echo $tmp1['jenjang_pendidikan'].", ";
+                                }
+                                  
+                                }
+                              } ?>
+                            </p>
                       </div>
                       <!-- /.col -->
                     </div>
@@ -110,7 +186,19 @@ if (isset($_GET['id_sekolah'])) {
                       </div>
                       <!-- /.col -->
                       <div class="col-md-6">
-                        <p>Get value</p>
+                        <p><?php 
+                            $result = mysqli_query($db2,"SELECT * FROM `detail_kriteriainformasi` where id_kriteriainformasi = 3");
+                            while($tmp1 = mysqli_fetch_array($result)){
+                              $id_dk = $tmp1['id_detail_kriteriainformasi'];
+                              $id_dk2 = '';
+                              $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where npsn=$npsn and id_detail_kriteriainformasi = $id_dk");
+                              while($tmp2 = mysqli_fetch_array($result2)){
+                                $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
+                                
+                              }if($tmp1['id_detail_kriteriainformasi']==$id_dk2){
+                                echo $tmp1['parameter'];
+                                }
+                              } ?></p>
                       </div>
                       <!-- /.col -->
                     </div>
