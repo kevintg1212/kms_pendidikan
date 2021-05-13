@@ -29,7 +29,7 @@
         // $content = ob_get_contents(); // Ambil isi file content.php dan masukan ke variabel $content
         // ob_end_clean();
         $mail->Subject = $subjek;
-        $mail->Body = $content;
+        $mail->Body = $pesan;
         //$mail->AddEmbeddedImage('image/logo.png', 'logo_mynotescode', 'logo.png'); // Aktifkan jika ingin menampilkan gambar dalam email
         // Jika tanpa attachment
             $send = $mail->send();
