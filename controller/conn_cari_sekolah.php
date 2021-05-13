@@ -60,7 +60,7 @@ INNER JOIN jenjang_layananpendidikan
 ON layananpendidikan.npsn = jenjang_layananpendidikan.npsn
 where id_kabupaten=$lokasiSekolah AND id_kebutuhankhusus = $kebutuhanKhusus
 AND id_jenjangpendidikan = $jenjangPendidikan
-$sql_biaya $sql_jmlh $sql_thn_sklh $sql_thn_peng 
+$sql_biaya $sql_jmlh $sql_thn_sklh $sql_thn_peng AND status_data = 'Accepted'
 GROUP BY layananpendidikan.npsn");
 while($d_head = mysqli_fetch_array($result_head)){
 	echo $d_head['nama_sekolah']."<br>";
