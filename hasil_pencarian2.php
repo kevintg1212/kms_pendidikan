@@ -94,7 +94,7 @@ $array_id_dkk_sub = $_SESSION['id_search_sub'];
                         </p>
 
                         <p>
-                            <ul style="display:inline;">
+                            <ul style="display:block;">
                                     <?php 
                                     foreach($array_id_k as $key2 => $value2){
                                         $temp_sub = $array_id_dkk_sub[$key2];
@@ -107,10 +107,12 @@ $array_id_dkk_sub = $_SESSION['id_search_sub'];
                                         $result_head = mysqli_query($db2,"select * from `detail_layananpendidikan` inner join detail_kriteriainformasi
                                         on  detail_layananpendidikan.id_detail_kriteriainformasi = detail_kriteriainformasi.id_detail_kriteriainformasi
                                         inner join kriteria_informasi on kriteria_informasi.id_kriteriainformasi = detail_kriteriainformasi.id_kriteriainformasi
+                                        inner join sub_kriteriainformasi on sub_kriteriainformasi.id_sub_kriteriainformasi = detail_kriteriainformasi.id_sub_kriteriainformasi
                                         where npsn = $key and detail_kriteriainformasi.id_kriteriainformasi=$value2
                                         $sql_sub");
                                         while($d_head = mysqli_fetch_array($result_head)){ ?>
-                                    <li style="display:inline; margin-left: 5px;">&#x25CF; <?php echo $d_head['kriteria_informasi']; ?> : <?php echo $d_head['parameter']; ?></li>
+                                    <li style="display:block; margin-left: 5px;">&#x25CF; <?php echo $d_head['kriteria_informasi']; ?>
+                                    <?php if($d_head['sub_kriteriainformasi']!=""){echo " - ".$d_head['sub_kriteriainformasi'];} ?> : <?php echo $d_head['parameter']; ?></li>
                                     <?php } }?>
                             </ul> 
                         </p>
