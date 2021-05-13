@@ -270,103 +270,62 @@ if (isset($_SESSION['arr_layanan'])) {
 							</div>
 						</div>
 						<div class="d-flex p-2 justify-content-center">
-							<div class="p-2 flex-fill " style="width:100%">Ketersediaan hubungan dengan sekolah lain</div>
+							<div class="p-2 flex-fill " style="width:100%">Ketersediaan</div>
 							<div class="p-2 flex-fill " style="width:100%">
-								<select class="form-control select2" id="hubSekolah" name="hubSekolah" style="width: 100%;" required>
-									<option selected="selected" disabled>-- Pilih Opsi --</option>
+								<div class="custom-control custom-checkbox"> 
 									<?php 
-									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '14'");
+									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '14' limit 1");
 										while($d_head = mysqli_fetch_array($result_head)){
 									?>
-									<option value="<?php echo $d_head['id_detail_kriteriainformasi']; ?>"><?php echo $d_head['parameter']; ?></option>
+										<input class="form-check-input" type="checkbox" name="hubSekolah" id="hubSekolah"  value="<?php echo $d_head['id_detail_kriteriainformasi']; ?>">
+                      					<label style="padding-bottom: 10px;" class="form-check-label" for="hubSekolah">Ketersediaan hubungan dengan sekolah lain</label> <br>                     				
 									<?php } ?>
-								</select>
-							</div>
-						</div>
-						<div class="d-flex p-2 justify-content-center">
-							<div class="p-2 flex-fill " style="width:100%">Ketersediaan program penempatan ganda</div>
-							<div class="p-2 flex-fill " style="width:100%">
-								<select class="form-control select2" id="programPenempatan" name="programPenempatan" style="width: 100%;" required>
-									<option selected="selected" disabled>-- Pilih Opsi --</option>
 									<?php 
-									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '15'");
+									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '15' limit 1");
 										while($d_head = mysqli_fetch_array($result_head)){
 									?>
-									<option value="<?php echo $d_head['id_detail_kriteriainformasi']; ?>"><?php echo $d_head['parameter']; ?></option>
+										<input class="form-check-input" type="checkbox" name="programPenempatan" id="programPenempatan"  value="<?php echo $d_head['id_detail_kriteriainformasi']; ?>">
+                      					<label style="padding-bottom: 10px;" class="form-check-label" for="programPenempatan">Ketersediaan program penempatan ganda</label> <br>                     				
 									<?php } ?>
-								</select>
-							</div>
-						</div>
-						<div class="d-flex p-2 justify-content-center">
-							<div class="p-2 flex-fill " style="width:100%">Ketersediaan dukungan spesialis</div>
-							<div class="p-2 flex-fill " style="width:100%">
-								<select class="form-control select2" id="dukunganSpesialis" name="dukunganSpesialis" style="width: 100%;" required>
-									<option selected="selected" disabled>-- Pilih Opsi --</option>
 									<?php 
-									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '16'");
+									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '16' limit 1");
 										while($d_head = mysqli_fetch_array($result_head)){
 									?>
-									<option value="<?php echo $d_head['id_detail_kriteriainformasi']; ?>"><?php echo $d_head['parameter']; ?></option>
+										<input class="form-check-input" type="checkbox" name="dukunganSpesialis" id="dukunganSpesialis"  value="<?php echo $d_head['id_detail_kriteriainformasi']; ?>">
+                      					<label style="padding-bottom: 10px;" class="form-check-label" for="dukunganSpesialis">Ketersediaan dukungan spesialis</label> <br>                     				
 									<?php } ?>
-								</select>
-							</div>
-						</div>
-						<div class="d-flex p-2 justify-content-center">
-							<div class="p-2 flex-fill " style="width:100%">Ketersediaan pembekalan kepada staff mengenai pengetahuan praktis menangani anak berkebutuhan khusus</div>
-							<div class="p-2 flex-fill " style="width:100%">
-								<select class="form-control select2" id="pembekalanStaff" name="pembekalanStaff" style="width: 100%;" required>
-									<option selected="selected" disabled>-- Pilih Opsi --</option>
 									<?php 
-									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '17'");
+									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '17' limit 1");
 										while($d_head = mysqli_fetch_array($result_head)){
 									?>
-									<option value="<?php echo $d_head['id_detail_kriteriainformasi']; ?>"><?php echo $d_head['parameter']; ?></option>
+										<input class="form-check-input" type="checkbox" name="pembekalanStaff" id="pembekalanStaff"  value="<?php echo $d_head['id_detail_kriteriainformasi']; ?>">
+                      					<label style="padding-bottom: 10px;" class="form-check-label" for="pembekalanStaff">Ketersediaan pembekalan kepada staff mengenai pengetahuan praktis menangani anak berkebutuhan khusus</label> <br>                     				
 									<?php } ?>
-								</select>
-							</div>
-						</div>
-						<div class="d-flex p-2 justify-content-center">
-							<div class="p-2 flex-fill " style="width:100%">Ketersediaan pembekalan kepada siswa lainnya dalam mendidik mereka untuk dapat menerima siswa berkebutuhan khusus</div>
-							<div class="p-2 flex-fill " style="width:100%">
-								<select class="form-control select2" id="pembekalan" name="pembekalan" style="width: 100%;" required>
-									<option selected="selected" disabled>-- Pilih Opsi --</option>
 									<?php 
-									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '18'");
+									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '18' limit 1");
 										while($d_head = mysqli_fetch_array($result_head)){
 									?>
-									<option value="<?php echo $d_head['id_detail_kriteriainformasi']; ?>"><?php echo $d_head['parameter']; ?></option>
+										<input class="form-check-input" type="checkbox" name="pembekalan" id="pembekalan"  value="<?php echo $d_head['id_detail_kriteriainformasi']; ?>">
+                      					<label style="padding-bottom: 10px;" class="form-check-label" for="pembekalan">Ketersediaan pembekalan kepada siswa lainnya dalam mendidik mereka untuk dapat menerima siswa berkebutuhan khusus</label> <br>                     				
 									<?php } ?>
-								</select>
-							</div>
-						</div>
-						<div class="d-flex p-2 justify-content-center">
-							<div class="p-2 flex-fill " style="width:100%">Ketersediaan asosiasi orang tua dan guru</div>
-							<div class="p-2 flex-fill " style="width:100%">
-								<select class="form-control select2" id="asosiasiOrangtua" name="asosiasiOrangtua" style="width: 100%;" required>
-									<option selected="selected" disabled>-- Pilih Opsi --</option>
 									<?php 
-									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '19'");
+									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '19' limit 1");
 										while($d_head = mysqli_fetch_array($result_head)){
 									?>
-									<option value="<?php echo $d_head['id_detail_kriteriainformasi']; ?>"><?php echo $d_head['parameter']; ?></option>
+										<input class="form-check-input" type="checkbox" name="asosiasiOrangtua" id="asosiasiOrangtua"  value="<?php echo $d_head['id_detail_kriteriainformasi']; ?>">
+                      					<label style="padding-bottom: 10px;" class="form-check-label" for="asosiasiOrangtua">Ketersediaan asosiasi orang tua dan guru</label> <br>                     				
 									<?php } ?>
-								</select>
-							</div>
-						</div>
-						<div class="d-flex p-2 justify-content-center">
-							<div class="p-2 flex-fill " style="width:100%">Ketersediaan forum pandangan orang tua</div>
-							<div class="p-2 flex-fill " style="width:100%">
-								<select class="form-control select2" id="ketersediaanForum" name="ketersediaanForum" style="width: 100%;" required>
-									<option selected="selected" disabled>-- Pilih Kurikulum Sekolah --</option>
 									<?php 
-									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '20'");
+									$result_head = mysqli_query($db2,"select * from `detail_kriteriainformasi` where id_kriteriainformasi = '20' limit 1");
 										while($d_head = mysqli_fetch_array($result_head)){
 									?>
-									<option value="<?php echo $d_head['id_detail_kriteriainformasi']; ?>"><?php echo $d_head['parameter']; ?></option>
+										<input class="form-check-input" type="checkbox" name="ketersediaanForum" id="ketersediaanForum"  value="<?php echo $d_head['id_detail_kriteriainformasi']; ?>">
+                      					<label style="padding-bottom: 10px;" class="form-check-label" for="ketersediaanForum">Ketersediaan forum pandangan orang tua</label> <br>                     				
 									<?php } ?>
-								</select>
+									</div>
 							</div>
 						</div>
+
 						<div class="d-flex p-2 justify-content-center">
 							<button type="submit" style="margin-top: 20px; color: white; width: 150px; background-color: #05319D;" class="btn btn-primary btn-sm">Cari Sekolah ></button>
 						</div>
