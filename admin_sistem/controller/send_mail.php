@@ -34,6 +34,8 @@
         // Jika tanpa attachment
             $send = $mail->send();
 
+            $npsn = $_POST['npsn'];
+            $status = $_POST['status'];
 
             include 'conn.php';
             session_start();
