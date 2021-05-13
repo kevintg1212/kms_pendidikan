@@ -1,5 +1,18 @@
 <!DOCTYPE html>
+<?php 
+include 'controller/conn.php';
+ 
+// mengaktifkan session
+session_start();
+ 
+if (isset($_GET['id_sekolah'])) {
+	$id_sekolah = $_GET['id_sekolah'];
 
+		echo $id_sekolah.'<br>';
+	
+}
+
+?>
 <html>
 
 <head>

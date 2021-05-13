@@ -5,10 +5,12 @@ include 'controller/conn.php';
 // mengaktifkan session
 session_start();
  
-// cek apakah user telah login, jika belum login maka di alihkan ke halaman login
-// if($_SESSION['status'] !="login"){
-// 	header("location:../login.php");
-// }
+if (isset($_SESSION['arr_layanan'])) {
+	$arr_layanan = $_SESSION['arr_layanan'];
+	foreach($arr_layanan as $result) {
+		//echo $result.'<br>';
+	}
+}
 
 ?>
 <html>
@@ -41,54 +43,68 @@ session_start();
         <h5>Berikut layanan pendidikan ABK yang kami rekomendasikan untuk anda</h5>
     </div>
     <div class="row d-flex justify-content-center">
+    <?php 
+    foreach($arr_layanan as $key => $value){
+    $result_head = mysqli_query($db2,"select * from `layananpendidikan`
+    inner join wilayah_kabupaten
+    on layananpendidikan.id_kabupaten = wilayah_kabupaten.id
+    where npsn = $value");
+    while($d_head = mysqli_fetch_array($result_head)){
+        $nama_sekolah = $d_head['nama_sekolah'];
+        $foto_sekolah = $d_head['foto_sekolah'];
+        $alamat = $d_head['alamat'];
+        $kabupaten = $d_head['nama'];
+    }
+    ?>
         <div class="col-md-3 m-2">
             <div class="card shadow p-3 mb-5 bg-white rounded">
-                <img src="img/4096093.png" alt="School Image" class="card-img-top shadow-sm">
+                <img src="admin_sekolah/image/foto_sekolah/<?php echo $foto_sekolah;?>" alt="School Image" class="card-img-top shadow-sm" style="width: 100%;">
                 <div class="card-body">
                     <div>
-                        <b style="font-size:18px;"> Nama sekolah - Jenjang </b>
-                        <p> Alamat, Kabupaten </br>
-                            Kebutuhan khusus </p>
+                        <b style="font-size:18px;"><?php echo $nama_sekolah;?> - <?php 
+                            $result_head = mysqli_query($db2,"select * from `jenjang_layananpendidikan` inner join jenjang_pendidikan
+                            on  jenjang_layananpendidikan.id_jenjangpendidikan = jenjang_pendidikan.id_jenjangpendidikan
+                            where npsn = $value");
+                            $numResults = mysqli_num_rows($result_head);
+                            $temp_no=0;
+                            while($d_head = mysqli_fetch_array($result_head)){
+                                $temp_no++;
+                                if ($numResults==$temp_no) {
+                                    
+                                    echo $d_head['jenjang_pendidikan'];
+                                }else{
+                                    echo $d_head['jenjang_pendidikan'].", ";
+                                }
+                            }
+                        ?></b>
+                        <p><?php echo $alamat; ?>, <?php echo $kabupaten; ?> </br>
+                            Kebutuhan Khusus :
+                                    <?php 
+                                        $result_head = mysqli_query($db2,"select * from `kebutuhankhusus_layananpendidikan` inner join kebutuhan_khusus
+                                        on  kebutuhankhusus_layananpendidikan.id_kebutuhankhusus = kebutuhan_khusus.id_kebutuhankhusus
+                                        where npsn = $value");
+                                        $numResults = mysqli_num_rows($result_head);
+                                        $temp_no=0;
+                                        while($d_head = mysqli_fetch_array($result_head)){
+                                            $temp_no++;
+                                            if ($numResults==$temp_no) {
+                                                echo $d_head['kebutuhan_khusus'];
+                                            }else{
+                                                echo $d_head['kebutuhan_khusus'].", ";
+                                            }
+                                        }
+                                        ?>
+                        </p>
                     </div>
                     <div class="float-right">
-                        <a href="/kms_pendidikan/cari_sekolah_2.php" style=" color: white; width: 100px; background-color: #05319D;" class="btn btn-primary btn-sm ">Lihat detail</a>
+                        <a href="detail_sekolah.php?id_sekolah=<?php echo $value; ?>" style=" color: white; width: 100px; background-color: #05319D;" class="btn btn-primary btn-sm ">Lihat detail</a>
                     </div>
                 </div>
                 <!-- /.card-body -->
             </div>
         </div>
-        <div class="col-md-3 m-2">
-            <div class="card shadow p-3 mb-5 bg-white rounded">
-                <img src="img/4096093.png" alt="School Image" class="card-img-top shadow-sm">
-                <div class="card-body">
-                    <div>
-                        <b style="font-size:18px;"> Nama sekolah - Jenjang </b>
-                        <p> Alamat, Kabupaten </br>
-                            Kebutuhan khusus </p>
-                    </div>
-                    <div class="float-right">
-                        <a href="/kms_pendidikan/cari_sekolah_2.php" style=" color: white; width: 100px; background-color: #05319D;" class="btn btn-primary btn-sm ">Lihat detail</a>
-                    </div>
-                </div>
-                <!-- /.card-body -->
-            </div>
-        </div>
-        <div class="col-md-3 m-2">
-            <div class="card shadow p-3 mb-5 bg-white rounded">
-                <img src="img/4096093.png" alt="School Image" class="card-img-top shadow-sm">
-                <div class="card-body">
-                    <div>
-                        <b style="font-size:18px;"> Nama sekolah - Jenjang </b>
-                        <p> Alamat, Kabupaten </br>
-                            Kebutuhan khusus </p>
-                    </div>
-                    <div class="float-right">
-                        <a href="/kms_pendidikan/cari_sekolah_2.php" style=" color: white; width: 100px; background-color: #05319D;" class="btn btn-primary btn-sm ">Lihat detail</a>
-                    </div>
-                </div>
-                <!-- /.card-body -->
-            </div>
-        </div>
+    <?php } ?>
+
         
     </div>
   </div>

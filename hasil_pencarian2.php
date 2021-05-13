@@ -117,7 +117,7 @@ $array_id_dkk_sub = $_SESSION['id_search_sub'];
                     </div>
                     <div class="d-flex align-items-end flex-column-reserve">
                         <div class="d-flex">
-                        <a href="detail_sekolah.php" style="margin-right: 20px; color: white; width: 100px; background-color: #05319D;" class="btn btn-primary btn-sm ">Lihat detail</a>
+                        <a href="detail_sekolah.php?id_sekolah=<?php echo $key; ?>" style="margin-right: 20px; color: white; width: 100px; background-color: #05319D;" class="btn btn-primary btn-sm ">Lihat detail</a>
                         </div>
                     </div>
                 </div>
