@@ -12,6 +12,7 @@ $sql = mysqli_query($db2,"
 SELECT l.*, w.nama as kabupaten, p.nama as provinsi FROM layananpendidikan l 
 join wilayah_kabupaten w on l.id_kabupaten = w.id 
 join wilayah_provinsi p on l.id_provinsi = p.id
+where npsn =$npsn 
 ");
 
 while($d_head = mysqli_fetch_array($sql)){
@@ -129,7 +130,7 @@ while($d_head = mysqli_fetch_array($sql)){
     <div class="modal-dialog" style="max-width: 750px !important;">
       <div class="modal-content">
         <div class="modal-body">
-        <form action="" method="post">
+        <form action="controller/send_mail.php" method="post">
           <div class="container p-5">
             <div class="row">
               <div class="col-md p-2" >
@@ -161,6 +162,8 @@ while($d_head = mysqli_fetch_array($sql)){
             <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
             <button type="submit" class="btn btn-primary"> Simpan </button>
             <input class="event" type="hidden" name="id_ev">
+            <input class="event" type="hidden" name="status" value="Warning">
+            <input class="event" type="hidden" name="status2" value="Warning2">
             <input type="hidden" name="npsn" id="npsn" value=<?php echo $npsn; ?>>
           </div>
         </form>
@@ -997,12 +1000,16 @@ while($d_head = mysqli_fetch_array($sql)){
                 </div>
               </div>
 
-              <div class="row justify-content-end mt-2">
-                <div class="col-2">
+              <div class="row mt-2" style="float: right; text-align: right;">
+                <div class="col-6">
                   <a class="btn btn-danger btn" style="margin-right:10px; margin-left:10px;" name="id_ev" href="/kms_pendidikan/admin_sistem/validasi_layanan.php">
                     Batal
                   </a>
-                  <button class="btn btn-primary btn" data-toggle="modal" data-target="#modal-validasi">
+                  </div>
+                  <div class="col-6">
+                  <button class="btn btn-primary btn" data-toggle="modal" data-target="#modal-validasi" <?php if ($status_data!= 'Pending') {
+                    echo 'disabled';
+                  }?>>
                     Validasi
                   </button>
                 </div>

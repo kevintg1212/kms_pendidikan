@@ -1,3 +1,12 @@
+<?php 
+
+$result_layanan_p = mysqli_query($db2,"select count(*) FROM layananpendidikan where status_data = 'Pending'");
+$row_layanan_p = mysqli_fetch_array($result_layanan_p);
+$total_layanan_p = $row_layanan_p[0];
+
+
+?>
+
 <nav class="main-header navbar navbar-expand navbar-white navbar-light">
       <!-- Left navbar links -->
       <ul class="navbar-nav">
@@ -10,21 +19,17 @@
         <li class="nav-item dropdown">
           <a class="nav-link" data-toggle="dropdown" href="#">
             <i class="far fa-bell"></i>
-            <span class="badge badge-warning navbar-badge">5</span>
+            <span class="badge badge-warning navbar-badge"><?php echo $total_layanan_p;?></span>
           </a>
           <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-            <span class="dropdown-item dropdown-header">5 Notifications</span>
-
+            <span class="dropdown-item dropdown-header"><?php echo $total_layanan_p;?> Notifications</span>
+          <?php if ($total_layanan_p>0) {  ?>
             <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-file mr-2"></i> Data layanan telah diterima !
+            <a href="validasi_layanan.php" class="dropdown-item">
+              <i class="fas fa-file mr-2"></i> Data Layanan Pendidikan ABK<br>
+              ada <?php echo $total_layanan_p;?> yang perlu divalidasi!
             </a>
-
-            <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item">
-              <i class="fas fa-comments mr-2"></i> 4 ulasan baru.
-            </a>
-
+            <?php } ?>
           </div>
         </li>
         <li class="nav-item d-none d-sm-inline-block">

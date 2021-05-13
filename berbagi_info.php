@@ -82,7 +82,7 @@ session_start();
             <div class="row">
               <div class="col">
                 <h3><b> Berbagi Informasi </b></h3>
-                <h5>Berikut ulasan kepada layanan pendidikan dengan mengisi form berikut ini</h5>
+                <h5>Berikan ulasan kepada layanan pendidikan dengan mengisi form berikut ini</h5>
               </div>
               <div class="col-3 justify-content-end">
                 <select class="form-control select2" id="sekolah" name="sekolah" style="width: 100%;" required>
@@ -178,7 +178,7 @@ session_start();
                           <button type="button" class="btn btn-primary btn-sm float-right"
                             style="margin-top: 20px; color: white; width: 150px; background-color: #05319D;"
                             data-toggle="modal" data-target="#modal-default">
-                            Selanjutnya
+                            Kirim
                           </button>
                         </div>
                       </div>
