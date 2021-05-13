@@ -121,6 +121,8 @@ while($tmp1 = mysqli_fetch_array($result)){
       <section class="content" style="">
       <input name="nik" type="hidden" value="<?php echo $nik;?>" >
       <input name="npsn_lama" type="hidden" value="<?php echo $npsn;?>" >
+      <input name="image_lama" type="hidden" value="<?php echo $name_image1;?>" >
+      <input name="file_lama" type="hidden" value="<?php echo $name_file;?>" >
         <div class="container-fluid">
           <div class="card" style="padding: 30px; margin: 30px;">
             <div class="card-header">
@@ -150,7 +152,11 @@ while($tmp1 = mysqli_fetch_array($result)){
                   <h5>Foto Sekolah</h5>
                 </div>
                 <div class="col-md-6">
-                <input class="form-control" type="file" required name="foto_sekolah">
+                <input class="form-control" type="file" id="lampiran" name="foto_sekolah">
+                          <label for="lampiran"><img id="blah"
+                              style="width: 200px; border: 1px solid black; margin-top: 30px; paddingL 10px;"
+                              src="image/foto_sekolah/<?php echo $name_image1?>" alt="your image" /></label>
+                
                 </div>
               </div>
 
@@ -1032,7 +1038,10 @@ while($tmp1 = mysqli_fetch_array($result)){
                   <h5>Surat Ijin Operasional/Pendirian Sekolah</h5>
                 </div>
                 <div class="col-md-6">
-                  <input class="form-control" type="file" required name="surat">
+                <input class="form-control" type="file" id="lampiran2" name="surat">
+                          <label for="lampiran2"><img id="blah2"
+                              style="width: 200px; border: 1px solid black; margin-top: 30px; paddingL 10px;"
+                              src="file/<?php echo $name_file?>" alt="your image" /></label>
                 </div>
               </div>
 
@@ -1085,7 +1094,38 @@ while($tmp1 = mysqli_fetch_array($result)){
 
 </body>
 <script>
-    
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          $('#blah').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]); // convert to base64 string
+      }
+    }
+
+    $("#lampiran").change(function () {
+      readURL(this);
+    });
+
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          $('#blah2').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]); // convert to base64 string
+      }
+    }
+
+    $("#lampiran2").change(function () {
+      readURL(this);
+    });
+
     function showDiv(){
       var hidemask = document.querySelectorAll(".city");
       document.getElementById("kota").value = "";

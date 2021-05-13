@@ -41,6 +41,7 @@ $stmtx->close();
 
     $target_dir = "../image/foto_sekolah/";
     $target_file = $target_dir . basename($_FILES["foto_sekolah"]["name"]);
+    if ($target_file!="../image/foto_sekolah/") {
     $name_image1 = basename($_FILES["foto_sekolah"]["name"]);
     $uploadOk = 1;
     $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -65,7 +66,13 @@ $stmtx->close();
               echo "Sorry, there was an error uploading your file.";
             }
           }
+        }else{
+            $name_image1 = $_POST['image_lama'];
+        }
+            
+        
     echo $name_image1."<br>";
+ 
 
 
     $bentuk = $_POST['bentuk'];
@@ -420,6 +427,7 @@ $stmtx->close();
     $name_file = basename($_FILES["surat"]["name"]);
     $targetfolder = "../file/";
     $targetfolder = $targetfolder . basename( $_FILES['surat']['name']) ;
+    if ($targetfolder!="../file/") {
     $file_type=$_FILES['surat']['type'];
     if ($file_type=="application/pdf" || $file_type=="image/gif" || $file_type=="image/jpeg") {
         if(move_uploaded_file($_FILES['surat']['tmp_name'], $targetfolder))
@@ -433,6 +441,11 @@ $stmtx->close();
     }
     else {
         echo "Hanya Boleh upload PDF, JPEG GIF .<br>";
+    }
+    
+       
+    }else{
+        $name_file = $_POST['file_lama'];
     }
     echo $name_file."<br>";
 
