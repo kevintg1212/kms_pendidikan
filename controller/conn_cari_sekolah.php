@@ -5,7 +5,6 @@ session_start();
 $lokasiSekolah = $_POST['lokasiSekolah'];
 echo $lokasiSekolah."<br>";
 
-
 if (isset($_POST['biayaMinimum']) && $_POST['biayaMinimum']!="") {
 	$biayaMinimum = $_POST['biayaMinimum'];
 	echo $biayaMinimum."a<br>";
@@ -54,8 +53,15 @@ echo $jenjangPendidikan."<br>";
 
 $arr_layanan=[];
 
-$result_head = mysqli_query($db2,"SELECT * from `layananpendidikan` where id_kabupaten=$lokasiSekolah $sql_biaya
-$sql_jmlh $sql_thn_sklh $sql_thn_peng ");
+$result_head = mysqli_query($db2,"SELECT * from `layananpendidikan`
+INNER JOIN kebutuhankhusus_layananpendidikan
+ON layananpendidikan.npsn = kebutuhankhusus_layananpendidikan.npsn
+INNER JOIN jenjang_layananpendidikan
+ON layananpendidikan.npsn = jenjang_layananpendidikan.npsn
+where id_kabupaten=$lokasiSekolah AND id_kebutuhankhusus = $kebutuhanKhusus
+AND id_jenjangpendidikan = $jenjangPendidikan
+$sql_biaya $sql_jmlh $sql_thn_sklh $sql_thn_peng 
+GROUP BY layananpendidikan.npsn");
 while($d_head = mysqli_fetch_array($result_head)){
 	echo $d_head['nama_sekolah']."<br>";
 	array_push($arr_layanan,$d_head['npsn']);
