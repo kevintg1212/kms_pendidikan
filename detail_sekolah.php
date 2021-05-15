@@ -1020,7 +1020,26 @@ while($d_head = mysqli_fetch_array($sql)){
                         </div>
                         </div>  
                     </div>
-                    <h5 class="mt-2"><b>Kriteria Informasi</b></h5>
+                    <h5 class="mt-2"><b>
+                  <?php 
+                  $result2 = mysqli_query($db2,"SELECT * FROM `ulasan`
+                  inner join topik_ulasan
+                  on ulasan.id_ulasan = topik_ulasan.id_ulasan
+                  inner join topik
+                  on topik_ulasan.id_topik = topik.id_topik
+                  where npsn = $npsn and status_ulasan='Accepted'");
+                  $number = mysqli_num_rows($result2);
+                  $i=0;
+                  while($tmp2 = mysqli_fetch_array($result2)){
+                    $i++;
+                    if ($i<$number) {
+                      echo $tmp2['nama_topik'].", ";
+                    }else{
+                      echo $tmp2['nama_topik'].".";
+                    }
+                    
+                  }
+                ?></b></h5>
                     <h5><?php echo $temp1['ulasan']?></h5>
                   </div>
                 </div>
