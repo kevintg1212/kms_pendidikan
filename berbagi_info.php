@@ -9,6 +9,11 @@ session_start();
 // if($_SESSION['status'] !="login"){
 // 	header("location:../login.php");
 // }
+if (isset($_GET['npsn'])) {
+  $npsn = $_GET['npsn'];
+}else{
+  $npsn = "";
+}
 
 ?>
 <html>
@@ -91,7 +96,7 @@ session_start();
                 $result_head = mysqli_query($db2,"SELECT * FROM `layananpendidikan` where status_data='Accepted'");
                   while($d_head = mysqli_fetch_array($result_head)){
                 ?>
-                  <option value="<?php echo $d_head['npsn']; ?>"><?php echo $d_head['nama_sekolah']; ?></option>
+                  <option <?php if ($npsn==$d_head['npsn']) { echo "selected";} $d_head['npsn']; ?> value="<?php echo $d_head['npsn']; ?>"><?php echo $d_head['nama_sekolah']; ?></option>
                   <?php } ?>
                 </select>
               </div>

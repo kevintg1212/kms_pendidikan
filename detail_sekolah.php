@@ -997,7 +997,7 @@ while($d_head = mysqli_fetch_array($sql)){
                   <h1><b>Ulasan </b></h1><br>
                 </div>
                 <div class="col-sm-6">
-                  <a href="berbagi_info.php" style="color: white; width: 250px; background-color: #05319D;"
+                  <a href="berbagi_info.php?npsn=<?php echo $npsn;?>" style="color: white; width: 250px; background-color: #05319D;"
                     class="btn btn-primary btn-lg float-right">Tambah Ulasan +</a>
                 </div>
               </div>
