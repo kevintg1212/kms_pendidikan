@@ -38,8 +38,8 @@ while($tmp1 = mysqli_fetch_array($result)){
 </head>
 
 <body class="hold-transition sidebar-mini" style="max-width: 100%; overflow-x: hidden;">
-  
-  
+
+
   <div class="modal fade" id="modal-cancel">
     <div class="modal-dialog" style="max-width: 750px !important;">
       <div class="modal-content">
@@ -57,6 +57,8 @@ while($tmp1 = mysqli_fetch_array($result)){
             <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
             <button type="submit" class="btn btn-primary">Ya</button>
             <input class="id_ulasan" type="hidden" name="id_ulasan">
+            <input class="nama" type="hidden" name="nama">
+            <input class="email" type="hidden" name="email">
           </div>
         </form>
       </div>
@@ -84,6 +86,8 @@ while($tmp1 = mysqli_fetch_array($result)){
             <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
             <button type="submit" class="btn btn-primary">Ya</button>
             <input class="id_ulasan" type="hidden" name="id_ulasan">
+            <input class="nama" type="hidden" name="nama">
+            <input class="email" type="hidden" name="email">
           </div>
         </form>
       </div>
@@ -121,8 +125,9 @@ while($tmp1 = mysqli_fetch_array($result)){
 
 
       <?php 
-         $result = mysqli_query($db2,"SELECT * FROM `ulasan`
-         where npsn = $npsn and status_ulasan='Pending'");
+         $result = mysqli_query($db2,"SELECT *, ulasan.email as ulasan_email FROM `ulasan` inner join
+         layananpendidikan on layananpendidikan.npsn = ulasan.npsn
+         where ulasan.npsn = $npsn and status_ulasan='Pending'");
          while($tmp1 = mysqli_fetch_array($result)){
            $id_ulasan = $tmp1['id_ulasan'];
       ?>
@@ -136,12 +141,12 @@ while($tmp1 = mysqli_fetch_array($result)){
                   <p><?php echo date_format(date_create($tmp1['tanggal_mengirim']),"d F Y, H:i");?> WIB</p>
                 </div>
                 <div class="col-4 row">
-                  <button data-toggle="modal" data-target="#modal-cancel"
-                    data-e="<?php echo $id_ulasan; ?>"
+                  <button data-toggle="modal" data-target="#modal-cancel" data-e="<?php echo $id_ulasan; ?>"
+                  data-c="<?php echo $tmp1['ulasan_email']; ?>" data-v="<?php echo $tmp1['nama_sekolah']; ?>"
                     style="color: black; background-color: #FFF; border-color: black; height: 40px; width:100px;"
                     class="btn btn-primary btn-sm nav-link"><b>Tolak</b></button>
-                  <button data-toggle="modal" data-target="#modal-terima"
-                    data-e="<?php echo $id_ulasan; ?>"
+                  <button data-toggle="modal" data-target="#modal-terima" data-e="<?php echo $id_ulasan; ?>"
+                  data-c="<?php echo $tmp1['ulasan_email']; ?>" data-v="<?php echo $tmp1['nama_sekolah']; ?>"
                     style="color: white; background-color: #1D2948; height: 40px; width:100px; margin-left: 20px;"
                     class="btn btn-primary btn-sm nav-link"><b>Terima</b></button>
                 </div>
@@ -149,7 +154,7 @@ while($tmp1 = mysqli_fetch_array($result)){
             </div>
             <div class="card-body">
               <h5><b>
-              <?php 
+                  <?php 
                   $result2 = mysqli_query($db2,"SELECT * FROM `ulasan`
                   inner join topik_ulasan
                   on ulasan.id_ulasan = topik_ulasan.id_ulasan
@@ -169,15 +174,65 @@ while($tmp1 = mysqli_fetch_array($result)){
                   }
                 ?></b></h5>
               <p><?php echo $tmp1['ulasan'];?></p>
-              <img src="../img/pendukung_ulasan/<?php echo $tmp1['lampiran_ulasan'];?>" style="width: 200px; margin-top: 20px;">
+              <img src="../img/pendukung_ulasan/<?php echo $tmp1['lampiran_ulasan'];?>"
+                style="width: 200px; margin-top: 20px;">
             </div>
           </div>
-
-          <?php } ?>
-
-
         </div>
       </div>
+      <?php } ?>
+
+      <?php 
+         $result = mysqli_query($db2,"SELECT * FROM `ulasan`
+         where npsn = $npsn and status_ulasan='Accepted'");
+         while($tmp1 = mysqli_fetch_array($result)){
+           $id_ulasan = $tmp1['id_ulasan'];
+      ?>
+      <div class="row">
+        <div class="col-12">
+          <div class="card" style="padding: 30px; margin: 30px;">
+            <div class="card-header">
+              <div class="row">
+                <div class="col-8">
+                  <h5><b><?php echo $tmp1['nama_pengirim'];?> - <?php echo $tmp1['latar_belakang'];?></b></h5>
+                  <p><?php echo date_format(date_create($tmp1['tanggal_mengirim']),"d F Y, H:i");?> WIB</p>
+                </div>
+                <div class="col-4 row">
+                  <a style="color: white; background-color: green; height: 40px; width:200px; margin-left: 20px;"
+                    class="btn btn-primary btn-sm nav-link"><b>Sudah di Terima</b></a>
+                </div>
+              </div>
+            </div>
+            <div class="card-body">
+              <h5><b>
+                  <?php 
+                  $result2 = mysqli_query($db2,"SELECT * FROM `ulasan`
+                  inner join topik_ulasan
+                  on ulasan.id_ulasan = topik_ulasan.id_ulasan
+                  inner join topik
+                  on topik_ulasan.id_topik = topik.id_topik
+                  where npsn = $npsn and status_ulasan='Accepted'");
+                  $number = mysqli_num_rows($result2);
+                  $i=0;
+                  while($tmp2 = mysqli_fetch_array($result2)){
+                    $i++;
+                    if ($i<$number) {
+                      echo $tmp2['nama_topik'].", ";
+                    }else{
+                      echo $tmp2['nama_topik'].".";
+                    }
+                    
+                  }
+                ?></b></h5>
+              <p><?php echo $tmp1['ulasan'];?></p>
+              <img src="../img/pendukung_ulasan/<?php echo $tmp1['lampiran_ulasan'];?>"
+                style="width: 200px; margin-top: 20px;">
+            </div>
+          </div>
+        </div>
+      </div>
+      <?php } ?>
+
     </div>
     <!-- /.card -->
 
@@ -210,22 +265,28 @@ while($tmp1 = mysqli_fetch_array($result)){
   $('#modal-cancel').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) // Button that triggered the modal
     var recipient_e = button.data('e') // Extract info from data-* attributes
-
+    var recipient_c = button.data('c')
+    var recipient_v = button.data('v')
     // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
     // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
     var modal = $(this)
     modal.find('.id_ulasan').val(recipient_e)
+    modal.find('.email').val(recipient_c)
+    modal.find('.nama').val(recipient_v)
 
   })
 
   $('#modal-terima').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) // Button that triggered the modal
     var recipient_e = button.data('e') // Extract info from data-* attributes
-
+    var recipient_c = button.data('c')
+    var recipient_v = button.data('v')
     // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
     // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
     var modal = $(this)
     modal.find('.id_ulasan').val(recipient_e)
+    modal.find('.email').val(recipient_c)
+    modal.find('.nama').val(recipient_v)
 
   })
 </script>

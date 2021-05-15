@@ -12,7 +12,7 @@ while($tmp1 = mysqli_fetch_array($result)){
   $npsn = $tmp1['npsn'];
 }
 
-$result = mysqli_query($db2,"SELECT count(*) as jumlah_ulasan FROM ulasan where npsn ='$npsn'");
+$result = mysqli_query($db2,"SELECT count(*) as jumlah_ulasan FROM ulasan where npsn ='$npsn' and status_ulasan='Pending'");
 while($tmp1 = mysqli_fetch_array($result)){
   $jumlah_ulasan = $tmp1['jumlah_ulasan'];
 }
