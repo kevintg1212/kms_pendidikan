@@ -1004,7 +1004,7 @@ while($d_head = mysqli_fetch_array($sql)){
             </div>
     
             <?php 
-            $result = mysqli_query($db2,"SELECT * FROM `ulasan` where npsn = $npsn");
+            $result = mysqli_query($db2,"SELECT * FROM `ulasan` where npsn = $npsn and status_ulasan ='Accepted'");
             while($temp1 = mysqli_fetch_array($result)){  ?>                     
             <div class="card">
               <div class="row" style="padding: 20px;">
