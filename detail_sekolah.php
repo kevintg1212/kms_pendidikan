@@ -825,28 +825,20 @@ while($d_head = mysqli_fetch_array($sql)){
                       <!-- /.col -->
                       <div class="col-md-6">
                       <p>
-                      <?php 
-                            $i = 0;
-                            $x = 0;
-                            $result = mysqli_query($db2,"SELECT * FROM `sub_kriteriainformasi` inner join detail_kriteriainformasi
-                            on sub_kriteriainformasi.id_sub_kriteriainformasi = detail_kriteriainformasi.id_sub_kriteriainformasi                      
-                            where sub_kriteriainformasi.id_kriteriainformasi=6 AND nilai=1");
-                            while($temp1 = mysqli_fetch_array($result)){
-                              $id_dk = $temp1['id_detail_kriteriainformasi'];
-                              $id_dk2 = '';
-                              $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where npsn=$npsn and id_detail_kriteriainformasi = $id_dk");
-                              $number = mysqli_num_rows($result2);
-                              while($tmp2 = mysqli_fetch_array($result2)){
-                                $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
-                                if ($i<$number) {
-                                  echo $temp1['sub_kriteriainformasi'].", ";
-                                }else{
-                                  echo $temp1['sub_kriteriainformasi'].".";
-                                }
-                                $i++;
-                              }
+                        <?php 
+                          $result = mysqli_query($db2,"SELECT * FROM `sub_kriteriainformasi` inner join detail_kriteriainformasi
+                          on sub_kriteriainformasi.id_sub_kriteriainformasi = detail_kriteriainformasi.id_sub_kriteriainformasi                      
+                          where sub_kriteriainformasi.id_kriteriainformasi=6 AND nilai=1");
+                          while($temp1 = mysqli_fetch_array($result)){
+                            $id_dk = $temp1['id_detail_kriteriainformasi'];
+                            $id_dk2 = '';
+                            $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where npsn=$npsn and id_detail_kriteriainformasi = $id_dk");
+                            while($tmp2 = mysqli_fetch_array($result2)){
+                              $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
+                              echo "<b>".$temp1['sub_kriteriainformasi']."</b> </br> ".$temp1['keterangan']."</br> </br> ";
                             }
-                      ?>
+                        ?>
+                      <?php } ?>
                       </p>
                       </div>
                       <!-- /.col -->
@@ -872,12 +864,7 @@ while($d_head = mysqli_fetch_array($sql)){
                                 $number = mysqli_num_rows($result2);
                                 while($tmp2 = mysqli_fetch_array($result2)){
                                   $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
-                                  if ($i<$number) {
-                                    echo $temp1['sub_kriteriainformasi'].", ";
-                                  }else{
-                                    echo $temp1['sub_kriteriainformasi'].".";
-                                  }
-                                  $i++;
+                                  echo "<b>".$temp1['sub_kriteriainformasi']."</b> </br> ".$temp1['keterangan']."</br> </br> ";
                                 }
                               }
                         ?>
@@ -892,7 +879,7 @@ while($d_head = mysqli_fetch_array($sql)){
                       </div>
                       <!-- /.col -->
                       <div class="col-md-6">
-                        <p><?php echo $jumlah_murid; ?></p>
+                        <p><?php echo $jumlah_murid; ?> murid</p>
                       </div>
                       <!-- /.col -->
                     </div>
@@ -935,12 +922,7 @@ while($d_head = mysqli_fetch_array($sql)){
                                 $number = mysqli_num_rows($result2);
                                 while($tmp2 = mysqli_fetch_array($result2)){
                                   $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
-                                  if ($i<$number) {
-                                    echo $temp1['sub_kriteriainformasi'].", ";
-                                  }else{
-                                    echo $temp1['sub_kriteriainformasi'].".";
-                                  }
-                                  $i++;
+                                    echo $temp1['sub_kriteriainformasi']."</br> </br>";
                                 }
                               }
                         ?>
@@ -969,12 +951,7 @@ while($d_head = mysqli_fetch_array($sql)){
                                 $number = mysqli_num_rows($result2);
                                 while($tmp2 = mysqli_fetch_array($result2)){
                                   $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
-                                  if ($i<$number) {
-                                    echo $temp1['sub_kriteriainformasi'].", ";
-                                  }else{
-                                    echo $temp1['sub_kriteriainformasi'].".";
-                                  }
-                                  $i++;
+                                    echo $temp1['sub_kriteriainformasi']."</br> </br> ";
                                 }
                               }
                         ?>
@@ -1003,12 +980,7 @@ while($d_head = mysqli_fetch_array($sql)){
                                 $number = mysqli_num_rows($result2);
                                 while($tmp2 = mysqli_fetch_array($result2)){
                                   $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
-                                  if ($i<$number) {
-                                    echo $temp1['sub_kriteriainformasi'].", ";
-                                  }else{
-                                    echo $temp1['sub_kriteriainformasi'].".";
-                                  }
-                                  $i++;
+                                  echo $temp1['sub_kriteriainformasi']."</br> </br> ";
                                 }
                               }
                         ?>
@@ -1030,7 +1002,7 @@ while($d_head = mysqli_fetch_array($sql)){
                       </div>
                       <!-- /.col -->
                       <div class="col-md-6">
-                        <p><?php echo $kebijakan_sekolah; ?></p>
+                        <p class="text-left"><?php echo $kebijakan_sekolah; ?></p>
                       </div>
                       <!-- /.col -->
                     </div>
@@ -1048,26 +1020,25 @@ while($d_head = mysqli_fetch_array($sql)){
                       </div>
                       <!-- /.col -->
                       <div class="col-md-6">
-                      <?php 
-                            $result = mysqli_query($db2,"SELECT * FROM `sub_kriteriainformasi` inner join detail_kriteriainformasi
-                            on sub_kriteriainformasi.id_sub_kriteriainformasi = detail_kriteriainformasi.id_sub_kriteriainformasi                      
-                            where sub_kriteriainformasi.id_kriteriainformasi=8 AND nilai=1");
-                            while($temp1 = mysqli_fetch_array($result)){
-                              $id_dk = $temp1['id_detail_kriteriainformasi'];
-                              $id_dk2 = '';
-                              $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where npsn=$npsn and id_detail_kriteriainformasi = $id_dk");
-                              while($tmp2 = mysqli_fetch_array($result2)){
-                                $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
-                                
-                              }
-                          ?>
-                        <div class="col-12" style="padding-bottom: 20px;">
-                          <div class="form-check">
-                            <input disabled <?php if($temp1['id_detail_kriteriainformasi']==$id_dk2){echo 'Checked';} ?> class="form-check-input disabled" type="checkbox" name="kegiatan[]" id="kegiatan_<?php echo $temp1['sub_kriteriainformasi'];?>"  value="<?php echo $temp1['id_detail_kriteriainformasi'];?>">
-                            <label class="form-check-label" for="kegiatan_<?php echo $temp1['sub_kriteriainformasi'];?>"><?php echo $temp1['sub_kriteriainformasi']; ?></label>
-                          </div>
-                        </div>
-                      <?php } ?>
+                        <p>
+                        <?php 
+                          $i = 0;
+                          $x = 0;
+                          $result = mysqli_query($db2,"SELECT * FROM `sub_kriteriainformasi` inner join detail_kriteriainformasi
+                          on sub_kriteriainformasi.id_sub_kriteriainformasi = detail_kriteriainformasi.id_sub_kriteriainformasi                      
+                          where sub_kriteriainformasi.id_kriteriainformasi=8 AND nilai=1");
+                          while($temp1 = mysqli_fetch_array($result)){
+                            $id_dk = $temp1['id_detail_kriteriainformasi'];
+                            $id_dk2 = '';
+                            $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where npsn=$npsn and id_detail_kriteriainformasi = $id_dk");
+                            $number = mysqli_num_rows($result2);
+                            while($tmp2 = mysqli_fetch_array($result2)){
+                              $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
+                              echo $temp1['sub_kriteriainformasi']."</br> </br> ";
+                            }
+                          }
+                        ?>
+                        </p>
                       </div>
                       <!-- /.col -->
                     </div>
