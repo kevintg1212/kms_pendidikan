@@ -198,7 +198,7 @@ session_start();
                 SELECT * from (SELECT k.id_detail_kriteriainformasi, k.id_kriteriainformasi, s.id_sub_kriteriainformasi, s.sub_kriteriainformasi, k.parameter 
                 FROM detail_kriteriainformasi k left join sub_kriteriainformasi s on k.id_kriteriainformasi = s.id_kriteriainformasi) k 
                 join kriteria_informasi i on k.id_kriteriainformasi = i.id_kriteriainformasi 
-                group by id_sub_kriteriainformasi, k.id_kriteriainformasi, parameter ORDER BY k.id_kriteriainformasi
+                group by k.id_kriteriainformasi, k.id_sub_kriteriainformasi, parameter ORDER BY k.id_kriteriainformasi
                 ");
                 $temp = '';
                 $temp2 = '';
