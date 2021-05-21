@@ -82,7 +82,7 @@ $nik =$_SESSION['nik'];
                  $row_ulasan_a = mysqli_fetch_array($result_ulasan_a);
                  $total_ulasan_a = $row_ulasan_a[0];
 
-                 $result_ulasan_p = mysqli_query($db2,"select count(*) FROM ulasan where npsn = '$npsn' and status_ulasan = 'Pending'");
+                 $result_ulasan_p = mysqli_query($db2,"select count(*) FROM ulasan where npsn = '$npsn' and status_ulasan != 'Accepted'");
                  $row_ulasan_p = mysqli_fetch_array($result_ulasan_p);
                  $total_ulasan_p = $row_ulasan_p[0];
                ?>

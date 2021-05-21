@@ -198,8 +198,24 @@ while($d_head = mysqli_fetch_array($sql)){
                   </select>
                 </div>
               </div>
-              
-              <div class="row">
+              <?php
+                        $sqlJurnal2= mysqli_query($db2,"
+                        SELECT * from (SELECT k.id_detail_kriteriainformasi, k.id_kriteriainformasi, s.sub_kriteriainformasi, k.parameter, s.keterangan, k.nilai FROM detail_kriteriainformasi k 
+                        left join sub_kriteriainformasi s on k.id_kriteriainformasi = s.id_kriteriainformasi) k join kriteria_informasi i on k.id_kriteriainformasi = i.id_kriteriainformasi
+                        where k.id_kriteriainformasi = $id_kriteriainformasi and k.sub_kriteriainformasi != ''
+                        group by sub_kriteriainformasi
+                        ");
+                        $row = mysqli_fetch_array($sqlJurnal2);
+                        if(isset($row)) {
+                          $total = $row[0];
+                          //echo $total;
+                        }else {
+                          $total = 0;
+                        }
+                        
+
+              ?>
+              <div class="row" style="<?php if($total==0){echo 'visibility: hidden;';} ?>">
                 <div class="col">
                   <p>Sub Kriteria Informasi</p>
                 </div>

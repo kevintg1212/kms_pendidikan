@@ -67,7 +67,9 @@ session_start();
             $parameter_arr[$key] = $parameter_v;
         }
     
-    }
+    } 
+
+    
 
     if($sub_kinfo != "") {
         foreach($sub_kinfo as $key => $sub_kriteriainformasi_v) {
@@ -107,6 +109,31 @@ session_start();
         };
     };
 
+    if($sub_kriterainformasi[0] == "") {
+        foreach($parameter_arr as $key => $parameter_v) {
+    
+            $parameter_v = mysqli_real_escape_string($db2,$parameter_arr[$key]);
+            $nilai_v = mysqli_real_escape_string($db2,$nilai[$key]);
+
+            $result = mysqli_query($db2,"SELECT * FROM `sub_kriteriainformasi` ORDER BY `sub_kriteriainformasi`.`id_sub_kriteriainformasi` DESC LIMIT 1");
+            while($temp1 = mysqli_fetch_array($result)){
+                $id_sub_kriteriainformasi = $temp1['id_sub_kriteriainformasi'];
+            }
+            $id_sub_kriteriainformasi = null;
+            $stmt2 = $db2->prepare("INSERT INTO `detail_kriteriainformasi` (id_kriteriainformasi, id_sub_kriteriainformasi, parameter, nilai) VALUES(?, ?, ?, ?)");
+            $stmt2->bind_param("ssss", $idKriteriainformasi, $id_sub_kriteriainformasi ,$parameter_v, $nilai_v);
+    
+            echo $idKriteriainformasi."<br>";
+            echo $id_sub_kriteriainformasi."<br>";
+            echo $parameter_v."<br>";
+            echo $nilai_v."<br>";
+            echo "+++++++========+++++<br>";
+
+            $stmt2->execute();
+            $stmt2->close();
+    
+        };
+    }
 
 
     header("location:../data_kriteria.php");
