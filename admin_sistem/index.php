@@ -81,7 +81,7 @@ if($_SESSION['status'] !="admin"){
                  $row_layanan_a = mysqli_fetch_array($result_layanan_a);
                  $total_layanan_a = $row_layanan_a[0];
 
-                 $result_layanan_p = mysqli_query($db2,"select count(*) FROM layananpendidikan where status_data == 'Pending'");
+                 $result_layanan_p = mysqli_query($db2,"select count(*) FROM layananpendidikan where status_data = 'Pending'");
                  $row_layanan_p = mysqli_fetch_array($result_layanan_p);
                  $total_layanan_p = $row_layanan_p[0];
                ?>
