@@ -195,10 +195,10 @@ session_start();
                 // group by id_detail_kriteriainformasi, sub_kriteriainformasi, parameter
                 // ");
                 $sql = mysqli_query($db2,"
-                SELECT * from (SELECT k.id_detail_kriteriainformasi, k.id_kriteriainformasi, s.id_sub_kriteriainformasi, s.sub_kriteriainformasi, k.parameter 
+                SELECT * from (SELECT k.id_detail_kriteriainformasi, k.id_kriteriainformasi, k.nilai, s.id_sub_kriteriainformasi, s.sub_kriteriainformasi, k.parameter 
                 FROM detail_kriteriainformasi k left join sub_kriteriainformasi s on k.id_kriteriainformasi = s.id_kriteriainformasi) k 
                 join kriteria_informasi i on k.id_kriteriainformasi = i.id_kriteriainformasi 
-                group by k.id_kriteriainformasi, k.id_sub_kriteriainformasi, parameter ORDER BY k.id_kriteriainformasi
+                group by k.id_kriteriainformasi, k.id_sub_kriteriainformasi, parameter ORDER BY k.id_kriteriainformasi ASC, k.id_sub_kriteriainformasi ASC, k.nilai DESC
                 ");
                 $temp = '';
                 $temp2 = '';
