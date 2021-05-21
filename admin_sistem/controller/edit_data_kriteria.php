@@ -29,22 +29,22 @@ session_start();
     $nilai = $_POST['nilai'];
     for ($i=0; $i < 51; $i++) { 
         if (isset($sub_kriterainformasi[$i])) {
-            if (str_contains($sub_kriterainformasi[$i],"Warning")) {
+            if (strpos($sub_kriterainformasi[$i],"Warning")) {
                 unset($sub_kriterainformasi[$i]);
             }
         }
         if (isset($keterangan[$i])) {
-            if (str_contains($keterangan[$i],"Warning")) {
+            if (strpos($keterangan[$i],"Warning")) {
                 unset($keterangan[$i]);
             }
         }
         if (isset($parameter[$i])) {
-            if (str_contains($parameter[$i],"Warning")) {
+            if (strpos($parameter[$i],"Warning")) {
                 unset($parameter[$i]);
             }
         }
         if (isset($nilai[$i])) {
-            if (str_contains($nilai[$i],"Warning")) {
+            if (strpos($nilai[$i],"Warning")) {
                 unset($nilai[$i]);
             }
         }
