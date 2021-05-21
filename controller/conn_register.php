@@ -24,7 +24,7 @@ $query1  = mysqli_query($db2,"SELECT COUNT(*) FROM admin_layananpendidikan WHERE
 
   if($qktp==1){
     $_SESSION['status'] = "TT";
-    echo "<script>if(confirm('Email sudah terdaftar !')){document.location.href='../register.php'}else{document.location.href='../register.php'};</script>";
+    echo "<script>if(confirm('NIK sudah terdaftar !')){document.location.href='../register.php'}else{document.location.href='../register.php'};</script>";
 
   }else if($qeEma==1){
     echo "<script>if(confirm('Email sudah terdaftar !')){document.location.href='../register.php'}else{document.location.href='../register.php'};</script>";
