@@ -84,11 +84,9 @@ while($tmp1 = mysqli_fetch_array($result)){
         <div class="modal-body">
           <p>Data ini akan dilakukan validasi terlebih dahulu sebelum ditampilkan pada website "Knowledge Management
           System Layanan Pendidikan untuk ABK"<br><br>
-
-          <b>Maka, pastikan Surat Ijin Operasional Sekolah telah di unggah. </b><br>
-          Kami akan mengkonfirmasi proses validasi melalui notifikasi jika layanan pendidikan ABK diterima. 
-          Namun apabila layanan pendidikan ABK ini terbukti tidak beroperasional, kami akan menginformasikan melalui 
-          email anda karena data layanan pendidikan ABK serta account anda otomatis terhapus. </p>
+         <br>
+          Kami akan mengkonfirmasi hasil validasi melalui notifikasi di laman anda. 
+         </p>
         </div>
         
           <div class="modal-footer">

@@ -54,10 +54,11 @@ if (isset($_SESSION['arr_layanan'])) {
       <!-- Main content -->
       <section class="content">
         <div class="container-fluid" style="margin-top:100px;">
-			<h1><b>Temukan Informasi Layanan Pendidikan ABK</b></h1><br>
+			<h2><b>Temukan Informasi Layanan Pendidikan ABK</b></h2><br>
 			<div class="d-flex flex-column p-2 col-12 shadow p-3 mb-5 bg-white rounded">
 				<h5 class="mx-5" style="margin-bottom:15px; margin-top:20px;"> <b> Lakukan pencarian dengan menggunakan pilihan berikut ini </b></h5>
-				<h6 class="mx-5">Berikut pilihan lainnya yang dapat diisi sesuai dengan kriteria yang sangat anda pertimbangkan dalam memilih layanan pendidikan ABK</h6>
+				<h6 class="mx-5">Berikut pilihan lainnya yang dapat diisi sesuai dengan kriteria yang sangat anda pertimbangkan dalam mencari layanan pendidikan ABK</h6>
+				<h6 class="mx-5">Rekomendasi layanan pendidikan akan <b> diurutkan </b> berdasarkan kriteria yang paling sesuai. Jika tidak ada pertimbangan lain, silakan klik tombol <b> Cari Sekolah </b> di bawah halaman ini</h6>
 				<div class="p-5 mx-5">
 					<div class="d-flex flex-column">
 						<div class="d-flex p-2 justify-content-center">

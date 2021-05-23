@@ -101,7 +101,7 @@ if (isset($_GET['npsn'])) {
                 </select>
               </div>
             </div>
-
+            </br/>
             <!-- Main content -->
             <div class="container-fluid">
               <div class="card">
@@ -169,7 +169,7 @@ if (isset($_GET['npsn'])) {
                       </div>
                       <div class="row mt-3">
                         <div class="col-6">
-                          <label>Lampirkan Foto Pendukung Ulasan Mu</label>
+                          <label>Lampirkan Foto Pendukung Ulasanmu</label>
                         </div>
                         <div class="col-6">
                           <input class="form-control" type="file" id="lampiran" name="lampiran">

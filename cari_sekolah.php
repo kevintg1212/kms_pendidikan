@@ -53,7 +53,8 @@ session_start();
 			<div class="modal-dialog">
 				<div class="modal-content">
 					<div class="modal-body">
-						<p>Maaf, layanan pendidikan ABK yang anda cari tidak ditemukan</p>
+						<p>Maaf, layanan pendidikan yang sesuai dengan kriteria anda tidak dapat ditemukan. </p>
+            <p>Silahkan mencoba dengan kriteria yang berbeda.</p>
 					</div>
 					<div class="modal-footer justify-content-end" style="height: 50px;">
 						<a href="/kms_pendidikan/cari_sekolah.php" class="btn btn-sm btn-primary">OK</a>
@@ -72,15 +73,16 @@ session_start();
       <section class="content">
       <form class="form-horizontal" action="controller/conn_cari_sekolah.php" method="post">
         <div class="container-fluid" style="margin-top:100px;">
-          <h1><b>Temukan Informasi Layanan Pendidikan ABK</b></h1> <br>
+          <h2><b>Temukan Informasi Layanan Pendidikan ABK</b></h2> <br>
           <div class="row px-5 py-2">
             <div class="col-md-12">
               <div class ="shadow p-3 mb-5 bg-white rounded" style="padding: 25px 100px">
-                <h4><b>Lakukan pencarian dengan menggunakan pilihan berikut ini</b></h4><br>
-                <h5>*Wajib di isi.</h5><br>
+                <br/>
+                <h5><b>Lakukan pencarian dengan menggunakan pilihan berikut ini</b></h5>
+                <h6>*Wajib di isi</h6><br>
                 <div class="row" style="margin-top:50px; margin-left:20px;">
                   <div class="col-md-4">
-                    <label>Lokasi Sekolah *</label>
+                    <h7>Lokasi Sekolah <label>*</label></h7>
                   </div>
                   <div class="col-md-6">
                     <select class="form-control select2" id="lokasiSekolah" name="lokasiSekolah" style="width: 100%;" required>
@@ -97,7 +99,7 @@ session_start();
 
                 <div class="row" style="margin-top:50px; margin-left:20px;">
                   <div class="col-md-4">
-                    <label>Kebutuhan khusus yang dilayani *</label>
+                    <h7>Kebutuhan khusus yang dilayani <label>*</label></h7>
                   </div>
                   <div class="col-md-6">
                     <select class="form-control select2" style="width: 100%;" id="kebutuhanKhusus" name="kebutuhanKhusus" required>
@@ -114,7 +116,7 @@ session_start();
 
                 <div class="row" style="margin-top:50px; margin-left:20px;">
                   <div class="col-md-4">
-                    <label>Jenjang Pendidikan *</label>
+                    <h7>Jenjang Pendidikan <label>*</label></h7>
                   </div>
                   <div class="col-md-6">
                     <select class="form-control select2" id="jenjangPendidikan" name="jenjangPendidikan" style="width: 100%;" required>
@@ -131,7 +133,7 @@ session_start();
 
                 <div class="row" style="margin-top:50px; margin-left:20px;">
                   <div class="col-md-4">
-                    <label>Biaya Sekolah</label>
+                    <h7>Biaya Sekolah</h7>
                   </div>
                   <div class="col-md-2">
                     <input type="number" id="biayaMinimum" name="biayaMinimum" class="form-control" style="width: 100%;" placeholder="Biaya Minimum">
@@ -146,7 +148,7 @@ session_start();
 
                 <div class="row" style="margin-top:50px; margin-left:20px;">
                   <div class="col-md-4">
-                    <label>Jumlah murid dalam satu kelas</label>
+                    <h7>Jumlah murid dalam satu kelas</h7>
                   </div>
                   <div class="col-md-2">
                     <input type="number" id="jmlMinimum" name="jmlMinimum" class="form-control" style="width: 100%;" placeholder="Jumlah Minimum">
@@ -161,7 +163,7 @@ session_start();
 
                 <div class="row" style="margin-top:50px; margin-left:20px;">
                   <div class="col-md-4">
-                    <label>Pengalaman sekolah dalam menangani ABK</label>
+                    <h7>Pengalaman sekolah dalam menangani ABK</h7>
                   </div>
                   <div class="col-md-2">
                     <input type="number" id="tahun_sekolah" name="tahun_sekolah" class="form-control" style="width: 100%;" >
@@ -173,7 +175,7 @@ session_start();
 
                 <div class="row" style="margin-top:50px; margin-left:20px;">
                   <div class="col-md-4">
-                    <label>Pengalaman pengajar dalam menangani ABK</label>
+                    <h7>Pengalaman pengajar dalam menangani ABK</h7>
                   </div>
                   <div class="col-md-2">
                     <input type="number" id="tahun_pengajar" name="tahun_pengajar" class="form-control" style="width: 100%;" >
@@ -188,6 +190,9 @@ session_start();
 										Selanjutnya
 									</button>
                 </div>
+
+                <br/>
+                <br/>
 
               </div>
             </div>

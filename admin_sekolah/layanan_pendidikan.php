@@ -70,9 +70,8 @@ if ($status_p=='Rejected') {
           System Layanan Pendidikan untuk ABK"<br><br>
 
           <b>Maka, pastikan Surat Ijin Operasional Sekolah telah di unggah. </b><br>
-          Kami akan mengkonfirmasi proses validasi melalui notifikasi jika layanan pendidikan ABK diterima. 
-          Namun apabila layanan pendidikan ABK ini terbukti tidak beroperasional, kami akan menginformasikan melalui 
-          email anda karena data layanan pendidikan ABK serta account anda otomatis terhapus. </p>
+          Kami akan mengkonfirmasi hasil validasi melalui notifikasi di laman anda.
+          Namun apabila layanan pendidikan ABK ini terbukti tidak beroperasional, maka data layanan pendidikan yang anda bagikan akan dinonaktifkan. </p>
         </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>

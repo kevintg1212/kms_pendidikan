@@ -70,7 +70,7 @@ session_start();
     } 
 
     
-
+    //kriteria informasi yang punya sub
     if($sub_kinfo != "") {
         foreach($sub_kinfo as $key => $sub_kriteriainformasi_v) {
 
@@ -109,6 +109,7 @@ session_start();
         };
     };
 
+    //kriteria informasi  yang gapunya sub
     if($sub_kriterainformasi[0] == "") {
         foreach($parameter_arr as $key => $parameter_v) {
     
