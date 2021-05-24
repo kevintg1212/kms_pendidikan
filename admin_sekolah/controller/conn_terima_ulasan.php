@@ -10,8 +10,8 @@ $email_pengirim = 'kmspendidikan@gmail.com'; // Isikan dengan email pengirim
 $nama_pengirim = 'KMS Pendidikan'; // Isikan dengan nama pengirim
 $email_penerima = $_POST['email']; // Ambil email penerima dari inputan form
 $nama_sekolah = $_POST['nama']; // Ambil email penerima dari inputan form
-$subjek = "Ulasan pada KMS Pendidikan"; // Ambil subjek dari inputan form
-$pesan = "Ulasan anda pada sekolah $nama_sekolah sudah diterima. Ulasan akan muncul pada sekolah terkait. Terimakasih sudah berbagi informasi dengan kami."; // Ambil pesan dari inputan form
+$subjek = "Ulasan pada KMS Pendidikan di terima"; // Ambil subjek dari inputan form
+$pesan = $_POST['pesan_ulasan']; // Ambil pesan dari inputan form
 
 $mail = new PHPMailer;
 $mail->isSMTP();

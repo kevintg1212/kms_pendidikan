@@ -42,6 +42,7 @@ while($tmp1 = mysqli_fetch_array($result)){
 
   <div class="modal fade" id="modal-cancel">
     <div class="modal-dialog" style="max-width: 750px !important;">
+    <form action="controller/conn_tolak_ulasan.php" method="post">
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title" id="exampleModalLabel">PERHATIAN</h4>
@@ -50,9 +51,13 @@ while($tmp1 = mysqli_fetch_array($result)){
           </button>
         </div>
         <div class="modal-body">
-          <p>Apakah anda yakin akan menolak ulasan ini?</p>
+          <h5>Apakah anda yakin akan menolak ulasan ini?</h5>
+          <div class="form-group row">
+            <label for="pesan_ulasan" class="col-sm col-form-label font-weight-normal">Pesan Untuk Pengirim :</label>
+            <input class="form-control" type="text" name="pesan_ulasan" id="pesan_ulasan">
+          </div>
         </div>
-        <form action="controller/conn_tolak_ulasan.php" method="post">
+        
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
             <button type="submit" class="btn btn-primary">Ya</button>
@@ -60,8 +65,9 @@ while($tmp1 = mysqli_fetch_array($result)){
             <input class="nama" type="hidden" name="nama">
             <input class="email" type="hidden" name="email">
           </div>
-        </form>
+        
       </div>
+      </form>
       <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
@@ -71,6 +77,7 @@ while($tmp1 = mysqli_fetch_array($result)){
 
   <div class="modal fade" id="modal-terima">
     <div class="modal-dialog" style="max-width: 750px !important;">
+    <form action="controller/conn_terima_ulasan.php" method="post">
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title" id="exampleModalLabel">PERHATIAN</h4>
@@ -79,9 +86,13 @@ while($tmp1 = mysqli_fetch_array($result)){
           </button>
         </div>
         <div class="modal-body">
-          <p>Apakah anda akan menerima ulasan ini? </p>
+          <h5>Apakah anda akan menerima ulasan ini? </h5>
+          <div class="form-group row">
+            <label for="pesan_ulasan" class="col-sm col-form-label font-weight-normal">Pesan Untuk Pengirim :</label>
+            <input class="form-control" type="text" name="pesan_ulasan" id="pesan_ulasan">
+          </div>
         </div>
-        <form action="controller/conn_terima_ulasan.php" method="post">
+        
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
             <button type="submit" class="btn btn-primary">Ya</button>
@@ -89,8 +100,9 @@ while($tmp1 = mysqli_fetch_array($result)){
             <input class="nama" type="hidden" name="nama">
             <input class="email" type="hidden" name="email">
           </div>
-        </form>
+        
       </div>
+      </form>
       <!-- /.modal-content -->
     </div>
     <!-- /.modal-dialog -->
