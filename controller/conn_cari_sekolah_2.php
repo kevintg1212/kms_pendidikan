@@ -335,6 +335,7 @@ arsort($total_knv);
 foreach($total_knv as $key => $value) {
 	echo $key.' - '.$value.'<br>';
 }
+$_SESSION['id_pilihan']=$array_id_k;
 $_SESSION['total_akhir']=$total_knv;
 $_SESSION['id_search']=$array_id_dkk;
 $_SESSION['id_search_sub']=$array_id_dkk_sub;
