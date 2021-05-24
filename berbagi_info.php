@@ -65,7 +65,7 @@ if (isset($_GET['npsn'])) {
               Hasil dari validasi akan dikonfirmasi melalui email yang telah anda cantumkan.</p>
           </div>
           <div class="modal-footer justify-content-end">
-            <button type="submit" class="btn btn-primary">OK</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" aria-label="Close">OK</button>
           </div>
         </div>
         <!-- /.modal-content -->
@@ -116,7 +116,7 @@ if (isset($_GET['npsn'])) {
                         <div class="col-6">
                           <select class="form-control select2" id="latarBelakang" name="latarBelakang"
                             style="width: 100%;" required>
-                            <option selected="selected" disabled>-- Pilih Latar Belakang --</option>
+                            <option selected="selected" value="" disabled>-- Pilih Latar Belakang --</option>
                             <option value="Orang Tua">Orang Tua</option>
                             <option value="Pengajar">Pengajar</option>
                             <option value="Tenaga Kesehatan">Tenaga Kesehatan</option>
@@ -129,7 +129,7 @@ if (isset($_GET['npsn'])) {
                         </div>
                         <div class="col-6">
                           <input type="text" id="namaLengkap" name="namaLengkap" class="form-control"
-                            style="width: 100%;" placeholder="Masukkan nama lengkap">
+                            style="width: 100%;" placeholder="Masukkan nama lengkap" required>
                         </div>
                       </div>
                       <div class="row mt-3">
@@ -164,7 +164,7 @@ if (isset($_GET['npsn'])) {
                         </div>
                         <div class="col-6">
                           <textarea id="ulasan" name="ulasan" class="form-control" rows="3"
-                            placeholder="Tulis ulasanmu disini.."></textarea>
+                            placeholder="Tulis ulasanmu disini.." required></textarea>
                         </div>
                       </div>
                       <div class="row mt-3">
@@ -180,9 +180,8 @@ if (isset($_GET['npsn'])) {
                       </div>
                       <div class="row mt-3">
                         <div class="col">
-                          <button type="button" class="btn btn-primary btn-sm float-right"
-                            style="margin-top: 20px; color: white; width: 150px; background-color: #05319D;"
-                            data-toggle="modal" data-target="#modal-default">
+                          <button type="submit" class="btn btn-primary btn-sm float-right"
+                            style="margin-top: 20px; color: white; width: 150px; background-color: #05319D;">
                             Kirim
                           </button>
                         </div>
@@ -210,20 +209,41 @@ if (isset($_GET['npsn'])) {
     <!-- ./wrapper -->
 
   </form>
-  <!-- jQuery -->
-  <script src="plugins/jquery/jquery.min.js"></script>
-  <!-- Bootstrap 4 -->
-  <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <!-- Select2 -->
-  <script src="plugins/select2/js/select2.full.min.js"></script>
-  <!-- Bootstrap4 Duallistbox -->
-  <script src="plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
-  <!-- AdminLTE App -->
-  <script src="dist/js/adminlte.min.js"></script>
-  <script src="plugins/bs-custom-file-input/bs-custom-file-input.min.js"></script>
-  <!-- AdminLTE for demo purposes -->
-  <script src="dist/js/demo.js"></script>
+<!-- jQuery -->
+<script src="plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4 -->
+<script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Select2 -->
+<script src="plugins/select2/js/select2.full.min.js"></script>
+<!-- Bootstrap4 Duallistbox -->
+<script src="plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+<!-- InputMask -->
+<script src="plugins/moment/moment.min.js"></script>
+<script src="plugins/inputmask/min/jquery.inputmask.bundle.min.js"></script>
+<!-- date-range-picker -->
+<script src="plugins/daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap color picker -->
+<script src="plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Bootstrap Switch -->
+<script src="plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
   <script>
+
+<?php 
+    if(isset($_SESSION['berbagi']) && $_SESSION['berbagi']!= "") {
+  ?>
+    $('#modal-default').modal({
+      show: true
+    });
+  <?php }
+  $_SESSION['berbagi']="";
+  ?>
+
     function readURL(input) {
       if (input.files && input.files[0]) {
         var reader = new FileReader();

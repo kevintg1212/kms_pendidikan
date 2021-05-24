@@ -24,9 +24,10 @@ $statusUlasan = "Pending";
 echo $statusUlasan."<br>";
 
 
-
+if (isset($_POST["lampiran"])) {
 $target_dir = "../img/pendukung_ulasan/";
 $target_file = $target_dir . basename($_FILES["lampiran"]["name"]);
+
 $name_image1 = basename($_FILES["lampiran"]["name"]);
 $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
@@ -50,7 +51,10 @@ $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 		} else {
 		  echo "Sorry, there was an error uploading your file.";
 		}
-	  }
+	  }	  
+}else{
+	$name_image1= "";
+}
 	echo $name_image1."<br>";
 
 	$stmt1 = $db2->prepare("INSERT INTO `ulasan`(`npsn`, `nama_pengirim`, `latar_belakang`, `email`, `ulasan`, `lampiran_ulasan`, `tanggal_mengirim`, `status_ulasan`) VALUES (? ,? ,? ,? ,? ,? ,? ,? )");
@@ -76,7 +80,7 @@ $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 	}
 	
 
-
+	$_SESSION['berbagi'] = "ada";
 	header("location:../berbagi_info.php")
 
 
