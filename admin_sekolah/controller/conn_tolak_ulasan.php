@@ -49,7 +49,7 @@ $mail->Body = $pesan;
 	$stmt1->execute();
 	$stmt1->close();
 
-	//header("location:../ulasan.php")
+	header("location:../ulasan.php")
 
 
 ?>
