@@ -176,6 +176,7 @@ session_start();
 
             <div class="card-body">
               <h5>Data Kriteria Informasi pada Knowledge Management System</h5>
+              <br>
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>

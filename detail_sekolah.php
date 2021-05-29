@@ -92,7 +92,7 @@ while($d_head = mysqli_fetch_array($sql)){
             <div class="container-fluid">
               <div class="row">
                 <div class="col-4 p-2 ">
-                      <img src="admin_sekolah/image/foto_sekolah/<?php echo $foto_sekolah; ?>" class="shadow-sm rounded" style="width: 100%;">
+                      <img src="admin_sekolah/image/foto_sekolah/<?php echo $foto_sekolah; ?>" class="shadow-sm rounded" style="width: 85%;">
                 </div>
 
                 <div class="card card-default col-sm-12 mt-5">
@@ -366,7 +366,7 @@ while($d_head = mysqli_fetch_array($sql)){
                                 while($tmp2 = mysqli_fetch_array($result2)){
                                   $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
                                   if ($i<$number) {
-                                    echo $tmp1['parameter'].", ";
+                                    echo $tmp1['parameter']." ";
                                   }else{
                                     echo $tmp1['parameter'].".";
                                   }
@@ -399,7 +399,7 @@ while($d_head = mysqli_fetch_array($sql)){
                                 while($tmp2 = mysqli_fetch_array($result2)){
                                   $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
                                   if ($i<$number) {
-                                    echo $tmp1['parameter'].", ";
+                                    echo $tmp1['parameter']." ";
                                   }else{
                                     echo $tmp1['parameter'].".";
                                   }
@@ -443,7 +443,7 @@ while($d_head = mysqli_fetch_array($sql)){
                                 while($tmp2 = mysqli_fetch_array($result2)){
                                   $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
                                   if ($i<$number) {
-                                    echo $tmp1['parameter'].", ";
+                                    echo $tmp1['parameter']." ";
                                   }else{
                                     echo $tmp1['parameter'].".";
                                   }
@@ -476,7 +476,7 @@ while($d_head = mysqli_fetch_array($sql)){
                                 while($tmp2 = mysqli_fetch_array($result2)){
                                   $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
                                   if ($i<$number) {
-                                    echo $tmp1['parameter'].", ";
+                                    echo $tmp1['parameter']." ";
                                   }else{
                                     echo $tmp1['parameter'].".";
                                   }
@@ -509,7 +509,7 @@ while($d_head = mysqli_fetch_array($sql)){
                                 while($tmp2 = mysqli_fetch_array($result2)){
                                   $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
                                   if ($i<$number) {
-                                    echo $tmp1['parameter'].", ";
+                                    echo $tmp1['parameter']." ";
                                   }else{
                                     echo $tmp1['parameter'].".";
                                   }
@@ -571,7 +571,7 @@ while($d_head = mysqli_fetch_array($sql)){
                                 while($tmp2 = mysqli_fetch_array($result2)){
                                   $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
                                   if ($i<$number) {
-                                    echo $tmp1['parameter'].", ";
+                                    echo $tmp1['parameter']." ";
                                   }else{
                                     echo $tmp1['parameter'].".";
                                   }
@@ -640,7 +640,7 @@ while($d_head = mysqli_fetch_array($sql)){
                                 while($tmp2 = mysqli_fetch_array($result2)){
                                   $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
                                   if ($i<$number) {
-                                    echo $tmp1['parameter'].", ";
+                                    echo $tmp1['parameter']." ";
                                   }else{
                                     echo $tmp1['parameter'].".";
                                   }
@@ -680,7 +680,7 @@ while($d_head = mysqli_fetch_array($sql)){
                                 while($tmp2 = mysqli_fetch_array($result2)){
                                   $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
                                   if ($i<$number) {
-                                    echo $tmp1['parameter'].", ";
+                                    echo $tmp1['parameter']." ";
                                   }else{
                                     echo $tmp1['parameter'].".";
                                   }
@@ -720,7 +720,7 @@ while($d_head = mysqli_fetch_array($sql)){
                                 while($tmp2 = mysqli_fetch_array($result2)){
                                   $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
                                   if ($i<$number) {
-                                    echo $tmp1['parameter'].", ";
+                                    echo $tmp1['parameter']." ";
                                   }else{
                                     echo $tmp1['parameter'].".";
                                   }
@@ -753,7 +753,7 @@ while($d_head = mysqli_fetch_array($sql)){
                                 while($tmp2 = mysqli_fetch_array($result2)){
                                   $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
                                   if ($i<$number) {
-                                    echo $tmp1['parameter'].", ";
+                                    echo $tmp1['parameter']." ";
                                   }else{
                                     echo $tmp1['parameter'].".";
                                   }
@@ -804,7 +804,7 @@ while($d_head = mysqli_fetch_array($sql)){
                                 while($tmp2 = mysqli_fetch_array($result2)){
                                   $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
                                   if ($i<$number) {
-                                    echo $tmp1['parameter'].", ";
+                                    echo $tmp1['parameter']." ";
                                   }else{
                                     echo $tmp1['parameter'].".";
                                   }

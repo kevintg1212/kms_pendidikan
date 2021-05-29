@@ -170,7 +170,7 @@ if (isset($_SESSION['arr_layanan'])) {
 							</div>
 						</div>
 						<div class="d-flex p-2 justify-content-center">
-							<div class="p-2 flex-fill " style="width:100%">Kegiatan sekolah yang dapat diikuti AKB</div>
+							<div class="p-2 flex-fill " style="width:100%">Kegiatan sekolah yang dapat diikuti ABK</div>
 							<div class="d-flex p-2" style="width:100%">
 								<div class="d-flex flex-column " style="width:100%">
 									<?php 
