@@ -291,7 +291,7 @@ while($d_head = mysqli_fetch_array($sql)){
                         left join sub_kriteriainformasi s on k.id_kriteriainformasi = s.id_kriteriainformasi) k 
                         join kriteria_informasi i on k.id_kriteriainformasi = i.id_kriteriainformasi
                         where k.id_kriteriainformasi = $id_kriteriainformasi
-                        group by nilai, k.id_kriteriainformasi
+                        
                         ");
                         $x=0;
                         while($dataJurnal = mysqli_fetch_array($sqlJurnal)){
