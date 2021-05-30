@@ -12,6 +12,10 @@ while($tmp1 = mysqli_fetch_array($result)){
   $nama_sekolah = $tmp1['nama_sekolah']; 
 }
 
+$result_layanan_count = mysqli_query($db2,"select count(*) FROM layananpendidikan where nik ='$nik'");
+$row_layanan_count = mysqli_fetch_array($result_layanan_count);
+$total_layanan_count = $row_layanan_count[0];
+
 ?>
 
 <html>
@@ -51,15 +55,13 @@ while($tmp1 = mysqli_fetch_array($result)){
           </button>
         </div>
         <div class="modal-body">
-          <p>Apakah anda yakin akan menolak ulasan ini?</p>
+          <p>Pengajuan penghapusan akan segera diproses.
+          Setelah proses pengajuan penghapusan ini dikonfrimasi, maka data layanan pendidikan akan terhapus. 
+          Kami akan mengkonfrimasi penghapusan melalui notifikasi di laman anda, Terima kasih.</p>
         </div>
-        <form action="controller/conn_tolak_ulasan.php" method="post">
           <div class="modal-footer">
-            <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
-            <button type="submit" class="btn btn-primary">Ya</button>
-            <input class="id_ulasan" type="hidden" name="id_ulasan">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Ya</button>
           </div>
-        </form>
       </div>
       <!-- /.modal-content -->
     </div>
@@ -67,7 +69,7 @@ while($tmp1 = mysqli_fetch_array($result)){
   </div>
   <!-- /.modal -->
 
-
+  <form action="controller/conn_penghapusan.php" method="post">
   <div class="modal fade" id="modal-terima">
     <div class="modal-dialog" style="max-width: 750px !important;">
       <div class="modal-content">
@@ -78,15 +80,15 @@ while($tmp1 = mysqli_fetch_array($result)){
           </button>
         </div>
         <div class="modal-body">
-          <p>Apakah anda akan menerima ulasan ini? </p>
+          <p>Apakah anda yakin akan menghapus layanan pendidikan ini? </p>
         </div>
-        <form action="controller/conn_terima_ulasan.php" method="post">
+        
           <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
             <button type="submit" class="btn btn-primary">Ya</button>
-            <input class="id_ulasan" type="hidden" name="id_ulasan">
+            <input class="npsn" type="hidden" name="npsn">
           </div>
-        </form>
+        
       </div>
       <!-- /.modal-content -->
     </div>
@@ -131,7 +133,7 @@ while($tmp1 = mysqli_fetch_array($result)){
                   <h5>NPSN</h5>
                 </div>
                 <div class="col-md-6">
-                  <input type="text" disabled value="<?php echo $npsn;?>" name="nilai_nilai"
+                  <input type="text" disabled value="<?php echo $npsn;?>" name="npsn2"
                     class="form-control select2" style="width: 100%;">
                 </div>
               </div>
@@ -140,7 +142,7 @@ while($tmp1 = mysqli_fetch_array($result)){
                   <h5>Nama Sekolah</h5>
                 </div>
                 <div class="col-md-6">
-                  <input type="text" disabled value="<?php echo $nama_sekolah;?>" name="nilai_nilai"
+                  <input type="text" disabled value="<?php if ($total_layanan_count>0) { echo $nama_sekolah; }?>" name="nama_sekolah"
                     class="form-control select2" style="width: 100%;">
                 </div>
               </div>
@@ -149,10 +151,10 @@ while($tmp1 = mysqli_fetch_array($result)){
                   <h5>Alasan Penghapusan</h5>
                 </div>
                 <div class="col-md-12">
-                  <textarea rows="4" name="nilai_nilai" class="form-control select2" style="width: 100%;"></textarea>
+                  <textarea rows="4" name="alasan_penghapusan" class="form-control select2" style="width: 100%;" required></textarea>
                 </div>
               </div>
-              <button disabled data-toggle="modal" data-target="#modal-terima" data-e=""
+              <button type="button" <?php if($total_layanan_count==0){echo "disabled"; } ?> data-toggle="modal" data-target="#modal-terima" data-e="<?php echo $npsn;?>"
                 style="color: white; background-color: #1D2948; height: 40px; float: right; margin-top: 30px;"
                 class="btn btn-primary btn-sm nav-link"><b>Ajukan Penghapusan</b></button>
             </div>
@@ -163,7 +165,7 @@ while($tmp1 = mysqli_fetch_array($result)){
   </div>
   <!-- /.card -->
 
-
+  </form>
 
   </section>
   <!-- /.content -->
@@ -189,16 +191,16 @@ while($tmp1 = mysqli_fetch_array($result)){
   <script src="../dist/js/demo.js"></script>
 </body>
 <script>
-  $('#modal-cancel').on('show.bs.modal', function (event) {
-    var button = $(event.relatedTarget) // Button that triggered the modal
-    var recipient_e = button.data('e') // Extract info from data-* attributes
 
-    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-    var modal = $(this)
-    modal.find('.id_ulasan').val(recipient_e)
-
-  })
+<?php 
+    if(isset($_SESSION['temp_penghapusan']) && $_SESSION['temp_penghapusan']!= "") {
+  ?>
+    $('#modal-cancel').modal({
+      show: true
+    });
+  <?php }
+  $_SESSION['temp_penghapusan']="";
+  ?>
 
   $('#modal-terima').on('show.bs.modal', function (event) {
     var button = $(event.relatedTarget) // Button that triggered the modal
@@ -207,7 +209,7 @@ while($tmp1 = mysqli_fetch_array($result)){
     // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
     // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
     var modal = $(this)
-    modal.find('.id_ulasan').val(recipient_e)
+    modal.find('.npsn').val(recipient_e)
 
   })
 </script>

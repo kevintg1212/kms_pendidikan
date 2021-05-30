@@ -11,6 +11,10 @@ while($tmp1 = mysqli_fetch_array($result)){
   $npsn = $tmp1['npsn']; 
 }
 
+
+$result_layanan_count = mysqli_query($db2,"select count(*) FROM layananpendidikan where nik ='$nik'");
+$row_layanan_count = mysqli_fetch_array($result_layanan_count);
+$total_layanan_count = $row_layanan_count[0];
 ?>
 
 <html>
@@ -137,6 +141,7 @@ while($tmp1 = mysqli_fetch_array($result)){
 
 
       <?php 
+      if($total_layanan_count>0){
          $result = mysqli_query($db2,"SELECT *, ulasan.email as ulasan_email FROM `ulasan` inner join
          layananpendidikan on layananpendidikan.npsn = ulasan.npsn
          where ulasan.npsn = $npsn and status_ulasan='Pending'");
@@ -243,7 +248,7 @@ while($tmp1 = mysqli_fetch_array($result)){
           </div>
         </div>
       </div>
-      <?php } ?>
+      <?php }} ?>
 
     </div>
     <!-- /.card -->

@@ -63,6 +63,14 @@ $first_part = $components[3];
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="pengajuan_penghapusan.php" class="nav-link <?php if ($first_part=="pengajuan_penghapusan.php") {echo "active"; } else  {echo "noactive";}?>">
+                        <i class="nav-icon fas fa-th"></i>
+                        <p>
+                            Pengajuan Penghapusan
+                        </p>
+                    </a>
+                </li>
 
             </ul>
         </nav>
