@@ -6,7 +6,7 @@ if($_SESSION['status'] !="login"){
 }
 $nik =$_SESSION['nik'];
 $npsn ='';
-
+$status_p ="";
 $result = mysqli_query($db2,"SELECT status_data, npsn FROM layananpendidikan where nik ='$nik'");
 while($tmp1 = mysqli_fetch_array($result)){
   $status_p = $tmp1['status_data'];
@@ -49,6 +49,8 @@ while($tmp1 = mysqli_fetch_array($result)){
                   echo "Data Layanan Pendidikan ABK<br>sudah di terima !";
                 }else if ($status_p =='Rejected') {
                   echo "Data Layanan Pendidikan ABK<br>tidak di terima !";
+                }else if ($status_p =='PENGHAPUSAN PENDING') {
+                  echo "Penghapusan Data Layanan <br>Pendidikan ABK sedang di proses !";
                 }else{
                   echo "Silahkan isi data layanan !";
                 }

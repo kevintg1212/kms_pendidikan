@@ -64,7 +64,7 @@ session_start();
 
           <!-- id-pendidikan -->
           <input class="npsn" type="hidden" id="npsn" name="npsn">
-          <input class="alasan_penghapusan" type="hidden" id="alasan_penghapusan" name="alasan_penghapusan">
+          <input class="email" type="hidden" id="email" name="email">
         </form>
       </div>
       <!-- /.modal-content -->
@@ -119,9 +119,10 @@ session_start();
                 <tbody>
                 <tr>
                 <?php
-                $sql = mysqli_query($db2,"SELECT l.*, w.nama as kabupaten, p.nama as provinsi FROM layananpendidikan l 
+                $sql = mysqli_query($db2,"SELECT l.*, w.nama as kabupaten, p.nama as provinsi, al.email as email FROM layananpendidikan l 
                 join wilayah_kabupaten w on l.id_kabupaten = w.id 
                 join wilayah_provinsi p on l.id_provinsi = p.id
+                join admin_layananpendidikan al on al.nik = l.nik
                 WHERE l.status_data = 'PENGHAPUSAN PENDING'");
                 while($result = mysqli_fetch_array($sql)){
                 ?>
@@ -133,7 +134,7 @@ session_start();
                   <td>
                     <button class="btn btn-info btn-sm" style="margin-right:10px; margin-left:10px;" name="id_ev" 
                       data-e="<?php echo $result['npsn']; ?>"
-                      data-v="<?php echo $result['alasan_penghapusan']; ?>"
+                      data-v="<?php echo $result['email']; ?>"
                       data-toggle="modal" data-target="#modal-konfirmasi">
                         </i>
                         Konfirmasi
@@ -187,7 +188,7 @@ session_start();
       // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
       var modal = $(this);
       modal.find('.npsn').val(recipient_e)
-      modal.find('.alasan_penghapusan').val(recipient_v)
+      modal.find('.email').val(recipient_v)
   })
 
 </script>
