@@ -51,6 +51,8 @@ while($tmp1 = mysqli_fetch_array($result)){
                   echo "Data Layanan Pendidikan ABK<br>tidak di terima !";
                 }else if ($status_p =='PENGHAPUSAN PENDING') {
                   echo "Penghapusan Data Layanan <br>Pendidikan ABK sedang di proses !";
+                }else if ($status_p =='Perubahan') {
+                  echo "Terdapat perubahan data, <br>harap melengkapi data yang kosong !";
                 }else{
                   echo "Silahkan isi data layanan !";
                 }

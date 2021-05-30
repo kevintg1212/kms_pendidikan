@@ -21,7 +21,7 @@ if (!isset($status_p)) {
 if ($status_p=='Pending') {
   header("location:layanan_pendidikan_pending.php");
 }
-if ($status_p=='Warning' || $status_p=='Accepted') {
+if ($status_p=='Warning' || $status_p=='Accepted' || $status_p=='Perubahan') {
   header("location:layanan_pendidikan_edit.php");
 }
 if ($status_p=='Rejected') {

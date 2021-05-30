@@ -4,7 +4,11 @@ session_start();
 
     $idKriteriainformasi = mysqli_real_escape_string($db2,$_POST['idAwal']);
 
-    
+    $stmtx = $db2->prepare("UPDATE `layananpendidikan` set status_data = 'Perubahan' where status_data = 'Accepted' ");
+
+
+    $stmtx->execute();
+    $stmtx->close();
     
     $stmt3 = $db2->prepare("DELETE from `sub_kriteriainformasi` where id_kriteriainformasi = ? ");
     $stmt3->bind_param("s",  $idKriteriainformasi);
