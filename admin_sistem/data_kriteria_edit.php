@@ -286,13 +286,22 @@ while($d_head = mysqli_fetch_array($sql)){
                   <table id="detailKriteria" class="table table-borderless">
                     <tbody>
                         <?php
+                        if ($total>0) {
                         $sqlJurnal= mysqli_query($db2,"
                         SELECT * from (SELECT k.id_detail_kriteriainformasi, k.id_kriteriainformasi, s.sub_kriteriainformasi, k.parameter, s.keterangan, k.nilai FROM detail_kriteriainformasi k 
                         left join sub_kriteriainformasi s on k.id_kriteriainformasi = s.id_kriteriainformasi) k 
                         join kriteria_informasi i on k.id_kriteriainformasi = i.id_kriteriainformasi
                         where k.id_kriteriainformasi = $id_kriteriainformasi
-                        
+                        group by nilai, k.id_kriteriainformasi
                         ");
+                        }else {
+                          $sqlJurnal= mysqli_query($db2,"
+                          SELECT * from (SELECT k.id_detail_kriteriainformasi, k.id_kriteriainformasi, s.sub_kriteriainformasi, k.parameter, s.keterangan, k.nilai FROM detail_kriteriainformasi k 
+                          left join sub_kriteriainformasi s on k.id_kriteriainformasi = s.id_kriteriainformasi) k 
+                          join kriteria_informasi i on k.id_kriteriainformasi = i.id_kriteriainformasi
+                          where k.id_kriteriainformasi = $id_kriteriainformasi
+                          ");
+                        }
                         $x=0;
                         while($dataJurnal = mysqli_fetch_array($sqlJurnal)){
                         ?>
