@@ -4,26 +4,6 @@ session_start();
 
     $idKriteriainformasi = mysqli_real_escape_string($db2,$_POST['idAwal']);
 
-    $stmtx = $db2->prepare("UPDATE `layananpendidikan` set status_data = 'Perubahan' where status_data = 'Accepted' ");
-
-
-    $stmtx->execute();
-    $stmtx->close();
-    
-    $stmt3 = $db2->prepare("DELETE from `sub_kriteriainformasi` where id_kriteriainformasi = ? ");
-    $stmt3->bind_param("s",  $idKriteriainformasi);
-
-
-    $stmt3->execute();
-    $stmt3->close();
-
-    $stmt4 = $db2->prepare("DELETE from `detail_kriteriainformasi` where id_kriteriainformasi = ? ");
-    $stmt4->bind_param("s",  $idKriteriainformasi);
-
-
-    $stmt4->execute();
-    $stmt4->close();
-
     $sub_kinfo = [];
     $parameter_arr = [];
 
@@ -31,6 +11,8 @@ session_start();
     $keterangan = $_POST['keterangan'];
     $parameter = $_POST['parameter'];
     $nilai = $_POST['nilai'];
+
+    $net_test =0;
     for ($i=0; $i < 51; $i++) { 
         if (isset($sub_kriterainformasi[$i])) {
             if (strpos($sub_kriterainformasi[$i],"Warning")) {
@@ -53,6 +35,65 @@ session_start();
             }
         }
     }
+    print_r($nilai);
+    echo "<br>".count($nilai)."<br>";
+    echo $idKriteriainformasi."<br>";
+
+    $sqlJurnal= mysqli_query($db2,"SELECT * FROM detail_kriteriainformasi where id_kriteriainformasi = $idKriteriainformasi");
+
+    while($dataJurnal = mysqli_fetch_array($sqlJurnal)){
+        echo $dataJurnal['parameter'];
+        if (in_array($dataJurnal['parameter'], $parameter))
+            {
+                echo " Match found<br>";
+            }else{
+                $net_test++;
+            }
+    }
+    echo $net_test."<br>";
+    if ($net_test==0) {
+        echo "sama<br>";
+        $i =0;
+        $sqlJurnal= mysqli_query($db2,"SELECT * FROM detail_kriteriainformasi where id_kriteriainformasi = $idKriteriainformasi");
+            while($dataJurnal = mysqli_fetch_array($sqlJurnal)){
+                
+            $temp_p =  $dataJurnal['parameter'];
+            $temp_n = $nilai[$i];
+            echo $temp_p."<br>";
+            echo $temp_n."<br>";
+            $stmtx = $db2->prepare("UPDATE detail_kriteriainformasi set nilai = $temp_n  where id_kriteriainformasi = $idKriteriainformasi and parameter = '$temp_p'");
+
+
+            $stmtx->execute();
+            $stmtx->close();
+            $i++;
+        }
+        
+    }else{
+
+
+    $stmtx = $db2->prepare("UPDATE `layananpendidikan` set status_data = 'Perubahan' where status_data = 'Accepted' ");
+
+
+    $stmtx->execute();
+    $stmtx->close();
+    
+    $stmt3 = $db2->prepare("DELETE from `sub_kriteriainformasi` where id_kriteriainformasi = ? ");
+    $stmt3->bind_param("s",  $idKriteriainformasi);
+
+
+    $stmt3->execute();
+    $stmt3->close();
+
+    $stmt4 = $db2->prepare("DELETE from `detail_kriteriainformasi` where id_kriteriainformasi = ? ");
+    $stmt4->bind_param("s",  $idKriteriainformasi);
+
+
+    $stmt4->execute();
+    $stmt4->close();
+
+
+
     foreach($sub_kriterainformasi as $key => $sub_kriterainformasi_v) {
         
         $sub_kriterainformasi_v = mysqli_real_escape_string($db2,$sub_kriterainformasi[$key]);
@@ -139,7 +180,7 @@ session_start();
     
         };
     }
-
+    }
 
     header("location:../data_kriteria.php");
 

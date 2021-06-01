@@ -268,7 +268,7 @@ $stmtx->close();
 
     
     $sub_kriteria = $_POST['sub_kriteria'];
-
+    echo "XXXXXXXXXXXXXXXXXXXXXXXXXX<br>";
     $result = mysqli_query($db2,"SELECT * FROM `sub_kriteriainformasi` inner join detail_kriteriainformasi
     on sub_kriteriainformasi.id_sub_kriteriainformasi = detail_kriteriainformasi.id_sub_kriteriainformasi                      
     where sub_kriteriainformasi.id_kriteriainformasi=6 AND nilai=1");
