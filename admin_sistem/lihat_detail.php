@@ -262,6 +262,36 @@ while($d_head = mysqli_fetch_array($sql)){
                   <?php } ?>
                 </div>
               </div>
+
+              <div class="row">
+                <div class="col-4 my-2">
+                  Status Sekolah
+                </div>
+                <div class="col-8 my-2">
+                  <?php 
+                  $result = mysqli_query($db2,"SELECT * FROM `detail_kriteriainformasi` where id_kriteriainformasi = 2");
+                  while($tmp1 = mysqli_fetch_array($result)){
+                    $id_dk = $tmp1['id_detail_kriteriainformasi'];
+                    $id_dk2 = '';
+                    $result2 = mysqli_query($db2,"SELECT * FROM `detail_layananpendidikan` where npsn=$npsn and id_detail_kriteriainformasi = $id_dk");
+                    while($tmp2 = mysqli_fetch_array($result2)){
+                      $id_dk2 = $tmp2['id_detail_kriteriainformasi'];
+                      
+                    }
+                  ?>
+                  <div class="col-3">
+                    <div class="form-check">
+                      <input disabled <?php if($tmp1['id_detail_kriteriainformasi']==$id_dk2){echo 'Checked';} ?> class="form-check-input disabled" type="radio" name="bentuk" id="radio<?php echo $tmp1['parameter'];?>" value="<?php echo $tmp1['id_detail_kriteriainformasi'];?>">
+                      <label class="form-check-label" for="radio<?php echo $tmp1['parameter'];?>"><?php echo $tmp1['parameter'];?></label>
+                    </div>
+                  </div>
+                  <?php } ?>
+                </div>
+              </div>
+
+              
+
+
               <div class="row">
                 <div class="col-4 my-2">
                   Jenjang pendidikan yang diterima

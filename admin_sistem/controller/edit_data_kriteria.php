@@ -54,9 +54,10 @@ session_start();
     if ($net_test==0) {
         echo "sama<br>";
         $i =0;
+        
         $sqlJurnal= mysqli_query($db2,"SELECT * FROM detail_kriteriainformasi where id_kriteriainformasi = $idKriteriainformasi");
             while($dataJurnal = mysqli_fetch_array($sqlJurnal)){
-                
+                if (isset($nilai[$i])) {     
             $temp_p =  $dataJurnal['parameter'];
             $temp_n = $nilai[$i];
             echo $temp_p."<br>";
@@ -68,7 +69,7 @@ session_start();
             $stmtx->close();
             $i++;
         }
-        
+    }
     }else{
 
 
