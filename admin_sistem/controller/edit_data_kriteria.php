@@ -40,16 +40,17 @@ session_start();
     echo $idKriteriainformasi."<br>";
 
     $sqlJurnal= mysqli_query($db2,"SELECT * FROM detail_kriteriainformasi where id_kriteriainformasi = $idKriteriainformasi");
-
+    $array_temp=[];
     while($dataJurnal = mysqli_fetch_array($sqlJurnal)){
         echo $dataJurnal['parameter'];
-        if (in_array($dataJurnal['parameter'], $parameter))
-            {
-                echo " Match found<br>";
-            }else{
-                $net_test++;
-            }
+        array_push($array_temp, $dataJurnal['parameter']);
     }
+    if ($array_temp==$parameter)
+    {
+        echo " Match found<br>";
+    }else{
+        $net_test++;
+    } 
     echo $net_test."<br>";
     if ($net_test==0) {
         echo "sama<br>";
