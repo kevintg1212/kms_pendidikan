@@ -57,7 +57,7 @@ $total_layanan_count = $row_layanan_count[0];
         <div class="modal-body">
           <p>Pengajuan penghapusan akan segera diproses.
           Setelah proses pengajuan penghapusan ini dikonfrimasi, maka data layanan pendidikan akan terhapus. 
-          Kami akan mengkonfrimasi penghapusan melalui notifikasi di laman anda, Terima kasih.</p>
+          Apabila pengajuan telah diproses, maka kami akan mengkonfrimasi melalui email anda, Terima kasih</p>
         </div>
           <div class="modal-footer">
           <button type="button" class="btn btn-primary" data-dismiss="modal">Ya</button>

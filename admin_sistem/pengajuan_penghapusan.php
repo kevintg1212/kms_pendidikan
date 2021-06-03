@@ -44,7 +44,7 @@ session_start();
     <div class="modal-dialog" style="max-width: 750px !important;">
       <div class="modal-content">
         <div class="modal-header">
-          <h4 class="modal-title" id="exampleModalLabel">Topik Ulasan</h4>
+          <h4 class="modal-title" id="exampleModalLabel">Pengajuan Penghapusan</h4>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>

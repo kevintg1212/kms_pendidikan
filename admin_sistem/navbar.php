@@ -38,7 +38,7 @@ $total_layanan_hapus = $row_layanan_hapus[0];
             <div class="dropdown-divider"></div>
             <a href="pengajuan_penghapusan.php" class="dropdown-item">
               <i class="fas fa-file mr-2"></i> Terdapat <?php echo $total_layanan_hapus;?> Layanan Pendidikan ABK<br>
-              ada mengajukan diri untuk dihapus!
+              yang mengajukan diri untuk dihapus!
             </a>
             <?php } ?>
           </div>
